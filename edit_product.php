@@ -1,46 +1,3 @@
-<?php
-include ("config.php");
-$user_id = $_SESSION['user_id'];
-
-$pro_id = $_GET['product_id'];
-
-if(isset($_POST['update']))
-{
-	$product_type= $_POST['cs-radio'];
-	$category_id   = $_POST['product_category_id'];
-	$product_name=$_POST['product_name'];
-	$desc	   = $_POST['desc'];
-	$tax_name  = $_POST['tax_name'];
-	$add_tax_name = implode (",",$tax_name);
-	$tax_rate  = $_POST['tax_rate'];
-	$add_tax_rate = implode (",",$tax_rate);
-	$quantity  = $_POST['quantity'];
-	$price	   = $_POST['price'];
-	$attribute = $_POST['attri'];
-	$add_attribute = implode(",",$attribute);
-	$options   = $_POST['optn'];
-	$add_options   = implode(",",$options);
-
-	
-	
-
-	$update_product = mysqli_query($mysqli,"update product set product_type='".$product_type."',category_id='".$category_id."',product_name='".$product_name."', description='".$desc."',quantity='".$quantity."', tax_name='".$add_tax_name."', tax_rate='".$add_tax_rate."', price='".$price."', attribute_value='".$add_attribute."', attribute_option='".$add_options."' where product_id = '".$pro_id."' ");
-
-	if($update_product)
-	{
-		$data = "success";
-	}
-	else
-	{
-		$data = "error";
-	}
-}
-
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang=en>
 
@@ -98,8 +55,8 @@ if(isset($_POST['update']))
 					</div><!-- /.rs-dashhead -->
 					<!-- End Dashhead -->
 
-					<!-- Begin default content width -->
-					<div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
+					
+						<div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
 						<div class="col-md-12 col-sm-12">
 						<?php
 								if(isset($data) && $data == "success")
@@ -128,21 +85,16 @@ if(isset($_POST['update']))
 													</span>
 												</div><!-- /.col-sm-4 -->
 
-												<?php
-													$product_info = mysqli_query ($mysqli, "select * from product where product_id = '".$pro_id."'");
-													$fetch_product = mysqli_fetch_array($product_info );
-
-												?>
-
+												
 												<div class="col-sm-6">
 													<div class="radio radio-custom">
 													<label class="radio-inline">
-														<input type="radio" name="cs-radio" id="cs-radio-04" value="Product" <?php echo(($fetch_product['product_type'] == 'Product')?'checked':'');?>>
+														<input type="radio" name="cs-radio" id="cs-radio-04" value="Product">
 														<span class="checker"></span>
 														Product
 													</label>
 													<label class="radio-inline">
-														<input type="radio" name="cs-radio" id="cs-radio-05" value="Service" <?php echo(($fetch_product['product_type'] == 'Service')?'checked':'');?>>
+														<input type="radio" name="cs-radio" id="cs-radio-05" value="Service">
 														<span class="checker"></span>
 														Service
 													</label>	
@@ -158,15 +110,9 @@ if(isset($_POST['update']))
 											   <div class="form-group">                
 											 <select name="product_category_id" class="rs-selectize-single">
 												
-											 <?php
-											 $category_name = mysqli_query($mysqli, "select * from product_category");
-											 while ($fetch_category = mysqli_fetch_array($category_name))
-											 {
-											 ?>											   
-											   <option value="<?php echo $fetch_category['category_id']?>" <?php echo(($fetch_product['category_id'] == $fetch_category['category_id'])?'selected':'');?>><?php echo $fetch_category['category_name']?></option>
-											  <?php
-											 }  
-											 ?>
+																			   
+											   <option value="" > CHOOSE CATEGORY</option>
+											 
 											  
 											 </select>
 											   </div><!-- /.form-group -->
@@ -180,7 +126,7 @@ if(isset($_POST['update']))
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name = "product_name" type="text" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_product['product_name'];?>" >
+														<input name = "product_name" type="text" class="form-control" id="rs-form-example-email" value="" >
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -192,63 +138,11 @@ if(isset($_POST['update']))
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<textarea name="desc" class="form-control"  style="height:150px;" ><?php echo $fetch_product['description'];?></textarea>
+														<textarea name="desc" class="form-control"  style="height:150px;" ></textarea>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
-											</div>
-											
-									<div class="row">
-										<div class="col-sm-1" style="margin-top:10px;">
-													<div class="form-group">
-														Tax
-													</div><!-- /.form-group -->
-												</div><!-- /.col-sm-4 -->
-											<div>
-												<div class="row ">
-														<div class="col-sm-2 ">
-														</div>
-														<div class="col-sm-4">
-															<div class="form-group">
-																<label style="font-size:13px;">
-																	&nbsp;
-																</label>
-																 <?php
-																 $tax_name = explode(",",$fetch_product['tax_name']);
-																 foreach($tax_name as $tax_name_fetch)
-																 {
-																?>
-																<input type="text" name="tax_name[]" class="form-control" value="<?php echo $tax_name_fetch;?>" >
-																<p class="help-block with-errors"></p>
-																<?php
-																 }
-																?>
-																
-															</div>
-														</div>
-															
-														<div class="col-sm-3">
-															<div class="form-group">
-																<label style="font-size:13px;">
-																	&nbsp;
-																</label>
-																 <?php
-																 $tax_rate = explode(",",$fetch_product['tax_rate']);
-																 foreach($tax_rate as $tax_rate_fetch)
-																 {
-																?>
-																<input type="text" name="tax_rate[]" class="form-control" value="<?php echo $tax_rate_fetch;?>" >
-																<p class="help-block with-errors"></p>
-																<?php
-																 }
-																?>
-																
-															</div>
-														</div>
-													</div>
-												</div>
-											</div> <!--./ row end-->
-										
+											</div>				
 											
 											<div class="row">
 												<div class="col-sm-3">
@@ -256,7 +150,7 @@ if(isset($_POST['update']))
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="quantity" type="integer" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_product['quantity'];?>" >
+														<input name="quantity" type="integer" class="form-control" id="rs-form-example-email" value="" >
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -264,11 +158,23 @@ if(isset($_POST['update']))
 
 											<div class="row">
 												<div class="col-sm-3">
-													Price
+													Cost Price
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="price" type="integer" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_product['price'];?>" >
+														<input name="cost_price" type="integer" class="form-control" id="rs-form-example-email" value="" >
+														<p class="help-block with-errors"></p>
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-3">
+													Selling Price
+												</div>
+												<div class="col-sm-9">
+													<div class="form-group">
+														<input name="selling_price" type="integer" class="form-control" id="rs-form-example-email" value="" >
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -285,7 +191,7 @@ if(isset($_POST['update']))
 													<div class="form-group">
 														<div class="checkbox checkbox-custom checkbox-danger">
 															<label style="font-size:13px;">
-																<input type="checkbox" value="1" class="attributes_options" onchange="valueChanged()" <?php echo(($fetch_product['attribute_value'] != '' && $fetch_product['attribute_option'] != '')?'checked':'')?>	>
+																<input type="checkbox" value="1" class="attributes_options">
 																<span class="checker" ></span>
 																Create Attributes and options
 															</label>
@@ -304,17 +210,10 @@ if(isset($_POST['update']))
 																<label style="font-size:13px;">
 																	Attribute
 																</label>
-																 <?php
-																 $attri = explode(",",$fetch_product['attribute_value']);
-																 foreach($attri as $attri_fetch)
-																 {
-																?>
-																<input type="text" name="attri[]" class="form-control" value="<?php echo $attri_fetch;?>" placeholder="Eg: color" >
-																<p class="help-block with-errors"></p>
-																<?php
-																 }
-																?>
 																
+																<input type="text" name="attri[]" class="form-control" value="" placeholder="Eg: color" >
+																<p class="help-block with-errors"></p>
+															
 															</div>
 														</div>
 
@@ -324,16 +223,10 @@ if(isset($_POST['update']))
 																	<label style="font-size:13px;">
 																		Options
 																	</label>
-																	<?php
-																 $option = explode(",",$fetch_product['attribute_option']);
-																 foreach($option as $option_fetch)
-																 {
-																?>
-																<input type="text" name="optn[]" class="form-control" value="<?php echo $option_fetch;?>" placeholder="Eg: color" >
+																
+																<input type="text" name="optn[]" class="form-control" value="" placeholder="Eg: color" >
 																<p class="help-block with-errors"></p>
-																<?php
-																 }
-																?>
+																
 																</div>
 															</div>
 														</div>
@@ -361,13 +254,13 @@ if(isset($_POST['update']))
 							</div><!-- /.panel -->
 						</div>
 						
-						<!-- right side -->
+						<!-- right side
 						<div class="col-md-5 col-sm-12">							 
 							<div class="panel panel-plain panel-rounded" style="padding-top:20px;" >
 								<iframe width="100%" height="50%" src="https://www.youtube.com/embed/5GZ3fP71Bzg" style="padding:30px;min-height:300px;" frameborder="0" allowfullscreen></iframe>
 							</div>
 						</div>
-						<!-- right side ends -->
+						 right side ends -->
 						
 					</div><!-- /.container-fluid -->
 					<div class="panel-footer" style="background:#fff;">

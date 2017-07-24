@@ -51,7 +51,7 @@ $fetch_details = mysqli_fetch_array($cu_info);
 						<span class="fa fa-address-book rs-icon-menu"></span>Contacts
 					</a>
 					<ul>
-						<li ><a href="vendor.php">Suppliers / Vendors</a></li>
+						<li ><a href="vendor.php">Vendors</a></li>
 						<li ><a href="customer.php">Customers</a></li>
 					</ul>
 				</li>
@@ -63,10 +63,11 @@ $fetch_details = mysqli_fetch_array($cu_info);
 					<ul>
 						<li><a href="product_group.php">Group / Category</a></li>
 						<li><a href="product.php">Products</a></li>
+
 					</ul>
 				</li>
 
-				<li class="nav-item start <?php if($page_name == 'view_sales_order.php'){ ?>active open<?php } ?>">
+				<li class="nav-item start <?php if($page_name == 'add_sales_order.php' || $page_name == 'javascript:void(0);'){ ?>active open<?php } ?>">
 					<a href="sales_order.php">
 						<span class="fa fa-usd rs-icon-menu"></span>Sales
 					</a>
@@ -77,20 +78,39 @@ $fetch_details = mysqli_fetch_array($cu_info);
 				</li>
 
 
-				<li class="nav-item start <?php if($page_name == 'add_bill.php' ||  $page_name == 'view_bill.php') { ?>active open<?php } ?>">
-					<a href="javascript:void(0);">
-						<span class="fa fa-table rs-icon-menu"></span>Expense Bills
+				<li class="nav-item start <?php if($page_name == 'javascript:void(0);' ||  $page_name == 'javascript:void(0);'){ ?>active open<?php } ?>">
+					<a href="sales_order.php">
+						<span class="fa fa-usd rs-icon-menu"></span>Purchase Orders
 					</a>
 					<ul>
-						<li><a href="add_bill.php">Add Bill</a></li>
-						<li><a href="view_bill.php">View Bills</a></li>
+						<li><a href="javascript:void(0);">Create Purchase Order</a></li>
+						<li><a href="javascript:void(0);">View Purchase Order</a></li>
+					</ul>
+				</li>
+
+
+
+				<li class="nav-item start <?php if($page_name == 'javascript:void(0);' ||  $page_name == 'javascript:void(0);'  ||  $page_name == 'javascript:void(0);') { ?>active open<?php } ?>">
+					<a href="javascript:void(0);">
+						<span class="fa fa-table rs-icon-menu"></span>Reports
+					</a>
+					<ul>
+						<li><a href="javascript:void(0);">Transaction History</a></li>
+						<li><a href="javascript:void(0);">B2C(Large) Invoices</a></li>
+						<li><a href="javascript:void(0);">B2B Invoices</a></li>
 					</ul>
 				</li>
 				
-				<li class="nav-item start <?php if($page_name == 'reports.php') { ?>active open<?php } ?>">
-					<a href="reports.php">
-						<span class="fa fa-file-o rs-icon-menu"></span>Reports
+			
+				<li class="nav-item start <?php if($page_name == 'javascript:void(0);' ||  $page_name == 'javascript:void(0);'  ||  $page_name == 'javascript:void(0);') { ?>active open<?php } ?>">
+					<a href="javascript:void(0);">
+						<span class="fa fa-table rs-icon-menu"></span>Accounts
 					</a>
+					<ul>
+						<li><a href="javascript:void(0);">Login Security</a></li>
+						<li><a href="javascript:void(0);">Tax Details</a></li>
+						<li><a href="javascript:void(0);">Personal Information</a></li>
+					</ul>
 				</li>
 				
 				<!--<li class="nav-item start <?php if($page_name == 'tax.php') { ?>active open<?php } ?>">

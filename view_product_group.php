@@ -1,12 +1,3 @@
-<?php
-include ("config.php");
-
-$category_id = $_GET['category_id'];
-$view_category_info = mysqli_query($mysqli, "select * from product_category where category_id='".$category_id."'");
-$fetch_category_details = mysqli_fetch_array($view_category_info);
-?>
-
-
 <!DOCTYPE html>
 <html lang=en>
 
@@ -85,12 +76,12 @@ $fetch_category_details = mysqli_fetch_array($view_category_info);
 												<div class="col-sm-6">
 													<div class="radio radio-custom">
 													<label class="radio-inline">
-														<input type="radio" name="cs_radio" id="cs-radio-04" value="Product" <?php echo(($fetch_category_details['category_type'] == 'Product')?'checked':'');?> disabled>
+														<input type="radio" name="cs_radio" id="cs-radio-04" value="Product" disabled>
 														<span class="checker"></span>
 														Product
 													</label>
 													<label class="radio-inline">
-														<input type="radio" name="cs_radio" id="cs-radio-05" value="Service" <?php echo(($fetch_category_details['category_type'] == 'Service')?'checked':'');?> disabled>
+														<input type="radio" name="cs_radio" id="cs-radio-05" value="Service" disabled>
 														<span class="checker"></span>
 														Service
 													</label>
@@ -106,7 +97,7 @@ $fetch_category_details = mysqli_fetch_array($view_category_info);
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<label  id="rs-form-example-email" > <?php echo $fetch_category_details['category_name'];?></label>
+														<label  id="rs-form-example-email" > PRODUCT NAME HERE </label>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -118,7 +109,7 @@ $fetch_category_details = mysqli_fetch_array($view_category_info);
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<label> <?php echo $fetch_category_details['description'];?></label>
+														<label> DESC HERE</label>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -132,7 +123,7 @@ $fetch_category_details = mysqli_fetch_array($view_category_info);
 												</div>
 												<div class="col-sm-4">
 													<div class="form-group">
-														<label> <?php echo $fetch_category_details['item_type'];?> </label>
+														<label> TYpe HERE</label>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -155,18 +146,8 @@ $fetch_category_details = mysqli_fetch_array($view_category_info);
 															<label style="font-size:13px;">
 																<b>Attribute</b>
 															</label>
-															<br />
-															<?php
-																$data_atti = explode(",",$fetch_category_details['attribute_name']);
-																
-																foreach($data_atti As $data_atti_values){
-			
-																	echo $data_atti_values;
-																?>
-																<p class="help-block with-errors"></p>
-															<?php
-																}
-															?>
+															<br />															
+																<p class="help-block with-errors"></p>												
 															
 														</div>
 													</div>
@@ -178,31 +159,49 @@ $fetch_category_details = mysqli_fetch_array($view_category_info);
 																	<b>Options</b>
 																</label>
 																<br />
-															<?php
-																$data_option = explode(",",$fetch_category_details['attribute_options']);
-																
-																foreach($data_option As $key => $data_option_values){
-			
-																	echo $data_option_values;
-																?>
+															
 																<p class="help-block with-errors"></p>
-															<?php
-																}
-															?>
+															
 														</div>
 													</div>
-											</div>			
+												</div>	
+											
+											<div class="row">
+												<div class="col-sm-3" style="margin-top:10px;">
+													<span >
+														HSN Codes :
+													</span>
+												</div><!-- /.col-sm-4 -->
+												<div class="col-sm-9">
+											   <div class="form-group">                
+												 <label>Selected HSN Codes</label>
+											   </div><!-- /.form-group -->
+											  </div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-3" style="margin-top:10px;">
+													<span >
+														UQC Codes :
+													</span>
+												</div><!-- /.col-sm-4 -->
+												<div class="col-sm-9">
+											   <div class="form-group">                
+												 <label>Selected UQC Codes</label>
+											   </div><!-- /.form-group -->
+											  </div>
+											</div>
+
 								</div><!-- /.panel-body -->
 							</div><!-- /.panel -->
 						</div>
 						
-						<!-- right side -->
-						<div class="col-md-5 col-sm-12">
+						 
+						<!--<div class="col-md-5 col-sm-12">
 							<div class="dropzone">
 								
 							</div>
-						</div>
-						<!-- right side ends -->
+						</div>-->
 						
 					</div><!-- /.container-fluid -->
 					<div class="panel-footer" style="background:#fff;">
@@ -265,7 +264,7 @@ $fetch_category_details = mysqli_fetch_array($view_category_info);
 		});
 	</script>
 	
-	<script>
+	<!--<script>
 		(function() {
 			$(".dropzone").dropzone({
 				url: 'upload.php',
@@ -294,7 +293,7 @@ $fetch_category_details = mysqli_fetch_array($view_category_info);
 				}
 			});
 		}());
-	</script>
+	</script>-->
 	
 </body>
 </html>

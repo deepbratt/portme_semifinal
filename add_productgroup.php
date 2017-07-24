@@ -1,48 +1,3 @@
-<?php
-include ("config.php");
-$user_id = $_SESSION['user_id'];
-
-$get_business_id = mysqli_query($mysqli,"SELECT * FROM users JOIN (user_access_levels,company_details) WHERE users.user_id=user_access_levels.user_id AND user_access_levels.business_id=company_details.company_id AND users.user_id='$user_id'");
-
-$get_business_id = mysqli_fetch_array($get_business_id);
-$business_id = $get_business_id['company_id'];
-
-
-if(isset($_POST['submit']))
-{
-	$product_type= $_POST['cs-radio'];
-	$name	   = $_POST['cat_name'];
-	$desc	   = $_POST['desc'];
-
-	$attribute = $_POST['attri'];
-	$add_attribute = implode(",",$attribute);
-
-	$options   = $_POST['optn'];
-	$add_options   = implode(",",$options);
-
-	$item_type = $_POST['cs-radio1'];
-
-	$tax = "";
-	
-	
-
-	$insert_category = mysqli_query($mysqli,"insert into product_category values ('','".$product_type."','".$name."','".$desc."','".$add_attribute."','".$add_options."','".$item_type."','".$business_id."','".$add_tax."') ");
-	if($insert_category)
-	{
-		$data = "success";		
-	}
-	else
-	{
-		$data = "error";
-	}
-
-}
-
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang=en>
 
@@ -102,7 +57,7 @@ if(isset($_POST['submit']))
 					</div><!-- /.rs-dashhead -->
 					<!-- End Dashhead -->
 				
-					<!-- Begin default content width -->
+					
 						<div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
 						<div class="col-md-12 col-sm-12">
 						<?php
@@ -244,26 +199,32 @@ if(isset($_POST['submit']))
 											<div class="row">
 												<div class="col-sm-3" style="margin-top:10px;">
 													<span >
-														Item Type :
+														HSN Codes :
 													</span>
 												</div><!-- /.col-sm-4 -->
+												<div class="col-sm-9">
+											   <div class="form-group">                
+												 <select name="hsn_codes" class="rs-selectize-single">													   
+												   <option value="">Select HSN Codes</option>
+												 </select>
+											   </div><!-- /.form-group -->
+											  </div>
+											</div>
 
-												<div class="col-sm-6">
-													<div class="radio radio-custom">
-													<label class="radio-inline">
-														<input type="radio" name="cs-radio1" id="cs-radio-04" value="Inventory">
-														<span class="checker"></span>
-														Inventory
-													</label>
-													<label class="radio-inline">
-														<input type="radio" name="cs-radio1" id="cs-radio-05" value="Non-inventory">
-														<span class="checker"></span>
-														Non-inventory
-													</label>
-												</div>
-
+											<div class="row">
+												<div class="col-sm-3" style="margin-top:10px;">
+													<span >
+														UQC Codes :
+													</span>
 												</div><!-- /.col-sm-4 -->
-											</div><!-- /.row -->
+												<div class="col-sm-9">
+											   <div class="form-group">                
+												 <select name="uqc_codes" class="rs-selectize-single">													   
+												   <option value="">Select UQC Codes</option>
+												 </select>
+											   </div><!-- /.form-group -->
+											  </div>
+											</div>
 
 								</div><!-- /.panel-body -->
 
@@ -272,13 +233,13 @@ if(isset($_POST['submit']))
 							</div><!-- /.panel -->
 						</div>
 						
-						<!-- right side -->
+						<!-- 
 						<div class="col-md-5 col-sm-12">							 
 							<div class="panel panel-plain panel-rounded" style="padding-top:60px;" >
 								<iframe width="100%" height="50%" src="https://www.youtube.com/embed/5GZ3fP71Bzg" style="padding:10px;min-height:300px;" frameborder="0" allowfullscreen></iframe>
 							</div>
 						</div>
-						<!-- right side ends -->
+						 -->
 						
 					</div><!-- /.container-fluid -->
 					<div class="panel-footer" style="background:#fff;">

@@ -1,12 +1,3 @@
-<?php
-include ("config.php");
-
-$product_id = $_GET['product_id'];
-$view_product_info = mysqli_query($mysqli, "select * from product where product_id='".$product_id."'");
-$fetch_product_details = mysqli_fetch_array($view_product_info);
-?>
-
-
 <!DOCTYPE html>
 <html lang=en>
 
@@ -82,21 +73,15 @@ $fetch_product_details = mysqli_fetch_array($view_product_info);
 													</span>
 												</div><!-- /.col-sm-4 -->
 
-												<?php
-													$product_info = mysqli_query ($mysqli, "select * from product where product_id = '".$product_id."'");
-													$fetch_product = mysqli_fetch_array($product_info );
-
-												?>
-
 												<div class="col-sm-6">
 													<div class="radio radio-custom">
 													<label class="radio-inline">
-														<input type="radio" name="cs-radio" id="cs-radio-04" value="Product" <?php echo(($fetch_product['product_type'] == 'Product')?'checked':'');?> disabled>
+														<input type="radio" name="cs-radio" id="cs-radio-04" value="Product" disabled>
 														<span class="checker"></span>
 														Product
 													</label>
 													<label class="radio-inline">
-														<input type="radio" name="cs-radio" id="cs-radio-05" value="Service" <?php echo(($fetch_product['product_type'] == 'Service')?'checked':'');?> disabled>
+														<input type="radio" name="cs-radio" id="cs-radio-05" value="Service"  disabled>
 														<span class="checker"></span>
 														Service
 													</label>
@@ -110,7 +95,7 @@ $fetch_product_details = mysqli_fetch_array($view_product_info);
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<label  id="rs-form-example-email" > <?php echo $fetch_product_details['product_name'];?></label>
+														<label  id="rs-form-example-email" > </label>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -122,7 +107,7 @@ $fetch_product_details = mysqli_fetch_array($view_product_info);
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<label> <?php echo $fetch_product_details['description'];?></label>
+														<label> </label>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -134,7 +119,7 @@ $fetch_product_details = mysqli_fetch_array($view_product_info);
 												</div>
 												<div class="col-sm-4">
 													<div class="form-group">
-														<label><?php echo $fetch_product_details['quantity'];?></label>
+														<label> Quantity</label>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -142,72 +127,27 @@ $fetch_product_details = mysqli_fetch_array($view_product_info);
 
 											<div class="row">
 												<div class="col-sm-3">
-													Price :
+													Cost Price :
 												</div>
 												<div class="col-sm-4">
 													<div class="form-group">
-														<label><?php echo $fetch_product_details['price'];?></label>
+														<label>Cost Price will show up</label>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
 											</div>
-											
-				
+
 											<div class="row">
 												<div class="col-sm-3">
+													Selling Price :
+												</div>
+												<div class="col-sm-4">
 													<div class="form-group">
-														TAX :
-													</div><!-- /.form-group -->
-												</div><!-- /.col-sm-4 -->		
-											</div><!-- /.row -->
-
-											<div class="row" >
-													<div class="col-sm-3">
+														<label>Selling price will show up</label>
+														<p class="help-block with-errors"></p>
 													</div>
-													<div class="col-sm-4" style="margin-top:-35px;">
-														<div class="form-group">
-															<label style="font-size:13px;">
-																<b>&nbsp;</b>
-															</label>
-															<br />
-															<?php
-																$tax_name = explode(",",$fetch_product_details['tax_name']);
-																
-																foreach($tax_name As $fetch_tax_name){
-			
-																	
-																?>
-																<label><?php echo $fetch_tax_name;?>:-</label>
-																<p class="help-block with-errors"></p>
-															<?php
-																}
-															?>
-															
-														</div>
-													</div>
-
-													<div class="col-sm-5" style="margin-top:-35px;">
-														<div class="form-group">															
-																<label style="font-size:13px;">
-																	<b>&nbsp;</b>
-																</label>
-																<br />
-															<?php
-																$tax_rate = explode(",",$fetch_product_details['tax_rate']);
-																
-																foreach($tax_rate As $key => $fetch_tax_rate){
-			
-																	
-																?>
-																<label><?php echo $fetch_tax_rate;?>%</label>
-																<p class="help-block with-errors"></p>
-															<?php
-																}
-															?>
-														</div>
-													</div>
-											</div>	
-
+												</div>
+											</div>
 											
 											<div class="row">
 												<div class="col-sm-3" style="margin-top:10px;">
@@ -226,18 +166,9 @@ $fetch_product_details = mysqli_fetch_array($view_product_info);
 																<b>Attribute</b>
 															</label>
 															<br />
-															<?php
-																$data_atti = explode(",",$fetch_product_details['attribute_value']);
-																
-																foreach($data_atti As $key => $data_atti_values){
-			
-																	echo $data_atti_values;
-																?>
-																<p class="help-block with-errors"></p>
-															<?php
-																}
-															?>
 															
+																<p class="help-block with-errors"></p>
+														
 														</div>
 													</div>
 
@@ -248,46 +179,34 @@ $fetch_product_details = mysqli_fetch_array($view_product_info);
 																	<b>Options</b>
 																</label>
 																<br />
-															<?php
-																$data_option = explode(",",$fetch_product_details['attribute_option']);
-																
-																foreach($data_option As $key => $data_option_values){
-			
-																	echo $data_option_values;
-																?>
+															
 																<p class="help-block with-errors"></p>
-															<?php
-																}
-															?>
+														
 														</div>
 													</div>
-											</div>									
-
-								
-
-							</div><!-- /.panel -->
-						</div>
-						</div>
-						<!-- right side -->
-						<div class="col-md-5 col-sm-12">
-							<div class="dropzone">
-								
-							</div>
-						</div>
-						<!-- right side ends -->
-						
-					</div><!-- /.container-fluid -->
-					<div class="panel-footer" style="background:#fff;">
-							<div class="form-group m-a-0">
-								<button type="reset" class="btn btn-default btn-wide">Reset</button>
-								<a href="product.php"><button class="btn btn-success btn-wide">Back</button></a>
-							</div>
-						</div><!-- /.panel-footer -->
-					</form>
-				</div><!-- /.rs-inner -->
-			</div><!-- /.rs-content -->
-		</article><!-- /.rs-content-wrapper -->
-		<!-- END MAIN CONTENT -->
+												</div>	
+										</div><!-- /.panel -->
+									</div>
+								</div>
+										
+										<!--<div class="col-md-5 col-sm-12">
+											<div class="dropzone">
+												
+											</div>
+										</div>-->
+										
+									</div><!-- /.container-fluid -->
+									<div class="panel-footer" style="background:#fff;">
+											<div class="form-group m-a-0">
+												<button type="reset" class="btn btn-default btn-wide">Reset</button>
+												<a href="product.php"><button class="btn btn-success btn-wide">Back</button></a>
+											</div>
+										</div><!-- /.panel-footer -->
+									</form>
+								</div><!-- /.rs-inner -->
+							</div><!-- /.rs-content -->
+						</article><!-- /.rs-content-wrapper -->
+						<!-- END MAIN CONTENT -->
 
 	<?php include("footer.php");?>
 	<!-- Page Plugins -->
@@ -337,7 +256,7 @@ $fetch_product_details = mysqli_fetch_array($view_product_info);
 		});
 	</script>
 	
-	<script>
+	<!--<script>
 		(function() {
 			$(".dropzone").dropzone({
 				url: 'upload.php',
@@ -366,7 +285,7 @@ $fetch_product_details = mysqli_fetch_array($view_product_info);
 				}
 			});
 		}());
-	</script>
+	</script>-->
 	
 </body>
 </html>

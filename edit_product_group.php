@@ -1,40 +1,3 @@
-<?php
-include ("config.php");
-$user_id = $_SESSION['user_id'];
-$category_id = $_GET['category_id'];
-
-if(isset($_POST['update']))
-{
-	$category_type = $_POST['cs_radio'];
-	$category_name = $_POST['category_name'];
-	$desc	   = $_POST['desc'];
-	$attribute = $_POST['attri'];
-	$add_attribute = implode(",",$attribute);
-	$options   = $_POST['optn'];
-	$add_options   = implode(",",$options);
-	$item_type	= $_POST['item_type'];
-	$tax_update   = $_POST['tax'];
-	$edit_tax  = implode(",",$tax_update);
-
-	
-
-	$update_product = mysqli_query($mysqli,"update product_category set category_type='".$category_type."', category_name='".$category_name."', description='".$desc."', attribute_name='".$add_attribute."', attribute_options='".$add_options."', item_type='".$item_type."' where category_id='".$category_id."' ");
-
-	if($update_product)
-	{
-		$data = "success";
-	}
-	else
-	{
-		$data = "error";
-	}
-}
-
-	$category_info = mysqli_query ($mysqli, "select * from product_category where category_id='".$category_id."'");
-	$fetch_category = mysqli_fetch_array($category_info );
-
-?>
-
 
 <!DOCTYPE html>
 <html lang=en>
@@ -93,8 +56,8 @@ if(isset($_POST['update']))
 					</div><!-- /.rs-dashhead -->
 					<!-- End Dashhead -->
 
-					<!-- Begin default content width -->
-					<div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
+					
+						<div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
 						<div class="col-md-12 col-sm-12">
 						<?php
 								if(isset($data) && $data == "success")
@@ -128,12 +91,12 @@ if(isset($_POST['update']))
 												<div class="col-sm-6">
 													<div class="radio radio-custom">
 													<label class="radio-inline">
-														<input type="radio" name="cs_radio" id="cs-radio-04" value="Product" <?php echo(($fetch_category['category_type'] == 'Product')?'checked':'');?>>
+														<input type="radio" name="cs_radio" id="cs-radio-04" value="Product">
 														<span class="checker"></span>
 														Product
 													</label>
 													<label class="radio-inline">
-														<input type="radio" name="cs_radio" id="cs-radio-05" value="Service" <?php echo(($fetch_category['category_type'] == 'Service')?'checked':'');?>>
+														<input type="radio" name="cs_radio" id="cs-radio-05" value="Service">
 														<span class="checker"></span>
 														Service
 													</label>
@@ -148,7 +111,7 @@ if(isset($_POST['update']))
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="category_name" type="text" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_category['category_name'];?>" required>
+														<input name="category_name" type="text" class="form-control" id="rs-form-example-email" value="" required>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -160,7 +123,7 @@ if(isset($_POST['update']))
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<textarea name="desc" class="form-control"  style="height:150px;" required><?php echo $fetch_category['description'];?></textarea>
+														<textarea name="desc" class="form-control"  style="height:150px;" required></textarea>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -178,8 +141,8 @@ if(isset($_POST['update']))
 													<div class="form-group">
 														<div class="checkbox checkbox-custom checkbox-danger">
 															<label style="font-size:13px;">
-																<input type="checkbox" value="1" class="attributes_options" onchange="valueChanged()" <?php echo(($fetch_category['attribute_name'] != '' && $fetch_category['attribute_options'] != '')?'checked':'')?>	>
-																<span class="checker" ></span>
+																<input type="checkbox" value="1" class="attributes_options">
+																<span class="checker"></span>
 																Create Attributes and options
 															</label>
 														</div>
@@ -196,18 +159,9 @@ if(isset($_POST['update']))
 															<div class="form-group">
 																<label style="font-size:13px;">
 																	Attribute
-																</label>
-																 <?php
-																 $attri = explode(",",$fetch_category['attribute_name']);
-																 foreach($attri as $attri_fetch)
-																 {
-																?>
-																<input type="text" name="attri[]" class="form-control" value="<?php echo $attri_fetch;?>" placeholder="Eg: color" >
-																<p class="help-block with-errors"></p>
-																<?php
-																 }
-																?>
-																
+																</label>																
+																<input type="text" name="attri[]" class="form-control" value="" placeholder="Eg: color" >
+																<p class="help-block with-errors"></p>																
 															</div>
 														</div>
 
@@ -216,17 +170,9 @@ if(isset($_POST['update']))
 																<div class="col-sm-10">
 																	<label style="font-size:13px;">
 																		Options
-																	</label>
-																	<?php
-																 $option = explode(",",$fetch_category['attribute_options']);
-																 foreach($option as $option_fetch)
-																 {
-																?>
-																<input type="text" name="optn[]" class="form-control" value="<?php echo $option_fetch;?>" placeholder="Eg: color" >
+																	</label>																
+																<input type="text" name="optn[]" class="form-control" value="" placeholder="Eg: color" >
 																<p class="help-block with-errors"></p>
-																<?php
-																 }
-																?>
 																</div>
 															</div>
 														</div>
@@ -256,12 +202,12 @@ if(isset($_POST['update']))
 												<div class="col-sm-6">
 													<div class="radio radio-custom">
 													<label class="radio-inline">
-														<input type="radio" name="item_type" id="cs-radio-04" value="Inventory" <?php echo(($fetch_category['item_type'] == 'Inventory')?'checked':'');?>>
+														<input type="radio" name="item_type" id="cs-radio-04" value="Inventory">
 														<span class="checker"></span>
 														Inventory
 													</label>
 													<label class="radio-inline">
-														<input type="radio" name="item_type" id="cs-radio-05" value="Non-inventory" <?php echo(($fetch_category['item_type'] == 'Non-inventory')?'checked':'');?>>
+														<input type="radio" name="item_type" id="cs-radio-05" value="Non-inventory">
 														<span class="checker"></span>
 														Non-inventory
 													</label>
@@ -269,6 +215,36 @@ if(isset($_POST['update']))
 
 												</div><!-- /.col-sm-4 -->
 											</div><!-- /.row -->
+
+											<div class="row">
+												<div class="col-sm-3" style="margin-top:10px;">
+													<span >
+														HSN Codes :
+													</span>
+												</div><!-- /.col-sm-4 -->
+												<div class="col-sm-9">
+											   <div class="form-group">                
+												 <select name="hsn_codes" class="rs-selectize-single">													   
+												   <option value="">Select HSN Codes</option>
+												 </select>
+											   </div><!-- /.form-group -->
+											  </div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-3" style="margin-top:10px;">
+													<span >
+														UQC Codes :
+													</span>
+												</div><!-- /.col-sm-4 -->
+												<div class="col-sm-9">
+											   <div class="form-group">                
+												 <select name="uqc_codes" class="rs-selectize-single">													   
+												   <option value="">Select UQC Codes</option>
+												 </select>
+											   </div><!-- /.form-group -->
+											  </div>
+											</div>
 
 
 								</div><!-- /.panel-body -->
@@ -278,13 +254,13 @@ if(isset($_POST['update']))
 							</div><!-- /.panel -->
 						</div>
 						
-						<!-- right side -->
+						<!-- 
 						<div class="col-md-5 col-sm-12">
 							<div class="dropzone">
 								
 							</div>
 						</div>
-						<!-- right side ends -->
+					 -->
 						
 					</div><!-- /.container-fluid -->
 					<div class="panel-footer" style="background:#fff;">

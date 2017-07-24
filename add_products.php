@@ -1,49 +1,3 @@
-<?php
-include ("config.php");
-$user_id = $_SESSION['user_id'];
-
-$get_business_id = mysqli_query($mysqli,"SELECT * FROM users JOIN (user_access_levels,company_details) WHERE users.user_id=user_access_levels.user_id AND user_access_levels.business_id=company_details.company_id AND users.user_id='$user_id'");
-
-$get_business_id = mysqli_fetch_array($get_business_id);
-$business_id = $get_business_id['company_id'];
-
-
-
-if(isset($_POST['submit']))
-{
-	$product_type= $_POST['cs-radio'];
-	$category_id   = $_POST['product_category_id'];
-	$product_name=$_POST['product_name'];
-	$desc	   = $_POST['desc'];
-	$tax_name = $_POST ['tax_name'];
-	$add_tax_name = implode (",",$tax_name);
-	$tax_rate = $_POST['tax_rate'];
-	$add_tax_rate = implode (",",$tax_rate);
-	$quantity  = $_POST['quantity'];
-	$price	   = $_POST['price'];
-	$attribute = $_POST['attri'];
-	$add_attribute = implode(",",$attribute);
-	$options   = $_POST['optn'];
-	$add_options   = implode(",",$options);
-
-	
-	
-
-	$insert_product = mysqli_query($mysqli,"insert into product values ('','".$product_type."','".$category_id."','".$product_name."','".$desc."','".$quantity."','".$add_tax_name."','".$add_tax_rate."','".$price."','".$add_attribute."','".$add_options."','".$business_id."') ");
-	if($insert_product)
-	{
-		$data = "success";
-	}
-	else
-	{
-		$data = "error";
-	}
-}
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang=en>
 
@@ -103,7 +57,7 @@ if(isset($_POST['submit']))
 					</div><!-- /.rs-dashhead -->
 					<!-- End Dashhead -->
 
-					<!-- Begin default content width -->
+					
 						<div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
 						<div class="col-md-12 col-sm-12">
 						<?php
@@ -160,15 +114,9 @@ if(isset($_POST['submit']))
 											   <div class="form-group">                
 											 <select name="product_category_id" class="rs-selectize-single">
 												
-											 <?php
-											 $category_name = mysqli_query($mysqli, "select * from product_category");
-											 while ($fetch_category = mysqli_fetch_array($category_name))
-											 {
-											 ?>											   
+																				   
 											   <option value="<?php echo $fetch_category['category_id']?>"><?php echo $fetch_category['category_name']?></option>
-											  <?php
-											 }  
-											 ?>
+										
 											  
 											 </select>
 											   </div><!-- /.form-group -->
@@ -196,59 +144,7 @@ if(isset($_POST['submit']))
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
-											</div>
-
-											<div class="row">
-												<div class="col-sm-3">Tax</div>
-
-														<div class="col-sm-4">
-															<div class="form-group">
-																<input type="text" name="tax_name[]" class="form-control" placeholder="Eg: CGST" required>
-																<p class="help-block with-errors"></p>
-															</div>
-														</div>
-
-														<div class="col-sm-5">
-															<div class="form-group">
-																<input type="text" name="tax_rate[]" class="form-control" placeholder="9%" required>
-																<p class="help-block with-errors"></p>
-															</div>
-														</div>
-
-														<!-- 2nd line -->
-														<div class="col-sm-3">&nbsp;</div>
-														<div class="col-sm-4">
-															<div class="form-group">
-																<input type="text" name="tax_name[]" class="form-control" placeholder="Eg: SGST" required>
-																<p class="help-block with-errors"></p>
-															</div>
-														</div>
-
-														<div class="col-sm-5">
-															<div class="form-group">
-																<input type="text" name="tax_rate[]" class="form-control" placeholder="9%" required>
-																<p class="help-block with-errors"></p>
-															</div>
-														</div>
-
-													<!-- 3rd line -->
-														<div class="col-sm-3">&nbsp;</div>
-														<div class="col-sm-4">
-															<div class="form-group">
-																<input type="text" name="tax_name[]" class="form-control" placeholder="Eg: IGST" required>
-																<p class="help-block with-errors"></p>
-															</div>
-														</div>
-
-														<div class="col-sm-5">
-															<div class="form-group">
-																<input type="text" name="tax_rate[]" class="form-control" placeholder="10%" required>
-																<p class="help-block with-errors"></p>
-															</div>
-														</div>
-											</div>
-
-			
+											</div>	
 											
 											<div class="row">
 												<div class="col-sm-3">
@@ -264,11 +160,23 @@ if(isset($_POST['submit']))
 
 											<div class="row">
 												<div class="col-sm-3">
-													Price <i class="fa fa-inr"></i>
+													Cost Price <i class="fa fa-inr"></i>
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="price" type="number" class="form-control" id="rs-form-example-email" placeholder="Enter Price" required>
+														<input name="cost_price" type="integer" class="form-control" id="rs-form-example-email" placeholder="Enter Cost Price" required>
+														<p class="help-block with-errors"></p>
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-3">
+													Selling Price <i class="fa fa-inr"></i>
+												</div>
+												<div class="col-sm-9">
+													<div class="form-group">
+														<input name="selling_price" type="integer" class="form-control" id="rs-form-example-email" placeholder="Enter Selling Price" required>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -345,14 +253,13 @@ if(isset($_POST['submit']))
 							</div><!-- /.panel -->
 						</div>
 						
-						<!-- right side -->
+						<!-- right side
 						<div class="col-md-5 col-sm-12">
 							 
 							<div class="panel panel-plain panel-rounded" style="padding-top:20px;" >
 								<iframe width="100%" height="50%" src="https://www.youtube.com/embed/5GZ3fP71Bzg" style="padding:30px;min-height:300px;" frameborder="0" allowfullscreen></iframe>
 							</div>
-						</div>
-						<!-- right side ends -->
+						</div>-->
 						
 					</div><!-- /.container-fluid -->
 					<div class="panel-footer" style="background:#fff;">

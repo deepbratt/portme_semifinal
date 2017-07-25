@@ -109,13 +109,7 @@
 												</div>
 										</div>
 											
-										<div class="panel-footer">
-											<div class="form-group m-a-0">
-												<button type="reset" class="btn btn-default btn-wide">Reset</button>
-												<button type="submit" class="btn btn-success btn-wide">Submit</button>
-											</div>
-										</div><!-- /.panel-footer -->
-									</form>
+
 								</div><!-- /.panel-body -->
 							</div><!-- /.panel -->
 						</div>

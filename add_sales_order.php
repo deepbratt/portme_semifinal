@@ -1,54 +1,3 @@
-<?php
-include ("config.php");
-$user_id = $_SESSION['user_id'];
-$get_business_id = mysqli_query($mysqli,"SELECT * FROM users JOIN (user_access_levels,company_details) WHERE users.user_id=user_access_levels.user_id AND user_access_levels.business_id=company_details.company_id AND users.user_id='$user_id'");
-
-$get_business_id = mysqli_fetch_array($get_business_id);
-$business_id = $get_business_id['company_id'];
-
-if(isset($_POST['add_customer']))
-{
-	$salutation = $_POST['sal'];
-	$firstname = $_POST['fname'];
-	$lastname = $_POST['lname'];
-	$company_name = $_POST['cname'];
-	$email = $_POST['email'];
-	$work_phone = $_POST['wphone'];
-	$mobile = $_POST['mobile'];
-	$website = $_POST['website'];
-	$billing_street = $_POST['bstreet'];
-	$billing_city = $_POST['bcity'];
-	$billing_state = $_POST['bstate'];
-	$billing_zip = $_POST['bzip'];
-	$shipping_street = $_POST['sstreet'];
-	$shipping_city = $_POST['scity'];
-	$shipping_state = $_POST['sstate'];
-	$shipping_zip = $_POST['szip'];
-	$notes = $_POST['notes'];
-	$date = date('m/d/Y h:i:s', time());
-
-	$insert_customer_details = mysqli_query($mysqli, "insert customers values ('','".$salutation."','".$firstname."','".$lastname."','".$company_name."','".$email."','".$work_phone."','".$mobile."','".$website."','".$billing_street."','".$billing_city."','".$billing_state."','".$billing_zip."','INDIA','".$shipping_street."','".$shipping_city."','".$shipping_state."','".$shipping_zip."','INDIA','','".$date."','','".$business_id."')");
-	if($insert_customer_details)
-	{
-		$last_insert_id = mysqli_insert_id();
-		$data = "success";
-		echo "<script>window.location.href='?custid='$last_insert_id'</script>";
-	}
-	else
-	{
-		$error = "error";
-	}
-}
-
-$get_business_id = mysqli_query($mysqli,"SELECT * FROM users JOIN (user_access_levels,company_details) WHERE users.user_id=user_access_levels.user_id AND user_access_levels.business_id=company_details.company_id AND users.user_id='$user_id'");
-
-$get_business_id = mysqli_fetch_array($get_business_id);
-$business_id = $get_business_id['company_id'];
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang=en>
 
@@ -60,6 +9,12 @@ $business_id = $get_business_id['company_id'];
 	<meta name="author" content="">
 	<title>Port-ME | Sales Order</title>
 	<?php include("metalinks.php");?>
+	<style>
+		.padmar{
+			margin:0px !important;
+			padding:0px !important;
+		}
+	</style>
 </head>
 
 
@@ -79,18 +34,13 @@ $business_id = $get_business_id['company_id'];
 		<article class="rs-content-wrapper">
 			<div class="rs-content">
 				<div class="rs-inner">
-					<?php
-						$get_last_sales_id = mysqli_query($mysqli,"SELECT * FROM sales_order WHERE business_id='$business_id' ORDER BY sales_order_id DESC");
-						$fetch_last_sales = mysqli_fetch_array($get_last_sales_id);
 
-						$invoice_no = $fetch_last_sales['sales_order_id']+1;
-					?>
 					<!-- Begin Dashhead -->
 					<div class="rs-dashhead m-b-lg" style="background:#f5f5f5">
 						<div class="rs-dashhead-content">
 							<div class="rs-dashhead-titles">
 								<h3 class="rs-dashhead-title m-t">
-									New Sales Order
+									New Sales Order :
 									<div style="float:right;">
 										<!--<span style="padding:10px 10px;font-size:15px;font-weight:normal;color:#4a89dc;cursor:pointer;border-right:1px solid #CCC;"> <i class="fa fa-lightbulb-o"></i> &nbsp;&nbsp;Page Tutorial</span>-->
 
@@ -106,22 +56,7 @@ $business_id = $get_business_id['company_id'];
 						<!-- End Breadcrumb -->
 					</div><!-- /.rs-dashhead -->
 					<!-- End Dashhead -->
-						<div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
-						<div class="col-md-12 col-sm-12">
-						<?php
-								if(isset($data) && $data == "success")
-						{
-						?>
-						<p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Added Successfully </p>
-						<?php
-						}else if(isset($data) && $data == "error"){
-						?>
-						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in Insertion </p>
-						<?php
-						}
-						?>
-						</div>
-					
+
 					<!-- Begin default content width -->
 					<div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
 					<div class="col-md-12 col-sm-12">					
@@ -130,47 +65,75 @@ $business_id = $get_business_id['company_id'];
 								<div class="panel-body">
 								<div class="col-md-7 col-sm-12">
 									<form name="vendor_form" method="POST" enctype="multipart/form-data" id="rs-validation-login-page">
-											
 
-											<div class="form-group">
+										<div class="form-group">
 												INVOICE No : <label style="font-size:20px;font-weight:bold;"> #<?php echo date("dmy");?><?php echo $invoice_no;?></label>
 												<p class="help-block with-errors"></p>
 											</div>
 
 											<div class="row">
-												<div class="col-sm-9">
-													<div class="form-group">
-														<select class="rs-selectize-single cust_ajax" onchange="get_customer_values(this.value);">
-															<option value="" selected disabled>Customer Name </option>
-															<?php
-																$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM customers WHERE business_id='$business_id'");
-																while($fetch_cust_details = mysqli_fetch_array($get_fetch_details)){
-															?>
-															<option value="<?php echo $fetch_cust_details['customer_id'];?>" <?php echo((isset($_GET['custid']) && $fetch_cust_details['customer_id']==$_GET['custid'])?'selected':'');?>><?php echo ucfirst($fetch_cust_details['firstname']);?>&nbsp;<?php echo ucfirst($fetch_cust_details['lastname']);?> - <?php echo $fetch_cust_details['mobile'];?></option>
-															<?php
-																}
-															?>
-														</select>
-													</div><!-- /.form-group -->
+											<div class="col-sm-3">
+													Customer Name
 												</div>
-
-												<div class="form-group" style="">
-													<button style="height:34px;width:133px;text-align:center;padding:2px;" class="btn btn-success btn-wide" data-toggle="modal" data-target="#myModal" type="button"><i class="fa fa-plus"></i> Add New</button>
-													
-												</div>
-											</div>
-
+											<div class="col-sm-6">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Sales Date" name="invoicedate" id="datepicker">
+												<select class="rs-selectize-single">
+													<option value=""selected disabled>Customer Name</option>
+													<option value="4">Thomas Edison</option>
+													<option value="1">Nikola</option>
+													<option value="3">Nikola Tesla</option>
+													<option value="5">Arnold Schwarzenegger</option>
+												</select>
+											</div><!-- /.form-group -->
+											</div>
+											<div class="form-group" style="">
+												<button style="height:34px;width:132px;text-align:center;padding:2px;" class="btn btn-success btn-wide"
+												data-toggle="modal"
+												data-target="#myModal" type="button"><i class="fa fa-plus"></i> Add Customer</button>
+												
+											</div>
+											</div>	
+											
+											<div class="row">
+											<div class="col-sm-3">
+													Sales Date
+												</div>
+											<div class="form-group col-sm-9">
+												<input type="tel" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate">
 												<p class="help-block with-errors"></p>
 											</div><!-- /.form-group -->
+											</div>
 										
+										</form>
 								</div>
 
-								
-								<div class="col-md-5 col-sm-12 customer_details" style="text-align:right;">
-										
-								</div>
+								<div class="col-md-5 col-sm-12" style="text-align:right;">
+									<form name="vendor_form" method="POST" enctype="multipart/form-data" id="rs-validation-login-page">
+												<div class="col-sm-12">
+													<label style="font-size:20px;">
+														Indrajit Ghosh
+													</label>
+												</div>
+												<div class="col-sm-12">
+													<label style="font-size:15px;">
+														Dukbanglow
+													</label>
+												</div>
+												<div class="col-sm-12">
+													<label style="font-size:15px;">
+														Murshidabad
+													</label>
+												</div>
+												<div class="col-sm-12">
+													<label style="font-size:15px;">
+														742132
+													</label>
+												</div>
+												</form>
+
+									
+
+							</div><!-- /.panel -->
 							</div>
 
 
@@ -184,66 +147,113 @@ $business_id = $get_business_id['company_id'];
 									<div class="add-more-contz">
 												<div class="row atrri_add_cont">
 														<div class="ache_ekta"></div>
-															<div class="col-md-12">
-																<table class="table table-bordered table-b-t table-b-b">
+															<div class="col-md-12 table-responsive" style="min-height:300px;">
+																<table class="table table-bordered table-b-t table-b-b ">
 																	<thead>
 																		<tr>
 																			<th>Product Name</th>
-																			<th>Quantity</th>
-																			<th>Rate <i class="fa fa-inr" aria-hidden="true"></i></th>
+																			<th style="width:50px;">Qty</th>
+																			<th>Price <i class="fa fa-inr" aria-hidden="true"></i></th>
 																			<th>TAX %</th>
+																			<th style="text-align:center;">TAX  
+																					<table class="table table-bordered table-b-t"><tr>
+																						<td class="col-sm-2">
+																							CGST
+																						</td>
+																						<td class="col-sm-2">
+																							SGST
+																						</td>
+																						<td class="col-sm-2">
+																							IGST
+																						</td>
+																					   </tr></table></th>
+																			<th>Cess <i class="fa fa-inr" aria-hidden="true"></i></th>
 																			<th>TAX Value <i class="fa fa-inr" aria-hidden="true"></i></th>
+																			
+																			<th>Amount <i class="fa fa-inr" aria-hidden="true"></i></th>
+																			
+																			<th>Amount <i class="fa fa-inr" aria-hidden="true"></i></th>
 																			<th>Amount <i class="fa fa-inr" aria-hidden="true"></i></th>
 
 																		</tr>
 																	</thead>
 																	<tbody>
 																		<tr class="roxkas">
-																		<td class="col-sm-4">												
-																		<div class="form-group">
-																		 <select class="rs-selectize-single" name="product_name" onchange="get_product_values(this.value);">	
-																		 <option value=""selected disabled>Product Name</option>
-																		<?php
-																		$get_product_details = mysqli_query($mysqli, "select * from product ");
-																		while ($fetch_product_details = mysqli_fetch_array($get_product_details))
-																		{
-																		?>																			 
-																			<option value="<?php echo $fetch_product_details['product_id'];?>" <?php echo((isset($_GET['pro_id']) && $fetch_product_details['product_id']==$_GET['pro_id'])?'selected':'');?>><?php echo ucfirst($fetch_product_details['product_name']);?></option>
-																		<?php
-																		}				 
-																		?>
+																			<td >												
+																				<div class="form-group">
+																					 <select class="padmar">
+																						  <option value=""selected disabled>Product Name</option>
+																						  <option value="4">Thomas Edison</option>
+																						  <option value="1">Nikola</option>
+																						  <option value="3">Nikola Tesla</option>
+																						  <option value="5">Arnold Schwarzenegger</option>
 																					 </select>
 																				</div><!-- /.form-group -->
 																				<p class="help-block with-errors"></p>
 																			</td>
 
-																			<td class="col-sm-1 ">												
-																				<div class="form-group">														
-																					<input type="text" name="attri[]" class="form-control" placeholder=" Qty " required>
-																				<p class="help-block with-errors"></p>		
-																				</div>
-																			</td>
-
-																			<td class="col-sm-1">
-																			<div id="userTable" style="text-align:center;">
-																			</div>
-																			</td>
-
-																			<td class="col-sm-2">
-																				<div id ="details">
-																				</div>
-																			</td>
-
-																			<td class="col-sm-2">
-																				<div class="form-group" style="font-size:15px;">
-																					<b style="color:#ef5350;">00.00</b>
-																					<br>
-																					<b style="color:#ef5350;">00.00</b>
+																			<td>												
+																				<div class="form-group">																
+																					<input type="text" name="attri[]" class=" padmar" placeholder=" Qty " required>
 																					<p class="help-block with-errors"></p>
 																				</div>
 																			</td>
 
-																			<td class="col-sm-2">
+																			<td >												
+																				<div class="form-group" style="font-size:15px;margin-top:10px;">
+																					<b>00.00</b>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																			</td>
+
+																			<td>
+																				<div class="form-group">
+																					 <select class="rs-selectize-single">
+																						  <option value=""selected disabled>Tax%</option>
+																						  <option value="1">0 %</option>
+																						  <option value="2">0.25%</option>
+																						  <option value="5">3 %</option>
+																						  <option value="6">5 %</option>
+																						  <option value="7">12 %</option>
+																						  <option value="8">18 %</option>
+																						  <option value="9">28 %</option>
+																					 </select>
+																				</div><!-- /.form-group -->
+																				<p class="help-block with-errors"></p>
+																			</td>
+
+																			<td >
+																				<div class="form-group" style="font-size:15px;">
+																				<table class="table table-bordered "><tr>
+																						<td class="col-sm-2">
+																							00.00
+																						</td>
+																						<td class="col-sm-2">
+																							00.00
+																						</td>
+																						<td class="col-sm-2">
+																							00.00
+																						</td>
+																					   </tr></table>
+																				</div>
+																			</td>
+
+																			<td >												
+																				<div class="form-group" style="font-size:15px;margin-top:10px;">
+																					<b>00.00</b>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																			</td>
+
+																			<td >												
+																				<div class="form-group">																
+																					<input type="text" name="attri[]" class="form-control" placeholder=" Cess " required>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																			</td>
+
+
+																			<td >
 																				<div class="form-group" style="font-size:15px;margin-top:10px;">
 																					<b style="color:#5dc26a;">00.00</b>
 																					<p class="help-block with-errors"></p>
@@ -252,21 +262,202 @@ $business_id = $get_business_id['company_id'];
 																				&nbsp;
 																				</div>
 																			</td>
+
+																			<td>Amount <i class="fa fa-inr" aria-hidden="true"></i></td>
+																			<td>Amount <i class="fa fa-inr" aria-hidden="true"></i></td>
 																		</tr>
+
+																		<tr class="roxkas">
+																			<td >												
+																				<div class="form-group">
+																					 <select class="rs-selectize-single">
+																						  <option value=""selected disabled>Product Name</option>
+																						  <option value="4">Thomas Edison</option>
+																						  <option value="1">Nikola</option>
+																						  <option value="3">Nikola Tesla</option>
+																						  <option value="5">Arnold Schwarzenegger</option>
+																					 </select>
+																				</div><!-- /.form-group -->
+																				<p class="help-block with-errors"></p>
+																			</td>
+
+																			<td>												
+																				<div class="form-group">																
+																					<input type="text" name="attri[]" class="form-control" placeholder=" Qty " required>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																			</td>
+
+																			<td >												
+																				<div class="form-group" style="font-size:15px;margin-top:10px;">
+																					<b>00.00</b>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																			</td>
+
+																			<td>
+																				<div class="form-group">
+																					 <select class="rs-selectize-single">
+																						  <option value=""selected disabled>Tax%</option>
+																						  <option value="1">0 %</option>
+																						  <option value="2">0.25%</option>
+																						  <option value="5">3 %</option>
+																						  <option value="6">5 %</option>
+																						  <option value="7">12 %</option>
+																						  <option value="8">18 %</option>
+																						  <option value="9">28 %</option>
+																					 </select>
+																				</div><!-- /.form-group -->
+																				<p class="help-block with-errors"></p>
+																			</td>
+
+																			<td >
+																				<div class="form-group" style="font-size:15px;">
+																				<table class="table table-bordered "><tr>
+																						<td class="col-sm-2">
+																							00.00
+																						</td>
+																						<td class="col-sm-2">
+																							00.00
+																						</td>
+																						<td class="col-sm-2">
+																							00.00
+																						</td>
+																					   </tr></table>
+																				</div>
+																			</td>
+
+																			<td >												
+																				<div class="form-group" style="font-size:15px;margin-top:10px;">
+																					<b>00.00</b>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																			</td>
+
+																			<td >												
+																				<div class="form-group">																
+																					<input type="text" name="attri[]" class="form-control" placeholder=" Cess " required>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																			</td>
+
+
+																			<td >
+																				<div class="form-group" style="font-size:15px;margin-top:10px;">
+																					<b style="color:#5dc26a;">00.00</b>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																				<div class="col-sm-1" style="margin-top:-20px;">
+																				&nbsp;
+																				</div>
+																			</td>
+
+																			<td>Amount <i class="fa fa-inr" aria-hidden="true"></i></td>
+																			<td>Amount <i class="fa fa-inr" aria-hidden="true"></i></td>
+																		</tr>
+
+																		<tr class="roxkas">
+																			<td >												
+																				<div class="form-group">
+																					 <select class="rs-selectize-single">
+																						  <option value=""selected disabled>Product Name</option>
+																						  <option value="4">Thomas Edison</option>
+																						  <option value="1">Nikola</option>
+																						  <option value="3">Nikola Tesla</option>
+																						  <option value="5">Arnold Schwarzenegger</option>
+																					 </select>
+																				</div><!-- /.form-group -->
+																				<p class="help-block with-errors"></p>
+																			</td>
+
+																			<td>												
+																				<div class="form-group">																
+																					<input type="text" name="attri[]" class="form-control" placeholder=" Qty " required>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																			</td>
+
+																			<td >												
+																				<div class="form-group" style="font-size:15px;margin-top:10px;">
+																					<b>00.00</b>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																			</td>
+
+																			<td>
+																				<div class="form-group">
+																					 <select class="rs-selectize-single">
+																						  <option value=""selected disabled>Tax%</option>
+																						  <option value="1">0 %</option>
+																						  <option value="2">0.25%</option>
+																						  <option value="5">3 %</option>
+																						  <option value="6">5 %</option>
+																						  <option value="7">12 %</option>
+																						  <option value="8">18 %</option>
+																						  <option value="9">28 %</option>
+																					 </select>
+																				</div><!-- /.form-group -->
+																				<p class="help-block with-errors"></p>
+																			</td>
+
+																			<td >
+																				<div class="form-group" style="font-size:15px;">
+																				<table class="table table-bordered "><tr>
+																						<td class="col-sm-2">
+																							00.00
+																						</td>
+																						<td class="col-sm-2">
+																							00.00
+																						</td>
+																						<td class="col-sm-2">
+																							00.00
+																						</td>
+																					   </tr></table>
+																				</div>
+																			</td>
+
+																			<td >												
+																				<div class="form-group" style="font-size:15px;margin-top:10px;">
+																					<b>00.00</b>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																			</td>
+
+																			<td >												
+																				<div class="form-group">																
+																					<input type="text" name="attri[]" class="form-control" placeholder=" Cess " required>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																			</td>
+
+
+																			<td >
+																				<div class="form-group" style="font-size:15px;margin-top:10px;">
+																					<b style="color:#5dc26a;">00.00</b>
+																					<p class="help-block with-errors"></p>
+																				</div>
+																				<div class="col-sm-1" style="margin-top:-20px;">
+																				&nbsp;
+																				</div>
+																			</td>
+
+																			<td>Amount <i class="fa fa-inr" aria-hidden="true"></i></td>
+																			<td>Amount <i class="fa fa-inr" aria-hidden="true"></i></td>
+																		</tr>
+
+
 																	</tbody>
 																</table>
-															</div>
-															
-
+															</div>													
 												</div>
-												
+
 
 											</div>
 										
 											<div class="row atrri" style="margin-top:0px;">
 												<div class="col-sm-12">
 													<div class="form-group">
-														<a href="javascript:void(0)" class="add-more" style="font-size:15px;">
+														<a href="#" class="add-more" style="font-size:15px;">
 															<i class="fa fa-plus"></i> Add More Product
 														</a>
 													</div><!-- /.form-group -->
@@ -347,10 +538,158 @@ $business_id = $get_business_id['company_id'];
 
 	<?php include("footer.php");?>
 
+				<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Staff</h4>
+        </div>
+        <div class="modal-body">
+          <div class="panel-body">
+									<form name="vendor_form" method="POST" enctype="multipart/form-data" id="rs-validation-login-page">
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<p style="font-size:14px;">Staff Name</p>
+														<p class="help-block with-errors"></p>
+													</div><!-- /.form-group -->
+												</div><!-- /.col-sm-4 -->
+												<div class="col-sm-8">
+													<div class="form-group">
+														<input type="text" class="form-control" id="rs-form-example-name" placeholder="Staff Name" name="name" >
+														<p class="help-block with-errors"></p>
+													</div><!-- /.form-group -->
+												</div><!-- /.col-sm-4 -->
+											</div><!-- /.row -->
+
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<p style="font-size:14px;">E-mail Address</p>
+														<p class="help-block with-errors"></p>
+													</div><!-- /.form-group -->
+												</div><!-- /.col-sm-4 -->
+
+												<div class="col-sm-8">
+													<div class="form-group">
+														<input type="text" class="form-control" id="rs-form-example-name" placeholder="Email Address" name="name" >
+														<p class="help-block with-errors"></p>
+													</div><!-- /.form-group -->
+												</div><!-- /.col-sm-8 -->
+											</div><!-- /.row -->
+
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<p style="font-size:14px;">Phone Number</p>
+														<p class="help-block with-errors"></p>
+													</div><!-- /.form-group -->
+												</div><!-- /.col-sm-4 -->
+
+												<div class="col-sm-8">
+													<div class="form-group">
+														<input type="text" class="form-control" id="rs-form-example-name" placeholder="Phone Number" name="name" >
+														<p class="help-block with-errors"></p>
+													</div><!-- /.form-group -->
+												</div><!-- /.col-sm-8 -->
+											</div><!-- /.row -->
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<p style="font-size:14px;">Commision (%)</p>
+														<p class="help-block with-errors"></p>
+													</div><!-- /.form-group -->
+												</div><!-- /.col-sm-4 -->
+
+												<div class="col-sm-8">
+													<div class="form-group">
+														<input type="text" class="form-control" id="rs-form-example-name" placeholder="Commision %" name="name" >
+														<p class="help-block with-errors"></p>
+													</div><!-- /.form-group -->
+												</div><!-- /.col-sm-8 -->
+											</div><!-- /.row -->
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<p style="font-size:14px;">Documents</p>
+														<p class="help-block with-errors"></p>
+													</div><!-- /.form-group -->
+												</div><!-- /.col-sm-4 -->
+
+												<div class="col-sm-8">
+													<div class="form-group">
+														<input type="file" class="form-control" id="rs-form-example-name" placeholder="Documents" name="name" >
+														<p class="help-block with-errors"></p>
+													</div><!-- /.form-group -->
+												</div><!-- /.col-sm-8 -->
+											</div><!-- /.row -->
+																
+							</div><!-- /.panel -->
+
+							<div class="panel-body">
+										<!-- Nav tabs -->
+										<ul class="nav nav-tabs" role="tablist">
+											<li role="presentation" class="active" ><a href="#rs-tab-01" aria-controls="rs-tab-01" role="tab" data-toggle="tab">Address</a></li>
+										</ul>
+
+										<!-- Tab panes -->
+										<div class="tab-content p-t-md">
+											<div role="tabpanel" class="tab-pane fade in active" id="rs-tab-01">
+												<div class="col-md-12" style="margin:0px;padding:0px;">
+													<div class="col-md-6 col-sm-12" style="padding:5px;">
+														
+														<div class="form-group">
+															<input type="text" class="form-control billcity" id="rs-form-example-email" placeholder="Street/Village" name="billing_city">
+															<p class="help-block with-errors"></p>
+														</div><!-- /.form-group -->
+														<div class="form-group">
+															<input type="text" class="form-control billcity" id="rs-form-example-email" placeholder="State" name="billing_city">
+															<p class="help-block with-errors"></p>
+														</div><!-- /.form-group -->	
+													</div>
+
+													<div class="col-md-6 col-sm-12" style="margin-left:0px;padding:5px;">
+
+														<div class="form-group">
+															<input type="text" class="form-control billstate2" id="rs-form-example-tel" placeholder="City" name="shipping_state">
+															<p class="help-block with-errors"></p>
+														</div><!-- /.form-group -->
+
+														<div class="form-group">
+															<input type="tel" class="form-control bilzip2" id="rs-form-example-tel" placeholder="Zip" name="shipping_zip">
+															<p class="help-block with-errors"></p>
+														</div><!-- /.form-group -->
+
+														
+													</div>
+												</div>
+											</div><!-- /.tab-pane -->
+
+										</div><!-- /.tab-content -->
+									</div><!-- .panel-body -->
+
+									
+											<div class="form-group m-a-0" style="padding-left:20px;">
+												<button type="reset" class="btn btn-default btn-wide">Reset</button>
+												<button type="submit" class="btn btn-success btn-wide" name="submit">Submit</button>
+											</div>
+										
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
 <!-- start pop up-->
 	<div class="modal fade" id="myModal" role="dialog" >
     <div class="modal-dialog">
-    <form method="post" enctype="multipart/form-data">
+    
       <!-- Modal content-->
       <div class="modal-content" style="width:130%">
         <div class="modal-header">
@@ -360,81 +699,72 @@ $business_id = $get_business_id['company_id'];
         <div class="modal-body">
          <!-- Begin default content width -->
 					<div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
-						<div class="col-md-12 col-sm-12">
-						<?php
-								if(isset($data) && $data == "success")
-						{
-						?>
-						<p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Added Successfully </p>
-						<?php
-						}else if(isset($data) && $data == "error"){
-						?>
-						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in Insertion </p>
-						<?php
-						}
-						?>
-						</div>
-					
-
-						<div class="col-md-12">
+						<div class="col-sm-12">
 						<!-- Begin Panel -->
 							<div class="panel panel-plain panel-rounded">
-
 								<div class="panel-body" style="margin-top:10px;">
-									<form method="POST">
+									<form >
 											<div class="row">
 												<div class="col-sm-4">
 													<div class="form-group">
-														<select name="sal" class="rs-selectize-single" >															
-															<option value="Mr.">Mr.</option>
-															<option value="Mrs.">Mrs.</option>
-															<option value="Ms.">Ms.</option>
-															<option value="Miss.">Miss.</option>
-															<option value="Dr.">Dr.</option>
+														<select class="rs-selectize-single" required>
+															<option value="">Salutation</option>
+															<option value="4">Mr.</option>
+															<option value="1">Mrs.</option>
+															<option value="3">Ms.</option>
+															<option value="5">Miss.</option>
+															<option value="6">Dr.</option>
 														</select>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->
 												<div class="col-sm-4">
 													<div class="form-group">
-														<input name= "fname" type="text" class="form-control" id="rs-form-example-fname" placeholder="First Name" >
+														<input type="text" class="form-control" id="rs-form-example-fname" placeholder="First Name" required>
 														<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->
 												<div class="col-sm-4">
 													<div class="form-group">
-														<input name="lname" type="text" class="form-control" id="rs-form-example-lname" placeholder="Last Name" >
+														<input type="text" class="form-control" id="rs-form-example-lname" placeholder="Last Name" required>
 														<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->
 											</div><!-- /.row -->
 
 											<div class="form-group">
-												<input name="cname" type="text" class="form-control" id="rs-form-example-email" placeholder="Company Name" >
+												<input type="email" class="form-control" id="rs-form-example-email" placeholder="Company Name" required>
 												<p class="help-block with-errors"></p>
 											</div><!-- /.form-group -->
 
 											<div class="form-group">
-												<input name="email" type="email" class="form-control" id="rs-form-example-email" placeholder="Email" >
+												<input type="email" class="form-control" id="rs-form-example-email" placeholder="Email" required>
 												<p class="help-block with-errors"></p>
 											</div><!-- /.form-group -->
 
 											<div class="form-group">
-												<input name="wphone" type="number" class="form-control" id="rs-form-example-tel" placeholder="Work Phone" >
+												<input type="tel" class="form-control" id="rs-form-example-tel" placeholder="Work Phone" required>
 												<p class="help-block with-errors"></p>
 											</div><!-- /.form-group -->
 
 											<div class="form-group">
-												<input name="mobile" type="number" class="form-control" id="rs-form-example-tel" placeholder="Mobile" >
+												<input type="tel" class="form-control" id="rs-form-example-tel" placeholder="Mobile" required>
 												<p class="help-block with-errors"></p>
 											</div><!-- /.form-group -->
 
 											<div class="form-group">
-												<input name="website" type="text" class="form-control" id="rs-form-example-tel" placeholder="Website" >
+												<input type="tel" class="form-control" id="rs-form-example-tel" placeholder="Website" required>
 												<p class="help-block with-errors"></p>
 											</div><!-- /.form-group -->
 
 								</div><!-- /.panel-body -->
 							</div><!-- /.panel -->
+						</div>
+
+						<div class="col-md-5 col-sm-12">
+							<!-- Begin Panel 
+							<div class="panel panel-plain panel-rounded" >
+								<iframe width="100%" height="100%" src="https://www.youtube.com/embed/5GZ3fP71Bzg" style="padding:10px;min-height:300px;" frameborder="0" allowfullscreen></iframe>
+							</div> panel -->
 						</div>
 						
 						<div class="col-md-12" style="margin-top:-50px;">
@@ -455,46 +785,47 @@ $business_id = $get_business_id['company_id'];
 														<h3 style="margin-bottom:15px;font-size:17px;">Billing Address</h3>
 														
 														<div class="form-group">
-															<textarea name="bstreet" class="form-control billstreet" placeholder="Street" ></textarea>
+															<textarea class="form-control billstreet" placeholder="Street" required></textarea>
 															<p class="help-block with-errors"></p>
 														</div><!-- /.form-group -->
 
 														<div class="form-group">
-															<input name="bcity" type="text" class="form-control billcity" id="rs-form-example-email" placeholder="City" >
+															<input type="text" class="form-control billcity" id="rs-form-example-email" placeholder="City" required>
 															<p class="help-block with-errors"></p>
 														</div><!-- /.form-group -->
 
 														<div class="form-group">
-															<input name="bstate" type="text" class="form-control billstate" id="rs-form-example-tel" placeholder="State" >
+															<input type="text" class="form-control billstate" id="rs-form-example-tel" placeholder="State" required>
 															<p class="help-block with-errors"></p>
 														</div><!-- /.form-group -->
 
 														<div class="form-group">
-															<input name="bzip" type="integer" class="form-control bilzip" id="rs-form-example-tel" placeholder="Zip" >
+															<input type="tel" class="form-control bilzip" id="rs-form-example-tel" placeholder="Zip" required>
 															<p class="help-block with-errors"></p>
 														</div><!-- /.form-group -->
+
 													</div>
 
 													<div class="col-md-6 col-sm-12" style="margin-left:0px;padding:5px;">
 														<h3 style="margin-bottom:15px;font-size:17px;">Shipping Address <span style="font-size:15px;float:right;color:#4a89dc;font-weight:normal;cursor:pointer;padding:5px;" onclick="copybillingaddr();"><i class="fa fa-hand-o-down"></i> Copy billing address</span></h3>
 														
 														<div class="form-group">
-															<textarea name="sstreet" class="form-control billstreet2" placeholder="Street" ></textarea>
+															<textarea class="form-control billstreet2" placeholder="Street" required></textarea>
 															<p class="help-block with-errors"></p>
 														</div><!-- /.form-group -->
 
 														<div class="form-group">
-															<input name="scity" type="text" class="form-control billcity2" id="rs-form-example-email" placeholder="City" >
+															<input type="text" class="form-control billcity2" id="rs-form-example-email" placeholder="City" required>
 															<p class="help-block with-errors"></p>
 														</div><!-- /.form-group -->
 
 														<div class="form-group">
-															<input name="sstate" type="text" class="form-control billstate2" id="rs-form-example-tel" placeholder="State" >
+															<input type="text" class="form-control billstate2" id="rs-form-example-tel" placeholder="State" required>
 															<p class="help-block with-errors"></p>
 														</div><!-- /.form-group -->
 
 														<div class="form-group">
-															<input name="szip" type="number" class="form-control bilzip2" id="rs-form-example-tel" placeholder="Zip" >
+															<input type="tel" class="form-control bilzip2" id="rs-form-example-tel" placeholder="Zip" required>
 															<p class="help-block with-errors"></p>
 														</div><!-- /.form-group -->
 
@@ -505,19 +836,18 @@ $business_id = $get_business_id['company_id'];
 											<div role="tabpanel" class="tab-pane fade" id="rs-tab-02">
 												<h3 style="margin-bottom:15px;font-size:17px;">Notes</h3>	
 												<div class="form-group">
-													<textarea name="notes" class="form-control" placeholder="Notes" style="min-height:250px;" ></textarea>
+													<textarea class="form-control" placeholder="Notes" style="min-height:250px;" required></textarea>
 													<p class="help-block with-errors"></p>
 												</div><!-- /.form-group -->
 											</div><!-- /.tab-pane -->
 
 										</div><!-- /.tab-content -->
 									</div><!-- .panel-body -->
-									
 
 									<div class="panel-footer">
 											<div class="form-group m-a-0">
-												<button name="reset" type="reset" class="btn btn-default btn-wide">Reset</button>
-												<button name="add_customer" type="submit" class="btn btn-success btn-wide">Add Customer</button>
+												<button type="reset" class="btn btn-default btn-wide">Reset</button>
+												<button type="submit" class="btn btn-success btn-wide">Submit</button>
 											</div>
 										</div><!-- /.panel-footer -->
 									</form>
@@ -535,40 +865,9 @@ $business_id = $get_business_id['company_id'];
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
-		 </div>		
-		 </form>
+		 </div>						  
 	</div>
- </div> <!--/ end pop up-->		
- 
-	<script>
-		$(document).ready(function(){
-    $.ajax({
-        url: 'sales_order_ajax.php',
-        type: 'get',
-        dataType: 'JSON',
-        success: function(response){
-            var len = response.length;
-            for(var i=0; i<len; i++){
-                var tax_name = response[i].id;
-                var price = response[i].username;
-               
-
-                var tr_str = "<tr>" +
-                    "<td align='center'>" + (i+1) + "</td>" +
-                    "<td align='center'>" + username + "</td>" +
-                    "<td align='center'>" + name + "</td>" +
-                    "<td align='center'>" + email + "</td>" +
-                    "</tr>";
-
-                $("#userTable").append(tr_str);
-            }
-
-        }
-    });
-});
-</script>
-
-	
+ </div> <!--/ end pop up-->				
 
 	<!-- Page Plugins -->
 	<script src="js/bootstrap-switch.min.js"></script>
@@ -593,9 +892,18 @@ $business_id = $get_business_id['company_id'];
 	<!-- Page Plugins -->
 	<script src="js/validator.min.js"></script>
 		<script>
+
 		$(document).ready(function() {
 		  $(".add-more").click(function(){ 
-			  var htmlz = "<div class='row atrri_add_cont'><div class='ache_ekta'></div><div class='col-md-12'><table class='table table-bordered table-b-t table-b-b'><thead></thead><tbody><tr class='roxkas'><td class='col-sm-4'><div class='form-group'> <select> <option value=' 'selected disabled>Product Name</option> <option value=' 4' >Thomas Edison</option> <option value='1'>Nikola</option> <option value='3'>Nikola Tesla</option> <option value=' 5' >Arnold Schwarzenegger</option> </select></div><!-- /.form-group --><p class=' help-block with-errors' ></p></td><td class=' col-sm-1' ><div class=' form-group' ><input type=' text'name='attri[]'class=' form-control'placeholder='Qty'required><p class=' help-block with-errors' ></p></div></td><td class=' col-sm-1' ><div class='form-group'style='font-size:15px;margin-top:10px;' ><b>00.00</b><p class=' help-block with-errors' ></p></div></td><td class=' col-sm-2' ><div class='form-group'><label>CGST:-9%</label><br><label>SGST:-9%</label></div></div></td><td class=' col-sm-2' ><div class=' form-group'  style=' font-size:15px;'><b style='color:#ef5350;'>00.00</b><br><b style=' color:#ef5350;' >00.00</b><p class=' help-block with-errors' ></p></div></td><td class='col-sm-2'><div class='form-group'style=' font-size:15px;margin-top:10px;'><b style='color:#5dc26a;' >00.00</b> <a href='#' class='remove' style='color:#ef5350;padding:45px;'><i class='fa fa-trash'></i></a> <p class='help-block with-errors'></p></div><div class=' col-sm-1'style='margin-top:-20px;'>&nbsp;</div></td></tr></tbody></table></div></div>";
+<<<<<<< HEAD
+<<<<<<< HEAD
+			  var htmlz = "<div class='row atrri_add_cont'><div class='ache_ekta'></div><div class='col-md-12'><table class='table table-bordered table-b-t table-b-b'><thead></thead><tbody><tr class='roxkas'><td class='col-sm-4'><div class='form-group'> <select class='rs-selectize-single' style='height:32px;width:310px;border:border:2px solid red;'> <option value=' 'selected disabled>Product Name</option> <option value=' 4' >Thomas Edison</option> <option value='1'>Nikola</option> <option value='3'>Nikola Tesla</option> <option value=' 5' >Arnold Schwarzenegger</option> </select></div><!-- /.form-group --><p class=' help-block with-errors' ></p></td><td class=' col-sm-1' ><div class=' form-group' ><input type=' text'name='attri[]'class=' form-control'placeholder='Qty'required><p class=' help-block with-errors' ></p></div></td><td class=' col-sm-1' ><div class='form-group'style='font-size:15px;margin-top:10px;' ><b>00.00</b><p class=' help-block with-errors' ></p></div></td><td class=' col-sm-2' ><div class='form-group'><label>CGST:-9%</label><br><label>SGST:-9%</label></div></div></td><td class=' col-sm-2' ><div class=' form-group'  style=' font-size:15px;'><b style='color:#ef5350;'>00.00</b><br><b style=' color:#ef5350;' >00.00</b><p class=' help-block with-errors' ></p></div></td><td class='col-sm-2'><div class='form-group'style=' font-size:15px;margin-top:10px;'><b style='color:#5dc26a;' >00.00</b> <a href='#' class='remove' style='color:#ef5350;padding:45px;'><i class='fa fa-trash'></i></a> <p class='help-block with-errors'></p></div><div class=' col-sm-1'style='margin-top:-20px;'>&nbsp;</div></td></tr></tbody></table></div></div>";
+=======
+			  var htmlz = "	<div class=' row atrri_add_cont' ><div class=' ache_ekta' ></div><div class=' col-md-12' ><table class=' table table-bordered table-b-t table-b-b' ><thead></thead><tbody><tr class=' roxkas' ><td class=' col-sm-4' ><div class=' form-group' > <select class=' rs-selectize-single' > <option value=' ' selected disabled>Product Name</option> <option value=' 4' >Thomas Edison</option> <option value=' 1' >Nikola</option> <option value=' 3' >Nikola Tesla</option> <option value=' 5' >Arnold Schwarzenegger</option> </select></div><p class=' help-block with-errors' ></p></td><td class=' col-sm-1' ><div class=' form-group' ><input type=' text'  name=' attri[]'  class=' form-control'  placeholder='  Qty '  required><p class=' help-block with-errors' ></p></div></td><td class=' col-sm-1' ><div class=' form-group'  style=' font-size:15px;margin-top:10px;' ><b>00.00</b><p class=' help-block with-errors' ></p></div></td><td class=' col-sm-2' ><div class=' form-group' ><div class=' input-group' ><select class=' rs-selectize-optgroup'  multiple><option value=' ' >Choose</option><option value=' CGST' >CGST</option><option value=' SGST' >SGST</option><option value=' VAT' >VAT</option></select><span class=' input-group-btn' ><button type=' button'  class=' btn btn-success btn-wide'  data-toggle=' modal'  data-target=' #myModal2' style=' height:34px;width:50px;text-align:center;padding:2px;'  type=' button' ><i class=' fa fa-plus' ></i> New</button></span></div></div></td><td class=' col-sm-2' ><div class=' form-group'  style=' font-size:15px;margin-top:10px;' ><b style=' color:#ef5350;' >00.00</b> <p class=' help-block with-errors' ></p></div></td><td class=' col-sm-2' ><div class=' form-group'  style=' font-size:15px;margin-top:10px;' ><b style=' color:#5dc26a;' >00.00</b> <a href='#' class='remove' style='color:#ef5350;'><i class='fa fa-trash'></i></a> <p class=' help-block with-errors' ></p></div><div class=' col-sm-1'  style=' margin-top:-20px;' >&nbsp;</div></td></tr></tbody></table></div></div>";
+>>>>>>> c3ae3bea050e72fe14e8d9366e2d734aae26c1be
+=======
+			  var htmlz = "	<div class=' row atrri_add_cont' ><div class=' ache_ekta' ></div><div class=' col-md-12' ><table class=' table table-bordered table-b-t table-b-b' ><thead></thead><tbody><tr class=' roxkas' ><td class=' col-sm-4' ><div class=' form-group' > <select class=' rs-selectize-single' > <option value=' ' selected disabled>Product Name</option> <option value=' 4' >Thomas Edison</option> <option value=' 1' >Nikola</option> <option value=' 3' >Nikola Tesla</option> <option value=' 5' >Arnold Schwarzenegger</option> </select></div><p class=' help-block with-errors' ></p></td><td class=' col-sm-1' ><div class=' form-group' ><input type=' text'  name=' attri[]'  class=' form-control'  placeholder='  Qty '  required><p class=' help-block with-errors' ></p></div></td><td class=' col-sm-1' ><div class=' form-group'  style=' font-size:15px;margin-top:10px;' ><b>00.00</b><p class=' help-block with-errors' ></p></div></td><td class=' col-sm-2' ><div class=' form-group' ><div class=' input-group' ><select class=' rs-selectize-optgroup'  multiple><option value=' ' >Choose</option><option value=' CGST' >CGST</option><option value=' SGST' >SGST</option><option value=' VAT' >VAT</option></select><span class=' input-group-btn' ><button type=' button'  class=' btn btn-success btn-wide'  data-toggle=' modal'  data-target=' #myModal2' style=' height:34px;width:50px;text-align:center;padding:2px;'  type=' button' ><i class=' fa fa-plus' ></i> New</button></span></div></div></td><td class=' col-sm-2' ><div class=' form-group'  style=' font-size:15px;margin-top:10px;' ><b style=' color:#ef5350;' >00.00</b> <p class=' help-block with-errors' ></p></div></td><td class=' col-sm-2' ><div class=' form-group'  style=' font-size:15px;margin-top:10px;' ><b style=' color:#5dc26a;' >00.00</b> <a href='#' class='remove' style='color:#ef5350;'><i class='fa fa-trash'></i></a> <p class=' help-block with-errors' ></p></div><div class=' col-sm-1'  style=' margin-top:-20px;' >&nbsp;</div></td></tr></tbody></table></div></div>";
+>>>>>>> c3ae3bea050e72fe14e8d9366e2d734aae26c1be
 			  //alert(htmlz);
 			  $(".add-more-contz").append(htmlz);
 		  });
@@ -609,16 +917,6 @@ $business_id = $get_business_id['company_id'];
 	</script>
 
 	<script>
-		function get_customer_values(e){
-			$.post("ajax/get_customer_details.php", {suggest: e}, function(result){
-				$(".customer_details").html(result);
-			});
-		}
-	</script>
-
-	
-
-	<script>
 		function copybillingaddr(){
 			var billstreet = $(".billstreet").val();
 			var billcity = $(".billcity").val();
@@ -630,11 +928,9 @@ $business_id = $get_business_id['company_id'];
 			$(".billcity2").val(billcity);
 			$(".billstate2").val(billstate);
 			$(".bilzip2").val(bilzip);
-			//$(".billcountry2 select").val(billcountry)
+			$(".billcountry2 select").val(billcountry)
 			$('.billcountry2 option[value='+billcountry+']').prop('selected',true);
 		}
-
-		$( "#datepicker" ).datepicker({autoclose: true});
 	</script>
 	
 </body>

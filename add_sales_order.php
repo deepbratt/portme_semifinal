@@ -84,11 +84,8 @@ include("sidebar.php");
                             <!-- /.form-group -->
                           </div>
                           <div class="form-group" style="">
-                            <button style="height:34px;width:132px;text-align:center;padding:2px;" class="btn btn-success btn-wide"
-                                    data-toggle="modal"
-                                    data-target="#myModal" type="button">
-                              <i class="fa fa-plus">
-                              </i> Add Customer
+                            <button style="text-align:center;font-size:16px;" class="btn btn-success btn-wide" data-toggle="modal" data-target="#myModal" type="button">
+									<i class="fa fa-plus" style=""></i> Add
                             </button>
                           </div>
                         </div>	
@@ -97,7 +94,7 @@ include("sidebar.php");
                             Sales Date
                           </div>
                           <div class="form-group col-sm-9">
-                            <input type="tel" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate">
+                            <input type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate" style="width:200px;">
                             <p class="help-block with-errors">
                             </p>
                           </div>
@@ -174,8 +171,6 @@ include("sidebar.php");
       <!-- Example -->
       <script src="js/bootstrap-datepicker.min.js">
       </script>
-      <script src="js/datepicker-example.js">
-      </script>
       <!-- Example -->
       <script src="js/jquery.maskedinput.min.js">
       </script>
@@ -194,6 +189,14 @@ include("sidebar.php");
       <!-- Example -->
       <!-- Page Plugins -->
       <script src="js/validator.min.js"></script>
-	  
+	  <script>
+		$(document).ready(function () {                                  
+            $('.rs-datepicker').datepicker({
+                format: "dd/mm/yyyy",
+                autoclose: true
+            });
+
+        }); 
+	  </script>
       </body>
     </html>

@@ -155,7 +155,7 @@ include("sidebar.php");
 								<th>Cess</th>
 								<th style="text-align:center;">Tax value</th>
 								<th style="text-align:center;">Discount</th>
-								<th style="text-align:center;">Subtotal</th>
+								<th style="text-align:center;">Total</th>
 								<th>&nbsp;</th>
 							</tr>
 						</thead>
@@ -186,7 +186,69 @@ include("sidebar.php");
 								<th style="text-align:center;"><input type="text" class="form-control" value="00.00" name=""></th>
 								<th style="text-align:center;"><input type="text" class="form-control" value="00.00" readonly name=""></th>
 								<th><a href=""><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>
-							</tr>					        
+							</tr>
+							<tr>
+								<th colspan="9"></th>
+								
+								<th style="" colspan="4">
+
+									<div class="row col-sm-12">
+										<div class="col-sm-7">
+											<label style="font-size:15px;">
+												Sub Total <i class="fa fa-inr" aria-hidden="true"></i>
+											</label>
+										</div>
+										<div class="col-sm-5">
+											<div class="form-group">
+												<label style="font-size:17px;">
+													<b>00.00</b>
+												</label>	
+												<p class="help-block with-errors"></p>
+											</div>
+										</div>
+									</div>
+
+									<div class="row col-sm-12">
+										<div class="col-sm-7">
+											<label style="font-size:15px;margin-top:5px;">
+												Discount
+											</label>
+										</div>												 
+									<div class="col-sm-5">
+											<div class="form-group">
+												<div class="input-group">
+											<div class="input-group-btn">
+												<select  class="btn btn-default dropdown-toggle" style="height:40px;padding:2px;"
+												data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false">			
+													<option>Rs.</option>
+													<option>%</option>															
+												</select>
+											</div><!-- /btn-group -->
+											<input type="text" class="form-control" aria-label="...">
+										</div><!-- /input-group -->
+											</div>
+										</div>
+									</div>
+
+									<div class="row col-sm-12">
+										<div class="col-sm-7">
+											<label style="font-size:20px;">
+												TOTAL <i class="fa fa-inr" aria-hidden="true"></i>
+											</label>
+										</div>
+										<div class="col-sm-5">
+											<div class="form-group">
+												<label style="font-size:20px;">
+													<b style="color:#5dc26a;">00.00</b>
+												</label>															
+												<p class="help-block with-errors"></p>
+											</div>
+										</div>
+									</div>
+
+								</th>
+							</tr>
 						</tbody>
 					</table>
 				</div>

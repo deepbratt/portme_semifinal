@@ -52,23 +52,27 @@ include("sidebar.php");
 
             </div>
 
-            <div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
-              <div class="col-md-12 col-sm-12">	
-			  
+            <div class="container-fluid" style="padding:0px;margin:0px;">
+              <div class="col-md-12 col-sm-12" style="padding:0px;margin:0px;">	
+			    <form name="vendor_form" method="POST" enctype="multipart/form-data" id="rs-validation-login-page">
+
                 <!-- Begin Panel -->
                 <div class="panel panel-plain panel-rounded">
                   <div class="panel-body">
-                    <div class="col-md-7 col-sm-12">
-                      <form name="vendor_form" method="POST" enctype="multipart/form-data" id="rs-validation-login-page">
-                        <div class="form-group">
-                          INVOICE No : 
-                          <label style="font-size:20px;font-weight:bold;padding-left:62px;"> #
-                            <?php echo date("dmy");?>
-                            <?php echo $invoice_no;?>
-                          </label>
-                          <p class="help-block with-errors">
-                          </p>
+                    <div class="col-md-7 col-sm-12" style="padding:0px;margin:0px;">
+                      
+						<div class="row">
+                          <div class="col-sm-3">
+                            INVOICE No
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group" style="font-size:20px;font-weight:bold;">
+                              <?php echo date("dmy");?>
+							  <?php echo $invoice_no;?>
+                            </div>
+                          </div>
                         </div>
+
                         <div class="row">
                           <div class="col-sm-3">
                             Customer Name
@@ -89,38 +93,36 @@ include("sidebar.php");
                           </div>
                         </div>
 						
-                        <div class="row">
+						<div class="row">
                           <div class="col-sm-3">
-                            Sales Date
+                            Customer Name
                           </div>
-                          <div class="form-group col-sm-6">
-                            <input type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate">
-                            <p class="help-block with-errors">
-                            </p>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <input type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate">
+                            </div>
                           </div>
                         </div>
 
-						<div class="row">
+                        <div class="row">
                           <div class="col-sm-3">
                             E-com GSTIN
                           </div>
                           <div class="form-group col-sm-6">
-                            <input type="text" class="form-control rs-datepicker" placeholder="GST IN" name="invoicedate">
-                            <p class="help-block with-errors">
-                            </p>
+                            <input type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate">
+                            <p class="help-block with-errors"></p>
                           </div>
                         </div>
 
                     </div>
+
+
                     <div class="col-md-5 col-sm-12" style="text-align:right;">
                         <div class="col-sm-12">
-                          <label style="font-size:20px;">
-                            Indrajit Ghosh
-                          </label>
+                          <label style="font-size:20px;">Indrajit Ghosh</label>
                         </div>
                         <div class="col-sm-12">
-                          <label style="font-size:15px;">
-                            Dukbanglow
+                          <label style="font-size:15px;">Dukbanglow
                           </label>
                         </div>
                         <div class="col-sm-12">
@@ -139,8 +141,7 @@ include("sidebar.php");
                 </div>
 				
 				<!-- table starts -->
-
-				<div class="panel panel-plain panel-rounded table-responsive">
+				<div class="panel panel-plain panel-rounded table-responsive" style="padding:15px;">
 					<table class="table table-b-t table-b-b datatable-default rs-table table-striped table-bordered" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">
 						<thead>
 						   <tr>
@@ -190,10 +191,9 @@ include("sidebar.php");
 						</tbody>
 					</table>
 				</div>
-				
 				<!-- table starts -->
 
-                <div class="col-md-12">
+                 <div class="col-md-12">
 					  <div class="panel panel-plain panel-rounded">
 						<div class="panel-footer">
 						  <div class="form-group m-a-0" style="padding-left:0px;">
@@ -214,46 +214,26 @@ include("sidebar.php");
         </div>
 
       </article>
-      <!-- /.rs-content-wrapper -->
-      <!-- END MAIN CONTENT -->
       <?php include("footer.php");?>
-      <!-- Page Plugins -->
-      <script src="js/bootstrap-switch.min.js">
-      </script>
-      <script src="js/bootstrap-switch-example.js">
-      </script>
-      <script src="js/cleave.min.js">
-      </script>
-      <script src="js/cleave-phone.au.js">
-      </script>
-      <!-- Example -->
-      <script src="js/cleave-example.js">
-      </script>
-      <!-- Example -->
-      <script src="js/bootstrap-datepicker.min.js">
-      </script>
-      <!-- Example -->
-      <script src="js/jquery.maskedinput.min.js">
-      </script>
-      <script src="js/maskedinput-example.js">
-      </script>
-      <!-- Example -->
-      <script src="js/bootstrap-maxlength.min.js">
-      </script>
-      <script src="js/maxlength-example.js">
-      </script>
-      <!-- Example -->
-      <script src="js/selectize.min.js">
-      </script>
-      <script src="js/selectize-example.js">
-      </script>
-      <!-- Example -->
-      <!-- Page Plugins -->
+
+      <script src="js/bootstrap-switch.min.js"></script>
+      <script src="js/bootstrap-switch-example.js"></script>
+      <script src="js/cleave.min.js"></script>
+      <script src="js/cleave-phone.au.js"></script>
+      <script src="js/cleave-example.js"></script>
+      <script src="js/bootstrap-datepicker.min.js"></script>
+      <script src="js/jquery.maskedinput.min.js"></script>
+      <script src="js/maskedinput-example.js"></script>
+      <script src="js/bootstrap-maxlength.min.js"></script>
+      <script src="js/maxlength-example.js"></script>
+      <script src="js/selectize.min.js"></script>
+	  <script src="js/datepicker-example.js"></script>
+      <script src="js/selectize-example.js"></script>
       <script src="js/validator.min.js"></script>
 
 	  <script>
 	  $( function() {
-		$( "#datepicker" ).datepicker();
+		$( ".rs-datepicker" ).datepicker();
 	  } );
 	  </script>
       </body>

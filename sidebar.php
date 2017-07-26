@@ -90,8 +90,9 @@ $fetch_details = mysqli_fetch_array($cu_info);
 						<span class="fa fa-cog rs-icon-menu"></span>Accounts Settings
 					</a>
 					<ul>
-						<li><a href="javascript:void(0);">Login Security</a></li>
-						<li><a href="javascript:void(0);">General Information</a></li>
+						<li><a href="login_security.php">Login Security</a></li>
+						<li><a href="javascript:void(0);">Tax Details</a></li>
+						<li><a href="general_information.php">General Information</a></li>
 					</ul>
 				</li>
 				

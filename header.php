@@ -202,6 +202,7 @@
 									</li>
 									<li role="separator" class="divider"></li>
 									<li class="menu-icon"><a href="my_account.php"><span class="mcon mcon-face rs-dropdown-icon"></span>Login security</a></li>
+									<li class="menu-icon"><a href="javascript:void(0);"><span class="gcon gcon-cog rs-dropdown-icon"></span>Tax details</a></li>
 									<li class="menu-icon"><a href="javascript:void(0);"><span class="fa fa-industry rs-dropdown-icon"></span>General information</a></li>
 									<li class="menu-icon"><a href="logout.php"><span class="gcon gcon-log-out rs-dropdown-icon"></span>Log Out</a></li>
 								</ul>

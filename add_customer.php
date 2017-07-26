@@ -263,7 +263,7 @@ if(isset($_POST['submit_details']))
 															</div>
 															<div class="col-sm-8">
 																<div class="form-group">
-																	<select name="bstate" class="rs-selectize-single billstate1" required>
+																	<select name="bstate" class="form-control billstate1" required>
 																	
 																		<option value="">Select State</option>
 																		<?php
@@ -309,7 +309,7 @@ if(isset($_POST['submit_details']))
 															</div>
 														<div class="col-sm-8">
 																<div class="form-group">
-																	<select name="sstate" class="rs-selectize-single billstate2">
+																	<select name="sstate" class="form-control billstate2">
 																		<option value="">Select State</option>
 																		<?php
 																	$state_info = mysqli_query($mysqli, "select * from states");
@@ -396,10 +396,10 @@ if(isset($_POST['submit_details']))
 		<script>
 		function copybillingaddr(){
 			var billaddress1 = $(".billaddress1").val();
-			var billstate1 = $(".billstate1").val();
+			var billstate = $(".billstate1 option:selected").val();	
 			
 			$(".billaddress2").val(billaddress1);
-			$(".billstate2").val(billstate1);
+			$('.billstate2 option[value='+billstate+']').prop('selected',true);
 			//$(".billcountry2 select").val(billcountry)
 		}
 	</script>

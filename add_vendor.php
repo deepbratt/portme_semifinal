@@ -190,24 +190,12 @@
 													<div class="col-md-6 col-sm-12" style="padding:5px;">
 														<h3 style="margin-bottom:15px;font-size:17px;">Billing Address</h3>
 														
-														<div class="row">
-															<div class="col-sm-3">
-																<div class="form-group">
-																	<label>Street : </label>
-																</div><!-- /.form-group -->
-															</div><!-- /.col-sm-4 -->
-															<div class="col-sm-8">
-																<div class="form-group">
-																	<textarea class="form-control billstreet" placeholder="Street" required></textarea>
-																	<p class="help-block with-errors"></p>
-																</div><!-- /.form-group -->
-															</div>
-														</div>
+														
 
 														<div class="row">
 															<div class="col-sm-3">
 																<div class="form-group">
-																	<label> City :<label>
+																	<label> Address :<label>
 																</div>
 															</div>
 															<div class="col-sm-8">
@@ -234,19 +222,7 @@
 															</div>
 														</div>
 
-														<div class="row">
-															<div class="col-sm-3">
-																<div class="form-group">
-																	<label> Zip :<label>
-																</div>
-															</div>
-															<div class="col-sm-8">
-																<div class="form-group">
-																	<input type="text" class="form-control bilzip" id="rs-form-example-email" placeholder="Enter Zip Code" required>
-																	<p class="help-block with-errors"></p>
-																</div><!-- /.form-group -->
-															</div>
-														</div>
+														
 													</div>
 
 													<div class="col-md-6 col-sm-12" style="margin-left:0px;padding:5px;">
@@ -255,25 +231,12 @@
 														<div class="row">
 															<div class="col-sm-3">
 																<div class="form-group">
-																	<label>Street : </label>
-																</div><!-- /.form-group -->
-															</div><!-- /.col-sm-4 -->
-															<div class="col-sm-8">
-																<div class="form-group">
-																	<textarea class="form-control billstreet2" placeholder="Street" required></textarea>
-																	<p class="help-block with-errors"></p>
-																</div><!-- /.form-group -->
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-sm-3">
-																<div class="form-group">
-																	<label> City :<label>
+																	<label> Address :<label>
 																</div>
 															</div>
 															<div class="col-sm-8">
 																<div class="form-group">
-																	<input type="text" class="form-control billcity2" id="rs-form-example-email" placeholder="City" required>
+																	<input type="text" class="form-control billcity" id="rs-form-example-email" placeholder="City" required>
 																	<p class="help-block with-errors"></p>
 																</div><!-- /.form-group -->
 															</div>
@@ -290,20 +253,6 @@
 																	<select class="rs-selectize-single" required>
 																		<option value="">State</option>
 																	</select>
-																	<p class="help-block with-errors"></p>
-																</div><!-- /.form-group -->
-															</div>
-														</div>
-
-														<div class="row">
-															<div class="col-sm-3">
-																<div class="form-group">
-																	<label> Zip :<label>
-																</div>
-															</div>
-															<div class="col-sm-8">
-																<div class="form-group">
-																	<input type="text" class="form-control bilzip2" id="rs-form-example-email" placeholder="Enter Zip Code" required>
 																	<p class="help-block with-errors"></p>
 																</div><!-- /.form-group -->
 															</div>

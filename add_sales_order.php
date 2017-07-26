@@ -15,7 +15,11 @@
       .padmar{
         margin:0px !important;
         padding:0px !important;
+		
       }
+	  .form-control{
+		height:40px !important;
+	  }
     </style>
   </head>
   <body>
@@ -31,14 +35,12 @@ include("sidebar.php");
       <article class="rs-content-wrapper">
         <div class="rs-content">
           <div class="rs-inner">
-            <!-- Begin Dashhead -->
             <div class="rs-dashhead m-b-lg" style="background:#f5f5f5">
               <div class="rs-dashhead-content">
                 <div class="rs-dashhead-titles">
                   <h3 class="rs-dashhead-title m-t">
                     New Sales Order :
                     <div style="float:right;">
-                      <!--<span style="padding:10px 10px;font-size:15px;font-weight:normal;color:#4a89dc;cursor:pointer;border-right:1px solid #CCC;"> <i class="fa fa-lightbulb-o"></i> &nbsp;&nbsp;Page Tutorial</span>-->
                       <span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='view_sales_order.php'"> 
                         <i class="fa fa-remove">
                         </i> 
@@ -47,15 +49,12 @@ include("sidebar.php");
                   </h3>
                 </div>
               </div>
-              <!-- /.rs-dashhead-content -->
-              <!-- Begin Breadcrumb -->
-              <!-- End Breadcrumb -->
+
             </div>
-            <!-- /.rs-dashhead -->
-            <!-- End Dashhead -->
-            <!-- Begin default content width -->
+
             <div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
-              <div class="col-md-12 col-sm-12">					
+              <div class="col-md-12 col-sm-12">	
+			  
                 <!-- Begin Panel -->
                 <div class="panel panel-plain panel-rounded">
                   <div class="panel-body">
@@ -82,29 +81,38 @@ include("sidebar.php");
 								 <option data-tokens="singapore">Singapore</option>
                               </select>
                             </div>
-                            <!-- /.form-group -->
                           </div>
-                          <div class="form-group" style="">
+                          <div class="col-sm-3">
                             <button style="text-align:center;font-size:16px;" class="btn btn-success btn-wide" data-toggle="modal" data-target="#myModal" type="button">
 									<i class="fa fa-plus" style=""></i> Add
                             </button>
                           </div>
-                        </div>	
+                        </div>
+						
                         <div class="row">
                           <div class="col-sm-3">
                             Sales Date
                           </div>
                           <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="datepicker" placeholder="Sales Date" name="invoicedate">
+                            <input type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate">
                             <p class="help-block with-errors">
                             </p>
                           </div>
-                          <!-- /.form-group -->
                         </div>
-                      </form>
+
+						<div class="row">
+                          <div class="col-sm-3">
+                            E-com GSTIN
+                          </div>
+                          <div class="form-group col-sm-6">
+                            <input type="text" class="form-control rs-datepicker" placeholder="GST IN" name="invoicedate">
+                            <p class="help-block with-errors">
+                            </p>
+                          </div>
+                        </div>
+
                     </div>
                     <div class="col-md-5 col-sm-12" style="text-align:right;">
-                      <form name="vendor_form" method="POST" enctype="multipart/form-data" id="rs-validation-login-page">
                         <div class="col-sm-12">
                           <label style="font-size:20px;">
                             Indrajit Ghosh
@@ -127,32 +135,84 @@ include("sidebar.php");
                         </div>
                       </form>
                     </div>
-                    <!-- /.panel -->
                   </div>
                 </div>
-                <div class="col-md-12" style="margin-top:-50px;">
-                  <div class="panel panel-plain panel-rounded">
-                    <div class="panel-body" style="background:" >										
-                    </div>
-                    <div class="panel-footer">
-                      <div class="form-group m-a-0" style="padding-left:0px;">
-                        <button type="reset" class="btn btn-default btn-wide">Reset
-                        </button>
-                        <button type="submit" class="btn btn-success btn-wide">Submit
-                        </button>
-                      </div>
-                    </div>
-                    <!-- /.panel-footer -->
-                  </div>
-                  </form>
-              </div>
-              <!-- /.panel -->						
+				
+				<!-- table starts -->
+
+				<div class="panel panel-plain panel-rounded table-responsive">
+					<table class="table table-b-t table-b-b datatable-default rs-table table-striped table-bordered" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">
+						<thead>
+						   <tr>
+								<th>Product</th>
+								<th>HSN</th>
+								<th>Qty</th>
+								<th>Unit Price</th>										
+								<th>Tax rate</th>
+								<th>CGST</th>
+								<th>SGST</th>
+								<th>IGST</th>
+								<th>Cess</th>
+								<th style="text-align:center;">Tax value</th>
+								<th style="text-align:center;">Discount</th>
+								<th style="text-align:center;">Subtotal</th>
+								<th>&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>
+									  <select class="form-control selectpicker">
+										 <option data-tokens="china">China</option>
+										 <option data-tokens="malayasia">Malayasia</option>
+										 <option data-tokens="singapore">Singapore</option>
+									  </select>
+								</th>
+								<th><input type="text" class="form-control" value="2345651" name=""></th>
+								<th><input type="number" class="form-control" value="1" name=""></th>
+								<th><input type="text" class="form-control" value="00.00" name=""></th>										
+								<th>
+									<select class="form-control selectpicker">
+										 <option data-tokens="china">China</option>
+										 <option data-tokens="malayasia">Malayasia</option>
+										 <option data-tokens="singapore">Singapore</option>
+									  </select>
+								</th>
+								<th><input type="text" class="form-control" value="00.00" name=""></th>
+								<th><input type="text" class="form-control" value="00.00" name=""></th>
+								<th><input type="text" class="form-control" value="00.00" name=""></th>
+								<th><input type="text" class="form-control" value="00.00" name=""></th>
+								<th style="text-align:center;"><input type="text" class="form-control" value="00.00" name=""></th>
+								<th style="text-align:center;"><input type="text" class="form-control" value="00.00" name=""></th>
+								<th style="text-align:center;"><input type="text" class="form-control" value="00.00" readonly name=""></th>
+								<th><a href=""><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>
+							</tr>					        
+						</tbody>
+					</table>
+				</div>
+				
+				<!-- table starts -->
+
+                <div class="col-md-12">
+					  <div class="panel panel-plain panel-rounded">
+						<div class="panel-footer">
+						  <div class="form-group m-a-0" style="padding-left:0px;">
+							<button type="reset" class="btn btn-default btn-wide">Reset
+							</button>
+							<button type="submit" class="btn btn-success btn-wide">Submit
+							</button>
+						  </div>
+						</div>
+					  </div>
+				  </div>
+
+			   </form>		
             </div>
-            <!-- /.container-fluid -->
+
           </div>
-          <!-- /.rs-inner -->
+
         </div>
-        <!-- /.rs-content -->
+
       </article>
       <!-- /.rs-content-wrapper -->
       <!-- END MAIN CONTENT -->
@@ -190,8 +250,7 @@ include("sidebar.php");
       <!-- Example -->
       <!-- Page Plugins -->
       <script src="js/validator.min.js"></script>
-	  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 	  <script>
 	  $( function() {
 		$( "#datepicker" ).datepicker();

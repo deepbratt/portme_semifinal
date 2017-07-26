@@ -19,7 +19,7 @@ if(isset($_POST['submit']))
 	$notes = $_POST['notes'];
 	$date = date('m/d/Y h:i:s', time());
 
-	$insert_vendor_details = mysqli_query($mysqli, "insert tbl_contacts values ('','VENDOR','".$business_id."','".$salutation."','".$firstname."','".$lastname."','".$company_name."','".$email."','','".$work_phone."','".$mobile."','".$gst."','".$billing_address."','".$billing_state."','INDIA','".$shipping_address."','".$shipping_state."','INDIA','".$notes."','active')");
+	$insert_vendor_details = mysqli_query($mysqli, "insert tbl_contacts values ('','VENDOR','".$business_id."','".$salutation."','".$firstname."','".$lastname."','".$company_name."','".$email."','".$work_phone."','".$mobile."','".$gst."','".$billing_address."','".$billing_state."','INDIA','".$shipping_address."','".$shipping_state."','INDIA','".$notes."','active')");
 	if($insert_vendor_details)
 	{
 		$data = "success";
@@ -74,7 +74,7 @@ if(isset($_POST['submit']))
 									<div style="float:right;">
 										<!--<span style="padding:10px 10px;font-size:15px;font-weight:normal;color:#4a89dc;cursor:pointer;border-right:1px solid #CCC;"> <i class="fa fa-lightbulb-o"></i> &nbsp;&nbsp;Page Tutorial</span>-->
 
-										<span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='customer.php'"> <i class="fa fa-remove"></i> </span>
+										<span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='vendor.php'"> <i class="fa fa-remove"></i> </span>
 									</div>
 								</h3>
 								
@@ -82,13 +82,29 @@ if(isset($_POST['submit']))
 							
 						</div><!-- /.rs-dashhead-content -->
 						<!-- Begin Breadcrumb -->
-
+					
 						<!-- End Breadcrumb -->
 					</div><!-- /.rs-dashhead -->
 					<!-- End Dashhead -->
 
 					<!-- Begin default content width -->
 					<div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
+					
+					<div class="col-md-12 col-sm-12">
+						<?php
+								if(isset($data) && $data == "success")
+						{
+						?>
+						<p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Added Successfully </p>
+						<?php
+						}else if(isset($data) && $data == "error"){
+						?>
+						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in Insertion </p>
+						<?php
+						}
+						?>
+						</div>
+
 						<div class="col-md-7 col-sm-12">
 						<!-- Begin Panel -->
 							<div class="panel panel-plain panel-rounded">
@@ -106,11 +122,11 @@ if(isset($_POST['submit']))
 													<div class="form-group">
 														<select name="sal" class="rs-selectize-single" required>
 															<option value="">Salutation</option>
-															<option value="4">Mr.</option>
-															<option value="1">Mrs.</option>
-															<option value="3">Ms.</option>
-															<option value="5">Miss.</option>
-															<option value="5">Dr.</option>
+															<option value="Mr.">Mr.</option>
+															<option value="Mrs.">Mrs.</option>
+															<option value="Ms.">Ms.</option>
+															<option value="Miss.">Miss.</option>
+															<option value="Dr.">Dr.</option>
 														</select>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->
@@ -236,7 +252,7 @@ if(isset($_POST['submit']))
 															</div>
 															<div class="col-sm-8">
 																<div class="form-group">
-																	<input name="address" id="cityz" type="text" class="form-control billaddress1" id="rs-form-example-email" placeholder="City" required>
+																	<input name="address" id="cityz" type="text" class="form-control billaddress1" id="rs-form-example-email" placeholder="Address" required>
 																	<p class="help-block with-errors"></p>
 																</div><!-- /.form-group -->
 															</div>
@@ -283,7 +299,7 @@ if(isset($_POST['submit']))
 															</div>
 															<div class="col-sm-8">
 																<div class="form-group">
-																	<input name="saddress" id="cityz" type="text" class="form-control billaddress2" id="rs-form-example-email" placeholder="Address">
+																	<input name="saddress" id="cityz1" type="text" class="form-control billaddress2" id="rs-form-example-email" placeholder="Address">
 																	<p class="help-block with-errors"></p>
 																</div><!-- /.form-group -->
 															</div>
@@ -314,6 +330,7 @@ if(isset($_POST['submit']))
 																</div><!-- /.form-group -->
 															</div>
 														</div>
+
 													</div>
 												</div>
 											</div><!-- /.tab-pane -->
@@ -352,6 +369,10 @@ if(isset($_POST['submit']))
 	<!-- For address-->
 	<script>
       var input = document.getElementById('cityz');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    </script>
+		<script>
+      var input = document.getElementById('cityz1');
       var autocomplete = new google.maps.places.Autocomplete(input);
     </script>
 	<!-- Page Plugins -->

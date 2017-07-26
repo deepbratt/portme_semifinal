@@ -2,8 +2,8 @@
 include ("config.php");
 
 $customer_id = $_GET['cu_id'];
-$view_customer_info = mysqli_query($mysqli, "select * from customers where customer_id='".$customer_id."'");
-$fetch_customer_details = mysqli_fetch_array ($view_customer_info);
+$view_customer_info = mysqli_query($mysqli,"select * from tbl_contacts where customer_id='".$customer_id."'");
+$fetch_customer_details = mysqli_fetch_array($view_customer_info);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,18 @@ $fetch_customer_details = mysqli_fetch_array ($view_customer_info);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<?php
+		if($fetch_customer_details['customer_type'] == 'customer'){
+	?>
 	<title>View Customer Details | Port-ME</title>
+	<?php
+	}
+	else if($fetch_customer_details['customer_type'] == 'vendor'){
+	?>
+	<title>View Vendor Details | Port-ME</title>
+	<?php
+	}
+	?>
 	<?php include("metalinks.php");?>
 
 </head>
@@ -43,7 +54,18 @@ $fetch_customer_details = mysqli_fetch_array ($view_customer_info);
 						<div class="rs-dashhead-content">
 							<div class="rs-dashhead-titles">
 								<h3 class="rs-dashhead-title m-t">
+									<?php
+										if($fetch_customer_details['customer_type'] == 'customer'){
+									?>
 									View Customer Details
+									<?php
+									}
+									else if($fetch_customer_details['customer_type'] == 'vendor'){
+									?>
+									View Vendor Details
+									<?php
+									}
+									?>
 									<div style="float:right;">
 										<!--<span style="padding:10px 10px;font-size:15px;font-weight:normal;color:#4a89dc;cursor:pointer;border-right:1px solid #CCC;"> <i class="fa fa-lightbulb-o"></i> &nbsp;&nbsp;Page Tutorial</span>-->
 
@@ -76,66 +98,57 @@ $fetch_customer_details = mysqli_fetch_array ($view_customer_info);
 									<form >
 											<div class="row">
 												<div class="col-sm-2">
-												Full Name:
+												<b>Full Name :</b>
 												</div>
 												<div class="col-sm-7">
-													<div class="form-group" style="margin-bottom:-1px;">
-														<label><?php echo $fetch_customer_details['salutation']?></label>  <label><?php echo $fetch_customer_details['firstname'];?></label>  <label><?php echo $fetch_customer_details['lastname'];?></label>
+													<div class="form-group" style="margin-bottom:-1px; color:#4a89dc">
+														<label><?php echo ucfirst($fetch_customer_details['first_name']);?></label>  <label><?php echo ucfirst($fetch_customer_details['last_name']);?></label>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->												
 											</div><!-- /.row -->
 
 										<div class="row">
 											<div class="col-sm-2">
-													Company Name:
+													<b>Company Name :</b>
 											</div>
 												<div class="form-group">
-													<div class="col-sm-8">
-														<label><?php echo $fetch_customer_details['company_name'];?> </label>
+													<div class="col-sm-8" style="color:#4a89dc">
+														<label><?php echo ucfirst($fetch_customer_details['enterprise_name']);?> </label>
 													</div><!-- /.form-group -->
 												</div>
 										</div>
 										
 										<div class="row">
 											<div class="col-sm-2">
-													Email:
+													<b>Email :</b>
 											</div>
 												<div class="form-group">
-													<div class="col-sm-8">
+													<div class="col-sm-8" style="color:#4a89dc">
 													<label><?php echo $fetch_customer_details['email'];?> </label>												
 													</div><!-- /.form-group -->
 												</div>
 											</div>
 											<div class="row">
 											<div class="col-sm-2">
-													Work Phone:
+													<b>Work Phone :</b>
 											</div>
 												<div class="form-group">
-													<div class="col-sm-8">
+													<div class="col-sm-8" style="color:#4a89dc">
 													<label><?php echo $fetch_customer_details['work_phone'];?> </label>												
 													</div><!-- /.form-group -->
 												</div>
 											</div>
 											<div class="row">
 											<div class="col-sm-2">
-													Mobile:
+													<b>Mobile :</b>
 											</div>
 												<div class="form-group">
-													<div class="col-sm-8">
+													<div class="col-sm-8" style="color:#4a89dc">
 													<label><?php echo $fetch_customer_details['mobile'];?> </label>													
 													</div><!-- /.form-group -->
 												</div>
 											</div>
-											<div class="row">
-											<div class="col-sm-2">
-													Website:
-											</div>
-												<div class="form-group">
-													<div class="col-sm-8" style="margin-bottom:20px;">
-													<label><?php echo $fetch_customer_details['website'];?> </label>	
-													</div><!-- /.form-group -->
-												</div>
-											</div>
+											
 								</div><!-- /.panel-body -->
 							</div><!-- /.panel -->
 						</div>
@@ -164,32 +177,29 @@ $fetch_customer_details = mysqli_fetch_array ($view_customer_info);
 													<div class="col-md-6 col-sm-12" style="padding:5px;">
 														<h3 style="margin-bottom:15px;font-size:17px;">Billing Address</h3>										
 														<div class="form-group">
-															<div class="col-sm-2">
-																Street :
+															<div class="col-sm-3">
+																<b>Address :</b>
 															</div>	
-														<label><?php echo $fetch_customer_details['billing_street'];?> </label>									
+														<label style="color:#4a89dc"><?php echo ucfirst($fetch_customer_details['address']);?> </label>									
 														</div><!-- /.form-group -->
 
 														<div class="form-group">
-															<div class="col-sm-2">
-																City :
+															<div class="col-sm-3" >
+																<b>State </b>
 															</div>	
-															<label><?php echo $fetch_customer_details['billing_city'];?> </label>
-														</div><!-- /.form-group -->
-
+															<?php
+															$select_state = mysqli_query($mysqli,"select * from states where states_id='".$fetch_customer_details['state']."'");
+															$fetch_state = mysqli_fetch_array($select_state);
+															?>
+															<label style="color:#4a89dc"><?php echo $fetch_state['states_name'];?> </label>
+														</div><!-- /.form-group -->	
 														<div class="form-group">
-															<div class="col-sm-2">
-																State :
+															<div class="col-sm-3">
+																<b>Country :</b>
 															</div>	
-														<label><?php echo $fetch_customer_details['billing_state'];?> </label>
+														<label style="color:#4a89dc"><?php echo $fetch_customer_details['country'];?> </label>
 														</div><!-- /.form-group -->
-
-														<div class="form-group">
-															<div class="col-sm-2">
-																Zip :
-															</div>	
-															<label><?php echo $fetch_customer_details['billing_zip'];?> </label>
-														</div><!-- /.form-group -->
+														
 
 														</div>
 
@@ -197,42 +207,39 @@ $fetch_customer_details = mysqli_fetch_array ($view_customer_info);
 														<h3 style="margin-bottom:15px;font-size:17px;">Shipping Address </h3>
 														
 														<div class="form-group">
-															<div class="col-sm-2">
-																Street :
+															<div class="col-sm-3">
+																<b>Address :</b>
 															</div>	
-														<label><?php echo $fetch_customer_details['shipping_street'];?> </label>
+														<label style="color:#4a89dc"><?php echo ucfirst($fetch_customer_details['shipping_address']);?> </label>
 														</div><!-- /.form-group -->
 
 														<div class="form-group">
-															<div class="col-sm-2">
-																City :
+															<div class="col-sm-3">
+																<b>State :</b>
 															</div>	
-														<label><?php echo $fetch_customer_details['shipping_city'];?> </label>
+															<?php
+															$select_shiping_state = mysqli_query($mysqli,"select * from states where states_id='".$fetch_customer_details['shipping_state']."'");
+															$fetch_shipping_state = mysqli_fetch_array($select_shiping_state);
+															?>
+															<label style="color:#4a89dc"><?php echo $fetch_shipping_state['states_name'];?> </label>
+														</div><!-- /.form-group -->
+															<div class="form-group">
+															<div class="col-sm-3">
+																<b>Country :</b>
+															</div>	
+														<label style="color:#4a89dc"><?php echo $fetch_customer_details['shipiing_country'];?> </label>
 														</div><!-- /.form-group -->
 
-														<div class="form-group">
-															<div class="col-sm-2">
-																State :
-															</div>	
-														<label><?php echo $fetch_customer_details['shipping_state'];?> </label>
-														</div><!-- /.form-group -->
 
-														<div class="form-group">
-															<div class="col-sm-2">
-																Zip :
-															</div>	
-														<label><?php echo $fetch_customer_details['shipping_zip'];?> </label>
-														</div><!-- /.form-group -->
-
-														
+																											
 													</div>
 												</div>
 											</div><!-- /.tab-pane -->
 
 											<div role="tabpanel" class="tab-pane fade" id="rs-tab-02">
-												<h3 style="margin-bottom:15px;font-size:17px;">Notes</h3>	
+												<h3 style="margin-bottom:15px;font-size:17px;"><b>Notes</b></h3>	
 												<div class="form-group">
-													<label> <?php echo $fetch_customer_details['notes'];?></label>
+													<label style="color:#4a89dc"> <?php echo ucfirst($fetch_customer_details['notes']);?></label>
 													<p class="help-block with-errors"></p>
 												</div><!-- /.form-group -->
 											</div><!-- /.tab-pane -->
@@ -243,7 +250,7 @@ $fetch_customer_details = mysqli_fetch_array ($view_customer_info);
 
 									<div class="panel-footer">
 											<div class="form-group m-a-0">
-												<button type="reset" class="btn btn-default btn-wide">Reset</button>
+												<a class="btn btn-success btn-wide" href="edit_customer.php?cu_id=<?php echo $fetch_customer_details['customer_id'];?>" style="color:white;">Edit</a>
 												<a class="btn btn-success btn-wide" href="customer.php" style="color:white;">Back</a>
 											</div>
 										</div><!-- /.panel-footer -->

@@ -9,8 +9,6 @@
     <title>Port-ME | Sales Order
     </title>
     <?php include("metalinks.php");?>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
     <style>
       .padmar{
         margin:0px !important;
@@ -292,6 +290,7 @@ include("sidebar.php");
 -
       </article>
       <?php include("footer.php");?>
+	  <?php include("sales_order_add_customer.php");?>
 
       <script src="js/bootstrap-switch.min.js"></script>
       <script src="js/bootstrap-switch-example.js"></script>

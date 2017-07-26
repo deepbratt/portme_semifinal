@@ -145,15 +145,13 @@ include("sidebar.php");
 					<table class="table table-b-t table-b-b datatable-default rs-table table-striped table-bordered" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">
 						<thead>
 						   <tr>
-								<th>Product</th>
-								<th>HSN</th>
-								<th>Qty</th>
-								<th>Unit Price</th>										
-								<th>Tax rate</th>
-								<th>CGST</th>
-								<th>SGST</th>
-								<th>IGST</th>
-								<th>Cess</th>
+								<th style="text-align:center;">Product</th>
+								<th style="text-align:center;">HSN</th>
+								<th style="text-align:center;">Qty</th>
+								<th style="text-align:center;">Unit Price</th>										
+								<th style="text-align:center;">Tax rate</th>
+								<th colspan="3" style="text-align:center;">TAX</th>
+								<th style="text-align:center;">Cess</th>
 								<th style="text-align:center;">Tax value</th>
 								<th style="text-align:center;">Discount</th>
 								<th style="text-align:center;">Total</th>
@@ -161,6 +159,21 @@ include("sidebar.php");
 							</tr>
 						</thead>
 						<tbody>
+							<tr>
+								<th style="text-align:center;"><i class="fa fa-shopping-bag" aria-hidden="true"></i></th>
+								<th style="text-align:center;"><i class="fa fa-table" aria-hidden="true"></i></th>
+								<th style="text-align:center;"><i class="fa fa-balance-scale" aria-hidden="true"></i></th>
+								<th style="text-align:center;"><i class="fa fa-inr" aria-hidden="true"></i></th>										
+								<th style="text-align:center;"><i class="fa fa-percent" aria-hidden="true"></i></th>								
+								<th style="text-align:center;">CGST</th>
+								<th style="text-align:center;">SGST</th>
+								<th style="text-align:center;">IGST</th>
+								<th style="text-align:center;"><i class="fa fa-inr" aria-hidden="true"></i></th>
+								<th style="text-align:center;"><i class="fa fa-inr" aria-hidden="true"></i></th>
+								<th style="text-align:center;"><i class="fa fa-inr" aria-hidden="true"></i></th>
+								<th style="text-align:center;"><i class="fa fa-inr" aria-hidden="true"></i></th>
+								<th></th>
+							</tr>
 							<tr>
 								<th>
 									  <select class="form-control selectpicker">

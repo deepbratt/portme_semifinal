@@ -204,9 +204,9 @@
 												</div><!-- /.col-sm-4 -->
 												<div class="col-sm-9">
 											   <div class="form-group">                
-												 <select name="hsn_codes" class="">													   
-												   <option value="">Select HSN Codes</option>
-												 </select>
+												  <select class="form-control selectpicker" name="hsn_codes">
+													  <option value="">Select HSN Codes</option>
+												  </select>
 											   </div><!-- /.form-group -->
 											  </div>
 											</div>
@@ -219,9 +219,9 @@
 												</div><!-- /.col-sm-4 -->
 												<div class="col-sm-9">
 											   <div class="form-group">                
-												 <select name="uqc_codes" class="">													   
-												   <option value="">Select UQC Codes</option>
-												 </select>
+												 <select class="form-control selectpicker" name="uqc_codes">
+													  <option value="">Select UQC Codes</option>
+												  </select>
 											   </div><!-- /.form-group -->
 											  </div>
 											</div>

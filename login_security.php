@@ -1,3 +1,47 @@
+<?php
+	include('config.php');
+	$business_id = $_SESSION['business_id'];
+	
+	if(isset($_POST['update']))
+	{
+		$old = mysqli_real_escape_string($mysqli,$_POST['old']);
+		$new = mysqli_real_escape_string($mysqli,$_POST['new']);
+		$confirm_new = mysqli_real_escape_string($mysqli,$_POST['confirm_new']);
+
+		$select_prev = mysqli_query($mysqli,"select * from tbl_business where business_id='$business_id'");
+		$fetch_prev = mysqli_fetch_array($select_prev);
+
+		if($fetch_prev['password'] == $old)
+		{
+			if($fetch_prev['password'] != $new)
+			{
+				if($new == $confirm_new)
+				{
+					$update_query = mysqli_query($mysqli,"update tbl_business set password='".$new."' where business_id='".$business_id."'");
+					if($update_query)
+					{
+						$data = 'success';
+					}
+					else{
+						$data = 'error';
+					}
+				}
+				else{
+					$data = 'confirm_error';
+				}
+			}
+			else{
+					$data = 'same_error';
+				}
+		}
+		else{
+					$data = 'match_error';
+				}
+
+
+	}
+?>
+
 <!DOCTYPE html>
 <html lang=en>
 
@@ -39,7 +83,7 @@
 									<div style="float:right;">
 										<!--<span style="padding:10px 10px;font-size:15px;font-weight:normal;color:#4a89dc;cursor:pointer;border-right:1px solid #CCC;"> <i class="fa fa-lightbulb-o"></i> &nbsp;&nbsp;Page Tutorial</span>-->
 
-										<span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='customer.php'"> <i class="fa fa-remove"></i> </span>
+										<span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='dashboard.php'"> <i class="fa fa-remove"></i> </span>
 									</div>
 								</h3>
 								
@@ -53,18 +97,36 @@
 					<!-- End Dashhead -->
 						<div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
 						<div class="col-md-12 col-sm-12">
-						<?php
-								if(isset($data) && $data == "success")
-						{
-						?>
-						<p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Password Changed Successfully </p>
-						<?php
-						}else if(isset($data) && $data == "error"){
-						?>
-						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in changing password. Please try again !! </p>
-						<?php
-						}
-						?>
+
+										<?php
+											if(isset($data) && $data=='success'){
+										?>
+										<p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Password Changed Successfully </p>
+										<?php
+									  }
+										
+											if(isset($data) && $data=='error'){
+										?>
+										<p style="text-align:center;background:#ef5350;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Failed to Update </p>
+										<?php
+									  }
+										 if(isset($data) && $data=='confirm_error'){
+										?>
+										<p style="text-align:center;background:#ef5350;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;">  Oops! New Password And Confirm Passwword Doesn't Match </p>
+
+										<?php
+									  }
+										 if(isset($data) && $data=='same_error'){
+										?>
+										<p style="text-align:center;background:#ef5350;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;">  Oops! New Password And Current Passwword Can't be Same!</p>
+										<?php
+									  }
+										 if(isset($data) && $data=='match_error'){
+										?>
+										<p style="text-align:center;background:#ef5350;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;">  Oops! Current Passwword Didn't Match!</p>
+										<?php
+									  }
+										?>
 						</div>
 					
 					<!-- Begin default content width -->
@@ -77,33 +139,13 @@
 							<div class="panel panel-plain panel-rounded">
 
 								<div class="panel-body">
-									<form >										
-										
-										<div class="row">
-											<div class="col-sm-2">Email:</div>
-												<div class="form-group">
-													<div class="col-sm-4">
-														<input type="text" class="form-control" id="rs-form-example-email" placeholder="Enter Your email"  required>
-															<p class="help-block with-errors"></p>
-													</div><!-- /.form-group -->
-												</div>
-										</div>
-
-										<div class="row">
-											<div class="col-sm-2">Username:</div>
-												<div class="form-group">
-													<div class="col-sm-4">
-														<input type="text" class="form-control" id="rs-form-example-email" placeholder="Enter your username"  required>
-															<p class="help-block with-errors"></p>
-													</div><!-- /.form-group -->
-												</div>
-										</div>
-										
+									<form method="post">	
+																			
 										<div class="row">
 											<div class="col-sm-2">Old Password:</div>
 												<div class="form-group">
 													<div class="col-sm-4">
-														<input type="password" class="form-control" id="rs-form-example-email" placeholder="Old Password"  required>
+														<input name="old" type="password" class="form-control" id="rs-form-example-email" placeholder="Old Password"  required>
 															<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div>
@@ -113,7 +155,7 @@
 											<div class="col-sm-2">New Password:</div>
 												<div class="form-group">
 													<div class="col-sm-4">
-														<input type="password" class="form-control" id="rs-form-example-email" placeholder="New Password"  required>
+														<input name="new" type="password" class="form-control" id="rs-form-example-email" placeholder="New Password"  required>
 															<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div>
@@ -123,7 +165,7 @@
 											<div class="col-sm-2">Confirm Password:</div>
 												<div class="form-group">
 													<div class="col-sm-4">
-														<input type="password" class="form-control" id="rs-form-example-email" placeholder="Confirm Password"  required>
+														<input name="confirm_new" type="password" class="form-control" id="rs-form-example-email" placeholder="Confirm Password"  required>
 															<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div>
@@ -134,7 +176,7 @@
 								<div class="panel-footer">
 											<div class="form-group m-a-0">
 												<button type="reset" class="btn btn-default btn-wide">Reset</button>
-												<button type="submit" class="btn btn-success btn-wide">Submit</button>
+												<button name="update" type="submit" class="btn btn-success btn-wide">Submit</button>
 											</div>
 										</div><!-- /.panel-footer -->
 									</form>

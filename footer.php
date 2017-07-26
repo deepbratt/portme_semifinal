@@ -29,3 +29,8 @@
 	<script src="js/apps.js"></script>
 	<script src="js/dashboard.js"></script>
 	<script src="js/layout-default.js"></script>
+	<script>
+	$(function() {
+	  $('.selectpicker').selectpicker();
+	});
+  </script>

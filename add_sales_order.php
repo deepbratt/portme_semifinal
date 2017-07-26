@@ -9,7 +9,8 @@
     <title>Port-ME | Sales Order
     </title>
     <?php include("metalinks.php");?>
-	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
     <style>
       .padmar{
         margin:0px !important;
@@ -62,7 +63,7 @@ include("sidebar.php");
                       <form name="vendor_form" method="POST" enctype="multipart/form-data" id="rs-validation-login-page">
                         <div class="form-group">
                           INVOICE No : 
-                          <label style="font-size:20px;font-weight:bold;"> #
+                          <label style="font-size:20px;font-weight:bold;padding-left:62px;"> #
                             <?php echo date("dmy");?>
                             <?php echo $invoice_no;?>
                           </label>
@@ -93,8 +94,8 @@ include("sidebar.php");
                           <div class="col-sm-3">
                             Sales Date
                           </div>
-                          <div class="form-group col-sm-9">
-                            <input type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate" style="width:200px;">
+                          <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" id="datepicker" placeholder="Sales Date" name="invoicedate">
                             <p class="help-block with-errors">
                             </p>
                           </div>
@@ -189,14 +190,12 @@ include("sidebar.php");
       <!-- Example -->
       <!-- Page Plugins -->
       <script src="js/validator.min.js"></script>
+	  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	  <script>
-		$(document).ready(function () {                                  
-            $('.rs-datepicker').datepicker({
-                format: "dd/mm/yyyy",
-                autoclose: true
-            });
-
-        }); 
+	  $( function() {
+		$( "#datepicker" ).datepicker();
+	  } );
 	  </script>
       </body>
     </html>

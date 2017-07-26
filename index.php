@@ -3,16 +3,14 @@
 
 
 	if(isset($_POST['submit'])){
-		$username = $_POST['username'];
-		$password = $_POST['password'];
+		$username = mysqli_real_escape_string($mysqli,$_POST['username']);
+		$password = mysqli_real_escape_string($mysqli,$_POST['password']);
 		
-		$get_business_id = mysqli_query($mysqli,"SELECT * FROM users JOIN (user_access_levels,company_details) WHERE users.user_id=user_access_levels.user_id AND user_access_levels.business_id=company_details.company_id ");
-
-		$login_que = mysqli_query($mysqli,"SELECT * FROM users WHERE email='$username' AND password='$password' ");
+		$login_que = mysqli_query($mysqli,"SELECT * FROM tbl_business where email='$username' and password='$password' and status='active'");
 		$fetch_details = mysqli_fetch_array($login_que);
 		$get_rows = mysqli_num_rows($login_que);
 		if($get_rows > 0){
-			$_SESSION['user_id'] = $fetch_details['user_id'];
+			$_SESSION['business_id'] = $fetch_details['business_id'];
 
 			echo "<script>window.location.href='dashboard.php'</script>";
 		}else{

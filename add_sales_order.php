@@ -61,7 +61,7 @@ include("sidebar.php");
                       
 						<div class="row">
                           <div class="col-sm-3">
-                            INVOICE No
+                           <b> INVOICE No</b>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group" style="font-size:20px;font-weight:bold;">
@@ -73,7 +73,7 @@ include("sidebar.php");
 
                         <div class="row">
                           <div class="col-sm-3">
-                            Customer Name
+                            <b>Customer Name</b>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
@@ -93,7 +93,7 @@ include("sidebar.php");
 						
 						<div class="row">
                           <div class="col-sm-3">
-                            Customer Name
+                            <b>Sales Date</b>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
@@ -104,10 +104,10 @@ include("sidebar.php");
 
                         <div class="row">
                           <div class="col-sm-3">
-                            E-com GSTIN
+                            <b>E-com GSTIN</b>
                           </div>
                           <div class="form-group col-sm-6">
-                            <input type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate">
+                            <input type="text" class="form-control" placeholder="GST IN" name="invoicedate">
                             <p class="help-block with-errors"></p>
                           </div>
                         </div>

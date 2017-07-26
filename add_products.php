@@ -239,7 +239,7 @@
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<a href="javascript:void(0)" class="add-more" style="font-size:13px;">
+														<a href="javascript:void(0)" class="add-more" style="font-size:13px;" onclick="add_more_attri()">
 															<i class="fa fa-plus"></i> Add More Attribute
 														</a>
 													</div><!-- /.form-group -->
@@ -307,19 +307,19 @@
 				$(".atrri").hide();
 		}
 
-		$(document).ready(function() {
-		  $(".add-more").click(function(){ 
-			  var htmlz = "<div class='row atrri_add_cont'><div class='col-sm-3 ache_ekta'></div><div class='col-sm-4'><div class='form-group'><label style='font-size:13px;'>Attribute</label><input type='text' name='attri[]' class='form-control' placeholder='Eg: color' required><p class='help-block with-errors'></p></div></div><div class='col-sm-5'><div class='form-group'><div class='col-sm-10'><label style='font-size:13px;'>Options</label><input type='text' name='optn[]' class='form-control' placeholder='Red' required><p class='help-block with-errors'></p></div><div class='col-sm-2' style='margin-top:30px;'><a href='#' class='remove' style='color:#ef5350;'><i class='fa fa-trash'></i></a></div></div></div></div>";
-			  //alert(htmlz);
-			  $(".add-more-contz").append(htmlz);
-		  });
+		function add_more_attri()
+		{
+			 var htmlz = "<div class='row atrri_add_cont'><div class='col-sm-3 ache_ekta'></div><div class='col-sm-4'><div class='form-group'><label style='font-size:13px;'>Attribute</label><input type='text' name='attri[]' class='form-control' placeholder='Eg: color'  ><p class='help-block with-errors'></p></div></div><div class='col-sm-5'><div class='form-group'><div class='col-sm-10'><label style='font-size:13px;'>Options</label><input type='text' name='optn[]' class='form-control' placeholder='Red'  ><p class='help-block with-errors'></p></div><div class='col-sm-2' style='margin-top:30px;'><a href='javascript:void(0);' class='remove' style='color:#ef5350;'><i class='fa fa-trash'></i></a></div></div></div></div>";
 
-		  $("body").on("click",".remove",function(){ 
+$(".add-more-contz").append(htmlz);
+
+$("body").on("click",".remove",function(){ 
 			  
 			  $(this).parents(".atrri_add_cont").remove();
 		  });
+		}
 
-		});
+		
 	</script>
 	
 	<script>

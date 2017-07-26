@@ -123,7 +123,7 @@ if(isset($_GET['delete_id']))
 											<th style="text-align:center;">Company Name</th>
 							                <th style="text-align:center;">Email</th>
 							                <th style="text-align:center;">Mobile No.</th>
-							                <th style="text-align:center;">Address</th>
+							                <th style="text-align:center;">GST/PAN</th>
 							                <th style="text-align:center;">Status</th>											
 											<th style="text-align:center;">Action</th>
 							            </tr>
@@ -138,7 +138,7 @@ if(isset($_GET['delete_id']))
 											<td><?php echo ucfirst($fetch_vendor_info['enterprise_name']);?></td>
 							                <td><?php echo $fetch_vendor_info['email']?></td>
 							                <td><?php echo $fetch_vendor_info['mobile']?></td>
-							                <td><?php ucfirst($fetch_vendor_info['shipping_address']);?>&nbsp;<?php echo $fetch_vendor_info['shipping_state']?></td>
+							                <td><?php echo ucfirst($fetch_vendor_info['GST_PAN'])?></td>
 							                <td><?php echo $fetch_vendor_info['status']?></td>
 										
 											<td>

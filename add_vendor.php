@@ -274,7 +274,7 @@ if(isset($_POST['submit']))
 																	while ($fetch_state = mysqli_fetch_array($state_info))
 																	{
 																	?>
-																	<option value= "<?php echo $fetch_state['states_id'];?>"><?php echo $fetch_state['states_name'];?>&nbsp;(<?php echo $fetch_state['states_code'];?>)
+																	<option value= "<?php echo $fetch_state['states_name'];?>"><?php echo $fetch_state['states_name'];?>&nbsp;(<?php echo $fetch_state['states_code'];?>)
 																	</option>
 																	<?php
 																	}
@@ -320,7 +320,7 @@ if(isset($_POST['submit']))
 																	while ($fetch_state = mysqli_fetch_array($state_info))
 																	{
 																	?>
-																	<option value= "<?php echo $fetch_state['states_id'];?>"><?php echo $fetch_state['states_name'];?>&nbsp;(<?php echo $fetch_state['states_code'];?>)
+																	<option value= "<?php echo $fetch_state['states_name'];?>"><?php echo $fetch_state['states_name'];?>&nbsp;(<?php echo $fetch_state['states_code'];?>)
 																	</option>
 																	<?php
 																	}

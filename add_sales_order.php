@@ -67,7 +67,7 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group" style="font-size:20px;font-weight:bold;">
-                              <?php echo date("dmy");?>
+                              #<?php echo date("dmy");?>
 							  <?php echo $invoice_no;?>
                             </div>
                           </div>
@@ -158,7 +158,7 @@ include("sidebar.php");
 								<th>&nbsp;</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="table_dats">
 							<tr>
 								<th style="text-align:center;"><i class="fa fa-shopping-bag" aria-hidden="true"></i></th>
 								<th style="text-align:center;"><i class="fa fa-table" aria-hidden="true"></i></th>
@@ -174,33 +174,35 @@ include("sidebar.php");
 								<th style="text-align:center;"><i class="fa fa-inr" aria-hidden="true"></i></th>
 								<th></th>
 							</tr>
-							<tr>
-								<th>
+
+							<tr class="rocks">
+								<th class="a">
 									  <select class="form-control selectpicker">
 										 <option data-tokens="china">China</option>
 										 <option data-tokens="malayasia">Malayasia</option>
 										 <option data-tokens="singapore">Singapore</option>
 									  </select>
 								</th>
-								<th><input type="text" class="form-control" value="2345651" name=""></th>
-								<th><input type="number" class="form-control" value="1" name=""></th>
-								<th><input type="text" class="form-control" value="00.00" name=""></th>										
-								<th>
+								<th class="b"><input type="text" class="form-control" value="2345651" name=""></th>
+								<th class="c"><input type="number" class="form-control" value="1" name=""></th>
+								<th class="d"><input type="text" class="form-control" value="00.00" name=""></th>										
+								<th class="e">
 									<select class="form-control selectpicker">
 										 <option data-tokens="china">China</option>
 										 <option data-tokens="malayasia">Malayasia</option>
 										 <option data-tokens="singapore">Singapore</option>
 									  </select>
 								</th>
-								<th><input type="text" class="form-control" value="00.00" name=""></th>
-								<th><input type="text" class="form-control" value="00.00" name=""></th>
-								<th><input type="text" class="form-control" value="00.00" name=""></th>
-								<th><input type="text" class="form-control" value="00.00" name=""></th>
-								<th style="text-align:center;"><input type="text" class="form-control" value="00.00" name=""></th>
-								<th style="text-align:center;"><input type="text" class="form-control" value="00.00" name=""></th>
-								<th style="text-align:center;"><input type="text" class="form-control" value="00.00" readonly name=""></th>
-								<th><a href=""><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>
+								<th class="f"><input type="text" class="form-control" value="00.00" name=""></th>
+								<th class="g"><input type="text" class="form-control" value="00.00" name=""></th>
+								<th class="h"><input type="text" class="form-control" value="00.00" name=""></th>
+								<th class="i"><input type="text" class="form-control" value="00.00" name=""></th>
+								<th class="j" style="text-align:center;"><input type="text" class="form-control" value="00.00" name=""></th>
+								<th class="k" style="text-align:center;"><input type="text" class="form-control" value="00.00" name=""></th>
+								<th class="l" style="text-align:center;"><input type="text" class="form-control" value="00.00" readonly name=""></th>
+								<th><a href="javascript:void(0);" class="add-more" onclick="add_more_fun();"><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>
 							</tr>
+
 							<tr>
 								<th colspan="9"></th>
 								
@@ -287,7 +289,7 @@ include("sidebar.php");
           </div>
 
         </div>
-
+-
       </article>
       <?php include("footer.php");?>
 
@@ -309,7 +311,35 @@ include("sidebar.php");
 	  <script>
 	  $( function() {
 		$( ".rs-datepicker" ).datepicker();
-	  } );
+	  });
+
+		 function add_more_fun(){
+			  //alert('zz');
+			  var a = $(".a").html();
+			  var b = $(".b").html();
+			  var c = $(".c").html();
+			  var d = $(".d").html();
+			  var e = $(".e").html();
+			  var f = $(".f").html();
+			  var g = $(".g").html();
+			  var h = $(".h").html();
+			  var i = $(".i").html();
+			  var j = $(".j").html();
+			  var k = $(".k").html();
+			  var l = $(".l").html();
+
+			  var htmlz = "<th>"+a+"</th><th>"+b+"</th><th>"+c+"</th><th>"+d+"</th><th>"+e+"</th><th>"+f+"</th><th>"+g+"</th><th>"+h+"</th><th>"+i+"</th><th>"+j+"</th><th>"+k+"</th><th>"+l+"</th><th><a href='javascript:void(0);' class='add-more' onclick='remove_class(this);'><i class='fa fa-trash' style='font-size:20px;margin-top:10px;color:red;'></i></a></th>";
+			  
+			  //alert(newhtml);
+			  
+			  $(".rocks").after("<tr>"+htmlz+"</tr>");
+		  };
+
+		  function remove_class(e){
+			
+			$(e).parents("tr").remove();
+		  }
 	  </script>
+
       </body>
     </html>

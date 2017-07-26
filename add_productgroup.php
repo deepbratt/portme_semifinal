@@ -204,7 +204,7 @@
 												</div><!-- /.col-sm-4 -->
 												<div class="col-sm-9">
 											   <div class="form-group">                
-												 <select name="hsn_codes" class="rs-selectize-single">													   
+												 <select name="hsn_codes" class="">													   
 												   <option value="">Select HSN Codes</option>
 												 </select>
 											   </div><!-- /.form-group -->
@@ -219,7 +219,7 @@
 												</div><!-- /.col-sm-4 -->
 												<div class="col-sm-9">
 											   <div class="form-group">                
-												 <select name="uqc_codes" class="rs-selectize-single">													   
+												 <select name="uqc_codes" class="">													   
 												   <option value="">Select UQC Codes</option>
 												 </select>
 											   </div><!-- /.form-group -->

@@ -112,7 +112,7 @@
 											  </div>
 											 <div class="col-sm-9">
 											   <div class="form-group">                
-											 <select name="product_category_id" class="rs-selectize-single">
+											 <select name="product_category_id" class="form-control">
 												
 																				   
 											   <option value="<?php echo $fetch_category['category_id']?>"><?php echo $fetch_category['category_name']?></option>

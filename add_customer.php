@@ -179,7 +179,7 @@ if(isset($_POST['submit_details']))
 											<div class="col-sm-9">
 											<div class="form-group">
 												<input name="wphone" type="integer" class="form-control"placeholder="Enter Work Phone Number">
-												<p class="help-block with-errors"></p>
+												<p class="help-block with-errors" required></p>
 											</div>
 											</div><!-- /.form-group -->
 											</div>
@@ -192,7 +192,7 @@ if(isset($_POST['submit_details']))
 												</div><!-- /.col-sm-4 -->
 											<div class="col-sm-9">
 											<div class="form-group">
-												<input name="mobile" type="integer" class="form-control"placeholder="Enter Mobile Number" required>
+												<input name="mobile" type="integer" class="form-control"placeholder="Enter Mobile Number">
 												<p class="help-block with-errors"></p>
 											</div>
 											</div><!-- /.form-group -->
@@ -206,7 +206,7 @@ if(isset($_POST['submit_details']))
 												</div><!-- /.col-sm-4 -->
 											<div class="col-sm-9">
 											<div class="form-group">
-												<input name="gst" type="text" class="form-control"placeholder="Enter GSTIN/PAN No." required>
+												<input name="gst" type="text" class="form-control"placeholder="Enter GSTIN/PAN No.">
 												<p class="help-block with-errors"></p>
 											</div>
 											</div><!-- /.form-group -->
@@ -334,7 +334,7 @@ if(isset($_POST['submit_details']))
 											<div role="tabpanel" class="tab-pane fade" id="rs-tab-02">
 												<h3 style="margin-bottom:15px;font-size:17px;">Notes</h3>	
 												<div class="form-group">
-													<textarea class="form-control" placeholder="Notes" style="min-height:250px;" required></textarea>
+													<textarea class="form-control" placeholder="Notes" style="min-height:250px;" ></textarea>
 													<p class="help-block with-errors"></p>
 												</div><!-- /.form-group -->
 											</div><!-- /.tab-pane -->

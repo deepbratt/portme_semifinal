@@ -149,9 +149,9 @@ if(isset($_GET['delete_id']))
 							                <td><?php echo $fetch_customer_info['status']?></td>
 										
 											<td>
-												<a href="view_contact.php?cu_id=<?php echo $fetch_customer_info['customer_id'];?>" class="btn btn-default" style="height:35px;margin:5px;"> View </a><br>
+												<a href="view_customer.php?cu_id=<?php echo $fetch_customer_info['customer_id'];?>" class="btn btn-default" style="height:35px;margin:5px;"> View </a><br>
 
-												<a href="edit_contact.php?cu_id=<?php echo $fetch_customer_info['customer_id'];?>" class="fa fa-pencil" style="height:10px;margin:5px;"></a>
+												<a href="edit_customer.php?cu_id=<?php echo $fetch_customer_info['customer_id'];?>" class="fa fa-pencil" style="height:10px;margin:5px;"></a>
 
 												<a href="?delete_id=<?php echo $fetch_customer_info['customer_id'];?>" class="fa fa-trash" style="height:10px;margin:5px;"></a>
 											</td>

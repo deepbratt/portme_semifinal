@@ -1,7 +1,6 @@
 <?php
 include ("config.php");
-$user_id = $_SESSION['user_id'];
-
+$business_id = $_SESSION['business_id'];
 $customer_id = $_GET['cu_id'];
 
 if(isset($_POST['update']))
@@ -13,19 +12,14 @@ if(isset($_POST['update']))
 	$email			= $_POST['email'];
 	$work_phone		= $_POST['wphone'];
 	$mobile			= $_POST['mobile'];
-	$website		= $_POST['website'];
-	$billing_street = $_POST['bstreet'];
-	$billing_city	= $_POST['bcity'];
+	$gst			= $_POST['gst'];
+	$billing_address= $_POST['baddress'];
 	$billing_state	= $_POST['bstate'];
-	$billing_zip	= $_POST['bzip'];
-	$shipping_street = $_POST['sstreet'];
-	$shipping_city	= $_POST['scity'];
+	$shipping_address= $_POST['saddress'];
 	$shipping_state = $_POST['sstate'];
-	$shipping_zip	= $_POST['szip'];
 	$notes			= $_POST['notes'];
-	$date			= date();
 
-	$update_customer_details = mysqli_query($mysqli, "update customers set salutation= '".$salutation."', firstname='".$firstname."', lastname='".$lastname."', company_name='".$company_name."', email='".$email."', work_phone='".$work_phone."', mobile='".$mobile."', website='".$website."', billing_street='".$billing_street."', billing_city='".$billing_city."', billing_state='".$billing_state."', billing_zip='".$billing_zip."', shipping_street='".$shipping_street."', shipping_city='".$shipping_city."', shipping_state='".$shipping_state."', shipping_zip='".$shipping_zip."',  date='".$date."', notes='".$notes."',added_by='".$user_id."'  where customer_id='".$customer_id."' ");
+	$update_customer_details = mysqli_query($mysqli, "update  tbl_contacts set salutation= '".$salutation."', first_name='".$firstname."', last_name='".$lastname."', enterprise_name='".$company_name."', email='".$email."', work_phone='".$work_phone."', mobile='".$mobile."', GST_PAN='".$gst."', address='".$billing_address."', state='".$billing_state."', shipping_address='".$shipping_address."', shipping_state='".$shipping_state."',  notes='".$notes."', business_id='".$business_id."' where customer_id='".$customer_id."' ");
 	if($update_customer_details)
 	{
 		$data = "success";
@@ -35,7 +29,12 @@ if(isset($_POST['update']))
 		$data = "error" ;
 	}
 }
+$select_query = mysqli_query($mysqli,"select * from tbl_contacts where customer_id='".$customer_id."'");
+$fetch_query = mysqli_fetch_array($select_query);
+
+
 ?>
+
 
 
 <!DOCTYPE html>
@@ -47,7 +46,20 @@ if(isset($_POST['update']))
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Add Customer | Port-ME</title>
+	
+	<?php
+		if($fetch_query['customer_type'] == 'customer'){
+	?>
+	<title>View Customer Details | Port-ME</title>
+	<?php
+	}
+	else if($fetch_query['customer_type'] == 'vendor'){
+	?>
+	<title>View Vendor Details | Port-ME</title>
+	<?php
+	}
+	?>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVEqoCsKgUMmAcDVX9OAwVMDewLI6yOAQ&sensor=false&libraries=places&language=en"></script>
 	<?php include("metalinks.php");?>
 
 </head>
@@ -75,11 +87,23 @@ if(isset($_POST['update']))
 						<div class="rs-dashhead-content">
 							<div class="rs-dashhead-titles">
 								<h3 class="rs-dashhead-title m-t">
-									Edit Customer
+										<?php
+										if($fetch_query['customer_type'] == 'customer'){
+									?>
+									Edit Customer Details
+									<?php
+									}
+									else if($fetch_query['customer_type'] == 'vendor'){
+									?>
+									Edit Vendor Details
+									<?php
+									}
+									?>
+									
 									<div style="float:right;">
 										<!--<span style="padding:10px 10px;font-size:15px;font-weight:normal;color:#4a89dc;cursor:pointer;border-right:1px solid #CCC;"> <i class="fa fa-lightbulb-o"></i> &nbsp;&nbsp;Page Tutorial</span>-->
 
-										<span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='customer.php'"> <i class="fa fa-remove"></i> </span>
+										<span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='vendor.php'"> <i class="fa fa-remove"></i> </span>
 									</div>
 								</h3>
 								
@@ -108,13 +132,6 @@ if(isset($_POST['update']))
 						}
 						?>
 						</div>
-					
-						<?php
-						$view_customer_info = mysqli_query($mysqli, "select * from customers where customer_id='".$customer_id."'");
-						$fetch_customer_details = mysqli_fetch_array ($view_customer_info);
-						?>
-
-				
 
 						<div class="col-md-7 col-sm-12">
 						<!-- Begin Panel -->
@@ -126,51 +143,50 @@ if(isset($_POST['update']))
 												<div class="col-sm-4">
 													<div class="form-group">
 														<select name="sal" class="rs-selectize-single" >
-															<option selected disabled value=""><?php echo $fetch_customer_details['salutation']?></option>
-															<option value="Mr."<?php echo(($fetch_customer_details['salutation']=='Mr.')?'selected':'');?>>Mr.</option>
-															<option value="Mrs."<?php echo(($fetch_customer_details['salutation']=='Mrs.')?'selected':'');?>>Mrs.</option>
-															<option value="Ms."<?php echo(($fetch_customer_details['salutation']=='Ms.')?'selected':'');?>>Ms.</option>
-															<option value="Miss."<?php echo(($fetch_customer_details['salutation']=='Miss.')?'selected':'');?>>Miss.</option>
-															<option value="Dr."<?php echo(($fetch_customer_details['salutation']=='Dr.')?'selected':'');?>>Dr.</option>
+															<option value="Mr."<?php echo(($fetch_query['salutation']=='Mr.')?'selected':'');?>>Mr.</option>
+															<option value="Mrs."<?php echo(($fetch_query['salutation']=='Mrs.')?'selected':'');?>>Mrs.</option>
+															<option value="Ms."<?php echo(($fetch_query['salutation']=='Ms.')?'selected':'');?>>Ms.</option>
+															<option value="Miss."<?php echo(($fetch_query['salutation']=='Miss.')?'selected':'');?>>Miss.</option>
+															<option value="Dr."<?php echo(($fetch_query['salutation']=='Dr.')?'selected':'');?>>Dr.</option>
 														</select>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->
 												<div class="col-sm-4">
 													<div class="form-group">
-														<input name="fname" type="text" class="form-control" id="rs-form-example-fname" value=<?php echo $fetch_customer_details['firstname']; ?> >
+														<input name="fname" type="text" class="form-control" id="rs-form-example-fname" value=<?php echo $fetch_query['first_name']; ?> >
 														<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->
 												<div class="col-sm-4">
 													<div class="form-group">
-														<input name="lname" type="text" class="form-control" id="rs-form-example-lname" value=<?php echo $fetch_customer_details['lastname']; ?> >
+														<input name="lname" type="text" class="form-control" id="rs-form-example-lname" value=<?php echo $fetch_query['last_name']; ?> >
 														<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->
 											</div><!-- /.row -->
 
 											<div class="form-group">
-												<input name="cname" type="text" class="form-control" id="rs-form-example-email" value=<?php echo $fetch_customer_details['company_name']; ?> >
+												<input name="cname" type="text" class="form-control" id="rs-form-example-email" value=<?php echo $fetch_query['enterprise_name']; ?> >
 												<p class="help-block with-errors"></p>
 											</div><!-- /.form-group -->
 
 											<div class="form-group">
-												<input name="email" type="email" class="form-control" id="rs-form-example-email" value=<?php echo $fetch_customer_details['email'];?> >
+												<input name="email" type="email" class="form-control" id="rs-form-example-email" value=<?php echo $fetch_query['email'];?> >
 												<p class="help-block with-errors"></p>
 											</div><!-- /.form-group -->
 
 											<div class="form-group">
-												<input name="wphone" type="integer" class="form-control" id="rs-form-example-tel" value=<?php echo $fetch_customer_details['work_phone']; ?> >
+												<input name="wphone" type="integer" class="form-control" id="rs-form-example-tel" value=<?php echo $fetch_query['work_phone']; ?> >
 												<p class="help-block with-errors"></p>
 											</div><!-- /.form-group -->
 
 											<div class="form-group">
-												<input name="mobile" type="integer" class="form-control" id="rs-form-example-tel" value=<?php echo $fetch_customer_details['mobile']; ?> >
+												<input name="mobile" type="integer" class="form-control" id="rs-form-example-tel" value=<?php echo $fetch_query['mobile']; ?> >
 												<p class="help-block with-errors"></p>
 											</div><!-- /.form-group -->
 
 											<div class="form-group">
-												<input name="website" type="text" class="form-control" id="rs-form-example-tel" value=<?php echo $fetch_customer_details['website']; ?> >
+												<input name="gst" type="text" class="form-control" id="rs-form-example-tel" value=<?php echo $fetch_query['GST_PAN']; ?> >
 												<p class="help-block with-errors"></p>
 											</div><!-- /.form-group -->
 
@@ -178,13 +194,7 @@ if(isset($_POST['update']))
 							</div><!-- /.panel -->
 						</div>
 
-						<div class="col-md-5 col-sm-12">
-							 
-							<div class="panel panel-plain panel-rounded" style="padding-top:10px;" >
-								<iframe width="100%" height="50%" src="https://www.youtube.com/embed/5GZ3fP71Bzg" style="padding:10px;min-height:300px;" frameborder="0" allowfullscreen></iframe>
-							</div>
-						</div>
-						
+												
 						<div class="col-md-12" style="margin-top:-50px;">
 							<!-- Begin Panel -->
 								<div class="panel panel-plain panel-rounded">
@@ -203,50 +213,60 @@ if(isset($_POST['update']))
 														<h3 style="margin-bottom:15px;font-size:17px;">Billing Address</h3>
 														
 														<div class="form-group">
-															<textarea name="bstreet" class="form-control billstreet" ><?php echo $fetch_customer_details['billing_street']; ?></textarea>
+															<input name="baddress" type="text" id="cityz"  class="form-control billaddress1" value="<?php echo $fetch_query['address']; ?>">
 															<p class="help-block with-errors"></p>
-														</div><!-- /.form-group -->
+														</div><!-- /.form-group -->									
 
 														<div class="form-group">
-															<input name="bcity" type="text" class="form-control billcity" id="rs-form-example-email" value=<?php echo $fetch_customer_details['billing_city']; ?> >
-															<p class="help-block with-errors"></p>
-														</div><!-- /.form-group -->
+																<div class="form-group">
+																	<select name="bstate" class="rs-selectize-single billstate1" required>
+																	
+																	<?php
+																	$state_info = mysqli_query($mysqli, "select * from states");
+																	while ($fetch_bill_state = mysqli_fetch_array($state_info))
+																	{
+																	?>
+																	<option value= "<?php echo $fetch_bill_state['states_id'];?>" <?php echo(($fetch_query['state']==$fetch_bill_state['states_id'])?'selected':'');
+																	?>><?php echo $fetch_bill_state['states_name'];?>&nbsp;(<?php echo $fetch_bill_state['states_code'];?>)
+																	</option>
+																	<?php
+																	}
+																	?>
+																	</select>
+																	<p class="help-block with-errors"></p>
+																</div><!-- /.form-group -->
+															</div>
 
-														<div class="form-group">
-															<input name="bstate" type="text" class="form-control billstate" id="rs-form-example-tel" value=<?php echo $fetch_customer_details['billing_state']; ?> >
-															<p class="help-block with-errors"></p>
-														</div><!-- /.form-group -->
-
-														<div class="form-group">
-															<input name="bzip" type="integer" class="form-control bilzip" id="rs-form-example-tel" value=<?php echo $fetch_customer_details['billing_zip']; ?> >
-															<p class="help-block with-errors"></p>
-														</div><!-- /.form-group -->
-
+														
 													</div>
 
 													<div class="col-md-6 col-sm-12" style="margin-left:0px;padding:5px;">
 														<h3 style="margin-bottom:15px;font-size:17px;">Shipping Address <span style="font-size:15px;float:right;color:#4a89dc;font-weight:normal;cursor:pointer;padding:5px;" onclick="copybillingaddr();"><i class="fa fa-hand-o-down"></i> Copy billing address</span></h3>
 														
 														<div class="form-group">
-															<textarea name="sstreet" class="form-control billstreet2"><?php echo $fetch_customer_details['shipping_street']; ?></textarea>
+															<input type="text" id="cityz" name="saddress" class="form-control billaddress2" value="<?php echo $fetch_query['shipping_address']; ?>">
 															<p class="help-block with-errors"></p>
-														</div><!-- /.form-group -->
+														</div><!-- /.form-group -->														
 
-														<div class="form-group">
-															<input name="scity" type="text" class="form-control billcity2" id="rs-form-example-email" value=<?php echo $fetch_customer_details['shipping_city']; ?> >
-															<p class="help-block with-errors"></p>
-														</div><!-- /.form-group -->
-
-														<div class="form-group">
-															<input name="sstate" type="text" class="form-control billstate2" id="rs-form-example-tel" value=<?php echo $fetch_customer_details['shipping_state']; ?> >
-															<p class="help-block with-errors"></p>
-														</div><!-- /.form-group -->
-
-														<div class="form-group">
-															<input name="szip" type="integer" class="form-control bilzip2" id="rs-form-example-tel" value=<?php echo $fetch_customer_details['shipping_zip']; ?> >
-															<p class="help-block with-errors"></p>
-														</div><!-- /.form-group -->
-														
+															<div class="form-group">
+																<div class="form-group">
+																	<select name="sstate" class="rs-selectize-single billstate2" >									
+																	<?php
+																	$state_info = mysqli_query($mysqli, "select * from states");
+																	while ($fetch_ship_state = mysqli_fetch_array($state_info))
+																	{
+																	?>
+																	<option value= "<?php echo $fetch_ship_state['states_id'];?>" <?php echo(($fetch_query['state']==$fetch_ship_state['states_id'])?'selected':'');?>> 
+																	<?php echo $fetch_ship_state['states_name'];?>&nbsp;(<?php echo $fetch_ship_state['states_code'];?>)
+																	</option>
+																	<?php
+																	}
+																	?>
+																	</select>
+																	<p class="help-block with-errors"></p>
+																</div><!-- /.form-group -->
+															</div>
+																											
 													</div>
 												</div>
 											</div><!-- /.tab-pane -->
@@ -254,7 +274,7 @@ if(isset($_POST['update']))
 											<div role="tabpanel" class="tab-pane fade" id="rs-tab-02">
 												<h3 style="margin-bottom:15px;font-size:17px;">Notes</h3>	
 												<div class="form-group">
-													<textarea name="notes" class="form-control" style="min-height:250px;" ><?php echo $fetch_customer_details['notes']; ?></textarea>
+													<textarea name="notes" class="form-control" style="min-height:250px;" ><?php echo $fetch_query['notes']; ?></textarea>
 													<p class="help-block with-errors"></p>
 												</div><!-- /.form-group -->
 											</div><!-- /.tab-pane -->
@@ -283,6 +303,11 @@ if(isset($_POST['update']))
 		<!-- END MAIN CONTENT -->
 
 	<?php include("footer.php");?>
+	<!--Address plugin -->
+	<script>
+      var input = document.getElementById('cityz');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    </script>
 	<!-- Page Plugins -->
 	<script src="js/bootstrap-switch.min.js"></script>
 	<script src="js/bootstrap-switch-example.js"></script>
@@ -305,20 +330,14 @@ if(isset($_POST['update']))
 
 	<!-- Page Plugins -->
 	<script src="js/validator.min.js"></script>
-	<script>
+<script>
 		function copybillingaddr(){
-			var billstreet = $(".billstreet").val();
-			var billcity = $(".billcity").val();
-			var billstate = $(".billstate").val();
-			var bilzip = $(".bilzip").val();
-			var billcountry = $(".billcountry option:selected").val();
+			var billaddress1 = $(".billaddress1").val();
+			var billstate1 = $(".billstate1").val();
 			
-			$(".billstreet2").val(billstreet);
-			$(".billcity2").val(billcity);
-			$(".billstate2").val(billstate);
-			$(".bilzip2").val(bilzip);
+			$(".billaddress2").val(billaddress1);
+			$(".billstate2").val(billstate1);
 			//$(".billcountry2 select").val(billcountry)
-			$('.billcountry2 option[value='+billcountry+']').prop('selected',true);
 		}
 	</script>
 	

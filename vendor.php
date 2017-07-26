@@ -1,12 +1,12 @@
 <?php
 include ("config.php");
-$user_id = $_SESSION['user_id'];
-$vendor_info = mysqli_query ($mysqli,"select * from vendors where business_id='".$user_id."'");
+$business_id = $_SESSION['business_id'];
+$vendor_info = mysqli_query ($mysqli,"select * from tbl_contacts where customer_type='vendor' and status='active'");
 
 if(isset($_GET['delete_id']))
 {
 	$delete_id = $_GET['delete_id'];
-	$delete_customer = mysqli_query($mysqli,"delete from vendors where vendor_id = '".$delete_id."'");
+	$delete_customer = mysqli_query($mysqli,"update tbl_contacts set status='inactive' where customer_id = '".$delete_id."'");
 	if($delete_customer)
 		{
 			$data = "success";
@@ -27,7 +27,7 @@ if(isset($_GET['delete_id']))
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>My Customers | Port-ME </title>
+	<title>My Vendors | Port-ME </title>
 	<?php include("metalinks.php");?>
 	<style>
 		.dt-buttons a{
@@ -101,18 +101,30 @@ if(isset($_GET['delete_id']))
 
 					<!-- Begin default content width -->
 					<div class="container-fluid">
+						<?php
+								if(isset($data) && $data == "success")
+						{
+						?>
+						<p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Added Successfully </p>
+						<?php
+						}else if(isset($data) && $data == "error"){
+						?>
+						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in Insertion </p>
+						<?php
+						}
+						?>
 
 						<!-- Begin Panel -->
 						<div class="panel panel-plain panel-rounded table-responsive">
 								<table class="table table-b-t table-b-b datatable-default rs-table table-default" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">
 									<thead>
 							            <tr>
-							                <th style="text-align:center;">Customer Name</th>
-							                <th style="text-align:center;">Company Name</th>
+							                <th style="text-align:center;">Vendor Name</th>
+											<th style="text-align:center;">Company Name</th>
 							                <th style="text-align:center;">Email</th>
 							                <th style="text-align:center;">Mobile No.</th>
-							                <th style="text-align:center;">Shipping City</th>
-							                <th style="text-align:center;">ZIP code</th>											
+							                <th style="text-align:center;">Address</th>
+							                <th style="text-align:center;">Status</th>											
 											<th style="text-align:center;">Action</th>
 							            </tr>
 							        </thead>
@@ -122,19 +134,19 @@ if(isset($_GET['delete_id']))
 										while ($fetch_vendor_info = mysqli_fetch_array($vendor_info))										
 										{
 										?>
-							                <td><?php echo $fetch_vendor_info['firstname']?></td>											
-											<td><?php echo $fetch_vendor_info['company_name']?></td>
+							                <td><?php echo ucfirst($fetch_vendor_info['first_name']);?>&nbsp;<?php echo $fetch_vendor_info['last_name']?></td>		
+											<td><?php echo ucfirst($fetch_vendor_info['enterprise_name']);?></td>
 							                <td><?php echo $fetch_vendor_info['email']?></td>
 							                <td><?php echo $fetch_vendor_info['mobile']?></td>
-							                <td><?php echo $fetch_vendor_info['shipping_city']?></td>
-							                <td><?php echo $fetch_vendor_info['shipping_zip']?></td>
+							                <td><?php ucfirst($fetch_vendor_info['shipping_address']);?>&nbsp;<?php echo $fetch_vendor_info['shipping_state']?></td>
+							                <td><?php echo $fetch_vendor_info['status']?></td>
 										
 											<td>
-												<a href="view_vendor.php?vendor_id=<?php echo $fetch_vendor_info['vendor_id'];?>" class="btn btn-default" style="height:35px;margin:5px;"> View </a><br>
+												<a href="view_customer.php?cu_id=<?php echo $fetch_vendor_info['customer_id'];?>" class="btn btn-default" style="height:35px;margin:5px;"> View </a><br>
 
-												<a href="edit_vendor.php?vendor_id=<?php echo $fetch_vendor_info['vendor_id'];?>" class="fa fa-pencil" style="height:10px;margin:5px;"></a>
+												<a href="edit_customer.php?cu_id=<?php echo $fetch_vendor_info['customer_id'];?>" class="fa fa-pencil" style="height:10px;margin:5px;"></a>
 
-												<a href="?delete_id=<?php echo $fetch_vendor_info['vendor_id'];?>" class="fa fa-trash" style="height:10px;margin:5px;"></a>
+												<a href="?delete_id=<?php echo $fetch_vendor_info['customer_id'];?>" class="fa fa-trash" style="height:10px;margin:5px;"></a>
 											</td>
 							            </tr>
 							           <?php

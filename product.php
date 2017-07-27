@@ -6,7 +6,7 @@ $business_id = $_SESSION['business_id'];
 if(isset($_GET['delete_id']))
 {
 	$delete_id = $_GET['delete_id'];
-	$delete_product = mysqli_query($mysqli,"delete from tbl_products where product_id = '".$delete_id."'");
+	$delete_product = mysqli_query($mysqli,"update tbl_products set status='inactive' where product_id = '".$delete_id."'");
 	if($delete_product)
 		{
 			$data = "success";

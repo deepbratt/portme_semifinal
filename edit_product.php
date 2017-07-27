@@ -1,3 +1,37 @@
+<?php
+include ("config.php");
+$business_id = $_SESSION['business_id'];
+$pro_id = $_GET['product_id'];
+
+if(isset($_POST['update']))
+{
+	$category_id   = $_POST['product_category_id'];
+	$product_name=$_POST['product_name'];
+	$description  = $_POST['description'];
+	$quantity  = $_POST['quantity'];
+	$cost_price= $_POST['cost_price_update'];
+	$selling_price= $_POST['selling_price_update'];
+	$attribute = $_POST['attri'];
+	$add_attribute = implode(",",$attribute);
+	$options   = $_POST['optn'];
+	$add_options   = implode(",",$options);
+	$date = time();
+
+
+	$update_product = mysqli_query($mysqli,"update tbl_products set productcat_id='".$category_id."',name='".$product_name."',description='".$description."', qty='".$quantity."',cost_price='".$cost_price."', selling_price='".$selling_price."', attr_name='".$add_attribute."', attr_value='".$add_options."', status='active', date='".$date."' where product_id = '".$pro_id."' ");
+	if($update_product)
+	{
+		$data = "success";
+	}
+	else
+	{
+		$data = "error";
+	}
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang=en>
 
@@ -78,29 +112,12 @@
 
 								<div class="panel-body">
 									<form  method = "POST">
-											<div class="row" style="margin-bottom:10px;">
-												<div class="col-sm-3" style="margin-top:10px;">
-													<span >
-														Type
-													</span>
-												</div><!-- /.col-sm-4 -->
+									
+									<?php
+									$get_product_details = mysqli_query($mysqli, "select * from tbl_products where product_id='".$pro_id."'");
+									$fetch_product_details = mysqli_fetch_array($get_product_details);
 
-												
-												<div class="col-sm-6">
-													<div class="radio radio-custom">
-													<label class="radio-inline">
-														<input type="radio" name="cs-radio" id="cs-radio-04" value="Product">
-														<span class="checker"></span>
-														Product
-													</label>
-													<label class="radio-inline">
-														<input type="radio" name="cs-radio" id="cs-radio-05" value="Service">
-														<span class="checker"></span>
-														Service
-													</label>	
-												</div>
-											</div><!-- /.col-sm-4 -->
-										</div><!-- /.row -->
+									?>	
 											
 								<div class="row" style="margin-bottom:5px;">
 									<div class="col-sm-3" style="margin-top:10px;">         
@@ -109,11 +126,15 @@
 											 <div class="col-sm-9">
 											   <div class="form-group">                
 											 <select name="product_category_id" class="rs-selectize-single">
-												
-																			   
-											   <option value="" > CHOOSE CATEGORY</option>
-											 
-											  
+											<?php
+											 $category_name = mysqli_query($mysqli, "select * from tbl_productcat");
+											 while ($fetch_category = mysqli_fetch_array($category_name))
+											 {
+											 ?>																				   
+											  <option value="<?php echo $fetch_category['productcat_id']?>" <?php echo(($fetch_product_details['productcat_id'] == $fetch_category['productcat_id'])?'selected':'');?>><?php echo $fetch_category['category_name']?></option>
+											  <?php
+											 }  
+											 ?>
 											 </select>
 											   </div><!-- /.form-group -->
 											  </div>
@@ -126,7 +147,7 @@
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name = "product_name" type="text" class="form-control" id="rs-form-example-email" value="" >
+														<input name = "product_name" type="text" class="form-control" id="rs-form-example-email" value="<?php echo  ucfirst($fetch_product_details['name']);?>" >
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -138,7 +159,7 @@
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<textarea name="desc" class="form-control"  style="height:150px;" ></textarea>
+														<textarea name="description" class="form-control"  style="height:150px;" ><?php echo  ucfirst($fetch_product_details['desc']);?></textarea>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -150,7 +171,7 @@
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="quantity" type="integer" class="form-control" id="rs-form-example-email" value="" >
+														<input name="quantity" type="number" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_product_details['qty'];?>" >
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -162,7 +183,7 @@
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="cost_price" type="integer" class="form-control" id="rs-form-example-email" value="" >
+														<input name="cost_price_update" type="integer" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_product_details['cost_price'];?>" >
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -174,7 +195,7 @@
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="selling_price" type="integer" class="form-control" id="rs-form-example-email" value="" >
+														<input name="selling_price_update" type="integer" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_product_details['selling_price'];?>" >
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -210,8 +231,17 @@
 																<label style="font-size:13px;">
 																	Attribute
 																</label>
+																 <?php
+																 $attr_name = explode(",",$fetch_product_details['attr_name']);
+																 foreach($attr_name as $attr_name_fetch)
+																 {
+																?>
+																<input type="text" name="attri[]" class="form-control" value="<?php echo ucfirst($attr_name_fetch);?>" >
+																<p class="help-block with-errors"></p>
+																<?php
+																 }
+																?>															
 																
-																<input type="text" name="attri[]" class="form-control" value="" placeholder="Eg: color" >
 																<p class="help-block with-errors"></p>
 															
 															</div>
@@ -223,8 +253,16 @@
 																	<label style="font-size:13px;">
 																		Options
 																	</label>
-																
-																<input type="text" name="optn[]" class="form-control" value="" placeholder="Eg: color" >
+																	 <?php
+																 $attr_value = explode(",",$fetch_product_details['attr_value']);
+																 foreach($attr_value as $attr_value_fetch)
+																 {
+																?>
+																<input type="text" name="optn[]" class="form-control" value="<?php echo  ucfirst($attr_value_fetch);?>" >
+																<p class="help-block with-errors"></p>
+																<?php
+																 }
+																?>		
 																<p class="help-block with-errors"></p>
 																
 																</div>

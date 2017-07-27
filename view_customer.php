@@ -102,7 +102,7 @@ $fetch_customer_details = mysqli_fetch_array($view_customer_info);
 												</div>
 												<div class="col-sm-7">
 													<div class="form-group" style="margin-bottom:-1px; color:#4a89dc">
-														<label><?php echo ucfirst($fetch_customer_details['first_name']);?></label>  <label><?php echo ucfirst($fetch_customer_details['last_name']);?></label>
+														<?php echo ucfirst($fetch_customer_details['first_name']);?><?php echo ucfirst($fetch_customer_details['last_name']);?>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->												
 											</div><!-- /.row -->
@@ -113,7 +113,7 @@ $fetch_customer_details = mysqli_fetch_array($view_customer_info);
 											</div>
 												<div class="form-group">
 													<div class="col-sm-8" style="color:#4a89dc">
-														<label><?php echo ucfirst($fetch_customer_details['enterprise_name']);?> </label>
+														<?php echo ucfirst($fetch_customer_details['enterprise_name']);?> 
 													</div><!-- /.form-group -->
 												</div>
 										</div>
@@ -124,7 +124,7 @@ $fetch_customer_details = mysqli_fetch_array($view_customer_info);
 											</div>
 												<div class="form-group">
 													<div class="col-sm-8" style="color:#4a89dc">
-													<label><?php echo $fetch_customer_details['email'];?> </label>												
+													<?php echo $fetch_customer_details['email'];?> 												
 													</div><!-- /.form-group -->
 												</div>
 											</div>
@@ -134,7 +134,7 @@ $fetch_customer_details = mysqli_fetch_array($view_customer_info);
 											</div>
 												<div class="form-group">
 													<div class="col-sm-8" style="color:#4a89dc">
-													<label><?php echo $fetch_customer_details['work_phone'];?> </label>												
+													<?php echo $fetch_customer_details['work_phone'];?> 												
 													</div><!-- /.form-group -->
 												</div>
 											</div>
@@ -144,7 +144,7 @@ $fetch_customer_details = mysqli_fetch_array($view_customer_info);
 											</div>
 												<div class="form-group">
 													<div class="col-sm-8" style="color:#4a89dc">
-													<label><?php echo $fetch_customer_details['mobile'];?> </label>													
+													<?php echo $fetch_customer_details['mobile'];?> 													
 													</div><!-- /.form-group -->
 												</div>
 											</div>
@@ -180,7 +180,7 @@ $fetch_customer_details = mysqli_fetch_array($view_customer_info);
 															<div class="col-sm-3">
 																<b>Address :</b>
 															</div>	
-														<label style="color:#4a89dc"><?php echo ucfirst($fetch_customer_details['address']);?> </label>									
+														<div style="color:#4a89dc"><?php echo ucfirst($fetch_customer_details['address']);?> </div>									
 														</div><!-- /.form-group -->
 
 														<div class="form-group">
@@ -191,13 +191,13 @@ $fetch_customer_details = mysqli_fetch_array($view_customer_info);
 															$select_state = mysqli_query($mysqli,"select * from states where states_id='".$fetch_customer_details['state']."'");
 															$fetch_state = mysqli_fetch_array($select_state);
 															?>
-															<label style="color:#4a89dc"><?php echo $fetch_state['states_name'];?> </label>
+															<div style="color:#4a89dc"><?php echo $fetch_state['states_name'];?> </div>
 														</div><!-- /.form-group -->	
 														<div class="form-group">
 															<div class="col-sm-3">
 																<b>Country :</b>
 															</div>	
-														<label style="color:#4a89dc"><?php echo $fetch_customer_details['country'];?> </label>
+														<div style="color:#4a89dc"><?php echo $fetch_customer_details['country'];?> </div>
 														</div><!-- /.form-group -->
 														
 
@@ -210,7 +210,7 @@ $fetch_customer_details = mysqli_fetch_array($view_customer_info);
 															<div class="col-sm-3">
 																<b>Address :</b>
 															</div>	
-														<label style="color:#4a89dc"><?php echo ucfirst($fetch_customer_details['shipping_address']);?> </label>
+														<div style="color:#4a89dc"><?php echo ucfirst($fetch_customer_details['shipping_address']);?> </div>
 														</div><!-- /.form-group -->
 
 														<div class="form-group">
@@ -221,13 +221,13 @@ $fetch_customer_details = mysqli_fetch_array($view_customer_info);
 															$select_shiping_state = mysqli_query($mysqli,"select * from states where states_id='".$fetch_customer_details['shipping_state']."'");
 															$fetch_shipping_state = mysqli_fetch_array($select_shiping_state);
 															?>
-															<label style="color:#4a89dc"><?php echo $fetch_shipping_state['states_name'];?> </label>
+															<div style="color:#4a89dc"><?php echo $fetch_shipping_state['states_name'];?> </div>
 														</div><!-- /.form-group -->
 															<div class="form-group">
 															<div class="col-sm-3">
 																<b>Country :</b>
 															</div>	
-														<label style="color:#4a89dc"><?php echo $fetch_customer_details['shipiing_country'];?> </label>
+														<div style="color:#4a89dc"><?php echo $fetch_customer_details['shipiing_country'];?> </div>
 														</div><!-- /.form-group -->
 
 
@@ -239,7 +239,7 @@ $fetch_customer_details = mysqli_fetch_array($view_customer_info);
 											<div role="tabpanel" class="tab-pane fade" id="rs-tab-02">
 												<h3 style="margin-bottom:15px;font-size:17px;"><b>Notes</b></h3>	
 												<div class="form-group">
-													<label style="color:#4a89dc"> <?php echo ucfirst($fetch_customer_details['notes']);?></label>
+													<div style="color:#4a89dc"> <?php echo ucfirst($fetch_customer_details['notes']);?></div>
 													<p class="help-block with-errors"></p>
 												</div><!-- /.form-group -->
 											</div><!-- /.tab-pane -->

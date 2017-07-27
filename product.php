@@ -1,12 +1,12 @@
 <?php
 include ("config.php");
-$user_id = $_SESSION['user_id'];
+$business_id = $_SESSION['business_id'];
 
 
 if(isset($_GET['delete_id']))
 {
 	$delete_id = $_GET['delete_id'];
-	$delete_product = mysqli_query($mysqli,"delete from product where product_id = '".$delete_id."'");
+	$delete_product = mysqli_query($mysqli,"delete from tbl_products where product_id = '".$delete_id."'");
 	if($delete_product)
 		{
 			$data = "success";
@@ -124,33 +124,33 @@ if(isset($_GET['delete_id']))
 								<table class="table table-b-t table-b-b datatable-default rs-table table-default" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">
 									<thead>
 							           <tr>
-							                <th style="text-align:center;">Product Name</th>
-							                <th style="text-align:center;">Product Category</th>
-							                <th style="text-align:center;">Price</th>
-							                <th style="text-align:center;">Sold out</th>										
-											<th style="text-align:center;">In Stock</th>
-											<th style="text-align:center;">Action</th>
+							                <th >Product Name</th>
+							                <th >Product Category</th>
+							                <th >Description</th>
+							                <th >Quantity</th>										
+											<th >Price</th>
+											<th >Action</th>
 							            </tr>
 							        </thead>
 							        <tbody>
 							            <tr>
 											<?php
-											$product_info = mysqli_query ($mysqli,"select * from product ");
+											$product_info = mysqli_query ($mysqli,"select * from tbl_products where status='active'");
 											while ($fetch_product_info = mysqli_fetch_array($product_info))
 											{
 											?>
-							                <td><?php echo $fetch_product_info['product_name'];?></td>
+							                <td><?php echo ucfirst($fetch_product_info['name']);?></td>
 											<td>
 											<?php
-											$category_id = $fetch_product_info['category_id'];
-											$category_name = mysqli_query ($mysqli, "select * from product_category where category_id = '".$category_id."'");
+											$category_id = $fetch_product_info['productcat_id'];
+											$category_name = mysqli_query ($mysqli, "select * from tbl_productcat where productcat_id = '".$category_id."'");
 											$fetch_category_info = mysqli_fetch_array($category_name);
-											echo $fetch_category_info['category_name'];
+											echo ucfirst($fetch_category_info['category_name']);
 											?>
 											</td>
-											<td><?php echo $fetch_product_info['price'];?></td>
-							                <td><?php echo $fetch_product_info['product_id'];?></td>
-											<td><?php echo $fetch_product_info['product_id'];?></td>						               
+											<td><?php echo ucfirst($fetch_product_info['description']);?></td>
+							                <td><?php echo $fetch_product_info['qty'];?></td>
+											<td>Rs.&nbsp;<?php echo ucfirst($fetch_product_info['selling_price']);?></td>						               
 										
 											<td>
 												<a href="view_product.php?product_id=<?php echo $fetch_product_info['product_id'];?>" class="btn btn-default" style="height:35px;margin:5px;"> View </a><br>

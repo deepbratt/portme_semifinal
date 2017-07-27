@@ -1,3 +1,13 @@
+<?php
+include ("config.php");
+
+$product_id = $_GET['product_id'];
+$view_product_info = mysqli_query($mysqli, "select * from tbl_products where product_id='".$product_id."'");
+$fetch_product_details = mysqli_fetch_array($view_product_info);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang=en>
 
@@ -64,38 +74,15 @@
 							<div class="panel panel-plain panel-rounded">
 
 								<div class="panel-body">
-									<form  method = "POST">
-
-											<div class="row" style="margin-bottom:10px;">
-												<div class="col-sm-3" style="margin-top:10px;">
-													<span >
-														Type :
-													</span>
-												</div><!-- /.col-sm-4 -->
-
-												<div class="col-sm-6">
-													<div class="radio radio-custom">
-													<label class="radio-inline">
-														<input type="radio" name="cs-radio" id="cs-radio-04" value="Product" disabled>
-														<span class="checker"></span>
-														Product
-													</label>
-													<label class="radio-inline">
-														<input type="radio" name="cs-radio" id="cs-radio-05" value="Service"  disabled>
-														<span class="checker"></span>
-														Service
-													</label>
-												</div>
-											</div><!-- /.col-sm-4 -->
-										</div><!-- /.row -->
+									<form  method = "POST">									
 
 											<div class="row">
 												<div class="col-sm-3">
 													Product Name :
 												</div>
 												<div class="col-sm-9">
-													<div class="form-group">
-														<label  id="rs-form-example-email" > </label>
+													<div class="form-group" style="color:#4a89dc">
+														<?php echo ucfirst($fetch_product_details['name']); ?>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -106,8 +93,8 @@
 													Description :
 												</div>
 												<div class="col-sm-9">
-													<div class="form-group">
-														<label> </label>
+													<div class="form-group" style="color:#4a89dc">
+														<?php echo ucfirst($fetch_product_details['description']); ?>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -118,8 +105,8 @@
 													Quantity :
 												</div>
 												<div class="col-sm-4">
-													<div class="form-group">
-														<label> Quantity</label>
+													<div class="form-group" style="color:#4a89dc">
+														<?php echo $fetch_product_details['qty']; ?>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -130,8 +117,8 @@
 													Cost Price :
 												</div>
 												<div class="col-sm-4">
-													<div class="form-group">
-														<label>Cost Price will show up</label>
+													<div class="form-group" style="color:#4a89dc">
+														Rs.&nbsp;<?php echo $fetch_product_details['cost_price']; ?>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -142,8 +129,8 @@
 													Selling Price :
 												</div>
 												<div class="col-sm-4">
-													<div class="form-group">
-														<label>Selling price will show up</label>
+													<div class="form-group" style="color:#4a89dc">
+														Rs.&nbsp;<?php echo $fetch_product_details['selling_price']; ?>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -166,8 +153,17 @@
 																<b>Attribute</b>
 															</label>
 															<br />
-															
+															<div style="color:#4a89dc">
+															<?php
+																$attr_name = explode(",",$fetch_product_details['attr_name']);								
+																foreach($attr_name As $key => $data_atti_name){		
+																	echo ucfirst($data_atti_name);
+																?>
 																<p class="help-block with-errors"></p>
+															<?php
+																}
+															?>
+															</div>
 														
 														</div>
 													</div>
@@ -179,9 +175,17 @@
 																	<b>Options</b>
 																</label>
 																<br />
-															
+																<div style="color:#4a89dc">
+																<?php
+																$attr_value = explode(",",$fetch_product_details['attr_value']);								
+																foreach($attr_value As $key => $data_atti_value){		
+																	echo ucfirst($data_atti_value);
+																?>
 																<p class="help-block with-errors"></p>
-														
+																<?php
+																	}
+																?>
+															</div>
 														</div>
 													</div>
 												</div>	
@@ -199,7 +203,7 @@
 									<div class="panel-footer" style="background:#fff;">
 											<div class="form-group m-a-0">
 												<button type="reset" class="btn btn-default btn-wide">Reset</button>
-												<a href="product.php"><button class="btn btn-success btn-wide">Back</button></a>
+												<a class="btn btn-success btn-wide" href="product.php" style="color:white;">Back</a>
 											</div>
 										</div><!-- /.panel-footer -->
 									</form>

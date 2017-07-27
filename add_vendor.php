@@ -18,16 +18,22 @@ if(isset($_POST['submit']))
 	$shipping_state = $_POST['sstate'];
 	$notes = $_POST['notes'];
 	$date = date('m/d/Y h:i:s', time());
+	
+	$old_customer_details = mysqli_query($mysqli,"select * from tbl_contacts WHERE customer_type='customer' AND business_id='$business_id'");
+	$fetch_customer_details = mysqli_num_rows($old_customer_details);
 
+	if($fetch_customer_details < 1)
+	{
 	$insert_vendor_details = mysqli_query($mysqli, "insert tbl_contacts values ('','VENDOR','".$business_id."','".$salutation."','".$firstname."','".$lastname."','".$company_name."','".$email."','".$work_phone."','".$mobile."','".$gst."','".$billing_address."','".$billing_state."','INDIA','".$shipping_address."','".$shipping_state."','INDIA','".$notes."','active')");
 	if($insert_vendor_details)
 	{
 		$data = "success";
 	
-	}
-	else
-	{
+	}else{
 		$data = "error";
+	}
+	}else{
+		$data = "customer_exist";
 	}
 }
 ?>
@@ -100,6 +106,10 @@ if(isset($_POST['submit']))
 						}else if(isset($data) && $data == "error"){
 						?>
 						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in Insertion </p>
+						<?php
+						}else if(isset($data) && $data == "customer_exist"){
+						?>
+						<p style="text-align:center;background:#4a89dc;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Customer Details Already Exist </p>
 						<?php
 						}
 						?>

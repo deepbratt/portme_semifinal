@@ -12,7 +12,6 @@ var checkin = $('.rs-checkin').datepicker({
 		var newDate = new Date(ev.date)
 		newDate.setDate(newDate.getDate() + 1);
 		checkout.setValue(newDate);
-		autoclose: true;
 	}
 	checkin.hide();
 	$('.rs-checkout')[0].focus();

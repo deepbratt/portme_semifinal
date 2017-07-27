@@ -149,7 +149,7 @@ if(isset($_GET['delete_id']))
 							                <td><?php echo $fetch_customer_info['address']?></td>
 										
 											<td>
-												<a href="view_customer.php?cu_id=<?php echo $fetch_customer_info['customer_id'];?>" class="btn btn-default" style="height:35px;margin:5px;"> View </a><br>
+												<a href="view_customer.php?cu_id=<?php echo $fetch_customer_info['customer_id'];?>"> <i class="fa fa-eye"></i> </a>
 
 												<a href="edit_customer.php?cu_id=<?php echo $fetch_customer_info['customer_id'];?>" class="fa fa-pencil" style="height:10px;margin:5px;"></a>
 

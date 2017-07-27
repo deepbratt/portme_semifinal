@@ -202,8 +202,7 @@ $fetch_product_details = mysqli_fetch_array($view_product_info);
 									</div><!-- /.container-fluid -->
 									<div class="panel-footer" style="background:#fff;">
 											<div class="form-group m-a-0">
-												<button type="reset" class="btn btn-default btn-wide">Reset</button>
-												<a class="btn btn-success btn-wide" href="product.php" style="color:white;">Back</a>
+												<a class="btn btn-success btn-wide" href="edit_product.php?product_id=<?php echo $fetch_product_details['product_id'];?>" style="color:white;">Edit</a>
 											</div>
 										</div><!-- /.panel-footer -->
 									</form>

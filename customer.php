@@ -131,7 +131,7 @@ if(isset($_GET['delete_id']))
 							                <th style="text-align:center;">Email</th>
 							                <th style="text-align:center;">Mobile No.</th>
 							                <th style="text-align:center;">GST/PAN</th>
-							                <th style="text-align:center;">Status</th>											
+							                <th style="text-align:center;">Address</th>											
 											<th style="text-align:center;">Action</th>
 							            </tr>
 							        </thead>
@@ -146,7 +146,7 @@ if(isset($_GET['delete_id']))
 							                <td><?php echo $fetch_customer_info['email']?></td>
 							                <td><?php echo $fetch_customer_info['mobile']?></td>
 							                <td><?php echo ucfirst($fetch_customer_info['GST_PAN']);?></td>
-							                <td><?php echo $fetch_customer_info['status']?></td>
+							                <td><?php echo $fetch_customer_info['address']?></td>
 										
 											<td>
 												<a href="view_customer.php?cu_id=<?php echo $fetch_customer_info['customer_id'];?>" class="btn btn-default" style="height:35px;margin:5px;"> View </a><br>

@@ -1,3 +1,38 @@
+<?php
+include ("config.php");
+$business_id = $_SESSION['business_id'];
+
+if(isset($_POST['submit']))
+{
+	$category_id   = $_POST['product_category_id'];
+	$product_name=$_POST['product_name'];
+	$desc	   = $_POST['desc'];	
+	$quantity  = $_POST['quantity'];
+	$cost_price	   = $_POST['cost_price'];
+	$selling_price	   = $_POST['selling_price'];
+	$attribute = $_POST['attri'];
+	$add_attribute = implode(",",$attribute);
+	$options   = $_POST['optn'];
+	$add_options   = implode(",",$options);
+	$date = time();
+	
+	
+
+	$insert_product = mysqli_query($mysqli,"insert into tbl_products values ('','".$category_id."','".$business_id."','".$product_name."','".$desc."','".$quantity."','".$cost_price."','".$selling_price."','".$add_attribute."','".$add_options."','active','".$date."') ");
+	if($insert_product)
+	{
+		$data = "success";
+	}
+	else
+	{
+		$data = "error";
+	}
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang=en>
 
@@ -82,29 +117,7 @@
 
 								<div class="panel-body">
 									<form method="POST" enctype="multipart/form-data">
-											<div class="row" style="margin-bottom:10px;">
-												<div class="col-sm-3" style="margin-top:10px;">
-													<span >
-														Type
-													</span>
-												</div><!-- /.col-sm-4 -->
-
-												<div class="col-sm-6">
-													<div class="radio radio-custom">
-													<label class="radio-inline">
-														<input type="radio" name="cs-radio" id="cs-radio-04" value="Product">
-														<span class="checker"></span>
-														Product
-													</label>
-													<label class="radio-inline">
-														<input type="radio" name="cs-radio" id="cs-radio-05" value="Service">
-														<span class="checker"></span>
-														Service
-													</label>
-												</div>
-
-												</div><!-- /.col-sm-4 -->
-											</div><!-- /.row -->
+											
 							
 								<div class="row" style="margin-bottom:5px;">
 									<div class="col-sm-3" style="margin-top:10px;">         
@@ -113,10 +126,16 @@
 											 <div class="col-sm-9">
 											   <div class="form-group">                
 											 <select name="product_category_id" class="form-control">
-												
+												<?php
+												$all_category = mysqli_query($mysqli, "select * from tbl_productcat where business_id = '".$business_id."'");
+												while ($fetch_category = mysqli_fetch_array($all_category))
+												{
+												?>
 																				   
-											   <option value="<?php echo $fetch_category['category_id']?>"><?php echo $fetch_category['category_name']?></option>
-										
+											   <option value="<?php echo $fetch_category['productcat_id']?>"><?php echo $fetch_category['category_name']?></option>
+												<?php
+												}
+											   ?>
 											  
 											 </select>
 											   </div><!-- /.form-group -->

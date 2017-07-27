@@ -85,18 +85,15 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <select class="form-control selectpicker">
+                              <select class="form-control selectpicker" onclick="">
                                  <?php
 									$business_id = $_SESSION['business_id'];
 									$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id'");
 									while($fetch_cust_details = mysqli_fetch_array($get_fetch_details)){
-										?>
+								?>
 									<option value="<?php echo $fetch_cust_details['customer_id'];?>" <?php echo((isset($_GET['custid']) && $fetch_cust_details['customer_id']==$_GET['custid'])?'selected':'');?>><?php echo ucfirst($fetch_cust_details['first_name']);?>&nbsp;<?php echo ucfirst($fetch_cust_details['last_name']);?> - <?php echo $fetch_cust_details['mobile'];?></option>
-															<?php
-																}
-															?>
-
-									
+								<?php
+									}
 								?>
                               </select>
                             </div>
@@ -191,21 +188,33 @@ include("sidebar.php");
 							</tr>
 
 							<tr class="rocks">
-								<th class="a">
-									  <select class="form-control selectpicker">
-										 <option data-tokens="china">China</option>
-										 <option data-tokens="malayasia">Malayasia</option>
-										 <option data-tokens="singapore">Singapore</option>
+								<th class="a" style="width:150px;">
+									  <select class="form-control selectpicker" style="margin:0px;padding:0px;">
+										 <?php
+											$business_id = $_SESSION['business_id'];
+											$get_prodcut = mysqli_query($mysqli,"SELECT * FROM tbl_products WHERE business_id='$business_id'");
+											while($fetch_product = mysqli_fetch_array($get_prodcut)){
+										 ?>
+											<option data-tokens="<?php echo $fetch_product['name'];?>" value="<?php echo $fetch_product['product_id'];?>"><?php echo $fetch_product['name'];?></option>
+										 <?php
+											}
+										 ?>
 									  </select>
 								</th>
 								<th class="b"><input type="text" class="form-control" value="2345651" name=""></th>
 								<th class="c"><input type="number" class="form-control" value="1" name=""></th>
 								<th class="d"><input type="text" class="form-control" value="00.00" name=""></th>										
 								<th class="e">
-									<select class="form-control selectpicker">
-										 <option data-tokens="china">China</option>
-										 <option data-tokens="malayasia">Malayasia</option>
-										 <option data-tokens="singapore">Singapore</option>
+									<select class="form-control" style="width:70px;">
+										<option value="" selected disabled> Tax </option>
+										 <?php
+											$get_tax = mysqli_query($mysqli,"SELECT * FROM tax_rates");
+											while($fetch_tax = mysqli_fetch_array($get_tax)){
+										 ?>
+											<option value="<?php echo $fetch_tax['tax_rate'];?>"><?php echo $fetch_tax['tax_rate'];?></option>
+										 <?php
+											}
+										 ?>
 									  </select>
 								</th>
 								<th class="f"><input type="text" class="form-control" value="00.00" name=""></th>

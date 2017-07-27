@@ -78,9 +78,12 @@ include("sidebar.php");
                           <div class="col-sm-6">
                             <div class="form-group">
                               <select class="form-control selectpicker">
-                                 <option data-tokens="china">China</option>
-								 <option data-tokens="malayasia">Malayasia</option>
-								 <option data-tokens="singapore">Singapore</option>
+                                 <?php
+									$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id'");
+									while($fetch_cust_details = mysqli_fetch_array($get_fetch_details)){
+
+									}
+								?>
                               </select>
                             </div>
                           </div>
@@ -142,7 +145,7 @@ include("sidebar.php");
 				<div class="panel panel-plain panel-rounded table-responsive" style="padding:15px;">
 					<table class="table table-b-t table-b-b datatable-default rs-table table-striped table-bordered" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">
 						<thead>
-						   <tr>
+						   <tr style="font-size:15px;">
 								<th style="text-align:center;">Product</th>
 								<th style="text-align:center;">HSN</th>
 								<th style="text-align:center;">Qty</th>
@@ -339,6 +342,53 @@ include("sidebar.php");
 			$(e).parents("tr").remove();
 		  }
 	  </script>
+
+	  <script type="text/javascript">
+		 function ajax_add_cust() {
+			//alert('ss');
+			var salutation = $('.salutation option:selected').val();
+			var fname = $('.fname').val();
+			var lname = $('.lname').val();
+			var cname = $('.cname').val();
+			var email = $('.email').val();
+			var wphone = $('.wphone').val();
+			var mobile = $('.mobile').val();
+			var gst = $('.gst').val();
+			var billaddress1 = $('.billaddress1').val();
+			var billstate1 = $('.billstate1').val();
+			var billaddress2 = $('.billaddress2').val();
+			var billstate2 = $('.billstate2').val();
+			var notes = $('.notes').val();
+			
+				$.ajax({
+				  type: 'post',
+				  url: 'ajax/add_customer_ajax.php',
+				  data:{
+					sal:salutation,
+					fname:fname,
+					lname:lname,
+					cname:cname,
+					email:email,
+					wphone:wphone,
+					mobile:mobile,
+					gst:gst,
+					address:billaddress1,
+					bstate:billstate1,
+					saddress:billaddress2,
+					sstate:billstate2,
+					notes:notes,
+					
+				  },
+				  success: function (response){
+					//document.getElementById("result").innerHTML=response;
+					alert(response);
+					$('#myModal').modal('hide');
+				  }
+				});
+			 }
+		   
+			
+		 </script>
 
       </body>
     </html>

@@ -39,12 +39,13 @@ $fetch_details = mysqli_fetch_array($cu_info);
 					</ul>
 				</li>
 
-				<li class="nav-item start <?php if($page_name == 'product_group.php' ||  $page_name == 'product.php') { ?>active open<?php } ?>">
+				<li class="nav-item start <?php if($page_name == 'product_group.php' ||  $page_name == 'hsn.php' ||  $page_name == 'product.php') { ?>active open<?php } ?>">
 					<a href="javascript:void(0);">
 						<span class="fa fa-shopping-cart rs-icon-menu"></span>Products / Services
 					</a>
 					<ul>
 						<li><a href="product_group.php">Group / Category</a></li>
+						<li><a href="hsn.php">HSN Codes</a></li>
 						<li><a href="product.php">Products</a></li>
 
 					</ul>

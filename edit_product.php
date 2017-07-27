@@ -212,7 +212,7 @@ if(isset($_POST['update']))
 													<div class="form-group">
 														<div class="checkbox checkbox-custom checkbox-danger">
 															<label style="font-size:13px;">
-																<input type="checkbox" value="1" class="attributes_options">
+																<input type="checkbox" value="1" class="attributes_options" <?php echo(($fetch_product_details['attr_name'] != '' && $fetch_product_details['attr_value'] != '')?'checked':'')?>>
 																<span class="checker" ></span>
 																Create Attributes and options
 															</label>
@@ -222,7 +222,7 @@ if(isset($_POST['update']))
 												</div><!-- /.col-sm-4 -->
 											</div><!-- /.row -->
 											
-											<div class="add-more-contz atrri">
+											<div class="add-more-contz atrri see_new">
 												<div class="row atrri_add_cont">
 														<div class="col-sm-3 ache_ekta">
 														</div>
@@ -263,10 +263,20 @@ if(isset($_POST['update']))
 																<?php
 																 }
 																?>		
-																<p class="help-block with-errors"></p>
-																
+																<p class="help-block with-errors"></p>																
 																</div>
+																<?php
+																
+																for($i=1;$i<=count($attr_value);$i++){
+																	$function = "remove_prev('".$i."')";
+																?>
+																<input type="text" id="pro_id" value="<?php echo $pro_id;?>" style="display:none;">
+																 <div class='col-sm-2' style='margin-top:30px;'><a href='javascript:void(0);' onclick="<?php echo $function;?>" style='color:#ef5350;'><i class='fa fa-trash'></i></a></div>
+																<?php
+																}
+																?>
 															</div>
+															
 														</div>
 												</div>
 											</div>
@@ -313,6 +323,27 @@ if(isset($_POST['update']))
 		<!-- END MAIN CONTENT -->
 
 	<?php include("footer.php");?>
+
+	
+	<script>
+	    function remove_prev(e)
+      {	
+		  var cat = $('#pro_id').val();
+        $.ajax({
+          type: 'post',
+          url: 'ajax/remove_product.php',
+          data: {
+            remove_id:e,
+			cat_id : cat
+          }
+          ,
+          success: function (response) {
+            $(".see_new").html(response);
+          }
+        }
+              );
+      }
+    </script>
 	<!-- Page Plugins -->
 	<script src="js/bootstrap-switch.min.js"></script>
 	<script src="js/bootstrap-switch-example.js"></script>
@@ -347,7 +378,7 @@ if(isset($_POST['update']))
 
 		$(document).ready(function() {
 		  $(".add-more").click(function(){ 
-			  var htmlz = "<div class='row atrri_add_cont'><div class='col-sm-3 ache_ekta'></div><div class='col-sm-4'><div class='form-group'><label style='font-size:13px;'>Attribute</label><input type='text' name='attri[]' class='form-control' placeholder='Eg: color' required><p class='help-block with-errors'></p></div></div><div class='col-sm-5'><div class='form-group'><div class='col-sm-10'><label style='font-size:13px;'>Options</label><input type='text' name='optn[]' class='form-control' placeholder='Red' required><p class='help-block with-errors'></p></div><div class='col-sm-2' style='margin-top:30px;'><a href='#' class='remove' style='color:#ef5350;'><i class='fa fa-trash'></i></a></div></div></div></div>";
+			  var htmlz = "<div class='row atrri_add_cont'><div class='col-sm-3 ache_ekta'></div><div class='col-sm-4'><div class='form-group'><label style='font-size:13px;'>Attribute</label><input type='text' name='attri[]' class='form-control' placeholder='Eg: color' required><p class='help-block with-errors'></p></div></div><div class='col-sm-5'><div class='form-group'><div class='col-sm-10'><label style='font-size:13px;'>Options</label><input type='text' name='optn[]' class='form-control' placeholder='Red' required><p class='help-block with-errors'></p></div><div class='col-sm-2' style='margin-top:30px;'><a href='javascript:void(0);' class='remove' style='color:#ef5350;'><i class='fa fa-trash'></i></a></div></div></div></div>";
 			  //alert(htmlz);
 			  $(".add-more-contz").append(htmlz);
 		  });

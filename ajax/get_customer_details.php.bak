@@ -27,7 +27,7 @@
 
 			echo ucfirst($fetch_state_details['states_name']);
 		?>
-		-
+		,
 		<?php echo $fetch_state_details['states_code']; ?>
 	</label>
 </div>

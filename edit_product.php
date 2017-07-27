@@ -159,7 +159,7 @@ if(isset($_POST['update']))
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<textarea name="description" class="form-control"  style="height:150px;" ><?php echo  ucfirst($fetch_product_details['desc']);?></textarea>
+														<textarea name="description" class="form-control"  style="height:150px;" ><?php echo  ucfirst($fetch_product_details['description']);?></textarea>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -303,7 +303,6 @@ if(isset($_POST['update']))
 					</div><!-- /.container-fluid -->
 					<div class="panel-footer" style="background:#fff;">
 							<div class="form-group m-a-0">
-								<button type="reset" class="btn btn-default btn-wide">Reset</button>
 								<button name="update" type="submit" class="btn btn-success btn-wide">Update</button>
 							</div>
 						</div><!-- /.panel-footer -->

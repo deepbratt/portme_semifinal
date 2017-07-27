@@ -81,8 +81,13 @@ include("sidebar.php");
                                  <?php
 									$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id'");
 									while($fetch_cust_details = mysqli_fetch_array($get_fetch_details)){
+										?>
+									<option value="<?php echo $fetch_cust_details['customer_id'];?>" <?php echo((isset($_GET['custid']) && $fetch_cust_details['customer_id']==$_GET['custid'])?'selected':'');?>><?php echo ucfirst($fetch_cust_details['fname']);?>&nbsp;<?php echo ucfirst($fetch_cust_details['lname']);?> - <?php echo $fetch_cust_details['mobile'];?></option>
+															<?php
+																}
+															?>
 
-									}
+									
 								?>
                               </select>
                             </div>

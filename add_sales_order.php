@@ -85,7 +85,7 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <select class="form-control selectpicker" onclick="">
+                              <select class="form-control selectpicker" onclick="show_customer_data(this);">
                                  <?php
 									$business_id = $_SESSION['business_id'];
 									$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id'");
@@ -128,27 +128,11 @@ include("sidebar.php");
 
                     </div>
 
-
-                    <div class="col-md-5 col-sm-12" style="text-align:right;">
-                        <div class="col-sm-12">
-                          <label style="font-size:20px;">Indrajit Ghosh</label>
-                        </div>
-                        <div class="col-sm-12">
-                          <label style="font-size:15px;">Dukbanglow
-                          </label>
-                        </div>
-                        <div class="col-sm-12">
-                          <label style="font-size:15px;">
-                            Murshidabad
-                          </label>
-                        </div>
-                        <div class="col-sm-12">
-                          <label style="font-size:15px;">
-                            742132
-                          </label>
-                        </div>
-                      </form>
+					<!-- customer details fetch -->
+                    <div class="col-md-5 col-sm-12 custo_det" style="text-align:right;margin-top:40px;">
+                        
                     </div>
+					<!-- customer details fetch ends -->
                   </div>
                 </div>
 				
@@ -404,13 +388,26 @@ include("sidebar.php");
 				  },
 				  success: function (response){
 					//document.getElementById("result").innerHTML=response;
-					alert(response);
+					//alert(response);
 					$('#myModal').modal('hide');
 				  }
 				});
 			 }
 		   
-			
+			function show_customer_data(e){
+				var salutation = $(e).val();
+				$.ajax({
+				  type: 'post',
+				  url: 'ajax/get_customer_details.php',
+				  data:{
+					suggest:salutation,
+				  },
+				  success: function (response){
+					//alert(response);
+					$('.custo_det').html(response);
+				  }
+				});
+			}
 		 </script>
 		 
 		 

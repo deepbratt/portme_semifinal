@@ -7,3 +7,4 @@ ajax/get_customer_details.php.bak
 ajax/add_customer_ajax.php
 ajax/add_customer_ajax.php
 print_invoice.php
+*.bak

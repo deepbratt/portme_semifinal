@@ -22,7 +22,7 @@ if(isset($_POST['update']))
 	$old_customer_details = mysqli_query($mysqli,"select * from tbl_contacts WHERE customer_type='customer' AND business_id='$business_id'");
 	$fetch_customer_details = mysqli_num_rows($old_customer_details);
 
-	if($fetch_customer_details < 2)
+	if($fetch_customer_details > 2)
 	{
 	$update_customer_details = mysqli_query($mysqli, "update  tbl_contacts set salutation= '".$salutation."', first_name='".$firstname."', last_name='".$lastname."', enterprise_name='".$company_name."', email='".$email."', work_phone='".$work_phone."', mobile='".$mobile."', GST_PAN='".$gst."', address='".$billing_address."', state='".$billing_state."', shipping_address='".$shipping_address."', shipping_state='".$shipping_state."',  notes='".$notes."', business_id='".$business_id."' where customer_id='".$customer_id."' ");
 	if($update_customer_details)

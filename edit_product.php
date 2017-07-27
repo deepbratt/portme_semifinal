@@ -1,27 +1,24 @@
 <?php
 include ("config.php");
 $business_id = $_SESSION['business_id'];
-
 $pro_id = $_GET['product_id'];
 
 if(isset($_POST['update']))
 {
 	$category_id   = $_POST['product_category_id'];
 	$product_name=$_POST['product_name'];
-	$desc	   = $_POST['desc'];
+	$description  = $_POST['description'];
 	$quantity  = $_POST['quantity'];
-	$cost_price= $_POST['cost_price'];
-	$selling_price= $_POST['selling_price'];
+	$cost_price= $_POST['cost_price_update'];
+	$selling_price= $_POST['selling_price_update'];
 	$attribute = $_POST['attri'];
 	$add_attribute = implode(",",$attribute);
 	$options   = $_POST['optn'];
 	$add_options   = implode(",",$options);
 	$date = time();
-	
-	
 
-	$update_product = mysqli_query($mysqli,"update  tbl_products set  productcat_id='".$category_id."', business_id='".$business_id."', name='".$product_name."', desc='".$desc."', qty='".$quantity."', cost_price='".$cost_price."', selling_price='".$selling_price."', attr_name='".$add_attribute."', attr_value='".$add_options."', status='active', date='".$date."' where product_id = '".$pro_id."' ");
 
+	$update_product = mysqli_query($mysqli,"update tbl_products set productcat_id='".$category_id."',name='".$product_name."',description='".$description."', qty='".$quantity."',cost_price='".$cost_price."', selling_price='".$selling_price."', attr_name='".$add_attribute."', attr_value='".$add_options."', status='active', date='".$date."' where product_id = '".$pro_id."' ");
 	if($update_product)
 	{
 		$data = "success";
@@ -32,8 +29,6 @@ if(isset($_POST['update']))
 	}
 }
 
-$get_product_details = mysqli_query($mysqli, "select * from tbl_products where product_id='".$pro_id."'");
-$fetch_product_details = mysqli_fetch_array($get_product_details);
 ?>
 
 
@@ -117,7 +112,12 @@ $fetch_product_details = mysqli_fetch_array($get_product_details);
 
 								<div class="panel-body">
 									<form  method = "POST">
-											
+									
+									<?php
+									$get_product_details = mysqli_query($mysqli, "select * from tbl_products where product_id='".$pro_id."'");
+									$fetch_product_details = mysqli_fetch_array($get_product_details);
+
+									?>	
 											
 								<div class="row" style="margin-bottom:5px;">
 									<div class="col-sm-3" style="margin-top:10px;">         
@@ -131,7 +131,7 @@ $fetch_product_details = mysqli_fetch_array($get_product_details);
 											 while ($fetch_category = mysqli_fetch_array($category_name))
 											 {
 											 ?>																				   
-											  <option value="<?php echo $fetch_category['productcat_id']?>" <?php echo(($fetch_product_details['category_id'] == $fetch_category['productcat_id'])?'selected':'');?>><?php echo $fetch_category['category_name']?></option>
+											  <option value="<?php echo $fetch_category['productcat_id']?>" <?php echo(($fetch_product_details['productcat_id'] == $fetch_category['productcat_id'])?'selected':'');?>><?php echo $fetch_category['category_name']?></option>
 											  <?php
 											 }  
 											 ?>
@@ -147,7 +147,7 @@ $fetch_product_details = mysqli_fetch_array($get_product_details);
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name = "product_name" type="text" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_product_details['name'];?>" >
+														<input name = "product_name" type="text" class="form-control" id="rs-form-example-email" value="<?php echo  ucfirst($fetch_product_details['name']);?>" >
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -159,7 +159,7 @@ $fetch_product_details = mysqli_fetch_array($get_product_details);
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<textarea name="desc" class="form-control"  style="height:150px;" ><?php echo $fetch_product_details['desc'];?></textarea>
+														<textarea name="description" class="form-control"  style="height:150px;" ><?php echo  ucfirst($fetch_product_details['desc']);?></textarea>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -183,7 +183,7 @@ $fetch_product_details = mysqli_fetch_array($get_product_details);
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="cost_price" type="integer" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_product_details['cost_price'];?>" >
+														<input name="cost_price_update" type="integer" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_product_details['cost_price'];?>" >
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -195,7 +195,7 @@ $fetch_product_details = mysqli_fetch_array($get_product_details);
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="selling_price" type="integer" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_product_details['selling_price'];?>" >
+														<input name="selling_price_update" type="integer" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_product_details['selling_price'];?>" >
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -236,7 +236,7 @@ $fetch_product_details = mysqli_fetch_array($get_product_details);
 																 foreach($attr_name as $attr_name_fetch)
 																 {
 																?>
-																<input type="text" name="attri[]" class="form-control" value="<?php echo $attr_name_fetch;?>" >
+																<input type="text" name="attri[]" class="form-control" value="<?php echo ucfirst($attr_name_fetch);?>" >
 																<p class="help-block with-errors"></p>
 																<?php
 																 }
@@ -258,7 +258,7 @@ $fetch_product_details = mysqli_fetch_array($get_product_details);
 																 foreach($attr_value as $attr_value_fetch)
 																 {
 																?>
-																<input type="text" name="optn[]" class="form-control" value="<?php echo $attr_value_fetch;?>" >
+																<input type="text" name="optn[]" class="form-control" value="<?php echo  ucfirst($attr_value_fetch);?>" >
 																<p class="help-block with-errors"></p>
 																<?php
 																 }

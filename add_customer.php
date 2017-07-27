@@ -22,7 +22,7 @@ if(isset($_POST['submit_details']))
 	$old_customer_details = mysqli_query($mysqli,"select * from tbl_contacts WHERE customer_type='customer' AND business_id='$business_id'");
 	$fetch_customer_details = mysqli_num_rows($old_customer_details);
 
-	if($fetch_customer_details < 1)
+	if($fetch_customer_details > 1)
 	{
 		$insert_customer_details = mysqli_query($mysqli, "insert tbl_contacts values ('','CUSTOMER','".$business_id."','".$salutation."','".$firstname."','".$lastname."','".$company_name."','".$email."','".$work_phone."','".$mobile."','".$gst."','".$billing_address."','".$billing_state."','INDIA','".$shipping_address."','".$shipping_state."','INDIA','".$notes."','active')");
 		if($insert_customer_details)

@@ -94,7 +94,7 @@ $fetch_product_details = mysqli_fetch_array($view_product_info);
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group" style="color:#4a89dc">
-														<?php echo ucfirst($fetch_product_details['desc']); ?>
+														<?php echo ucfirst($fetch_product_details['description']); ?>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>

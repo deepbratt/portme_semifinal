@@ -148,7 +148,7 @@ if(isset($_GET['delete_id']))
 											echo ucfirst($fetch_category_info['category_name']);
 											?>
 											</td>
-											<td><?php echo ucfirst($fetch_product_info['desc']);?></td>
+											<td><?php echo ucfirst($fetch_product_info['description']);?></td>
 							                <td><?php echo $fetch_product_info['qty'];?></td>
 											<td>Rs.&nbsp;<?php echo ucfirst($fetch_product_info['selling_price']);?></td>						               
 										

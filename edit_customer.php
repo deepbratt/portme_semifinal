@@ -18,7 +18,12 @@ if(isset($_POST['update']))
 	$shipping_address= $_POST['saddress'];
 	$shipping_state = $_POST['sstate'];
 	$notes			= $_POST['notes'];
+	
+	$old_customer_details = mysqli_query($mysqli,"select * from tbl_contacts WHERE customer_type='customer' AND business_id='$business_id'");
+	$fetch_customer_details = mysqli_num_rows($old_customer_details);
 
+	if($fetch_customer_details < 2)
+	{
 	$update_customer_details = mysqli_query($mysqli, "update  tbl_contacts set salutation= '".$salutation."', first_name='".$firstname."', last_name='".$lastname."', enterprise_name='".$company_name."', email='".$email."', work_phone='".$work_phone."', mobile='".$mobile."', GST_PAN='".$gst."', address='".$billing_address."', state='".$billing_state."', shipping_address='".$shipping_address."', shipping_state='".$shipping_state."',  notes='".$notes."', business_id='".$business_id."' where customer_id='".$customer_id."' ");
 	if($update_customer_details)
 	{
@@ -27,6 +32,9 @@ if(isset($_POST['update']))
 	else
 	{
 		$data = "error" ;
+	}
+	}else{
+		$data = "customer_exist";
 	}
 }
 $select_query = mysqli_query($mysqli,"select * from tbl_contacts where customer_id='".$customer_id."'");
@@ -127,7 +135,11 @@ $fetch_query = mysqli_fetch_array($select_query);
 						<?php
 						}else if(isset($data) && $data == "error"){
 						?>
-						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in updation </p>
+						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in updation </p>						
+						<?php
+						}else if(isset($data) && $data == "customer_exist"){
+						?>
+						<p style="text-align:center;background:#4a89dc;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Customer Details Already Exist </p>
 						<?php
 						}
 						?>

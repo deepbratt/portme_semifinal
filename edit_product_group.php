@@ -259,7 +259,7 @@ if(isset($_POST['update_details']))
 												  $select_hsn = mysqli_query($mysqli,"select * from hsn where business_id='$business_id'");
 												  while($fetch_hsn = mysqli_fetch_array($select_hsn)){
 												  ?>
-													  <option value="<?php echo $fetch_hsn['hsn_code'];?>" <?php echo (($fetch_hsn['hsn_id']==$fetch_query['HSN_code'])?'selected':'');?>><?php echo $fetch_hsn['hsn_code'];?></option>
+													  <option value="<?php echo $fetch_hsn['hsn_code'];?>" <?php echo (($fetch_hsn['hsn_code']==$fetch_query['HSN_code'])?'selected':'');?>><?php echo $fetch_hsn['hsn_code'];?></option>
 												  <?php
 												  }
 												  ?>

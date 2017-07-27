@@ -1,3 +1,10 @@
+<?php
+include("config.php");
+$user_id = $_SESSION['user_id'];
+$business_id = $_SESSION['business_id'];
+$productcat_id = $_GET['view_id'];
+
+?>
 <!DOCTYPE html>
 <html lang=en>
 
@@ -7,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>View Product | Port-ME</title>
+	<title>View Product group | Port-ME</title>
 	<?php include("metalinks.php");?>
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<script src="http://code.jquery.com/jquery.min.js"></script>
@@ -40,7 +47,7 @@
 						<div class="rs-dashhead-content">
 							<div class="rs-dashhead-titles">
 								<h3 class="rs-dashhead-title m-t">
-									View Product Category
+									View Product Group
 									<div style="float:right;">
 										<!--<span style="padding:10px 10px;font-size:15px;font-weight:normal;color:#4a89dc;cursor:pointer;border-right:1px solid #CCC;"> <i class="fa fa-lightbulb-o"></i> &nbsp;&nbsp;Page Tutorial</span>-->
 
@@ -52,92 +59,83 @@
 							
 						</div><!-- /.rs-dashhead-content -->
 						<!-- Begin Breadcrumb -->
-
+	
 						<!-- End Breadcrumb -->
 					</div><!-- /.rs-dashhead -->
 					<!-- End Dashhead -->
 
 					<!-- Begin default content width -->
 					<div class="container-fluid" style="padding:0px;margin-top:-20px;margin-right:5px;margin-left:-5px;">
+					<?php
+					   if(isset($data) && $data == "success"){
+					  ?>
+					  <div class="col-md-12 col-sm-12">
+					   <p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Your Product Group added successfully.</p>
+					  </div>
+					  <?php
+					   }else if(isset($data) && $data == "error"){
+					  ?>
+					  <div class="col-md-12 col-sm-12">
+					   <p style="text-align:center;background:#ff0066;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Something went wrong! Please try again later. </p>
+					  </div>
+					  <?php
+					  }
+					 ?>
 						<div class="col-md-7 col-sm-12">
 						<!-- Begin Panel -->
 							<div class="panel panel-plain panel-rounded">
-
+							<?php
+							$select_query = mysqli_query($mysqli,"select * from tbl_productcat where productcat_id='$productcat_id'");
+							$fetch_query = mysqli_fetch_array($select_query);
+							?>
 								<div class="panel-body">
-									<form >
-											
+									<form method="POST" enctype="multipart/form-data">
 											<div class="row" style="margin-bottom:10px;">
 												<div class="col-sm-3" style="margin-top:10px;">
-													<span >
-														Type
-													</span>
+													<b>Type :</b>
 												</div><!-- /.col-sm-4 -->
 
 												<div class="col-sm-6">
-													<div class="radio radio-custom">
-													<label class="radio-inline">
-														<input type="radio" name="cs_radio" id="cs-radio-04" value="Product" disabled>
-														<span class="checker"></span>
-														Product
-													</label>
-													<label class="radio-inline">
-														<input type="radio" name="cs_radio" id="cs-radio-05" value="Service" disabled>
-														<span class="checker"></span>
-														Service
-													</label>
+													<div class="radio radio-custom" style="color: #4a89dc;">
+													<?php echo $fetch_query['type'];?>
 												</div>
 
 												</div><!-- /.col-sm-4 -->
 											</div><!-- /.row -->
 
-
 											<div class="row">
 												<div class="col-sm-3">
-													Product Name
+													<b>Group Name :</b>
 												</div>
 												<div class="col-sm-9">
-													<div class="form-group">
-														<label  id="rs-form-example-email" > PRODUCT NAME HERE </label>
-														<p class="help-block with-errors"></p>
+													<div class="form-group"  style="color: #4a89dc;">
+														<?php echo $fetch_query['category_name'];?>
 													</div>
 												</div>
 											</div>
 											
 											<div class="row">
 												<div class="col-sm-3">
-													Description
+													<b>Description :</b>
 												</div>
 												<div class="col-sm-9">
-													<div class="form-group">
-														<label> DESC HERE</label>
-														<p class="help-block with-errors"></p>
+													<div class="form-group"  style="color: #4a89dc;">
+														<?php echo $fetch_query['desc'];?>
 													</div>
 												</div>
 											</div>
-											
-											
 
-											<div class="row">
-												<div class="col-sm-3">
-													Item Type
-												</div>
-												<div class="col-sm-4">
-													<div class="form-group">
-														<label> TYpe HERE</label>
-														<p class="help-block with-errors"></p>
-													</div>
-												</div>
-											</div>
 
 											<div class="row">
 												<div class="col-sm-3" style="margin-top:10px;">
 													<div class="form-group">
-														Multiple Items
+														<b>Multiple Items :</b>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->
 		
 											</div><!-- /.row -->
-
+											
+											
 											<div class="row" >
 													<div class="col-sm-3">
 													</div>
@@ -146,8 +144,20 @@
 															<label style="font-size:13px;">
 																<b>Attribute</b>
 															</label>
-															<br />															
-																<p class="help-block with-errors"></p>												
+															<br />
+															<span  style="color: #4a89dc;">
+															<?php
+																$data_atti = explode(",",$fetch_query['attr_name']);
+																
+																foreach($data_atti As $key => $data_atti_values){
+			
+																	echo $data_atti_values;
+																?>
+																<p class="help-block with-errors"></p>
+															<?php
+																}
+															?>
+															</span>
 															
 														</div>
 													</div>
@@ -159,57 +169,81 @@
 																	<b>Options</b>
 																</label>
 																<br />
-															
+																<span  style="color: #4a89dc;">
+															<?php
+																$data_option = explode(",",$fetch_query['attr_value']);
+																
+																foreach($data_option As $key => $data_option_values){
+			
+																	echo $data_option_values;
+																?>
 																<p class="help-block with-errors"></p>
-															
+															<?php
+																}
+															?>
+															</span>
 														</div>
 													</div>
-												</div>	
+											</div>
+											
+
+
+											<div class="row">
+												<div class="col-sm-3" style="margin-top:10px;">
+													<b>
+														HSN Code :
+													</b>
+												</div><!-- /.col-sm-4 -->
+
+												<div class="col-sm-6">
+													<div class="radio radio-custom" style="color: #4a89dc;">
+													<?php 
+													$select_hsn = mysqli_query($mysqli,"select * from hsn where hsn_id = '".$fetch_query['HSN_code']."'");
+													$fetch_hsn = mysqli_fetch_array($select_hsn);
+													echo $fetch_hsn['hsn_code'];
+													?>
+												</div>
+
+												</div><!-- /.col-sm-4 -->
+											</div>
 											
 											<div class="row">
 												<div class="col-sm-3" style="margin-top:10px;">
-													<span >
-														HSN Codes :
-													</span>
+													<b>
+														UQC Diamension :
+													</b>
 												</div><!-- /.col-sm-4 -->
-												<div class="col-sm-9">
-											   <div class="form-group">                
-												 <label>Selected HSN Codes</label>
-											   </div><!-- /.form-group -->
-											  </div>
-											</div>
 
-											<div class="row">
-												<div class="col-sm-3" style="margin-top:10px;">
-													<span >
-														UQC Codes :
-													</span>
+												<div class="col-sm-6">
+													<div class="radio radio-custom" style="color: #4a89dc;">
+													<?php 
+													$select_uqc = mysqli_query($mysqli,"select * from dimension_uqc where uqc_id = '".$fetch_query['UQC_dmension']."'");
+													$fetch_uqc = mysqli_fetch_array($select_uqc);
+													echo $fetch_uqc['name'];
+													?>
+												</div>
+
 												</div><!-- /.col-sm-4 -->
-												<div class="col-sm-9">
-											   <div class="form-group">                
-												 <label>Selected UQC Codes</label>
-											   </div><!-- /.form-group -->
-											  </div>
 											</div>
+											<div class="panel-footer" style="background:#fff;">
+							<div class="form-group m-a-0">
+								<a href="edit_product_group.php?edit_id=<?php echo $fetch_query['productcat_id'];?>" class="btn btn-success btn-wide">Edit Details</a>
+							</div>
+						</div><!-- /.row -->
 
 								</div><!-- /.panel-body -->
+
+								
+
 							</div><!-- /.panel -->
 						</div>
 						
-						 
-						<!--<div class="col-md-5 col-sm-12">
-							<div class="dropzone">
-								
-							</div>
-						</div>-->
+						<!-- right side -->
+						
+						<!-- right side ends -->
 						
 					</div><!-- /.container-fluid -->
-					<div class="panel-footer" style="background:#fff;">
-							<div class="form-group m-a-0">
-								<button type="reset" class="btn btn-default btn-wide">Reset</button>
-								<a class="btn btn-success btn-wide" href="product_group.php" style="color:white;">Back</a>
-							</div>
-						</div><!-- /.panel-footer -->
+					<!-- /.panel-footer -->
 					</form>
 				</div><!-- /.rs-inner -->
 			</div><!-- /.rs-content -->
@@ -264,7 +298,7 @@
 		});
 	</script>
 	
-	<!--<script>
+	<script>
 		(function() {
 			$(".dropzone").dropzone({
 				url: 'upload.php',
@@ -284,7 +318,6 @@
 				params:{
 					'action': 'save'
 				},
-
 				uploadOnDrop: true,
 				uploadOnPreview: false,
 				preview: true,
@@ -293,7 +326,7 @@
 				}
 			});
 		}());
-	</script>-->
+	</script>
 	
 </body>
 </html>

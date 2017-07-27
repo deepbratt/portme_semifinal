@@ -1,22 +1,18 @@
 <?php
-include ("config.php");
-$user_id = $_SESSION['user_id'];
-
-
-if(isset($_GET['delete_id']))
+include("config.php");
+$business_id = $_SESSION['business_id'];
+if((isset($_GET['del_id'])) && ($_GET['del_id'] != ""))
 {
-	$delete_id = $_GET['delete_id'];
-	$delete_category = mysqli_query($mysqli,"delete from product_category where category_id = '".$delete_id."'");
-	if($delete_category)
-		{
-			$data = "success";
-		}
-		else
+	$delete_query = mysqli_query($mysqli,"DELETE FROM portme_product_group WHERE group_id='".$_GET['del_id']."'");
+	if($delete_query)
 	{
-			$data = "error";
+		$data = "success";
+		echo "<script>window.location.href='product_group.php'</script>";
+	}
+	else{
+		$data = "error";
 	}
 }
-
 ?>
 <!DOCTYPE html>
 <html lang=en>
@@ -95,70 +91,64 @@ if(isset($_GET['delete_id']))
 							</div><!-- /.rs-dashhead-toolbar -->
 							
 						</div><!-- /.rs-dashhead-content -->
-						<div class="col-md-12 col-sm-12">
-						<?php
-								if(isset($data) && $data == "success")
-						{
-						?>
-						<p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Deleted Successfully </p>
-						<?php
-						}else if(isset($data) && $data == "error"){
-						?>
-						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error while deleting </p>
-						<?php
-						}
-						?>
-						</div>
-
+						
 					</div><!-- /.rs-dashhead -->
 					<!-- End Dashhead -->
-					
-						
-
 
 					<!-- Begin default content width -->
 					<div class="container-fluid">
+					<!--<?php
+					   if(isset($data) && $data == "success"){
+					  ?>
+					  <div class="col-md-12 col-sm-12">
+					   <p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Your Product Group added successfully.</p>
+					  </div>
+					  <?php
+					   }else if(isset($data) && $data == "error"){
+					  ?>
+					  <div class="col-md-12 col-sm-12">
+					   <p style="text-align:center;background:#ff0066;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Something went wrong! Please try again later. </p>
+					  </div>
+					  <?php
+					  }
+					 ?>-->
 
 						<!-- Begin Panel -->
 						<div class="panel panel-plain panel-rounded table-responsive">
 								<table class="table table-b-t table-b-b datatable-default rs-table table-default" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">
 									<thead>
 							            <tr>
-							                <th style="text-align:center;">Type</th>
-							                <th style="text-align:center;">Category Name</th>
-							                <th style="text-align:center;">Item Type</th>					               											
-											<th style="text-align:center;">Tax Value</th>
-											<th style="text-align:center;">Action</th>
+							                <th>Inventry Type</th>
+							                <th>Group Name</th>
+							                <th>Description</th>
+							                <th>HSN Code</th>
+							                <th>UQC Diamension</th>
+											<th>Action</th>
 							            </tr>
 							        </thead>
 							        <tbody>
-							             <tr>
-										<?php
-										$fetch_category = mysqli_query($mysqli, "select * from product_category ");
-
-										while ($fetch_category_items = mysqli_fetch_array($fetch_category))	
-										
-										{
-										?>
-							               
-											<td style="text-align:center;"><?php echo $fetch_category_items['category_type']?></td>
-							                <td style="text-align:center;"><?php echo $fetch_category_items['category_name']?></td>
-							                <td style="text-align:center;"><?php echo $fetch_category_items['item_type']?></td>
-											<td style="text-align:center;"><?php echo $fetch_category_items['tax']?></td>
-											
-							               										
-											<td style="text-align:center;">
-												<a href="view_product_group.php?category_id=<?php echo $fetch_category_items['category_id'];?>" class="btn btn-default" style="height:35px;margin:5px;"> View </a><br>
-
-												<a href="edit_product_group.php?category_id=<?php echo $fetch_category_items['category_id'];?>" class="fa fa-pencil" style="height:35px;margin:5px;"></a>
-
-												<a href="?delete_id=<?php echo $fetch_category_items['category_id'];?>" class="fa fa-trash" style="height:10px;margin:5px;"></a>
+									<?php
+									$select_query = mysqli_query($mysqli,"select * from tbl_productcat where business_id = '$business_id'");
+									while($fetch_query = mysqli_fetch_array($select_query))
+									{
+										$description = substr($fetch_query['description'],0,70);
+									?>
+							            <tr>
+							                <td><?php echo ucfirst($fetch_query['type']);?></td>
+							                <td><?php echo ucfirst($fetch_query['category_name']);?></td>
+							                <td><?php echo $description;?><?php echo((strlen($fetch_query['description']) > 70)?'...':'');?></td>
+							                <td><?php echo $fetch_query['HSN_code'];?></td>
+							                <td><?php echo $fetch_query['UQC_dmension'];?></td>
+											<td>
+												<a href="view_product_group.php?view_id=<?php echo $fetch_query['productcat_id'];?>" class="btn btn-default" style="height:35px;margin:5px;">View</a><br>
+												<a href="edit_product_group.php?edit_id=<?php echo $fetch_query['productcat_id'];?>" class="fa fa-pencil" style="height:10px;margin:5px;"></a>
+												<a href="?del_id=<?php echo $fetch_query['group_id'];?>" class="fa fa-trash" style="height:10px;margin:5px;"></a>
 											</td>
 							            </tr>
-							           <?php
-										}
-										?>						          
-							            							          
+									<?php
+									}
+									?>
+							           
 							        </tbody>
 								</table>
 						</div><!-- /.panel -->
@@ -175,6 +165,8 @@ if(isset($_GET['delete_id']))
 	<!-- Page Plugins -->
 	<script src="js/datatables.min.js"></script>
 	<!--<script src="js/datatables-example.js"></script>-->
+	
+
 	
 	<script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
 	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>

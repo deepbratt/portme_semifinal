@@ -1,3 +1,31 @@
+<?php
+include("config.php");
+$business_id = $_SESSION['business_id'];
+
+if(isset($_POST['submit_details']))
+{
+	$type  = str_replace('\'', '\\\'',$_POST['type']);
+	$cat_name  = str_replace('\'', '\\\'',$_POST['cat_name']);
+	$description  = str_replace('\'', '\\\'',$_POST['description']);
+	$attribute = implode(",",$_POST["attri"]);
+	$options = implode(",",$_POST["optn"]);
+	$hsn_codes  = str_replace('\'', '\\\'',$_POST['hsn_codes']);
+	$uqc_codes  = str_replace('\'', '\\\'',$_POST['uqc_codes']);
+	$status = 'active';
+	
+	
+	$insert_query = mysqli_query($mysqli,"insert into tbl_productcat values('','$business_id','$cat_name','$type','$description','$attribute','$options','$hsn_codes','$uqc_codes','$status')");
+	if($insert_query)
+	{
+		$data = "success";
+	}
+	else{
+		$data = "error";
+	}
+	
+	
+}
+?>
 <!DOCTYPE html>
 <html lang=en>
 
@@ -95,12 +123,12 @@
 												<div class="col-sm-6">
 													<div class="radio radio-custom">
 													<label class="radio-inline">
-														 <input type="radio" name="cs-radio"  id="cs-radio-04" value="Product" >Product
+														 <input type="radio" name="type"  id="cs-radio-04" value="product" >Product
 														<span class="checker"></span>
 													
 													</label>
 													<label class="radio-inline">
-														 <input type="radio" name="cs-radio"  id="cs-radio-04" value="Service">Service
+														 <input type="radio" name="type"  id="cs-radio-04" value="service">Service
 														<span class="checker"></span>														
 													</label>
 												</div>
@@ -125,7 +153,7 @@
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<textarea name="desc" class="form-control" placeholder="Description" style="height:150px;"  ></textarea>
+														<textarea name="description" class="form-control" placeholder="Description" style="height:150px;"  ></textarea>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -205,7 +233,15 @@
 												<div class="col-sm-9">
 											   <div class="form-group">                
 												  <select class="form-control selectpicker" name="hsn_codes">
-													  <option value="">Select HSN Codes</option>
+													<option value="">Select HSN Codes</option>
+												  <?php
+												  $select_hsn = mysqli_query($mysqli,"select * from hsn where business_id='$business_id'");
+												  while($fetch_hsn = mysqli_fetch_array($select_hsn)){
+												  ?>
+													  <option value="<?php echo $fetch_hsn['hsn_id'];?>"><?php echo $fetch_hsn['hsn_code'];?></option>
+												  <?php
+												  }
+												  ?>
 												  </select>
 											   </div>
 											  </div>
@@ -221,6 +257,14 @@
 											   <div class="form-group">                
 												 <select class="form-control selectpicker" name="uqc_codes">
 													  <option value="">Select UQC Codes</option>
+													 <?php
+													 $select_uqc = mysqli_query($mysqli,"select * from dimension_uqc");
+													 while($fetch_uqc = mysqli_fetch_array($select_uqc)){
+													 ?>
+													  <option value="<?php echo $fetch_uqc['uqc_id'];?>"><?php echo $fetch_uqc['name'];?></option>
+													 <?php
+													 }
+													 ?>
 												  </select>
 											   </div>
 											  </div>
@@ -245,7 +289,7 @@
 					<div class="panel-footer" style="background:#fff;">
 							<div class="form-group m-a-0">
 								<button type="reset" class="btn btn-default btn-wide">Reset</button>
-								<button name="submit" type="submit" class="btn btn-success btn-wide">Submit</button>
+								<button name="submit_details" type="submit" class="btn btn-success btn-wide">Submit</button>
 							</div>
 						</div><!-- /.panel-footer -->
 					</form>

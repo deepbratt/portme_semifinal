@@ -1,4 +1,33 @@
+<?php
+include("config.php");
+$user_id = $_SESSION['user_id'];
+$productcat_id = $_GET['edit_id'];
 
+$business_id = $_SESSION['business_id'];
+
+if(isset($_POST['update_details']))
+{
+	$type  = str_replace('\'', '\\\'',$_POST['type']);
+	$cat_name  = str_replace('\'', '\\\'',$_POST['cat_name']);
+	$desc  = str_replace('\'', '\\\'',$_POST['desc']);
+	$attri = implode(",",$_POST["attri"]);
+	$optn = implode(",",$_POST["optn"]);
+	$hsn_codes  = str_replace('\'', '\\\'',$_POST['hsn_codes']);
+	$uqc_codes  = str_replace('\'', '\\\'',$_POST['uqc_codes']);
+
+	
+	$update_query = mysqli_query($mysqli,"update tbl_productcat set category_name='$cat_name',type='$type',description='$desc',attr_name='$attri',attr_value='$optn',HSN_code='$hsn_codes',UQC_dmension='$uqc_codes' where productcat_id='$productcat_id'");
+	if($update_query)
+	{
+		$data = "success";
+	}
+	else{
+		$data = "error";
+	}
+	
+	
+}
+?>
 <!DOCTYPE html>
 <html lang=en>
 
@@ -78,6 +107,10 @@
 						<div class="col-md-7 col-sm-12">
 						<!-- Begin Panel -->
 							<div class="panel panel-plain panel-rounded">
+							<?php
+							$select_query = mysqli_query($mysqli,"select * from tbl_productcat where productcat_id='$productcat_id'");
+							$fetch_query = mysqli_fetch_array($select_query);
+							?>
 
 								<div class="panel-body">
 									<form method="post" enctype="multipart/form-data">
@@ -91,12 +124,12 @@
 												<div class="col-sm-6">
 													<div class="radio radio-custom">
 													<label class="radio-inline">
-														<input type="radio" name="cs_radio" id="cs-radio-04" value="Product">
+														<input type="radio" name="type" id="cs-radio-04" value="product" <?php echo(($fetch_query['type'] == 'product')?'checked':'')?>>
 														<span class="checker"></span>
 														Product
 													</label>
 													<label class="radio-inline">
-														<input type="radio" name="cs_radio" id="cs-radio-05" value="Service">
+														<input type="radio" name="type" id="cs-radio-05" value="service" <?php echo(($fetch_query['type'] == 'service')?'checked':'')?>>
 														<span class="checker"></span>
 														Service
 													</label>
@@ -111,7 +144,7 @@
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="category_name" type="text" class="form-control" id="rs-form-example-email" value="" required>
+														<input name="cat_name" type="text" class="form-control" id="rs-form-example-email" value=<?php echo $fetch_query['category_name'];?> required>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -123,7 +156,7 @@
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<textarea name="desc" class="form-control"  style="height:150px;" required></textarea>
+														<textarea name="desc" class="form-control"  style="height:150px;" required><?php echo $fetch_query['description'];?></textarea>
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -141,7 +174,7 @@
 													<div class="form-group">
 														<div class="checkbox checkbox-custom checkbox-danger">
 															<label style="font-size:13px;">
-																<input type="checkbox" value="1" class="attributes_options">
+																<input type="checkbox" value="1" class="attributes_options" <?php echo(($fetch_query['attr_name'] != '' && $fetch_query['attr_value'] != '')?'checked':'')?>>
 																<span class="checker"></span>
 																Create Attributes and options
 															</label>
@@ -160,8 +193,16 @@
 																<label style="font-size:13px;">
 																	Attribute
 																</label>																
-																<input type="text" name="attri[]" class="form-control" value="" placeholder="Eg: color" >
-																<p class="help-block with-errors"></p>																
+																<?php
+																 $attri = explode(",",$fetch_query['attr_name']);
+																 foreach($attri as $attri_fetch)
+																 {
+																?>
+																<input type="text" name="attri[]" class="form-control" value="<?php echo $attri_fetch;?>" placeholder="Eg: color" >
+																<p class="help-block with-errors"></p>
+																<?php
+																 }
+																?>															
 															</div>
 														</div>
 
@@ -171,12 +212,23 @@
 																	<label style="font-size:13px;">
 																		Options
 																	</label>																
-																<input type="text" name="optn[]" class="form-control" value="" placeholder="Eg: color" >
+																<?php
+																 $option = explode(",",$fetch_query['attr_value']);
+																 foreach($option as $option_fetch)
+																 {
+																?>
+																<input type="text" name="optn[]" class="form-control" value="<?php echo $option_fetch;?>" placeholder="Eg: color" >
+																<p class="help-block with-errors"></p>
+																<?php
+																 }
+																?>
 																<p class="help-block with-errors"></p>
 																</div>
 															</div>
 														</div>
+														<div class='col-sm-2' style='margin-top:30px;'><a href='javascript:void(0);' class='remove' style='color:#ef5350;'><i class='fa fa-trash'></i></a></div>
 												</div>
+												
 											</div>
 
 
@@ -185,36 +237,14 @@
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<a href="javascript:void(0)" class="add-more" style="font-size:13px;">
+														<a href="javascript:void(0)" class="add-more" style="font-size:13px;" onclick="add_more_attri();">
 															<i class="fa fa-plus"></i> Add More Attribute
 														</a>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->
 											</div><!-- /.row -->
 
-											<div class="row">
-												<div class="col-sm-3" style="margin-top:10px;">
-													<span >
-														Item Type :
-													</span>
-												</div><!-- /.col-sm-4 -->
-
-												<div class="col-sm-6">
-													<div class="radio radio-custom">
-													<label class="radio-inline">
-														<input type="radio" name="item_type" id="cs-radio-04" value="Inventory">
-														<span class="checker"></span>
-														Inventory
-													</label>
-													<label class="radio-inline">
-														<input type="radio" name="item_type" id="cs-radio-05" value="Non-inventory">
-														<span class="checker"></span>
-														Non-inventory
-													</label>
-												</div>
-
-												</div><!-- /.col-sm-4 -->
-											</div><!-- /.row -->
+											
 
 											<div class="row">
 												<div class="col-sm-3" style="margin-top:10px;">
@@ -225,7 +255,14 @@
 												<div class="col-sm-9">
 											   <div class="form-group">                
 												 <select name="hsn_codes" class="rs-selectize-single">													   
-												   <option value="">Select HSN Codes</option>
+												    <?php
+												  $select_hsn = mysqli_query($mysqli,"select * from hsn where business_id='$business_id'");
+												  while($fetch_hsn = mysqli_fetch_array($select_hsn)){
+												  ?>
+													  <option value="<?php echo $fetch_hsn['hsn_id'];?>" <?php echo (($fetch_hsn['hsn_id']==$fetch_query['HSN_code'])?'selected':'');?>><?php echo $fetch_hsn['hsn_code'];?></option>
+												  <?php
+												  }
+												  ?>
 												 </select>
 											   </div><!-- /.form-group -->
 											  </div>
@@ -240,7 +277,14 @@
 												<div class="col-sm-9">
 											   <div class="form-group">                
 												 <select name="uqc_codes" class="rs-selectize-single">													   
-												   <option value="">Select UQC Codes</option>
+												    <?php
+													 $select_uqc = mysqli_query($mysqli,"select * from dimension_uqc");
+													 while($fetch_uqc = mysqli_fetch_array($select_uqc)){
+													 ?>
+													  <option value="<?php echo $fetch_uqc['uqc_id'];?>" <?php echo (($fetch_uqc['uqc_id'] == $fetch_query['UQC_dmension'])?'selected':'');?>><?php echo $fetch_uqc['name'];?></option>
+													 <?php
+													 }
+													 ?>
 												 </select>
 											   </div><!-- /.form-group -->
 											  </div>
@@ -265,8 +309,7 @@
 					</div><!-- /.container-fluid -->
 					<div class="panel-footer" style="background:#fff;">
 							<div class="form-group m-a-0">
-								<button type="reset" class="btn btn-default btn-wide">Reset</button>
-								<button type="submit" class="btn btn-success btn-wide" name="update">Submit</button>
+								<button type="submit" class="btn btn-success btn-wide" name="update_details">Submit</button>
 							</div>
 						</div><!-- /.panel-footer -->
 					</form>
@@ -308,19 +351,17 @@
 				$(".atrri").hide();
 		}
 
-		$(document).ready(function() {
-		  $(".add-more").click(function(){ 
-			  var htmlz = "<div class='row atrri_add_cont'><div class='col-sm-3 ache_ekta'></div><div class='col-sm-4'><div class='form-group'><label style='font-size:13px;'>Attribute</label><input type='text' name='attri[]' class='form-control' placeholder='Eg: color' required><p class='help-block with-errors'></p></div></div><div class='col-sm-5'><div class='form-group'><div class='col-sm-10'><label style='font-size:13px;'>Options</label><input type='text' name='optn[]' class='form-control' placeholder='Red' required><p class='help-block with-errors'></p></div><div class='col-sm-2' style='margin-top:30px;'><a href='#' class='remove' style='color:#ef5350;'><i class='fa fa-trash'></i></a></div></div></div></div>";
-			  //alert(htmlz);
-			  $(".add-more-contz").append(htmlz);
-		  });
+		function add_more_attri()
+		{
+			 var htmlz = "<div class='row atrri_add_cont'><div class='col-sm-3 ache_ekta'></div><div class='col-sm-4'><div class='form-group'><label style='font-size:13px;'>Attribute</label><input type='text' name='attri[]' class='form-control' placeholder='Eg: color'  ><p class='help-block with-errors'></p></div></div><div class='col-sm-5'><div class='form-group'><div class='col-sm-10'><label style='font-size:13px;'>Options</label><input type='text' name='optn[]' class='form-control' placeholder='Red'  ><p class='help-block with-errors'></p></div><div class='col-sm-2' style='margin-top:30px;'><a href='javascript:void(0);' class='remove' style='color:#ef5350;'><i class='fa fa-trash'></i></a></div></div></div></div>";
 
-		  $("body").on("click",".remove",function(){ 
+$(".add-more-contz").append(htmlz);
+
+$("body").on("click",".remove",function(){ 
 			  
 			  $(this).parents(".atrri_add_cont").remove();
 		  });
-
-		});
+		}
 	</script>
 	
 	<script>

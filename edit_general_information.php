@@ -5,17 +5,17 @@ $business_id = $_GET['business_id'];
 
 if(isset($_POST['update_details']))
 {
-	$firstname		= $_POST['fname'];
-	$lastname		= $_POST['lname'];
-	$company_name	= $_POST['cname'];
-	$email			= $_POST['email'];
-	$work_phone		= $_POST['wphone'];
-	$mobile			= $_POST['mobile'];
-	$gstin		    = $_POST['gstin'];
-	$business_type  = $_POST['business_type'];
-	$address		= $_POST['address'];
-	$state			= $_POST['state'];
-	$country		= $_POST['country'];
+	$firstname		= mysqli_real_escape_string($mysqli,$_POST['fname']);
+	$lastname		= mysqli_real_escape_string($mysqli,$_POST['lname']);
+	$company_name	= mysqli_real_escape_string($mysqli,$_POST['cname']);
+	$email			= mysqli_real_escape_string($mysqli,$_POST['email']);
+	$work_phone		= mysqli_real_escape_string($mysqli,$_POST['wphone']);
+	$mobile			= mysqli_real_escape_string($mysqli,$_POST['mobile']);
+	$gstin		    = mysqli_real_escape_string($mysqli,$_POST['gstin']);
+	$business_type  = mysqli_real_escape_string($mysqli,$_POST['business_type']);
+	$address		= mysqli_real_escape_string($mysqli,$_POST['address']);
+	$state			= mysqli_real_escape_string($mysqli,$_POST['state']);
+	$country		= mysqli_real_escape_string($mysqli,$_POST['country']);
 	if($_FILES['image']['name'] == '')
 	{
 		$select_prev = mysqli_query($mysqli,"select * from tbl_business where business_id='$business_id'");

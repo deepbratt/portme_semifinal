@@ -4,19 +4,19 @@ $business_id = $_SESSION['business_id'];
 
 if(isset($_POST['submit_details']))
 {
-	$salutation = $_POST['sal'];
-	$firstname = $_POST['fname'];
-	$lastname = $_POST['lname'];
-	$company_name = $_POST['cname'];
-	$email = $_POST['email'];
-	$work_phone = $_POST['wphone'];
-	$mobile = $_POST['mobile'];
-	$gst = $_POST['gst'];
-	$billing_address = $_POST['address'];
-	$billing_state = $_POST['bstate'];
-	$shipping_address = $_POST['saddress'];
-	$shipping_state = $_POST['sstate'];
-	$notes = $_POST['notes'];
+	$salutation = mysqli_real_escape_string($mysqli,$_POST['sal']);
+	$firstname = mysqli_real_escape_string($mysqli,$_POST['fname']);
+	$lastname = mysqli_real_escape_string($mysqli,$_POST['lname']);
+	$company_name = mysqli_real_escape_string($mysqli,$_POST['cname']);
+	$email = mysqli_real_escape_string($mysqli,$_POST['email']);
+	$work_phone = mysqli_real_escape_string($mysqli,$_POST['wphone']);
+	$mobile = mysqli_real_escape_string($mysqli,$_POST['mobile']);
+	$gst = mysqli_real_escape_string($mysqli,$_POST['gst']);
+	$billing_address = mysqli_real_escape_string($mysqli,$_POST['address']);
+	$billing_state = mysqli_real_escape_string($mysqli,$_POST['bstate']);
+	$shipping_address = mysqli_real_escape_string($mysqli,$_POST['saddress']);
+	$shipping_state = mysqli_real_escape_string($mysqli,$_POST['sstate']);
+	$notes = mysqli_real_escape_string($mysqli,$_POST['notes']);
 	$date = time();
 		
 	$old_customer_details = mysqli_query($mysqli,"select * from tbl_contacts WHERE customer_type='customer' AND business_id='$business_id'");

@@ -14,15 +14,15 @@ $image = $fetch_details['logo_image'];
 
 if(isset($_POST['update']))
 {
-	$username = $_POST['cu_name'];
-	$type	  = $_POST['type_business'];
-	$pan	  = $_POST['pan'];
-	$adhaar	  = $_POST['adhaar'];
-	$gstin = $_POST['gstin'];
-	$street	  = $_POST['street'];
-	$city	  = $_POST['city'];
-	$state	  = $_POST['state'];
-	$zip	  = $_POST['zip'];
+	$username = mysqli_real_escape_string($mysqli,$_POST['cu_name']);
+	$type	  = mysqli_real_escape_string($mysqli,$_POST['type_business']);
+	$pan	  = mysqli_real_escape_string($mysqli,$_POST['pan']);
+	$adhaar	  = mysqli_real_escape_string($mysqli,$_POST['adhaar']);
+	$gstin = mysqli_real_escape_string($mysqli,$_POST['gstin']);
+	$street	  = mysqli_real_escape_string($mysqli,$_POST['street']);
+	$city	  = mysqli_real_escape_string($mysqli,$_POST['city']);
+	$state	  = mysqli_real_escape_string($mysqli,$_POST['state']);
+	$zip	  = mysqli_real_escape_string($mysqli,$_POST['zip']);
 
 	if($_FILES['logo_upload']['name'] == '')
 	{
@@ -56,8 +56,8 @@ if ($update_details)
 	$get_row = mysqli_num_rows($select_query);
 	if($get_row > 0)
 	{
-		$new_password = $_POST['Password'];
-		$confirm_password = $_POST['confirm_password'];
+		$new_password = mysqli_real_escape_string($mysqli,$_POST['Password']);
+		$confirm_password = mysqli_real_escape_string($mysqli,$_POST['confirm_password']);
 
 		if($new_password == $confirm_password)
 		{

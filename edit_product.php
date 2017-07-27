@@ -5,15 +5,15 @@ $pro_id = $_GET['product_id'];
 
 if(isset($_POST['update']))
 {
-	$category_id   = $_POST['product_category_id'];
-	$product_name=$_POST['product_name'];
-	$description  = $_POST['description'];
-	$quantity  = $_POST['quantity'];
-	$cost_price= $_POST['cost_price_update'];
-	$selling_price= $_POST['selling_price_update'];
-	$attribute = $_POST['attri'];
+	$category_id   = mysqli_real_escape_string($mysqli,$_POST['product_category_id']);
+	$product_name=mysqli_real_escape_string($mysqli,$_POST['product_name']);
+	$description  = mysqli_real_escape_string($mysqli,$_POST['description']);
+	$quantity  = mysqli_real_escape_string($mysqli,$_POST['quantity']);
+	$cost_price= mysqli_real_escape_string($mysqli,$_POST['cost_price_update']);
+	$selling_price= mysqli_real_escape_string($mysqli,$_POST['selling_price_update']);
+	$attribute = mysqli_real_escape_string($mysqli,$_POST['attri']);
 	$add_attribute = implode(",",$attribute);
-	$options   = $_POST['optn'];
+	$options   = mysqli_real_escape_string($mysqli,$_POST['optn']);
 	$add_options   = implode(",",$options);
 	$date = time();
 

@@ -4,15 +4,15 @@ $business_id = $_SESSION['business_id'];
 
 if(isset($_POST['submit']))
 {
-	$category_id   = $_POST['product_category_id'];
-	$product_name=$_POST['product_name'];
-	$desc	   = $_POST['desc'];	
-	$quantity  = $_POST['quantity'];
-	$cost_price	   = $_POST['cost_price'];
-	$selling_price	   = $_POST['selling_price'];
-	$attribute = $_POST['attri'];
+	$category_id   = mysqli_real_escape_string($mysqli,$_POST['product_category_id']);
+	$product_name = mysqli_real_escape_string($mysqli,$_POST['product_name']);
+	$desc	   = mysqli_real_escape_string($mysqli,$_POST['desc']);	
+	$quantity  = mysqli_real_escape_string($mysqli,$_POST['quantity']);
+	$cost_price = mysqli_real_escape_string($mysqli,$_POST['cost_price']);
+	$selling_price = mysqli_real_escape_string($mysqli,$_POST['selling_price']);
+	$attribute = mysqli_real_escape_string($mysqli,$_POST['attri']);
 	$add_attribute = implode(",",$attribute);
-	$options   = $_POST['optn'];
+	$options = mysqli_real_escape_string($mysqli,$_POST['optn']);
 	$add_options   = implode(",",$options);
 	$date = time();
 	

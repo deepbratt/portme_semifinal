@@ -173,7 +173,7 @@ include("sidebar.php");
 
 							<tr class="rocks">
 								<th class="a" style="width:150px;">
-									  <select class="form-control selectpicker" style="margin:0px;padding:0px;">
+									  <select class="form-control selectpicker" style="margin:0px;padding:0px;" onselect="get_sales_order_ajax(this)">
 										 <?php
 											$business_id = $_SESSION['business_id'];
 											$get_prodcut = mysqli_query($mysqli,"SELECT * FROM tbl_products WHERE business_id='$business_id'");
@@ -401,6 +401,21 @@ include("sidebar.php");
 				  url: 'ajax/get_customer_details.php',
 				  data:{
 					suggest:salutation,
+				  },
+				  success: function (response){
+					//alert(response);
+					$('.custo_det').html(response);
+				  }
+				});
+			}
+
+			function get_sales_order_ajax(e){
+				var product_id = $(e).val();
+				$.ajax({
+				  type: 'post',
+				  url: 'ajax/get_sales_order_ajax.php',
+				  data:{
+					suggest:product_id,
 				  },
 				  success: function (response){
 					//alert(response);

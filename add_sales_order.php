@@ -173,7 +173,7 @@ include("sidebar.php");
 
 							<tr class="rocks">
 								<th class="a" style="width:150px;">
-									  <select class="form-control selectpicker" style="margin:0px;padding:0px;" onselect="get_sales_order_ajax(this)">
+									  <select class="form-control selectpicker" name="product_id[]" style="margin:0px;padding:0px;" onchange="get_sales_order_ajax(this)">
 										 <?php
 											$business_id = $_SESSION['business_id'];
 											$get_prodcut = mysqli_query($mysqli,"SELECT * FROM tbl_products WHERE business_id='$business_id'");
@@ -185,11 +185,11 @@ include("sidebar.php");
 										 ?>
 									  </select>
 								</th>
-								<th class="b"><input type="text" class="form-control" value="2345651" name=""></th>
-								<th class="c"><input type="text" class="form-control" value="1" name="" style="width:40px;amrgin:0px;padding:5px;"></th>
-								<th class="d"><input type="text" class="form-control" value="00.00" name=""></th>										
+								<th class="b"><input type="text" class="form-control hsn" value="2345651" name="hsn[]"></th>
+								<th class="c"><input type="text" class="form-control" value="1" name="qty[]" style="width:40px;amrgin:0px;padding:5px;"></th>
+								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:120px;"></th>										
 								<th class="e">
-									<select class="form-control" style="width:50px;margin:0px;padding:0px;">
+									<select class="form-control" name="tax_rate[]" style="width:50px;margin:0px;padding:0px;">
 										<option value="" selected disabled> Tax </option>
 										 <?php
 											$get_tax = mysqli_query($mysqli,"SELECT * FROM tax_rates");
@@ -201,13 +201,13 @@ include("sidebar.php");
 										 ?>
 									  </select>
 								</th>
-								<th class="f"><input type="text" class="form-control" value="00.00" name=""></th>
-								<th class="g"><input type="text" class="form-control" value="00.00" name=""></th>
-								<th class="h"><input type="text" class="form-control" value="00.00" name=""></th>
-								<th class="i"><input type="text" class="form-control" value="00.00" name=""></th>
-								<th class="j" style="text-align:center;"><input type="text" class="form-control" value="00.00" name=""></th>
-								<th class="k" style="text-align:center;"><input type="text" class="form-control" value="00.00" name=""></th>
-								<th class="l" style="text-align:center;"><input type="text" class="form-control" value="00.00" readonly name=""></th>
+								<th class="f"><input type="text" class="form-control" value="00.00" name="cgst[]"></th>
+								<th class="g"><input type="text" class="form-control" value="00.00" name="sgst[]"></th>
+								<th class="h"><input type="text" class="form-control" value="00.00" name="igst[]"></th>
+								<th class="i"><input type="text" class="form-control" value="00.00" name="cess[]"></th>
+								<th class="j" style="text-align:center;"><input type="text" class="form-control" value="00.00" name="tax_val[]"></th>
+								<th class="k" style="text-align:center;"><input type="text" class="form-control" value="00.00" name="discount[]"></th>
+								<th class="l" style="text-align:center;"><input type="text" class="form-control" value="00.00" readonly name="total[]"></th>
 								<th><a href="javascript:void(0);" class="add-more" onclick="add_more_fun();"><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>
 							</tr>
 
@@ -411,6 +411,7 @@ include("sidebar.php");
 
 			function get_sales_order_ajax(e){
 				var product_id = $(e).val();
+				//alert(product_id);
 				$.ajax({
 				  type: 'post',
 				  url: 'ajax/get_sales_order_ajax.php',
@@ -418,8 +419,9 @@ include("sidebar.php");
 					suggest:product_id,
 				  },
 				  success: function (response){
-					//alert(response);
-					$('.custo_det').html(response);
+					//alert(response.name);
+					$(e).closest('tr').find('.unit_price').val(response.selling_price);
+
 				  }
 				});
 			}

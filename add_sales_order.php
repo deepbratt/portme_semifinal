@@ -202,10 +202,10 @@ include("sidebar.php");
 									  </select>
 								</th>
 								<th class="b"><input type="text" class="form-control" value="2345651" name=""></th>
-								<th class="c"><input type="number" class="form-control" value="1" name=""></th>
+								<th class="c"><input type="text" class="form-control" value="1" name="" style="width:40px;amrgin:0px;padding:5px;"></th>
 								<th class="d"><input type="text" class="form-control" value="00.00" name=""></th>										
 								<th class="e">
-									<select class="form-control" style="width:70px;">
+									<select class="form-control" style="width:50px;margin:0px;padding:0px;">
 										<option value="" selected disabled> Tax </option>
 										 <?php
 											$get_tax = mysqli_query($mysqli,"SELECT * FROM tax_rates");

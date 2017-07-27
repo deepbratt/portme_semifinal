@@ -58,15 +58,22 @@ include("sidebar.php");
                 <div class="panel panel-plain panel-rounded">
                   <div class="panel-body">
                     <div class="col-md-7 col-sm-12" style="padding:0px;margin:0px;">
-                      
+						<?php
+							$get_last_sales_id = mysqli_query($mysqli,"SELECT * FROM tbl_transactions WHERE business_id='$business_id' ORDER BY tbl_transaction_id DESC");
+							$fetch_last_sales = mysqli_fetch_array($get_last_sales_id);
+
+							$invoice_no = $fetch_last_sales['tbl_transaction_id']+1;
+						?>
 						<div class="row">
                           <div class="col-sm-3">
                            <b> INVOICE No</b>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group" style="font-size:20px;font-weight:bold;">
-                              #<?php echo date("dmy");?>
-							  <?php echo $invoice_no;?>
+							  <?php 
+								$invoice_num_gene = "INV-".date('dmy')."000".$invoice_no."";
+							  ?>
+                              #<?php echo $invoice_num_gene;?>
                             </div>
                           </div>
                         </div>
@@ -79,10 +86,11 @@ include("sidebar.php");
                             <div class="form-group">
                               <select class="form-control selectpicker">
                                  <?php
+									$business_id = $_SESSION['business_id'];
 									$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id'");
 									while($fetch_cust_details = mysqli_fetch_array($get_fetch_details)){
 										?>
-									<option value="<?php echo $fetch_cust_details['customer_id'];?>" <?php echo((isset($_GET['custid']) && $fetch_cust_details['customer_id']==$_GET['custid'])?'selected':'');?>><?php echo ucfirst($fetch_cust_details['fname']);?>&nbsp;<?php echo ucfirst($fetch_cust_details['lname']);?> - <?php echo $fetch_cust_details['mobile'];?></option>
+									<option value="<?php echo $fetch_cust_details['customer_id'];?>" <?php echo((isset($_GET['custid']) && $fetch_cust_details['customer_id']==$_GET['custid'])?'selected':'');?>><?php echo ucfirst($fetch_cust_details['first_name']);?>&nbsp;<?php echo ucfirst($fetch_cust_details['last_name']);?> - <?php echo $fetch_cust_details['mobile'];?></option>
 															<?php
 																}
 															?>

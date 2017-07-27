@@ -1,7 +1,7 @@
 <?php
 include ("config.php");
 $business_id = $_SESSION['business_id'];
-
+$product_info = mysqli_query ($mysqli,"select * from tbl_products where status='active'");
 
 if(isset($_GET['delete_id']))
 {
@@ -10,6 +10,8 @@ if(isset($_GET['delete_id']))
 	if($delete_product)
 		{
 			$data = "success";
+			echo "<script>window.location.href='product.php'</script>";
+
 		}
 		else
 	{
@@ -87,15 +89,8 @@ if(isset($_GET['delete_id']))
 								</h3>
 								
 							</div>
-							<div class="rs-dashhead-toolbar">
-								<button type="button" class="btn btn-success btn-wide rs-btn-icon block-on-mobile" onclick="window.location.href='add_products.php'">
-									<span class="gcon gcon-upload-to-cloud icon-btn"></span>
-									Add New
-								</button>
-							</div><!-- /.rs-dashhead-toolbar -->
-							
-						</div><!-- /.rs-dashhead-content -->
-						<div class="col-md-12 col-sm-12">
+
+							<div class="col-md-12 col-sm-12">
 						<?php
 								if(isset($data) && $data == "success")
 						{
@@ -109,6 +104,16 @@ if(isset($_GET['delete_id']))
 						}
 						?>
 						</div>
+
+							<div class="rs-dashhead-toolbar">
+								<button type="button" class="btn btn-success btn-wide rs-btn-icon block-on-mobile" onclick="window.location.href='add_products.php'">
+									<span class="gcon gcon-upload-to-cloud icon-btn"></span>
+									Add New
+								</button>
+							</div><!-- /.rs-dashhead-toolbar -->
+							
+						</div><!-- /.rs-dashhead-content -->
+						
 						
 
 					</div><!-- /.rs-dashhead -->
@@ -135,7 +140,7 @@ if(isset($_GET['delete_id']))
 							        <tbody>
 							            <tr>
 											<?php
-											$product_info = mysqli_query ($mysqli,"select * from tbl_products where status='active'");
+											
 											while ($fetch_product_info = mysqli_fetch_array($product_info))
 											{
 											?>

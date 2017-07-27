@@ -9,6 +9,7 @@
     <title>Port-ME | Sales Order
     </title>
     <?php include("metalinks.php");?>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVEqoCsKgUMmAcDVX9OAwVMDewLI6yOAQ&sensor=false&libraries=places&language=en"></script>
     <style>
       .padmar{
         margin:0px !important;
@@ -402,6 +403,7 @@ include("sidebar.php");
 		   
 			
 		 </script>
-
+		 
+		 
       </body>
     </html>

@@ -186,10 +186,10 @@ include("sidebar.php");
 									  </select>
 								</th>
 								<th class="b"><input type="text" class="form-control hsn" value="2345651" name="hsn[]"></th>
-								<th class="c"><input type="text" class="form-control" value="1" name="qty[]" style="width:40px;amrgin:0px;padding:5px;"></th>
+								<th class="c"><input type="text" class="form-control" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="qty_mul(this)"></th>
 								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:120px;"></th>										
 								<th class="e">
-									<select class="form-control" name="tax_rate[]" style="width:50px;margin:0px;padding:0px;">
+									<select class="form-control" name="tax_rate[]" style="width:50px;margin:0px;padding:0px;" onchange="tax_change(this);">
 										<option value="" selected disabled> Tax </option>
 										 <?php
 											$get_tax = mysqli_query($mysqli,"SELECT * FROM tax_rates");
@@ -201,13 +201,13 @@ include("sidebar.php");
 										 ?>
 									  </select>
 								</th>
-								<th class="f"><input type="text" class="form-control" value="00.00" name="cgst[]"></th>
-								<th class="g"><input type="text" class="form-control" value="00.00" name="sgst[]"></th>
-								<th class="h"><input type="text" class="form-control" value="00.00" name="igst[]"></th>
+								<th class="f"><input type="text" class="form-control cgst" value="00.00" style="margin:0px;padding:5px;" name="cgst[]" ></th>
+								<th class="g"><input type="text" class="form-control sgst" value="00.00" style="margin:0px;padding:5px;" name="sgst[]"></th>
+								<th class="h"><input type="text" class="form-control igst" value="00.00" style="margin:0px;padding:5px;" name="igst[]"></th>
 								<th class="i"><input type="text" class="form-control" value="00.00" name="cess[]"></th>
 								<th class="j" style="text-align:center;"><input type="text" class="form-control" value="00.00" name="tax_val[]"></th>
 								<th class="k" style="text-align:center;"><input type="text" class="form-control" value="00.00" name="discount[]"></th>
-								<th class="l" style="text-align:center;"><input type="text" class="form-control" value="00.00" readonly name="total[]"></th>
+								<th class="l" style="text-align:center;"><input type="text" class="form-control total" value="00.00" readonly name="total[]"></th>
 								<th><a href="javascript:void(0);" class="add-more" onclick="add_more_fun();"><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>
 							</tr>
 
@@ -420,10 +420,31 @@ include("sidebar.php");
 				  },
 				  success: function (response){
 					//alert(response.name);
-					$(e).closest('tr').find('.unit_price').val(response.selling_price);
+					var price = response.selling_price;
+					$(e).closest('tr').find('.unit_price').val(price);
+					$(e).closest('tr').find('.total').val(price);
 
 				  }
 				});
+			}
+			
+			function qty_mul(e){
+			
+			}
+
+			function tax_change(e){
+				var tax_amt = $(e).val();
+				var half_eql = tax_amt/2;
+				//alert(product_id);
+				var unit_price = $(e).closest('tr').find('.unit_price').val();
+				var cgst = unit_price*(half_eql/100);
+				$(e).closest('tr').find('.cgst').val(cgst.toFixed(2));
+				$(e).closest('tr').find('.sgst').val(cgst.toFixed(2));
+				$(e).closest('tr').find('.igst').attr("readonly");
+				
+
+				$(e).closest('tr').find('.total').val(total);
+
 			}
 		 </script>
 		 

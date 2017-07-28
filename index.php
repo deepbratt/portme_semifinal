@@ -4,6 +4,7 @@
 
 	if(isset($_POST['submit'])){
 		$username = mysqli_real_escape_string($mysqli,$_POST['username']);
+	
 		$password = mysqli_real_escape_string($mysqli,$_POST['password']);
 		
 		$login_que = mysqli_query($mysqli,"SELECT * FROM tbl_business where email='$username' and password='$password' and status='active'");

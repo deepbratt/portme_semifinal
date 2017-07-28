@@ -1,3 +1,10 @@
+<?php
+	include ('config.php');
+	$business_id = $_SESSION['business_id'];
+	$select_me = mysqli_query($mysqli,"select * from tbl_business where business_id='$business_id'");
+	$fetch_me = mysqli_fetch_array($select_me);
+?>
+
 <!DOCTYPE html>
 <html lang=en>
   <head>
@@ -85,11 +92,12 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <select class="form-control selectpicker" onchange="show_customer_data(this);">
+                              <select class="form-control selectpicker"  onchange="show_customer_data(this);">
 								 <option value="">Choose Customer</option>
                                  <?php
-									$business_id = $_SESSION['business_id'];
+									
 									$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id'");
+
 									while($fetch_cust_details = mysqli_fetch_array($get_fetch_details)){
 								?>
 									<option value="<?php echo $fetch_cust_details['customer_id'];?>" <?php echo((isset($_GET['custid']) && $fetch_cust_details['customer_id']==$_GET['custid'])?'selected':'');?>><?php echo ucfirst($fetch_cust_details['first_name']);?>&nbsp;<?php echo ucfirst($fetch_cust_details['last_name']);?> - <?php echo $fetch_cust_details['mobile'];?></option>
@@ -177,6 +185,7 @@ include("sidebar.php");
 									  <select class="form-control selectpicker pid" name="product_id[]" style="margin:0px;padding:0px;" onchange="get_sales_order_ajax(this)">
 										 <?php
 											$business_id = $_SESSION['business_id'];
+											
 											$get_prodcut = mysqli_query($mysqli,"SELECT * FROM tbl_products WHERE business_id='$business_id'");
 											while($fetch_product = mysqli_fetch_array($get_prodcut)){
 										 ?>
@@ -188,9 +197,24 @@ include("sidebar.php");
 								</th>
 								<th class="b"><input type="text" class="form-control hsn" value="2345651" name="hsn[]"></th>
 								<th class="c"><input type="text" class="form-control" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
-								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:120px;"></th>										
+								<th class="d"><input type="text" class="form-control unit_price" id="unit_price" value="00.00" name="unit_price[]" style="width:120px;"></th>		
+								<?php
+								
+								$select_state = mysqli_query($mysqli,"select * from tbl_contacts where business_id='$business_id'");
+								while($fetch_state = mysqli_fetch_array($select_state)){
+								
+								
+								if($fetch_me['state'] == $fetch_state['state'])
+								{
+									$state_function = "tax_change_same(this)";
+								}
+								else{
+									$state_function = "tax_change_other(this)";
+								}
+								}
+								?>
 								<th class="e">
-									<select class="form-control" name="tax_rate[]" style="width:50px;margin:0px;padding:0px;" onchange="tax_change(this);">
+									<select class="form-control" name="tax_rate[]" style="width:50px;margin:0px;padding:0px;" onchange="<?php echo $state_function;?>">
 										 <?php
 											$get_tax = mysqli_query($mysqli,"SELECT * FROM tax_rates");
 											while($fetch_tax = mysqli_fetch_array($get_tax)){
@@ -201,11 +225,11 @@ include("sidebar.php");
 										 ?>
 									  </select>
 								</th>
-								<th class="f"><input type="text" class="form-control cgst" value="00.00" style="margin:0px;padding:5px;" name="cgst[]" ></th>
-								<th class="g"><input type="text" class="form-control sgst" value="00.00" style="margin:0px;padding:5px;" name="sgst[]"></th>
-								<th class="h"><input type="text" class="form-control igst" value="00.00" style="margin:0px;padding:5px;" name="igst[]"></th>
-								<th class="i"><input type="text" class="form-control" value="00.00" name="cess[]"></th>
-								<th class="j" style="text-align:center;"><input type="text" class="form-control" value="00.00" name="tax_val[]"></th>
+								<th class="f"><input type="text" class="form-control cgst" id="cgst" value="00.00" style="margin:0px;padding:5px;" name="cgst[]" ></th>
+								<th class="g"><input type="text" class="form-control sgst" id="sgst" value="00.00" style="margin:0px;padding:5px;" name="sgst[]"></th>
+								<th class="h"><input type="text" class="form-control igst" id="igst" value="00.00" style="margin:0px;padding:5px;" name="igst[]"></th>
+								<th class="i"><input type="text" class="form-control" id="cess" value="00.00" name="cess[]"></th>
+								<th class="j" style="text-align:center;"><input type="text" class="form-control tax_val"  value="00.00" name="tax_val[]"></th>
 								<th class="k" style="text-align:center;"><input type="text" class="form-control" value="00.00" name="discount[]"></th>
 								<th class="l" style="text-align:center;"><input type="text" class="form-control total" value="00.00" readonly name="total[]"></th>
 								<th><a href="javascript:void(0);" class="add-more" onclick="add_more_fun();"><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>
@@ -456,6 +480,30 @@ include("sidebar.php");
 				});
 				
 
+				
+			}
+			function tax_change_same(t)
+			{
+				var unit_price = $('#unit_price').val();
+				var yo = $(t).val();
+				var val_cgst = yo/2;
+				var val_sgst = yo/2;
+				var final_cgst = unit_price * (val_cgst/100);
+				var final_sgst = unit_price * (val_sgst/100);
+				$(t).closest('tr').find('.cgst').val(final_cgst);
+				$(t).closest('tr').find('.sgst').val(final_sgst);
+				var final_tax = final_cgst + final_sgst ;
+				$(t).closest('tr').find('.tax_val').val(final_tax);
+				
+			}
+			function tax_change_other(v)
+			{
+				var unit_price = $('#unit_price').val();
+				var val_igst = $(v).val();
+				var final_igst = unit_price * (val_igst/100);
+				$(v).closest('tr').find('.igst').val(final_igst);
+				//var final_tax = final_igst;
+				//$(t).closest('tr').find('.tax_val').val(final_tax);
 				
 			}
 

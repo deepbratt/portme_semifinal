@@ -436,11 +436,25 @@ include("sidebar.php");
 				var qty = $(e).val();
 				
 				var p_id = $(e).closest('tr').find('.pid').val();
+				$.ajax({
+				  type: 'post',
+				  url: 'ajax/get_sales_order_ajax.php',
+				  data:{
+					suggest:p_id,
+				  },
+				  success: function (response){
+					//alert(response.name);
+					var price = response.selling_price;
+					$(e).closest('tr').find('.unit_price').val(price);
+
+					var updated_unit_price = Math.round(qty*price);
 				
-				var updated_unit_price = Math.round(qty*unit_price);
 				
-				//alert(updated_unit_price);
-				$(e).closest('tr').find('.unit_price').val(updated_unit_price);
+					$(e).closest('tr').find('.unit_price').val(updated_unit_price);
+					$(e).closest('tr').find('.total').val(updated_unit_price);
+				  }
+				});
+				
 
 				
 			}

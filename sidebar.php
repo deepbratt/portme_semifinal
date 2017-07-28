@@ -74,14 +74,18 @@ $fetch_details = mysqli_fetch_array($cu_info);
 
 
 
-				<li class="nav-item start <?php if($page_name == 'javascript:void(0);' ||  $page_name == 'javascript:void(0);'  ||  $page_name == 'javascript:void(0);') { ?>active open<?php } ?>">
+				<li class="nav-item start <?php if($page_name == 'javascript:void(0);' ||  $page_name == 'B2B_invoice.php' ||  $page_name == 'B2CL_invoice.php' ||  $page_name == 'B2CS_invoice.php' ||  $page_name == 'hsn_summary.php' ) { ?>active open<?php } ?>">
 					<a href="javascript:void(0);">
 						<span class="fa fa-table rs-icon-menu"></span>Financial Reports
 					</a>
 					<ul>
 						<li><a href="javascript:void(0);">Transaction History</a></li>
-						<li><a href="javascript:void(0);">B2C(Large) Invoices</a></li>
-						<li><a href="javascript:void(0);">B2B Invoices</a></li>
+						<li><a href="B2B_invoice.php">B2B Invoices</a></li>
+						<li><a href="B2CL_invoice.php">B2C(Large) Invoices</a></li>
+						<li><a href="B2CS_invoice.php">B2C(Small) Invoices</a></li>
+						<li><a href="hsn_summary.php">HSN Summary</a></li>
+						
+
 					</ul>
 				</li>
 				

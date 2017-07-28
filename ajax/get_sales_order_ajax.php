@@ -14,6 +14,8 @@
 	$attr_value = $fetch_product_details['attr_value'];
 	$HSN_code = $fetch_product_details['HSN_code'];
 
+	$customer_business_id = 
+
 	$response = array("product_id"=> $product_id ,"productcat_id"=> $productcat_id , "business_id" => $business_id , "name" => $name ,"selling_price" => $selling_price , "attr_name" => $attr_name , "attr_value" => $attr_value , "HSN_code" => $HSN_code);
 	header("Content-Type: application/json");
 	echo json_encode($response);

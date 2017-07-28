@@ -85,7 +85,8 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <select class="form-control selectpicker" onclick="show_customer_data(this);">
+                              <select class="form-control selectpicker" onchange="show_customer_data(this);">
+								 <option value="">Choose Customer</option>
                                  <?php
 									$business_id = $_SESSION['business_id'];
 									$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id'");
@@ -116,7 +117,7 @@ include("sidebar.php");
                           </div>
                         </div>
 
-                        <div class="row">
+                        <!--<div class="row">
                           <div class="col-sm-3">
                             <b>E-com GSTIN</b>
                           </div>
@@ -124,7 +125,7 @@ include("sidebar.php");
                             <input type="text" class="form-control" placeholder="GST IN" name="invoicedate">
                             <p class="help-block with-errors"></p>
                           </div>
-                        </div>
+                        </div>-->
 
                     </div>
 
@@ -137,7 +138,7 @@ include("sidebar.php");
                 </div>
 				
 				<!-- table starts -->
-				<div class="panel panel-plain panel-rounded table-responsive" style="padding:15px;">
+				<div class="panel panel-plain panel-rounded table-responsive sales_chart" style="padding:15px;display:none;">
 					<table class="table table-b-t table-b-b datatable-default rs-table table-striped table-bordered" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">
 						<thead>
 						   <tr style="font-size:15px;">
@@ -173,7 +174,7 @@ include("sidebar.php");
 
 							<tr class="rocks">
 								<th class="a" style="width:150px;">
-									  <select class="form-control selectpicker" name="product_id[]" style="margin:0px;padding:0px;" onchange="get_sales_order_ajax(this)">
+									  <select class="form-control selectpicker pid" name="product_id[]" style="margin:0px;padding:0px;" onchange="get_sales_order_ajax(this)">
 										 <?php
 											$business_id = $_SESSION['business_id'];
 											$get_prodcut = mysqli_query($mysqli,"SELECT * FROM tbl_products WHERE business_id='$business_id'");
@@ -186,11 +187,10 @@ include("sidebar.php");
 									  </select>
 								</th>
 								<th class="b"><input type="text" class="form-control hsn" value="2345651" name="hsn[]"></th>
-								<th class="c"><input type="text" class="form-control" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="qty_mul(this)"></th>
+								<th class="c"><input type="text" class="form-control" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
 								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:120px;"></th>										
 								<th class="e">
 									<select class="form-control" name="tax_rate[]" style="width:50px;margin:0px;padding:0px;" onchange="tax_change(this);">
-										<option value="" selected disabled> Tax </option>
 										 <?php
 											$get_tax = mysqli_query($mysqli,"SELECT * FROM tax_rates");
 											while($fetch_tax = mysqli_fetch_array($get_tax)){
@@ -405,6 +405,9 @@ include("sidebar.php");
 				  success: function (response){
 					//alert(response);
 					$('.custo_det').html(response);
+					if(response != ''){
+						$('.sales_chart').show();
+					}
 				  }
 				});
 			}
@@ -422,30 +425,34 @@ include("sidebar.php");
 					//alert(response.name);
 					var price = response.selling_price;
 					$(e).closest('tr').find('.unit_price').val(price);
+					$(e).closest('tr').find('.hsn').val(response.HSN_code);
 					$(e).closest('tr').find('.total').val(price);
 
 				  }
 				});
 			}
 			
-			function qty_mul(e){
-			
-			}
-
-			function tax_change(e){
-				var tax_amt = $(e).val();
-				var half_eql = tax_amt/2;
-				//alert(product_id);
-				var unit_price = $(e).closest('tr').find('.unit_price').val();
-				var cgst = unit_price*(half_eql/100);
-				$(e).closest('tr').find('.cgst').val(cgst.toFixed(2));
-				$(e).closest('tr').find('.sgst').val(cgst.toFixed(2));
-				$(e).closest('tr').find('.igst').attr("readonly");
+			function complete_value(e){
+				var qty = $(e).val();
 				
+				var p_id = $(e).closest('tr').find('.pid').val();
+				
+				var updated_unit_price = Math.round(qty*unit_price);
+				
+				//alert(updated_unit_price);
+				$(e).closest('tr').find('.unit_price').val(updated_unit_price);
 
-				$(e).closest('tr').find('.total').val(total);
-
+				
 			}
+
+			/*function qty_mul(e){
+				var unit_price = $(e).closest('tr').find('.unit_price').val();
+				var qty = e.val();
+			}
+
+			*/
+
+
 		 </script>
 		 
 		 

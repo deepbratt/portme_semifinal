@@ -123,7 +123,7 @@
 						<span class="gcon gcon-phone f-s-xs form-control-feedback" aria-hidden="true"></span>
 					</div><!-- /.form-group -->
 
-					<!--<div class="form-group has-feedback feedback-left">
+					<div class="form-group has-feedback feedback-left">
 						<select name="country" class="form-control">
 							<option value="" selected disabled>Choose Country</option>
 							<option value="Afghanistan">Afghanistan</option>

@@ -138,7 +138,7 @@ if(isset($_GET['delete_id']))
 								<th>Total Quantity</th>	
 								<th>Total Value</th>
 								<th>Total Taxable Value</th>
-								<th colspan="4" >Amount</th>
+								<th colspan="4" style="text-align:center;" >Amount</th>
 								<th>Action</th>
 								
 							</tr>

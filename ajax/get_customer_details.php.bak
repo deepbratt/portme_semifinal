@@ -8,6 +8,11 @@
 ?>
 
 <div class="col-sm-12">
+	<label style="font-size:20px;border-bottom:1px solid #CCC:" class="fname_lname">
+		CUSTOMER DETAILS
+	</label>
+</div>
+<div class="col-sm-12">
 	<label style="font-size:20px;" class="fname_lname">
 		<?php echo $fetch_cust_query['first_name'];?>&nbsp;<?php echo $fetch_cust_query['last_name'];?>
 	</label>
@@ -27,7 +32,7 @@
 
 			echo ucfirst($fetch_state_details['states_name']);
 		?>
-		,
-		<?php echo $fetch_state_details['states_code']; ?>
+		-
+		<span class="p_o_s_c"><?php echo $fetch_state_details['states_code']; ?></span>
 	</label>
 </div>

@@ -125,26 +125,6 @@ include("sidebar.php");
                           </div>
                         </div>
 
-						<div class="row">
-                          <div class="col-sm-3">
-                            <b>Place of supply</b>
-                          </div>
-                          <div class="col-sm-6">
-                            <div class="form-group">
-							  <select class="form-control cus_states" name="cust_states">
-								  <?php
-									$get_all_states = mysqli_query($mysqli,"SELECT * FROM states");
-									while($fetch_all_states = mysqli_fetch_array($get_all_states)){
-								  ?>
-							      <option value="<?php echo $fetch_all_states['states_code'];?>"><?php echo $fetch_all_states['states_name'];?> (<?php echo $fetch_all_states['states_code'];?>)</option>
-								  <?php
-									}
-								  ?>
-							  </select>
-                            </div>
-                          </div>
-                        </div>
-
                         <!--<div class="row">
                           <div class="col-sm-3">
                             <b>E-com GSTIN</b>
@@ -166,7 +146,7 @@ include("sidebar.php");
                 </div>
 				
 				<!-- table starts -->
-				<div class="panel panel-plain panel-rounded table-responsive sales_chart" style="padding:15px;">
+				<div class="panel panel-plain panel-rounded table-responsive sales_chart" style="padding:15px;display:none;">
 					<table class="table table-b-t table-b-b datatable-default rs-table table-striped table-bordered" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">
 						<thead>
 						   <tr style="font-size:15px;">
@@ -203,7 +183,6 @@ include("sidebar.php");
 							<tr class="rocks">
 								<th class="a" style="width:150px;">
 									  <select class="form-control selectpicker pid" name="product_id[]" style="margin:0px;padding:0px;" onchange="get_sales_order_ajax(this)">
-										 <option value="">Choose</option>
 										 <?php
 											$business_id = $_SESSION['business_id'];
 											
@@ -216,30 +195,43 @@ include("sidebar.php");
 										 ?>
 									  </select>
 								</th>
-								<th class="b"><input type="text" class="form-control hsn" value="" name="hsn[]"></th>
-								<th class="c"><input type="text" class="form-control qty" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
-								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:120px;" onchange="complete_value(this)"></th>		
-
+								<th class="b"><input type="text" class="form-control hsn" value="2345651" name="hsn[]"></th>
+								<th class="c"><input type="text" class="form-control" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
+								<th class="d"><input type="text" class="form-control unit_price" id="unit_price" value="00.00" name="unit_price[]" style="width:120px;"></th>		
+								<?php
+								
+								$select_state = mysqli_query($mysqli,"select * from tbl_contacts where business_id='$business_id'");
+								while($fetch_state = mysqli_fetch_array($select_state)){
+								
+								
+								if($fetch_me['state'] == $fetch_state['state'])
+								{
+									$state_function = "tax_change_same(this)";
+								}
+								else{
+									$state_function = "tax_change_other(this)";
+								}
+								}
+								?>
 								<th class="e">
-									<select class="form-control" name="tax_rate[]" style="width:50px;margin:0px;padding:0px;" onchange="complete_value(this)">
-										 
+									<select class="form-control" name="tax_rate[]" style="width:50px;margin:0px;padding:0px;" onchange="<?php echo $state_function;?>">
 										 <?php
 											$get_tax = mysqli_query($mysqli,"SELECT * FROM tax_rates");
 											while($fetch_tax = mysqli_fetch_array($get_tax)){
 										 ?>
-											<option value="<?php echo $fetch_tax['tax_rate'];?>" <?php echo(($fetch_tax['tax_rate']==0)?'selected':'')?>><?php echo $fetch_tax['tax_rate'];?></option>
+											<option value="<?php echo $fetch_tax['tax_rate'];?>"><?php echo $fetch_tax['tax_rate'];?></option>
 										 <?php
 											}
 										 ?>
 									  </select>
 								</th>
-								<th class="f"><input type="text" class="form-control cgst" id="cgst" value="00.00" style="margin:0px;padding:5px;" name="cgst[]" onchange="complete_value(this)"></th>
-								<th class="g"><input type="text" class="form-control sgst" id="sgst" value="00.00" style="margin:0px;padding:5px;" name="sgst[]" onchange="complete_value(this)"></th>
-								<th class="h"><input type="text" class="form-control igst" id="igst" value="00.00" style="margin:0px;padding:5px;" name="igst[]" onchange="complete_value(this)"></th>
-								<th class="i"><input type="text" class="form-control cess" id="cess" value="00.00" name="cess[]" onchange="complete_value(this)"></th>
-								<th class="j" style="text-align:center;"><input type="text" class="form-control tax_val"  value="00.00" name="tax_val[]" onchange="complete_value(this)"></th>
-								<th class="k" style="text-align:center;"><input type="text" class="form-control disount" value="00.00" name="discount[]" onchange="complete_value(this)"></th>
-								<th class="l" style="text-align:center;"><input type="text" class="form-control total" value="00.00" readonly name="total[]" style="width:100px;" onchange="complete_value(this)"></th>
+								<th class="f"><input type="text" class="form-control cgst" id="cgst" value="00.00" style="margin:0px;padding:5px;" name="cgst[]" ></th>
+								<th class="g"><input type="text" class="form-control sgst" id="sgst" value="00.00" style="margin:0px;padding:5px;" name="sgst[]"></th>
+								<th class="h"><input type="text" class="form-control igst" id="igst" value="00.00" style="margin:0px;padding:5px;" name="igst[]"></th>
+								<th class="i"><input type="text" class="form-control" id="cess" value="00.00" name="cess[]"></th>
+								<th class="j" style="text-align:center;"><input type="text" class="form-control tax_val"  value="00.00" name="tax_val[]"></th>
+								<th class="k" style="text-align:center;"><input type="text" class="form-control" value="00.00" name="discount[]"></th>
+								<th class="l" style="text-align:center;"><input type="text" class="form-control total" value="00.00" readonly name="total[]"></th>
 								<th><a href="javascript:void(0);" class="add-more" onclick="add_more_fun();"><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>
 							</tr>
 
@@ -257,7 +249,7 @@ include("sidebar.php");
 										<div class="col-sm-5">
 											<div class="form-group">
 												<label style="font-size:17px;">
-													<b class="">00.00</b>
+													<b>00.00</b>
 												</label>	
 												<p class="help-block with-errors"></p>
 											</div>
@@ -266,32 +258,23 @@ include("sidebar.php");
 
 									<div class="row col-sm-12">
 										<div class="col-sm-7">
-											<label style="font-size:15px;">
-												Discount <i class="fa fa-inr" aria-hidden="true"></i>
+											<label style="font-size:15px;margin-top:5px;">
+												Discount
 											</label>
-										</div>
-										<div class="col-sm-5">
+										</div>												 
+									<div class="col-sm-5">
 											<div class="form-group">
-												<label style="font-size:17px;">
-													<b class="">00.00</b>
-												</label>	
-												<p class="help-block with-errors"></p>
-											</div>
-										</div>
-									</div>
-
-									<div class="row col-sm-12">
-										<div class="col-sm-7">
-											<label style="font-size:15px;">
-												Tax <i class="fa fa-inr" aria-hidden="true"></i>
-											</label>
-										</div>
-										<div class="col-sm-5">
-											<div class="form-group">
-												<label style="font-size:17px;">
-													<b class="">00.00</b>
-												</label>	
-												<p class="help-block with-errors"></p>
+												<div class="input-group">
+											<div class="input-group-btn">
+												<select  class="btn btn-default dropdown-toggle" style="height:40px;padding:2px;"
+												data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false">			
+													<option>Rs.</option>
+													<option>%</option>															
+												</select>
+											</div><!-- /btn-group -->
+											<input type="text" class="form-control" aria-label="...">
+										</div><!-- /input-group -->
 											</div>
 										</div>
 									</div>
@@ -448,9 +431,6 @@ include("sidebar.php");
 					$('.custo_det').html(response);
 					if(response != ''){
 						$('.sales_chart').show();
-						var statez = $('.p_o_s_c').text();
-						$('.cus_states option[value='+statez+']').prop('selected',true);
-						//alert(n);
 					}
 				  }
 				});
@@ -468,10 +448,8 @@ include("sidebar.php");
 				  success: function (response){
 					//alert(response.name);
 					var price = response.selling_price;
-					
-					$(e).closest('tr').find('.hsn').val(response.HSN_code);
-					$(e).closest('tr').find('.qty').val(1);
 					$(e).closest('tr').find('.unit_price').val(price);
+					$(e).closest('tr').find('.hsn').val(response.HSN_code);
 					$(e).closest('tr').find('.total').val(price);
 
 				  }

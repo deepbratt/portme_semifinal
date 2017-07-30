@@ -680,7 +680,7 @@ header.header-wrapper .banner-meta p.lead{
     padding: 10px 0px;
 }
 header.header-wrapper .banner-image img {
-    bottom: 0;
+    bottom: 2px;
     display: block;
     left: 50%;
     max-width: 100%;

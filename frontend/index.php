@@ -8,12 +8,40 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Port Me</title>
         <!-- Favicon -->
-		<link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous" />
 		<link rel="stylesheet" href="css/hdit.css?v=20170715120728" /> 
+		<link href="css/styleH.css" rel="stylesheet">
 
 		<?php
-			include('meta_links.php');
+			include("meta_links.php");
 		?>
+
+<style type="text/css">
+  
+    
+
+	  .arrow {
+		position: absolute;
+		bottom: 2%;
+		left: 50%;
+		margin-left: -20px;
+		width: 40px;
+		height: 40px;
+		background-image: url(images/down-arrow.svg);
+		background-size: contain;
+		z-index: 9;
+	}
+	.bounce {
+		-webkit-animation-name: bounce;
+		animation-name: bounce;
+		-webkit-transform-origin: center bottom;
+		transform-origin: center bottom;
+	}
+	.bounce {
+		-webkit-animation: bounce 2s infinite;
+		animation: bounce 2s infinite;
+	}
+}
+	</style>
     </head>
     <body>
         <!-- ==============================================
@@ -30,9 +58,9 @@
         <!-- ==============================================
                      **MAIN HEADER**
         =============================================== -->
-		<?php
-			include('header.php');
-		?>
+				<?php
+					include("header.php");
+				?>
 <!-- End Header -->
         <!-- ==============================================
                      **PARTNERS**
@@ -64,35 +92,38 @@
         </section> -->
 		<!-- End Section -->
 
-		<!-- gst -->
+		<!-- gst -->			
+	<!-- End Container -->
+		<div class="section_top " style="position:relative; background: url('images/newdd3.png') no-repeat bottom center;
+				background-size: contain;">
+				<div class="cont_top"></div>				
+					<div class="top_cont_heading  cont_wrap">
+						  <div id="home-news" style="margin-top:-200px !important">
+							<div class="home_header">
+							  <span>The <br><strong style="color:#ff3333">operating system</strong> for business.</span>
+							</div>
+							<div class="home_header">
+							  <span>Simple <br><strong style="color:#ff3333"> accounting/Bookkeeping </strong> software</span>
+							</div>
+							<div class="home_header">
+							  <span>Shockingly <strong style="color:#ff3333"> easy.</strong> to use</span>
+							</div>
+						  </div>
+					</div>
+			<div class="arrow bounce"></div>
+			<div class="clear" ></div>
+	 </div>
 
 
-						            <!-- End Container -->
-											
+  <div class="clear" ></div>
 
-						<section class="demo-request ptb-100">
-						<div class="container-fluid" style="background:#fff url('images/newdd3.png');border:1px solid red;padding-bottom:0px;margin-bottom:-30px;">
-                <div class="row banner-content" style="">
-                    <div class="top_cont_heading  cont_wrap">
-		  <div id="home-news" style="margin-top:-200px !important">
-			<div class="home_header">
-			  <span>The <br><strong style="color:#ff3333">operating system</strong> for business.</span>
-			</div>
-			<div class="home_header">
-			  <span>Simple <br><strong style="color:#ff3333"> accounting/Bookkeeping </strong> software</span>
-			</div>
-			<div class="home_header">
-			  <span>Shockingly <strong style="color:#ff3333"> easy.</strong> to use</span>
-			</div>
-		  </div>
-    </div>
-                </div>
-            </div>
-            <div class="container text-center">
-                <div class="request-title mb-30">
-                    <h2>Start <span>free</span> Fedrex trial!</h2>
-                    <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.</p>
-                </div>
+		<section class="demo-request ptb-100">
+			<div id="whtscoch">
+			    <div class="container text-center">
+					<div class="request-title mb-30">
+					   <h2>Start <span>free</span> Fedrex trial!</h2>
+					    <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.</p>
+					 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <form class="form-inline">
@@ -345,24 +376,31 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <img src="images/process.png" class="img-responsive" alt="image">
+                        <img src="images/process1.png" class="img-responsive" alt="image">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <h4><span>01</span> Access Your Dashboard</h4>
+					 <img src="images/icons/how.png" class="img-responsive" alt="image"  style="margin-left:-30px;">
+                        <h4><span>01</span> Sign Up</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et aliquet neque, id pretium risus. </p>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <h4><span>02</span> Connect With Vendors</h4>
+				 <img src="images/icons/payment-gateway.png" class="img-responsive" alt="image"  style="margin-left:-50px;">
+
+                        <h4><span>02</span> Payment Gateway</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et aliquet neque, id pretium risus. </p>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <h4><span>03</span> Bid on Right Time</h4>
+				<img src="images/icons/data.ico" class="img-responsive" alt="image"  style="margin-left:-10px;height:200px;">
+
+                        <h4><span>03</span> Configuration</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et aliquet neque, id pretium risus. </p>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <h4><span>04</span> Receive Your Earnings</h4>
+			 <img src="images/icons/icon-get-started.png" class="img-responsive" alt="image"  style="margin-left:0px;height:200px;">
+
+                        <h4><span>04</span> Get Started</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et aliquet neque, id pretium risus. </p>
                     </div>
                 </div>
@@ -511,7 +549,7 @@
         </section> --><!-- End Section -->
       
 				<?php
-					include('footer.php');
+					include("footer.php");
 				?>
 <!-- End Footer -->
         <!-- jQuery -->
@@ -555,6 +593,27 @@
     
     
   </script>
+  <script>
+		if ($(window).width() > 767) {
+				var winH = $(window).height(); $('.section_top').css('height',winH);
+			  }else {
+				$('.section_top').css('height','auto');
+			  }
+			  $(window).resize(function() {
+				if ($(window).width() > 767) {
+				var winH = $(window).height(); $('.section_top').css('height',winH);
+				}else {
+				  $('.section_top').css('height','auto');
+				}
+			  });
+			
+			  // Header top scrolled down
+			  $('.bounce').on('click',function() {
+				$('html,body').animate({
+				  scrollTop: $("#whtscoch").offset().top},
+				  1200);
+			  });
+		</script>
 	
 
     

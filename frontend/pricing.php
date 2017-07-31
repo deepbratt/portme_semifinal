@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>FexRex</title>
+        <title>Portme</title>
         <!-- Favicon -->
 				<?php
 					include('meta_links.php');
@@ -16,14 +15,14 @@
         <!-- ==============================================
                      **PRE LOADER**
         =============================================== -->
-<!--         <div id="page-loader">
+     <div id="page-loader">
             <div class="loader-container">
                 <div class="loader-logo">
                     <span>LOADING</span>
                 </div>
                 <div class="loader"></div>
             </div>
-        </div> -->
+        </div> 
         <!-- ==============================================
                      **MAIN HEADER**
         =============================================== -->
@@ -43,7 +42,7 @@
                                 <li><a href="#">Home</a></li>
                                 <li>Pricing</li>
                             </ul>
-                            <p>Choose From Our Lowest Plan and Pricing</p>
+                            <p>The moment you make a mistake in pricing, you're eating into your reputation or your profits.</p>
                         </div>
                     </div>
                 </div>
@@ -52,48 +51,7 @@
         <!-- ==============================================
                              **PRICING LIST**
         =============================================== -->
-        <section class="pricing ptb-100 bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <ul class="price">
-                            <li class="header"><h4>Basic</h4></li>
-                            <li class="grey"><span>$ 9.99</span> / year</li>
-                            <li>10GB Storage</li>
-                            <li>10 Emails</li>
-                            <li>10 Domains</li>
-                            <li>1GB Bandwidth</li>
-                            <li class="theme-color"><a href="#" class="btn btn-rounded-white-fill">Sign Up</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <ul class="price">
-                            <li class="header featured-pricing"><h4>Pro</h4></li>
-                            <li class="grey"><span>$ 24.99</span> / year</li>
-                            <li>25GB Storage</li>
-                            <li>25 Emails</li>
-                            <li>25 Domains</li>
-                            <li>2GB Bandwidth</li>
-                            <li class="theme-color"><a href="#" class="btn btn-rounded-white-fill">Sign Up</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <ul class="price">
-                            <li class="header"><h4>Premium</h4></li>
-                            <li class="grey"><span>$ 49.99</span> / year</li>
-                            <li>50GB Storage</li>
-                            <li>50 Emails</li>
-                            <li>50 Domains</li>
-                            <li>5GB Bandwidth</li>
-                            <li class="theme-color"><a href="#" class="btn btn-rounded-white-fill">Sign Up</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div><!-- End Container -->
-        </section><!-- End Section -->
-        <!-- ==============================================
-                             **PRICING TABLE**
-        =============================================== -->
+       
         <section class="pricing-table ptb-100">
             <div class="container">
                 <div class="row clearfix">
@@ -103,7 +61,7 @@
                         <!-- Pricing head -->
                         <div class="head no-border bg-white">
                             <h4 class="pricing-title">&nbsp;</h4>
-                            <span class="pricing-subtitle">&nbsp;</span>
+                            <span class="pricing-subtitle">Choose From Our Lowest Plan and Pricing&nbsp;</span>
                         </div>
 
                         <!-- Pricing label -->

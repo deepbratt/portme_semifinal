@@ -391,24 +391,31 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <img src="images/process.png" class="img-responsive" alt="image">
+                        <img src="images/process1.png" class="img-responsive" alt="image">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <h4><span>01</span> Access Your Dashboard</h4>
+					 <img src="images/icons/how.png" class="img-responsive" alt="image"  style="margin-left:-30px;">
+                        <h4><span>01</span> Sign Up</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et aliquet neque, id pretium risus. </p>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <h4><span>02</span> Connect With Vendors</h4>
+				 <img src="images/icons/payment-gateway.png" class="img-responsive" alt="image"  style="margin-left:-50px;">
+
+                        <h4><span>02</span> Payment Gateway</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et aliquet neque, id pretium risus. </p>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <h4><span>03</span> Bid on Right Time</h4>
+				<img src="images/icons/data.ico" class="img-responsive" alt="image"  style="margin-left:-10px;height:200px;">
+
+                        <h4><span>03</span> Configuration</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et aliquet neque, id pretium risus. </p>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-                        <h4><span>04</span> Receive Your Earnings</h4>
+			 <img src="images/icons/icon-get-started.png" class="img-responsive" alt="image"  style="margin-left:0px;height:200px;">
+
+                        <h4><span>04</span> Get Started</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et aliquet neque, id pretium risus. </p>
                     </div>
                 </div>

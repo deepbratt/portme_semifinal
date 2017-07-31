@@ -1,15 +1,7 @@
         <header class="header-wrapper solid-bg">
             <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
                 <!-- Start Top Search -->
-                <div class="top-search">
-                    <div class="container">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" class="form-control" placeholder="Search">
-                            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                        </div>
-                    </div>
-                </div>
+               
                 <!-- End Top Search -->
                 <div class="container-fluid"> 
                     <!-- Start Atribute Navigation -->
@@ -40,7 +32,7 @@
                         <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp" >
 
                             <li  >
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:blue;" >Home</a>
+                                <a href="index.php" class="dropdown-toggle" data-toggle="dropdown" style="color:blue;" >Home</a>
                                 <!-- <ul class="dropdown-menu">
                                     <li><a href="index.html">Home Solid Background</a></li>
                                     <li><a href="index_01.html">Home Image Background</a></li>
@@ -61,7 +53,7 @@
                                 </ul> -->
                             </li>
                             <li >
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:blue;">Features</a>                               
+                                <a href="features.php" class="dropdown-toggle" data-toggle="dropdown" style="color:blue;">Features</a>                               
                             </li>
 <!--                             <li class="dropdown megamenu-fw">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages</a>
@@ -135,40 +127,14 @@
                                 </ul>
                             </li> -->
                             <li><a href="pricing.php" style="color:blue;">Pricing</a></li>
-                            <li><a href="contact.html" style="color:blue;">Contact</a></li>
+                            <li><a href="contact.php" style="color:blue;">Contact</a></li>
                             <li><a href="signup.html" style="color:blue;">Signup</a></li>
                         </ul>
 
                     </div><!-- /.navbar-collapse -->
                 </div><!-- End Container-->
                 <!-- Start Side Menu -->
-                <div class="side">
-                    <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                    <div class="widget">
-                        <h6 class="title">Custom Pages</h6>
-                        <ul class="link">
-                            <li><a href="about_01.html">About</a></li>
-                            <li><a href="#">Features</a></li>
-                            <li><a href="features.html">Blog</a></li>
-                            <li><a href="pricing.html">Pricing</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="widget">
-                        <h6 class="title">Home Pages</h6>
-                        <ul class="link">
-                            <li><a href="index.html">Home Solid Background</a></li>
-                            <li><a href="index_01.html">Home Image Background</a></li>
-                            <li><a href="index_02.html">Home Slider Background</a></li>
-                            <li><a href="index_03.html">Home Video Background</a></li>
-                            <li><a href="index_04.html">Home Text Background</a></li>
-                            <li><a href="index_05.html">Home Gradient Background</a></li>
-                            <li><a href="index_06.html">Home Polylines Background</a></li>
-                            <li><a href="index_07.html">Home Mobile App</a></li>
-                            <li><a href="index_08.html">Home Web App</a></li>
-                        </ul>
-                    </div>
-                </div>
+               
                 <!-- End Side Menu -->
             </nav>
             <!-- End Navigation -->

@@ -221,7 +221,7 @@ include("sidebar.php");
 								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:120px;" onchange="complete_value(this)"></th>		
 
 								<th class="e">
-									<select class="form-control" name="tax_rate[]" style="width:50px;margin:0px;padding:0px;" onchange="complete_value(this)">
+									<select class="form-control tax_rate" name="tax_rate[]" style="width:50px;margin:0px;padding:0px;" onchange="complete_value(this)">
 										 
 										 <?php
 											$get_tax = mysqli_query($mysqli,"SELECT * FROM tax_rates");
@@ -257,7 +257,7 @@ include("sidebar.php");
 										<div class="col-sm-5">
 											<div class="form-group">
 												<label style="font-size:17px;">
-													<b class="">00.00</b>
+													<b class="subtotal">00.00</b>
 												</label>	
 												<p class="help-block with-errors"></p>
 											</div>
@@ -273,7 +273,7 @@ include("sidebar.php");
 										<div class="col-sm-5">
 											<div class="form-group">
 												<label style="font-size:17px;">
-													<b class="">00.00</b>
+													<b class="total_discount">00.00</b>
 												</label>	
 												<p class="help-block with-errors"></p>
 											</div>
@@ -289,7 +289,7 @@ include("sidebar.php");
 										<div class="col-sm-5">
 											<div class="form-group">
 												<label style="font-size:17px;">
-													<b class="">00.00</b>
+													<b class="total_tax">00.00</b>
 												</label>	
 												<p class="help-block with-errors"></p>
 											</div>
@@ -305,7 +305,7 @@ include("sidebar.php");
 										<div class="col-sm-5">
 											<div class="form-group">
 												<label style="font-size:20px;">
-													<b style="color:#5dc26a;">00.00</b>
+													<b style="color:#5dc26a;" class="complete_total">00.00</b>
 												</label>															
 												<p class="help-block with-errors"></p>
 											</div>
@@ -479,25 +479,62 @@ include("sidebar.php");
 			}
 			
 			function complete_value(e){
-				var qty = $(e).val();
-				
+				/*get the prev values */
 				var p_id = $(e).closest('tr').find('.pid').val();
+				var hsn  = $(e).closest('tr').find('.hsn').val();
+				var qty  = $(e).closest('tr').find('.qty').val();
+				var unit_price = $(e).closest('tr').find('.unit_price').val();
+				var tax_rate = $(e).closest('tr').find('.tax_rate').val();
+				var cgst = $(e).closest('tr').find('.cgst').val();
+				var sgst = $(e).closest('tr').find('.sgst').val();
+				var igst = $(e).closest('tr').find('.igst').val();
+				var cess = $(e).closest('tr').find('.cess').val();
+				var tax_val = $(e).closest('tr').find('.tax_val').val();
+				var discount = $(e).closest('tr').find('.disount').val();
+				var total =	$(e).closest('tr').find('.total').val();\
+				var cus_state = $('.cust_states').val();
+				/* get the prev values ends */
+
 				$.ajax({
 				  type: 'post',
 				  url: 'ajax/get_sales_order_ajax.php',
 				  data:{
-					suggest:p_id,
+					p_id:p_id,
+					hsn:hsn,
+					qty:qty,
+					unit_price:unit_price,
+					tax_rate:tax_rate,
+					cgst:cgst,
+					sgst:sgst,
+					igst:igst,
+					cess:cess,
+					tax_val:tax_val,
+					discount:discount,
+					total:total,
+					cus_state:cus_state
 				  },
 				  success: function (response){
 					//alert(response.name);
 					var price = response.selling_price;
+					$(e).closest('tr').find('.hsn').val(price);
+					$(e).closest('tr').find('.qty').val(price);
 					$(e).closest('tr').find('.unit_price').val(price);
-
-					var updated_unit_price = Math.round(qty*price);
+					$(e).closest('tr').find('.tax_rate').val(price);
+					$(e).closest('tr').find('.cgst').val(price);
+					$(e).closest('tr').find('.sgst').val(price);
+					$(e).closest('tr').find('.igst').val(price);
+					$(e).closest('tr').find('.cess').val(price);
+					$(e).closest('tr').find('.tax_val').val(price);cess
+					$(e).closest('tr').find('.disount').val(price);
+					$(e).closest('tr').find('.total').val(price);
+					$(e).closest('tr').find('.unit_price').val(price);
 				
-				
-					$(e).closest('tr').find('.unit_price').val(updated_unit_price);
-					$(e).closest('tr').find('.total').val(updated_unit_price);
+					/*bottom main calculation*/
+					$(e).closest('tr').find('.subtotal').val(price);
+					$(e).closest('tr').find('.total_discount').val(price);
+					$(e).closest('tr').find('.total_tax').val(total_tax);
+					$(e).closest('tr').find('.complete_total').val(total_tax);
+					/*bottom main calculation ends */
 				  }
 				});
 				

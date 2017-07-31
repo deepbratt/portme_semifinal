@@ -1,28 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+<head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Portme</title>
         <!-- Favicon -->
-				<?php
-					include('meta_links.php');
-				?>
+		<?php
+			include('meta_links.php');
+		?>
     </head>
     <body>
         <!-- ==============================================
                      **PRE LOADER**
         =============================================== -->
-     <div id="page-loader">
+        <div id="page-loader">
             <div class="loader-container">
                 <div class="loader-logo">
                     <span>LOADING</span>
                 </div>
                 <div class="loader"></div>
             </div>
-        </div> 
+        </div>
         <!-- ==============================================
                      **MAIN HEADER**
         =============================================== -->
@@ -40,9 +39,9 @@
                             <h2>Features</h2>
                             <ul class="breadcrumbs">
                                 <li><a href="#">Home</a></li>
-                                <li>Features</li>
+                                <li><a href="#">Features</a></li>
                             </ul>
-                            <p>The moment you make a mistake in pricing, you're eating into your reputation or your profits.</p>
+                            <p>Explore the Features and Attractions</p>
                         </div>
                     </div>
                 </div>
@@ -61,16 +60,10 @@
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
                         <div class="row">
-                            <div class="col-md-6 col-xs-12">
+                            <div class="col-md-12 col-xs-12">
                                 <ul>
                                     <li>Ut lacinia ligula tristique tempus.</li>
                                     <li>In ornare nisl vitae pulvinar posuere.</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <ul>
-                                    <li>In et orci sit amet leo consequat.</li>
-                                    <li>Nullam pellentesque arcu vitae congue.</li>
                                 </ul>
                             </div>
                         </div>
@@ -89,16 +82,121 @@
                     </div>
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>Exploring the Possibilities in Mobility Networks </h3>
+                            <h3>Cloud based software: </h3>
+                            <div class="seperator"></div>
+                        </div>
+                        <p>It will help you to store all your data online. Even if any issue happens in your computer, all the data will be secured in the server. You can collect your data from your phone as well, with the help of active internet connection.</p>
+                        <div class="row">
+                           
+                            <div class="col-md-12 col-xs-12">
+                                <ul>
+                                    <li>In et orci sit amet leo consequat.</li>
+                                    <li>Nullam pellentesque arcu vitae congue.</li>
+                                    <li>Donec nec odio a tellus eleifend.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- End Container -->
+        </section><!-- End Section -->
+        <section class="ptb-100 functionalities bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-sm-6 col-xs-12">
+                        <div class="main-title">
+                            <h3>Best Customer Support and Always Best Solutions in Hand</h3>
                             <div class="seperator"></div>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
                         <div class="row">
-                            <div class="col-md-6 col-xs-12">
+                            <div class="col-md-12 col-xs-12">
                                 <ul>
                                     <li>Ut lacinia ligula tristique tempus.</li>
                                     <li>In ornare nisl vitae pulvinar posuere.</li>
                                     <li>Cras dapibus felis vel euismod gravida.</li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <img src="images/features3.png" class="img-responsive" alt="image">
+                    </div>
+                </div>
+            </div><!-- End Container -->
+        </section><!-- End Section -->
+		<section class="ptb-100 functionalities bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <img src="images/features2.png" class="img-responsive" alt="image">
+                    </div>
+                    <div class="col-md-7 col-sm-6 col-xs-12">
+                        <div class="main-title">
+                            <h3>Customer Data Management (CDM): </h3>
+                            <div class="seperator"></div>
+                        </div>
+                        <p>With the help of this feature you can keep track of your customer information and survey your customer base in order to obtain feedback.  Efficient CDM solutions provide companies with the ability to deal instantly with customer issues and obtain immediate feedback. As a result, customer retention and customer satisfaction can show marked improvement.</p>
+                        <div class="row">
+                           
+                            <div class="col-md-12 col-xs-12">
+                                <ul>
+                                    <li>Should provide a cost-effective, user-friendly solution for marketing, research, sales, human resources and IT departments</li>
+                                    <li>Enables companies to create and email online surveys, reports and newsletters.</li>
+                                    <li>Encompasses and simplifies customer relationship management (CRM) and customer feedback management(CFM).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- End Container -->
+        </section><!-- End Section -->
+        <section class="ptb-100 functionalities bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-sm-6 col-xs-12">
+                        <div class="main-title">
+                            <h3>GST Billing :</h3>
+                            <div class="seperator"></div>
+                        </div>
+                        <p>As per GST invoicing rules and formats have been notified covering details such as supplier’s name, shipping and billing address, GSTIN number, HSN Codes, place of supply, tax rates(CGST, SGST,IGST), etc. are included in our billing format.</p>
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <ul>
+                                    <li>Ut lacinia ligula tristique tempus.</li>
+                                    <li>In ornare nisl vitae pulvinar posuere.</li>
+                                    <li>Cras dapibus felis vel euismod gravida.</li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <img src="images/features3.png" class="img-responsive" alt="image">
+                    </div>
+                </div>
+            </div><!-- End Container -->
+        </section><!-- End Section -->
+		<section class="ptb-100 functionalities bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <img src="images/features2.png" class="img-responsive" alt="image">
+                    </div>
+                    <div class="col-md-7 col-sm-6 col-xs-12">
+                        <div class="main-title">
+                            <h3>Financial Reports:</h3>
+                            <div class="seperator"></div>
+                        </div>
+                        <p>Financial report is a formal record of the financial activities and position of a business, person, or other entity.
+Relevant financial information is presented in a structured manner and in a form easy to understand. They typically include basic financial statements, accompanied by a management discussion and analysis.</p>
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <ul>
+                                    <li>By the help of this, you have to purchase the software once and use it for the whole year since it is a cloud based software.</li>
                                 </ul>
                             </div>
                             <div class="col-md-6 col-xs-12">
@@ -294,9 +392,9 @@
         <!-- ==============================================
                              **FOOTER STARTS**
         =============================================== -->        
-        	<?php
+				<?php
 					include('footer.php');
-				?>
+				?><!-- End Footer -->
         <!-- jQuery -->
         <script src="js/jquery.min.js"></script>
         <!-- Bootstrap JS -->
@@ -304,30 +402,15 @@
         <!-- Modenizer JS -->
         <script src="js/modernizr-custom.js"></script>
         <!-- Bootsvav Menu -->
-        <script src="assets/bootsnav-master/js/bootsnav.js" type="text/javascript"></script>
+        <script src="js/bootsnav.js" type="text/javascript"></script>
         <!-- Parallax -->
         <script src="js/paraxify.min.js" type="text/javascript"></script>
-        <!-- Way Points -->
-        <script src="js/waypoints.min.js" type="text/javascript"></script>
-        <!-- Conterup -->
-        <script src="js/jquery.counterup.min.js" type="text/javascript"></script>
         <!-- Custom JS -->
         <script src="js/custom.js"></script>
         <!-- ==============================================
                 ** STYLE SWITCHER-ONLY FOR DEMO PURPOSE**
         =============================================== -->
-        <div id="style-switcher">
-            <div id="toggle-switcher"><i class="fa fa-cog"></i></div>
-            <h1>Change Color</h1>
-            <ul>
-                <li><img src="images/color_01.jpg" alt="" /></li>
-                <li><img src="images/color_02.jpg" alt="" /></li>
-                <li><img src="images/color_03.jpg" alt="" /></li>
-                <li><img src="images/color_04.jpg" alt="" /></li>
-                <li><img src="images/color_05.jpg" alt="" /></li>
-                <li><img src="images/color_06.jpg" alt="" /></li>
-            </ul>
-        </div>
+       
         <!--Style Switcher Script-->
         <script src="js/style-switcher.js"></script>
         <!--End Style Switcher-->

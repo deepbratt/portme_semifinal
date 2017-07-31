@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+   <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,12 +51,12 @@
         <!-- ==============================================
                              **CONTACT SECTION**
         =============================================== -->
-        <section class="contact ptb-100">
+        <section class="contact ptb-80">
             <div class="container">
                 <div class="super-title">
                     <h2>Get in Touch</h2>
                     <div class="seperator"></div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in.</p>
+                    <p>Feel free to contact us with questions, partnership proposals, media inquiries, or just to say “hi.” .</p>
                 </div>
                 <div class="row">
 
@@ -110,13 +110,9 @@
                 </div>
             </div><!-- End Container -->
         </section><!-- End Section -->
+      
+      
         <!-- ==============================================
-                             **GOOGLE MAP**
-        =============================================== -->
-        <div id="google-map-area" >
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58869.46323363896!2d88.3341462428161!3d22.75270623300934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89aefcc6fe3a7%3A0x6a6d434ac504dbc5!2sBarrackpore%2C+West+Bengal!5e0!3m2!1sen!2sin!4v1501497639230" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-         <!-- ==============================================
                              **FOOTER STARTS**
         =============================================== -->        
 				<?php

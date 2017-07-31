@@ -71,7 +71,7 @@ $business_id = $_SESSION['business_id'];
 								<div class="panel-body">
 									<form >
 											<div class="row">
-												<div class="col-sm-2">
+												<div class="col-sm-3">
 												<b>Full Name:</b>
 												</div>
 												<div class="col-sm-7">
@@ -83,7 +83,7 @@ $business_id = $_SESSION['business_id'];
 											</div><!-- /.row -->
 											<br/>
 										<div class="row">
-											<div class="col-sm-2">
+											<div class="col-sm-3">
 													<b>Company Name:</b>
 											</div>
 												<div class="form-group">
@@ -94,7 +94,7 @@ $business_id = $_SESSION['business_id'];
 										</div>
 										<br/>
 										<div class="row">
-											<div class="col-sm-2">
+											<div class="col-sm-3">
 												<b>	Email:</b>
 											</div>
 												<div class="form-group">
@@ -106,7 +106,7 @@ $business_id = $_SESSION['business_id'];
 											<br/>
 
 											<div class="row">
-											<div class="col-sm-2">
+											<div class="col-sm-3">
 												<b>	Work Phone:</b>
 											</div>
 												<div class="form-group">
@@ -118,7 +118,7 @@ $business_id = $_SESSION['business_id'];
 											<br/>
 
 											<div class="row">
-											<div class="col-sm-2">
+											<div class="col-sm-3">
 													<b>Mobile:</b>
 											</div>
 												<div class="form-group">
@@ -130,7 +130,7 @@ $business_id = $_SESSION['business_id'];
 											<br/>
 
 											<div class="row">
-											<div class="col-sm-2">
+											<div class="col-sm-3">
 													<b>GST / PAN No. :</b>
 											</div>
 												<div class="form-group">
@@ -142,7 +142,7 @@ $business_id = $_SESSION['business_id'];
 											<br/>
 
 											<div class="row">
-											<div class="col-sm-2">
+											<div class="col-sm-3">
 												<b>	Business Type :</b>
 											</div>
 												<div class="form-group">
@@ -154,7 +154,7 @@ $business_id = $_SESSION['business_id'];
 											<br/>
 
 											<div class="row">
-											<div class="col-sm-2">
+											<div class="col-sm-3">
 													<b>Address :</b>
 											</div>
 												<div class="form-group">
@@ -166,19 +166,25 @@ $business_id = $_SESSION['business_id'];
 											<br/>
 
 											<div class="row">
-											<div class="col-sm-2">
+											<div class="col-sm-3">
 													<b>State :</b>
 											</div>
 												<div class="form-group">
 													<div class="col-sm-8">
-													<label style="color:#4a89dc;"><?php echo $fetch_query['state'];?> </label>													
+												<?php
+												$state_id = $fetch_query['state'];
+												$state_info = mysqli_query($mysqli, "select * from states where states_code = '".$state_id."'");
+												$fetch_state_name = mysqli_fetch_array($state_info);
+												
+												?>
+													<label style="color:#4a89dc;"><?php echo $fetch_state_name['states_name'];?>&nbsp;&nbsp;<?php echo $fetch_state_name['states_code'];?> </label>													
 													</div><!-- /.form-group -->
 												</div>
 											</div>
 											<br/>
 
 											<div class="row">
-											<div class="col-sm-2">
+											<div class="col-sm-3">
 													<b>Country :</b>
 											</div>
 												<div class="form-group">

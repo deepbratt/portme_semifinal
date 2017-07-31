@@ -14,6 +14,50 @@
 		<?php
 			include('meta_links.php');
 		?>
+
+<style type="text/css">
+  
+    .top_cont_heading h1
+    {
+        font-family: 'Kreon', serif;
+    }
+	 @media screen and (min-width: 768px) {
+    .cont_top {
+		padding: 12px 25px;
+		/*position: fixed;*/
+		width: 100%;
+		z-index: 99;
+		top: 0;
+		/*background-color: rgba(34, 34, 34, 0.7);*/
+    }
+    }
+	 .clr {clear:both;}
+
+	  .arrow {
+		position: absolute;
+		bottom: 2%;
+		left: 50%;
+		margin-left: -20px;
+		width: 40px;
+		height: 40px;
+		background-image: url(images/down-arrow.svg);
+		background-size: contain;
+		z-index: 9;
+	}
+	.bounce {
+		-webkit-animation-name: bounce;
+		animation-name: bounce;
+		-webkit-transform-origin: center bottom;
+		transform-origin: center bottom;
+	}
+	.bounce {
+		-webkit-animation: bounce 2s infinite;
+		animation: bounce 2s infinite;
+	}
+.mob_manu {
+    display: none;
+}
+	</style>
     </head>
     <body>
         <!-- ==============================================
@@ -64,16 +108,13 @@
         </section> -->
 		<!-- End Section -->
 
-		<!-- gst -->
-
-
-						            <!-- End Container -->
-											
-
-						<section class="demo-request ptb-100">
-						<div class="container-fluid" style="background:#fff url('images/newdd3.png');border:1px solid red;padding-bottom:0px;margin-bottom:-30px;">
-                <div class="row banner-content" style="">
-                    <div class="top_cont_heading  cont_wrap">
+		<!-- gst -->			
+	<!-- End Container -->
+<div class="section_top " style="position:relative; background: url('images/newdd3.png') no-repeat bottom center;
+	    background-size: contain;">
+    <div class="cont_top"></div>
+	
+    <div class="top_cont_heading  cont_wrap">
 		  <div id="home-news" style="margin-top:-200px !important">
 			<div class="home_header">
 			  <span>The <br><strong style="color:#ff3333">operating system</strong> for business.</span>
@@ -86,8 +127,13 @@
 			</div>
 		  </div>
     </div>
-                </div>
-            </div>
+
+    <div class="arrow bounce"></div>
+	<div class="clear" ></div>
+  </div>
+  <div class="clear" ></div>
+
+		<section class="demo-request ptb-100">
             <div class="container text-center">
                 <div class="request-title mb-30">
                     <h2>Start <span>free</span> Fedrex trial!</h2>
@@ -555,6 +601,27 @@
     
     
   </script>
+  <script>
+		if ($(window).width() > 767) {
+				var winH = $(window).height(); $('.section_top').css('height',winH);
+			  }else {
+				$('.section_top').css('height','auto');
+			  }
+			  $(window).resize(function() {
+				if ($(window).width() > 767) {
+				var winH = $(window).height(); $('.section_top').css('height',winH);
+				}else {
+				  $('.section_top').css('height','auto');
+				}
+			  });
+			
+			  // Header top scrolled down
+			  $('.bounce').on('click',function() {
+				$('html,body').animate({
+				  scrollTop: $("#whtscoch").offset().top},
+				  1200);
+			  });
+		</script>
 	
 
     

@@ -294,8 +294,7 @@ img {
 }
 .section_top {
     /* background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ); */
-    background: url('../images/slides/newdd2.png') no-repeat bottom center;
-	    background-size: contain;
+  
   
     width: 100%;
    

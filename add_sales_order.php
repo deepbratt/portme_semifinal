@@ -202,7 +202,7 @@ include("sidebar.php");
 
 							<tr class="rocks">
 								<th class="a" style="width:150px;">
-									  <select class="form-control selectpicker pid" name="product_id[]" style="margin:0px;padding:0px;" onchange="get_sales_order_ajax(this)">
+									  <select class="form-control selectpicker pid" name="product_id[]" style="margin:0px;padding:0px;" onchange="complete_value(this)">
 										 <option value="">Choose</option>
 										 <?php
 											$business_id = $_SESSION['business_id'];
@@ -491,7 +491,7 @@ include("sidebar.php");
 				var cess = $(e).closest('tr').find('.cess').val();
 				var tax_val = $(e).closest('tr').find('.tax_val').val();
 				var discount = $(e).closest('tr').find('.disount').val();
-				var total =	$(e).closest('tr').find('.total').val();\
+				var total =	$(e).closest('tr').find('.total').val();
 				var cus_state = $('.cust_states').val();
 				/* get the prev values ends */
 
@@ -514,26 +514,25 @@ include("sidebar.php");
 					cus_state:cus_state
 				  },
 				  success: function (response){
-					//alert(response.name);
-					var price = response.selling_price;
-					$(e).closest('tr').find('.hsn').val(price);
-					$(e).closest('tr').find('.qty').val(price);
-					$(e).closest('tr').find('.unit_price').val(price);
-					$(e).closest('tr').find('.tax_rate').val(price);
-					$(e).closest('tr').find('.cgst').val(price);
-					$(e).closest('tr').find('.sgst').val(price);
-					$(e).closest('tr').find('.igst').val(price);
-					$(e).closest('tr').find('.cess').val(price);
-					$(e).closest('tr').find('.tax_val').val(price);cess
-					$(e).closest('tr').find('.disount').val(price);
-					$(e).closest('tr').find('.total').val(price);
-					$(e).closest('tr').find('.unit_price').val(price);
+					//alert(response.hsn);
+					$(e).closest('tr').find('.hsn').val(response.hsn);
+					$(e).closest('tr').find('.qty').val(response.qty);
+					$(e).closest('tr').find('.unit_price').val(response.unit_price);
+					$(e).closest('tr').find('.tax_rate').val(response.tax_rate);
+					$(e).closest('tr').find('.cgst').val(response.cgst);
+					$(e).closest('tr').find('.sgst').val(response.sgst);
+					$(e).closest('tr').find('.igst').val(response.igst);
+					$(e).closest('tr').find('.cess').val(response.cess);
+					$(e).closest('tr').find('.tax_val').val(response.tax_val);
+					$(e).closest('tr').find('.disount').val(response.disount);
+					$(e).closest('tr').find('.total').val(response.total);
+					$(e).closest('tr').find('.unit_price').val(response.unit_price);
 				
 					/*bottom main calculation*/
-					$(e).closest('tr').find('.subtotal').val(price);
-					$(e).closest('tr').find('.total_discount').val(price);
-					$(e).closest('tr').find('.total_tax').val(total_tax);
-					$(e).closest('tr').find('.complete_total').val(total_tax);
+					$(e).closest('tr').find('.subtotal').val("00.00");
+					$(e).closest('tr').find('.total_discount').val("00.00");
+					$(e).closest('tr').find('.total_tax').val("00.00");
+					$(e).closest('tr').find('.complete_total').val("00.00");
 					/*bottom main calculation ends */
 				  }
 				});

@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    	<?php
-			include('meta_links.php');
-		?>
-
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Portme</title>
+        <!-- Favicon -->
+				<?php
+					include('meta_links.php');
+				?>
+    </head>
     <body>
         <!-- ==============================================
                      **PRE LOADER**
         =============================================== -->
-        <div id="page-loader">
+     <div id="page-loader">
             <div class="loader-container">
                 <div class="loader-logo">
                     <span>LOADING</span>
                 </div>
                 <div class="loader"></div>
             </div>
-        </div>
+        </div> 
         <!-- ==============================================
                      **MAIN HEADER**
         =============================================== -->
-       	<?php
-			include('header.php');
-		?>
+				<?php
+					include('header.php');
+				?>
         <!-- ==============================================
                              **MAIN BANNER**
         =============================================== -->
@@ -30,13 +37,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="main-banner-content text-center">
-                            <h2>Features Single</h2>
+                            <h2>Features</h2>
                             <ul class="breadcrumbs">
                                 <li><a href="#">Home</a></li>
-                                <li><a href="#">Features</a></li>
-                                <li>Features Single</li>
+                                <li>Features</li>
                             </ul>
-                            <p>Explore the Features and Attractions</p>
+                            <p>The moment you make a mistake in pricing, you're eating into your reputation or your profits.</p>
                         </div>
                     </div>
                 </div>

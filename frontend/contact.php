@@ -4,53 +4,31 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-		<?php  include("meta_links.php");?>
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>FexRex</title>
+        <title>Portme</title>
         <!-- Favicon -->
-        <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <!-- Boots Nav -->
-        <link href="assets/bootsnav-master/css/bootsnav.css" rel="stylesheet">
-        <!-- Themify Icons -->
-        <link href="assets/themify-icons/themify-icons.css" rel="stylesheet">
-        <!-- Font Awesome Icons -->
-        <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- Animate CSS -->
-        <link href="assets/bootsnav-master/css/animate.css" rel="stylesheet">
-        <!-- Sweet Alert -->
-        <link href="assets/sweet-alert/sweetalert.css" rel="stylesheet">
-        <!-- Custom Style -->
-        <link href="css/style.css" rel="stylesheet">
-        <!-- Color CSS -->
-        <link id="main" href="css/color_01.css" rel="stylesheet">
-        <link id="theme" href="css/color_01.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+				<?php
+					include('meta_links.php');
+				?>
     </head>
     <body>
         <!-- ==============================================
                      **PRE LOADER**
         =============================================== -->
-        <div id="page-loader">
+     <div id="page-loader">
             <div class="loader-container">
                 <div class="loader-logo">
                     <span>LOADING</span>
                 </div>
                 <div class="loader"></div>
             </div>
-        </div>
+        </div> 
         <!-- ==============================================
                      **MAIN HEADER**
         =============================================== -->
-          <?php
-   include("header.php");
-   ?>
+				<?php
+					include('header.php');
+				?>
         <!-- ==============================================
                              **MAIN BANNER**
         =============================================== -->
@@ -138,12 +116,12 @@
         <div id="google-map-area" >
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58869.46323363896!2d88.3341462428161!3d22.75270623300934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89aefcc6fe3a7%3A0x6a6d434ac504dbc5!2sBarrackpore%2C+West+Bengal!5e0!3m2!1sen!2sin!4v1501497639230" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
-        <!-- ==============================================
+         <!-- ==============================================
                              **FOOTER STARTS**
         =============================================== -->        
-       <?php
-	   include("footer.php");
-	   ?>
+				<?php
+					include('footer.php');
+				?><!-- End Footer -->
         <!-- jQuery -->
         <script src="js/jquery.min.js"></script>
         <!-- Bootstrap JS -->
@@ -151,19 +129,9 @@
         <!-- Modenizer JS -->
         <script src="js/modernizr-custom.js"></script>
         <!-- Bootsvav Menu -->
-        <script src="assets/bootsnav-master/js/bootsnav.js" type="text/javascript"></script>
+        <script src="js/bootsnav.js" type="text/javascript"></script>
         <!-- Parallax -->
-        <script src="assets/paraxify/paraxify.min.js" type="text/javascript"></script>
-        <!-- Sweet Alert -->
-        <script src="assets/sweet-alert/sweetalert.min.js" type="text/javascript"></script>
-        <!-- Form Validation -->
-        <script src="js/jquery.validate.min.js" type="text/javascript"></script>
-        <!-- Contact/Demo Request Script AJAX -->
-        <script src="js/contact.js" type="text/javascript"></script>
-        <!-- Google Map -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwkN7Q-2qlf6AhuulXY6xamPLzLV4IDsA&v=3.exp&sensor=false"></script>
-        <script src="assets/gmap/gmap.js"></script>
-        <script src="js/map_script.js"></script>
+        <script src="js/paraxify.min.js" type="text/javascript"></script>
         <!-- Custom JS -->
         <script src="js/custom.js"></script>
         <!-- ==============================================

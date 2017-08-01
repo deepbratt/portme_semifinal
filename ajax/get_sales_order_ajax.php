@@ -62,7 +62,7 @@
 
 
 
-	$response = array("pid"=> $product_id ,"hsn"=> $hsn , "qty" => $qty , "unit_price" => $unit_price ,"tax_rate" => $tax_rate , "cgst" => $cgst , "sgst" => $sgst , "igst" => $igst, "cess" => $cess, "tax_val" => $tax_val, "disount" => $discount, "total" => $total );
+	$response = array("pid"=> $product_id ,"hsn"=> $hsn , "qty" => $qty , "unit_price" => $unit_price ,"tax_rate" => $tax_rate , "cgst" => $cgst , "sgst" => $sgst , "igst" => $igst, "cess" => $cess, "tax_val" => $tax_val, "disount" => $discount, "total" => $product_price );
 	header("Content-Type: application/json");
 	echo json_encode($response);
 ?>

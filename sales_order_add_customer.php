@@ -1,4 +1,6 @@
 <!-- start pop up-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVEqoCsKgUMmAcDVX9OAwVMDewLI6yOAQ&sensor=false&libraries=places&language=en"></script>
+
 <div id="modisada">
 <div class="modal fade" id="myModal" role="dialog" >
     <div class="modal-dialog">

@@ -17,6 +17,7 @@
 	$qty = $_POST['qty'];
 	$unit_price = $fetch_product_details['selling_price'];
 	$product_price = $qty*$selling_price;
+	$actual_tax_rate = $_POST['tax_rate'];
 	$tax_rate = $_POST['tax_rate']/100;
 
 	
@@ -40,7 +41,7 @@
 		}else{
 			$cgst = "00.00";
 			$sgst = "00.00";
-			$igst = ($product_price*$tax_rate)/2;
+			$igst = $product_price*$tax_rate;
 		}
 	}else{
 		$tax_rate = "0";
@@ -51,7 +52,9 @@
 	}
 
 	$discount = $_POST['discount'];
-	$total = $_POST['total'];
+
+	$total_tax_rate = $product_price * $tax_rate ;
+	$total_price = $product_price + $total_tax_rate + $cess +$tax_val - $discount;
 
 	
 
@@ -62,7 +65,7 @@
 
 
 
-	$response = array("pid"=> $product_id ,"hsn"=> $hsn , "qty" => $qty , "unit_price" => $unit_price ,"tax_rate" => $tax_rate , "cgst" => $cgst , "sgst" => $sgst , "igst" => $igst, "cess" => $cess, "tax_val" => $tax_val, "disount" => $discount, "total" => $product_price );
+	$response = array("pid"=> $product_id ,"hsn"=> $hsn , "qty" => $qty , "unit_price" => $unit_price ,"tax_rate" => $actual_tax_rate , "cgst" => $cgst , "sgst" => $sgst , "igst" => $igst, "cess" => $cess, "tax_val" => $tax_val, "disount" => $discount, "total" => $total_price );
 	header("Content-Type: application/json");
 	echo json_encode($response);
 ?>

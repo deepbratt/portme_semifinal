@@ -93,10 +93,10 @@ include("sidebar.php");
                           <div class="col-sm-6">
                             <div class="form-group">
                               <select class="form-control selectpicker"  onchange="show_customer_data(this);">
-								 <option value="">Choose Customer</option>
+								 <option selected disabled>Choose Customer</option>
                                  <?php
 									
-									$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id'");
+									$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type='customer'");
 
 									while($fetch_cust_details = mysqli_fetch_array($get_fetch_details)){
 								?>
@@ -202,8 +202,8 @@ include("sidebar.php");
 
 							<tr class="rocks">
 								<th class="a" style="width:150px;">
-									  <select class="form-control selectpicker pid" name="product_id[]" style="margin:0px;padding:0px;" onchange="complete_value(this)">
-										 <option value="">Choose</option>
+									  <select class="form-control selectpicker pid" name="product_id[]" style="width:90px;margin:0px;padding:0px;" onchange="complete_value(this)">
+										 <option selected disabled>Choose</option>
 										 <?php
 											$business_id = $_SESSION['business_id'];
 											
@@ -216,30 +216,30 @@ include("sidebar.php");
 										 ?>
 									  </select>
 								</th>
-								<th class="b"><input type="text" class="form-control hsn" value="" name="hsn[]"></th>
+								<th class="b"><input type="text" class="form-control hsn" value="" name="hsn[]" style="width:80px;"></th>
 								<th class="c"><input type="text" class="form-control qty" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
 								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:120px;" onchange="complete_value(this)"></th>		
 
 								<th class="e">
-									<select class="form-control tax_rate" name="tax_rate[]" style="width:50px;margin:0px;padding:0px;" onchange="complete_value(this)">
-										 
+									<select class="form-control selectpicker tax_rate" name="tax_rate[]" style="width:70px;margin:0px;padding:0px;" onchange="complete_value(this)">
+										 <option value="">Choose</option>
 										 <?php
 											$get_tax = mysqli_query($mysqli,"SELECT * FROM tax_rates");
 											while($fetch_tax = mysqli_fetch_array($get_tax)){
 										 ?>
-											<option value="<?php echo $fetch_tax['tax_rate'];?>" <?php echo(($fetch_tax['tax_rate']==0)?'selected':'')?>><?php echo $fetch_tax['tax_rate'];?></option>
+											<option value="<?php echo $fetch_tax['tax_rate'];?>" ><?php echo $fetch_tax['tax_rate'];?></option>
 										 <?php
 											}
 										 ?>
 									  </select>
 								</th>
-								<th class="f"><input type="text" class="form-control cgst" id="cgst" value="00.00" style="margin:0px;padding:5px;" name="cgst[]" onchange="complete_value(this)"></th>
-								<th class="g"><input type="text" class="form-control sgst" id="sgst" value="00.00" style="margin:0px;padding:5px;" name="sgst[]" onchange="complete_value(this)"></th>
-								<th class="h"><input type="text" class="form-control igst" id="igst" value="00.00" style="margin:0px;padding:5px;" name="igst[]" onchange="complete_value(this)"></th>
-								<th class="i"><input type="text" class="form-control cess" id="cess" value="00.00" name="cess[]" onchange="complete_value(this)"></th>
-								<th class="j" style="text-align:center;"><input type="text" class="form-control tax_val"  value="00.00" name="tax_val[]" onchange="complete_value(this)"></th>
-								<th class="k" style="text-align:center;"><input type="text" class="form-control disount" value="00.00" name="discount[]" onchange="complete_value(this)"></th>
-								<th class="l" style="text-align:center;"><input type="text" class="form-control total" value="00.00" readonly name="total[]" style="width:100px;" onchange="complete_value(this)"></th>
+								<th class="f"><input type="text" class="form-control cgst" id="cgst"  value="00.00" style="width:50px;margin:0px;padding:5px;" name="cgst[]" onchange="complete_value(this)"></th>
+								<th class="g"><input type="text" class="form-control sgst" id="sgst" value="00.00" style="width:50px;margin:0px;padding:5px;" name="sgst[]" onchange="complete_value(this)"></th>
+								<th class="h"><input type="text" class="form-control igst" id="igst" value="00.00" style="width:50px;margin:0px;padding:5px;" name="igst[]" onchange="complete_value(this)"></th>
+								<th class="i"><input type="text" class="form-control cess" id="cess" value="00.00" style="width:50px;margin:0px;padding:5px;" name="cess[]" onchange="complete_value(this)"></th>
+								<th class="j"><input type="text" class="form-control tax_val"  value="00.00" style="width:50px;margin:0px;padding:5px;" name="tax_val[]" onchange="complete_value(this)"></th>
+								<th class="k" ><input type="text" class="form-control disount" value="00.00" name="discount[]" style="text-align:center;width:50px" onchange="complete_value(this)"></th>
+								<th class="l" ><input type="text" class="form-control total" value="00.00" readonly style="text-align:center;width:100px" name="total[]"  onchange="complete_value(this)"></th>
 								<th><a href="javascript:void(0);" class="add-more" onclick="add_more_fun();"><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>
 							</tr>
 

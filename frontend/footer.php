@@ -31,7 +31,7 @@
                             &COPY; Port me. All Rights are Reserved.
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 footer-logo text-center">
-                            <img src="images/favicon_ftr.png" alt="logo">
+                           
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 back-to-top">
                             <a href="#top" id="back-top"><span class="ti-arrow-circle-up"></span></a>

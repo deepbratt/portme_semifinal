@@ -414,24 +414,10 @@
                 <div class="row">
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>Connecting the Things As a Most Advanced Solution </h3>
+                            <h3>How GST WORKS : </h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
-                        <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <ul>
-                                    <li>Ut lacinia ligula tristique tempus.</li>
-                                    <li>In ornare nisl vitae pulvinar posuere.</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <ul>
-                                    <li>In et orci sit amet leo consequat.</li>
-                                    <li>Nullam pellentesque arcu vitae congue.</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <p>The new tax regime follows a multi-stage collection mechanism wherein tax is collected at every stage and the credit of tax paid (input tax credit) at the previous stage is available as a set-off at the next stage of transaction. This helps to eliminate "tax on tax" or the cascading impact of tax.</p>                       
                     </div>
                     <div class="col-md-5 col-sm-6 col-xs-12">
                         <img src="images/features1.png" class="img-responsive" alt="image">
@@ -439,7 +425,8 @@
                 </div>
             </div><!-- End Container -->
         </section><!-- End Section -->
-        <section class="ptb-100 functionalities bg-gray">
+       
+		<section class="ptb-100 functionalities bg-gray">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-sm-6 col-xs-12">
@@ -447,63 +434,74 @@
                     </div>
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>Exploring the Possibilities in Mobility Networks </h3>
+                            <h3>Advantages of E-filling :</h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
-                        <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <ul>
-                                    <li>Ut lacinia ligula tristique tempus.</li>
-                                    <li>In ornare nisl vitae pulvinar posuere.</li>
-                                    <li>Cras dapibus felis vel euismod gravida.</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <ul>
-                                    <li>In et orci sit amet leo consequat.</li>
-                                    <li>Nullam pellentesque arcu vitae congue.</li>
-                                    <li>Donec nec odio a tellus eleifend.</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <p><b>1. Error free submission </b>- Real time error check is possible through income tax authorities. Validations are helpful to ensure the return perfect<br/><b>2. Quick refund </b>- Online filing enables the department to process the return with minimum time and therefore refund become very easy.<br/><b>3. Avoid delays </b>- Paper filing of return always depends the time of office, queues, spot self-correction, holidays, presence of officer, etc. Regardless of these matters any person can file their income at anytime from anywhere.<br/><b>4. Effortless and efficient </b>- Controlled and guided entry set by the utility or software pave the way to proper and fast completion of IT return. Filling in paper return always brings confusion and error, but a neat and clean return can be given through online filing.</p>
+                   
                     </div>
 
                 </div>
             </div><!-- End Container -->
         </section><!-- End Section -->
-        <section class="ptb-100 functionalities bg-white">
+        
+		<section class="ptb-100 functionalities bg-white">
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>Best Customer Support and Always Best Solutions in Hand</h3>
+                            <h3>E-filling Dates :</h3>
+                            <div class="seperator"></div>
+                        </div>
+						<div class="col-md-5 col-sm-6 col-xs-12">
+                        <h3><b>Registered Taxable Person</b></h3>
+						</div>
+						<div class="col-md-2 col-sm-6 col-xs-12"></div>
+						<div class="col-md-5 col-sm-6 col-xs-12">
+                        <h3><b>Non-Registered Taxable Person</b></h3>
+						</div>
+                    </div>
+                    
+                </div>
+            </div><!-- End Container -->
+        </section><!-- End Section -->
+		
+		<section class="ptb-100 functionalities bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <img src="images/features2.png" class="img-responsive" alt="image">
+                    </div>
+                    <div class="col-md-7 col-sm-6 col-xs-12">
+                        <div class="main-title">
+                            <h3>CRITERIA FOR BILLING AND INVOICES :</h3>
                             <div class="seperator"></div>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
-                        <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <ul>
-                                    <li>Ut lacinia ligula tristique tempus.</li>
-                                    <li>In ornare nisl vitae pulvinar posuere.</li>
-                                    <li>Cras dapibus felis vel euismod gravida.</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <ul>
-                                    <li>In et orci sit amet leo consequat.</li>
-                                    <li>Nullam pellentesque arcu vitae congue.</li>
-                                    <li>Donec nec odio a tellus eleifend.</li>
-                                </ul>
-                            </div>
+                   
+                    </div>
+
+                </div>
+            </div><!-- End Container -->
+        </section><!-- End Section -->
+		
+		 <section class="ptb-100 functionalities bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-sm-6 col-xs-12">
+                        <div class="main-title">
+                            <h3>How to submit ITR returns :</h3>
+                            <div class="seperator"></div>
                         </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
+                    
                     </div>
                     <div class="col-md-5 col-sm-6 col-xs-12">
                         <img src="images/features3.png" class="img-responsive" alt="image">
                     </div>
                 </div>
             </div><!-- End Container -->
-        </section><!-- End Section -->
+        </section>
         <!-- ==============================================
                      **MAIN FEATURES**
         =============================================== -->

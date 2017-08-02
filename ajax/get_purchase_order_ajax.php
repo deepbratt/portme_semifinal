@@ -27,7 +27,7 @@
 	$cess = $_POST['cess'];
 	$tax_val = $_POST['tax_val'];
 
-	$cus_state = $_POST['cust_states'];
+	$cus_state = $_POST['cus_state'];
 	$business_id = $_SESSION['business_id'];
 	$get_business_stateid = mysqli_query($mysqli,"SELECT * FROM tbl_business WHERE business_id='$business_id'");
 	$fetch_business_stateid = mysqli_fetch_array($get_business_stateid);

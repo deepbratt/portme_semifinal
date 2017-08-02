@@ -1,8 +1,68 @@
 <?php
+
 	include ('config.php');
 	$business_id = $_SESSION['business_id'];
 	$select_me = mysqli_query($mysqli,"select * from tbl_business where business_id='$business_id'");
 	$fetch_me = mysqli_fetch_array($select_me);
+	$get_last_sales_id = mysqli_query($mysqli,"SELECT * FROM tbl_transactions WHERE business_id='$business_id' ORDER BY tbl_transaction_id DESC");
+	$fetch_last_sales = mysqli_fetch_array($get_last_sales_id);
+	$invoice_no = $fetch_last_sales['tbl_transaction_id']+1;
+	$invoice_num_gene = "INV-".date('dmy')."000".$invoice_no."";
+	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type='vendor'");
+	$fetch_gst_pan_number = mysqli_fetch_array($get_fetch_details);
+	$gst_pan_number = $fetch_gst_pan_number['GST_PAN'];
+
+	if(isset($_POST['submit'])){
+
+	$invoice_number		= $invoice_num_gene;	
+	$customer_id		= $_POST['cu_id'];
+	$gst_pan			= $gst_pan_number;
+	$product_id			= $_POST['product_id'];
+	$product_array		= implode(",",$product_id);
+	$hsn				= $_POST['hsn'];
+	$hsn_array			= implode(",",$hsn);
+	$quantity			= $_POST['qty'];
+	$quantity_array		= implode(",",$quantity);
+	$unit_price			= $_POST['unit_price'];
+	$unit_price_array	= implode(",",$unit_price);
+	$tax_rate			= $_POST['tax_rate'];
+	$tax_rate_array		= implode(",",$tax_rate);
+	$tax_cgst			= $_POST['cgst'];
+	$tax_cgst_array		= implode(",",$tax_cgst);
+	$tax_sgst			= $_POST['sgst'];
+	$tax_sgst_array		= implode(",",$tax_sgst);
+	$tax_igst			= $_POST['igst'];
+	$tax_igst_array		= implode(",",$tax_igst);
+	$tax_cess			= $_POST['cess'];
+	$tax_cess_array		= implode(",",$tax_cess);
+	$tax_value			= $_POST['tax_val'];
+	$tax_value_array	= implode(",",$tax_value);
+	$discount			= $_POST['discount'];
+	$discount_array		= implode(",",$discount);
+	$total				= $_POST['total'];
+	$total_array		= implode(",",$total);
+	$subtotal			= $_POST['sub_total'];
+	$subtotal_array		= implode(",",$subtotal);
+	$totaldiscount		= $_POST['total_discount'];
+	$totaldiscount_array= implode(",",$totaldiscount);
+	$total_tax			= $_POST['total_tax'];
+	$total_tax_array	= implode(",",$total_tax);
+	$total_price		= $_POST['total_price'];
+	$total_price_array	= implode(",",$total_price);
+	$date				= $_POST['invoicedate'];
+	
+
+ $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'purchase', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal_array."', '".$totaldiscount_array."', '".$total_tax_array."', '".$total_price_array."', '".$date."', 'active')");
+
+	if($insert_sales_order)
+		{		
+			$data = "success";		
+		}
+		else
+		{
+			$data = "error";
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +121,20 @@ include("sidebar.php");
             <div class="container-fluid" style="padding:0px;margin:0px;">
               <div class="col-md-12 col-sm-12" style="padding:0px;margin:0px;">	
 			    <form name="vendor_form" method="POST" enctype="multipart/form-data" id="rs-validation-login-page">
+					<div class="col-md-12 col-sm-12">
+						<?php
+								if(isset($data) && $data == "success")
+						{
+						?>
+						<p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Added Successfully </p>
+						<?php
+						}else if(isset($data) && $data == "error"){
+						?>
+						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in Insertion </p>						
+						<?php
+						}
+						?>
+						</div>
 
                 <!-- Begin Panel -->
                 <div class="panel panel-plain panel-rounded">
@@ -92,7 +166,7 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <select class="form-control selectpicker"  onchange="show_customer_data(this);">
+                              <select class="form-control selectpicker" name="cu_id" onchange="show_customer_data(this);">
 								 <option selected disabled>Choose Vendor</option>
                                  <?php
 									
@@ -256,7 +330,7 @@ include("sidebar.php");
 										</div>
 										<div class="col-sm-5">
 											<div class="form-group">
-												<label style="font-size:17px;">
+												<label style="font-size:17px;" name="sub_total">
 													<b class="subtotal">00.00</b>
 												</label>	
 												<p class="help-block with-errors"></p>
@@ -272,7 +346,7 @@ include("sidebar.php");
 										</div>
 										<div class="col-sm-5">
 											<div class="form-group">
-												<label style="font-size:17px;">
+												<label style="font-size:17px;" name="total_discount">
 													<b class="total_discount">00.00</b>
 												</label>	
 												<p class="help-block with-errors"></p>
@@ -288,7 +362,7 @@ include("sidebar.php");
 										</div>
 										<div class="col-sm-5">
 											<div class="form-group">
-												<label style="font-size:17px;">
+												<label style="font-size:17px;" name="total_tax">
 													<b class="total_tax">00.00</b>
 												</label>	
 												<p class="help-block with-errors"></p>
@@ -304,7 +378,7 @@ include("sidebar.php");
 										</div>
 										<div class="col-sm-5">
 											<div class="form-group">
-												<label style="font-size:20px;">
+												<label style="font-size:20px;" name="total_price">
 													<b style="color:#5dc26a;" class="complete_total">00.00</b>
 												</label>															
 												<p class="help-block with-errors"></p>
@@ -325,7 +399,7 @@ include("sidebar.php");
 						  <div class="form-group m-a-0" style="padding-left:0px;">
 							<button type="reset" class="btn btn-default btn-wide">Reset
 							</button>
-							<button type="submit" class="btn btn-success btn-wide">Submit
+							<button type="submit" name="submit" class="btn btn-success btn-wide">Submit
 							</button>
 						  </div>
 						</div>
@@ -492,7 +566,7 @@ include("sidebar.php");
 				var tax_val = $(e).closest('tr').find('.tax_val').val();
 				var discount = $(e).closest('tr').find('.disount').val();
 				var total =	$(e).closest('tr').find('.total').val();
-				var cus_state = $('.cust_states').val();
+				var cus_state = $('.cus_states').val();
 				/* get the prev values ends */
 
 				$.ajax({

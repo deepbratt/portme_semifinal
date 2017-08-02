@@ -1,17 +1,17 @@
 <?php
 include ("config.php");
-$user_id = $_SESSION['user_id'];
-$sale_order_info = mysqli_query ($mysqli,"select * from sales_order where business_id='".$user_id."'");
+$business_id = $_SESSION['business_id'];
 
 if(isset($_GET['delete_id']))
 {
 	$delete_id = $_GET['delete_id'];
-	$delete_customer = mysqli_query($mysqli,"delete from sales_order where sales_orders_id = '".$delete_id."'");
+	$delete_customer = mysqli_query($mysqli,"update tbl_transactions set status ='inactive' where tbl_transaction_id = '".$delete_id."'");
 	if($delete_customer)
 		{
 			echo "<script>window.location.href='sales_order.php'</script>";
 		}
 }
+$sale_order_info = mysqli_query ($mysqli,"select * from tbl_transactions where business_id='".$business_id."' and tbl_transaction_type='sales' and status='active'");
 
 ?>
 
@@ -69,7 +69,7 @@ if(isset($_GET['delete_id']))
 		<article class="rs-content-wrapper">
 			<div class="rs-content">
 				<div class="rs-inner">
-
+					<form method="POST">
 					<!-- Begin Dashhead -->
 					<div class="rs-dashhead m-b-lg" style="background:#f5f5f5">
 						<div class="rs-dashhead-content">
@@ -104,11 +104,12 @@ if(isset($_GET['delete_id']))
 								<table class="table table-b-t table-b-b datatable-default rs-table table-default" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">
 									<thead>
 							            <tr>
+							                <th>Invoice Number</th>
 							                <th>Customer Name</th>
-							                <th>Order Number</th>
-							                <th>Sales Date</th>
-							                <th>Seller Person</th>
-											<th>ACTION</th>
+							                <th>GST Number</th>
+							                <th>Total Price</th>
+											<th>Date</th>
+											<th>Action</th>
 							               
 							            </tr>
 							        </thead>
@@ -118,24 +119,25 @@ if(isset($_GET['delete_id']))
 										while ($fetch_sales_order_info = mysqli_fetch_array($sale_order_info))										
 										{
 										?>
+										<td><?php echo $fetch_sales_order_info['invoice_no']?></td>
 							                <td>
 												<?php
 													$customer_id = $fetch_sales_order_info['customer_id'];
-													$get_sales_order_query = mysqli_query($mysqli,"select * from customers where customer_id='".$customer_id."'");
-													$get_fetch_sales_order_name = mysqli_fetch_array($get_sales_order_query);
-													echo $get_fetch_sales_order_name['salutation'];
+													$get_customer_query = mysqli_query($mysqli,"select * from tbl_contacts where customer_id='".$customer_id."'");
+													$get_fetch_customer_name = mysqli_fetch_array($get_customer_query);
+													echo ucfirst($get_fetch_customer_name['salutation']);
 													echo "&nbsp;&nbsp;";
-													echo $get_fetch_sales_order_name['firstname'];
+													echo ucfirst($get_fetch_customer_name['first_name']);
 													echo "&nbsp;&nbsp;";
-													echo $get_fetch_sales_order_name['lastname'];
+													echo ucfirst($get_fetch_customer_name['last_name']);
 												?>
 											</td>											
-											<td><?php echo $fetch_sales_order_info['order_number']?></td>
+											<td><?php echo ucfirst($fetch_sales_order_info['ecome_gstin']);?></td>
+							                <td>Rs.&nbsp;<?php echo ucfirst($fetch_sales_order_info['total']);?></td>
 							                <td><?php echo $fetch_sales_order_info['date']?></td>
-							                <td><?php echo $fetch_sales_order_info['sold_by']?></td>
 							               	<td>
-												<a href="print_invoice.php?sales_order_id=<?php echo $fetch_sales_order_info['sales_order_id'];?>" class="btn btn-default" style="margin:3px;"> View </a>												
-												<a href="?delete_id=<?php echo $fetch_sales_order_info['sales_order_id'];?>" class="fa fa-trash" style="height:35px;margin-top:10px;padding-right:-50px; font-size:25px"></a>
+												<a href="print_invoice.php?sales_order_id=<?php echo $fetch_sales_order_info['tbl_transaction_id'];?>" class="btn btn-default" style="margin:3px;"> View </a>												
+												<a href="?delete_id=<?php echo $fetch_sales_order_info['tbl_transaction_id'];?>" class="fa fa-trash" style="height:35px;margin-top:10px;padding-right:-50px; font-size:25px"></a>
 											</td>
 							            </tr>
 										 <?php
@@ -148,7 +150,7 @@ if(isset($_GET['delete_id']))
 						<!-- End Panel -->
 
 					</div><!-- /.container-fluid -->
-
+					</form>
 				</div><!-- /.rs-inner -->
 			</div><!-- /.rs-content -->
 		</article><!-- /.rs-content-wrapper -->

@@ -32,7 +32,7 @@
 		<?php echo ucfirst($fetch_cust_query['address']);?><br /> 
 		<?php 
 			$state = $fetch_cust_query['state'];
-			$get_state_details = mysqli_query($mysqli,"SELECT * FROM states WHERE states_id='$state'");
+			$get_state_details = mysqli_query($mysqli,"SELECT * FROM states WHERE states_code='$state'");
 			$fetch_state_details = mysqli_fetch_array($get_state_details);
 
 			echo ucfirst($fetch_state_details['states_name']);

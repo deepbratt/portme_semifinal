@@ -32,16 +32,18 @@
 	$get_business_stateid = mysqli_query($mysqli,"SELECT * FROM tbl_business WHERE business_id='$business_id'");
 	$fetch_business_stateid = mysqli_fetch_array($get_business_stateid);
 	$business_state = $fetch_business_stateid['state'];
-	
+
+
 	if($tax_val != '0' || $tax_val != ''){
-		if($business_state == $cus_state){
-			$cgst = ($product_price*$tax_rate)/2;
-			$sgst = ($product_price*$tax_rate)/2;
-			$igst = "00.00";
-		}else{
+		if($business_state != $cus_state){
 			$cgst = "00.00";
 			$sgst = "00.00";
 			$igst = $product_price*$tax_rate;
+		}else{
+			
+			$cgst = ($product_price*$tax_rate)/2;
+			$sgst = ($product_price*$tax_rate)/2;
+			$igst = "00.00";
 		}
 	}else{
 		$tax_rate = "0";

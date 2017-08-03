@@ -118,24 +118,6 @@
 				<?php
 					include('footer.php');
 				?><!-- End Footer -->
-        <!-- jQuery -->
-        <script src="js/jquery.min.js"></script>
-        <!-- Bootstrap JS -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- Modenizer JS -->
-        <script src="js/modernizr-custom.js"></script>
-        <!-- Bootsvav Menu -->
-        <script src="js/bootsnav.js" type="text/javascript"></script>
-        <!-- Parallax -->
-        <script src="js/paraxify.min.js" type="text/javascript"></script>
-        <!-- Custom JS -->
-        <script src="js/custom.js"></script>
-        <!-- ==============================================
-                ** STYLE SWITCHER-ONLY FOR DEMO PURPOSE**
-        =============================================== -->
        
-        <!--Style Switcher Script-->
-        <script src="js/style-switcher.js"></script>
-        <!--End Style Switcher-->
     </body>
 </html>

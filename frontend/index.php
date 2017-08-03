@@ -1,6 +1,5 @@
 
 <!DOCTYPE html>
-<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,6 +39,8 @@
 		-webkit-animation: bounce 2s infinite;
 		animation: bounce 2s infinite;
 	}
+.mob_manu {
+    display: none;
 }
 	</style>
     </head>
@@ -47,56 +48,32 @@
         <!-- ==============================================
                      **PRE LOADER**
         =============================================== -->
-<!--         <div id="page-loader">
+        <div id="page-loader">
             <div class="loader-container">
                 <div class="loader-logo">
                     <span>LOADING</span>
                 </div>
                 <div class="loader"></div>
             </div>
-        </div> -->
+        </div>
         <!-- ==============================================
                      **MAIN HEADER**
         =============================================== -->
 				<?php
 					include("header.php");
 				?>
-<!-- End Header -->
+
         <!-- ==============================================
                      **PARTNERS**
         =============================================== -->
-<!--         <section id="partners" class="ptb-30 bg-gray">
-            <h2 class="hidden">Partners</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2 col-sm-2 col-xs-6">
-                        <img src="images/logo1.png" class="img-responsive" alt="image">
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-6">
-                        <img src="images/logo2.png" class="img-responsive" alt="image">
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-6">
-                        <img src="images/logo3.png" class="img-responsive" alt="image">
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-6">
-                        <img src="images/logo4.png" class="img-responsive" alt="image">
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-6">
-                        <img src="images/logo6.png" class="img-responsive" alt="image">
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-6">
-                        <img src="images/logo6.png" class="img-responsive" alt="image">
-                    </div>
-                </div>
-            </div>
-        </section> -->
+        
 		<!-- End Section -->
 
 		<!-- gst -->			
 	<!-- End Container -->
 		<div class="section_top " style="position:relative; background: url('images/newdd3.png') no-repeat bottom center;
 				background-size: contain;">
-				<div class="cont_top"></div>				
+				<div class="cont_top">				
 					<div class="top_cont_heading  cont_wrap">
 						  <div id="home-news" style="margin-top:-200px !important">
 							<div class="home_header">
@@ -110,16 +87,66 @@
 							</div>
 						  </div>
 					</div>
+				</div>	
+		
+		
 			<div class="arrow bounce"></div>
 			<div class="clear" ></div>
+		
+			<div class="cont_top" style="margin-top:100px;">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                       
+                            
+							<img src="images/account.png" class="img-responsive"  alt="image">
+							
+						 <div class="iconbox-center">
+                            <h4>ACCOUNTS</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        
+                            
+							<img src="images/reports.png" class="img-responsive" alt="image">
+							
+						<div class="iconbox-center">
+                            <h4>REPORTS</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                       
+							
+						
+						<div class="iconbox-center">
+						<img src="images/sales.png" class="img-responsive" alt="image">
+                            <h4>SALES</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+					<div class="col-md-3 col-sm-3 col-xs-12">
+						
+							
+						
+                        <div class="iconbox-center">
+						<img src="images/inventory.png" class="img-responsive" alt="image">
+                            <h4>INVENTORY</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                </div>
+			</div>
+					
+			
 	 </div>
 
 
   <div class="clear" ></div>
 
 		<section class="demo-request ptb-100">
-			<div id="whtscoch">
-			    <div class="container text-center">
+			
+			<div class="container text-center">
 					<div class="request-title mb-30">
 					   <h2>Start <span>free</span> Fedrex trial!</h2>
 					    <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.</p>
@@ -414,10 +441,15 @@
                 <div class="row">
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>How GST WORKS : </h3>
+                            <h3>Connecting the Things As a Most Advanced Solution</h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>The new tax regime follows a multi-stage collection mechanism wherein tax is collected at every stage and the credit of tax paid (input tax credit) at the previous stage is available as a set-off at the next stage of transaction. This helps to eliminate "tax on tax" or the cascading impact of tax.</p>                       
+                        <p>We believe that partnerships can build a strong IoT ecosystem; we believe that a strong ecosystem turns the key to innovation.Connecting everything drives positive business results.</p>
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                               
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-5 col-sm-6 col-xs-12">
                         <img src="images/features1.png" class="img-responsive" alt="image">
@@ -425,202 +457,159 @@
                 </div>
             </div><!-- End Container -->
         </section><!-- End Section -->
-       
-		<section class="ptb-100 functionalities bg-gray">
+        <section class="ptb-100 functionalities bg-gray">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/features2.png" class="img-responsive" alt="image">
+                        <img src="images/Cloud based software.jpg" class="img-responsive" alt="image">
                     </div>
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>Advantages of E-filling :</h3>
+                            <h3>Cloud based software: </h3>
                             <div class="seperator"></div>
                         </div>
-                        <p><b>1. Error free submission </b>- Real time error check is possible through income tax authorities. Validations are helpful to ensure the return perfect<br/><b>2. Quick refund </b>- Online filing enables the department to process the return with minimum time and therefore refund become very easy.<br/><b>3. Avoid delays </b>- Paper filing of return always depends the time of office, queues, spot self-correction, holidays, presence of officer, etc. Regardless of these matters any person can file their income at anytime from anywhere.<br/><b>4. Effortless and efficient </b>- Controlled and guided entry set by the utility or software pave the way to proper and fast completion of IT return. Filling in paper return always brings confusion and error, but a neat and clean return can be given through online filing.</p>
-                   
+                        <p>It will help you to store all your data online. Even if any issue happens in your computer, all the data will be secured in the server. You can collect your data from your phone as well, with the help of active internet connection.</p>
+                        <div class="row">
+                           
+                            <div class="col-md-12 col-xs-12">
+                                
+                            </div>
+                        </div>
                     </div>
 
                 </div>
             </div><!-- End Container -->
         </section><!-- End Section -->
-        
-		<section class="ptb-100 functionalities bg-white">
+        <section class="ptb-100 functionalities bg-white">
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>E-filling Dates :</h3>
+                            <h3>Best Customer Support and Always Best Solutions in Hand</h3>
                             <div class="seperator"></div>
                         </div>
-						<div class="col-md-5 col-sm-6 col-xs-12">
-                        <h3><b>Registered Taxable Person</b></h3>
-						</div>
-						<div class="col-md-2 col-sm-6 col-xs-12"></div>
-						<div class="col-md-5 col-sm-6 col-xs-12">
-                        <h3><b>Non-Registered Taxable Person</b></h3>
-						</div>
+                        <p>Where do you go when you need help from a company? For instance a widget is broken or a site isn’t doing what you want it to, or you just need help with any number of things.  More often than not, your desire for information leads you to Google where you type in your query and you get a support center. A great support center is where your customers can go to find answers to commonly asked questions and if it’s done well it should be packed with useful information. If you set it up right and take the time to customize it, your support center can also be a seamless extension of your brand..</p>
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <ul>
+                                    <li>User-focused.</li>
+                                    <li>Create help content that actually helps.</li>
+                                    <li>Emphasis on information.</li>
+                                </ul>
+                            </div>
+                            
+                        </div>
                     </div>
-                    
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <img src="images/inventory.jpg" class="img-responsive" alt="image">
+                    </div>
                 </div>
             </div><!-- End Container -->
         </section><!-- End Section -->
-		
 		<section class="ptb-100 functionalities bg-gray">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/features2.png" class="img-responsive" alt="image">
+                        <img src="images/download.jpg" class="img-responsive" alt="image">
                     </div>
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>CRITERIA FOR BILLING AND INVOICES :</h3>
+                            <h3>Customer Data Management (CDM): </h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
-                   
+                        <p>With the help of this feature you can keep track of your customer information and survey your customer base in order to obtain feedback.  Efficient CDM solutions provide companies with the ability to deal instantly with customer issues and obtain immediate feedback. As a result, customer retention and customer satisfaction can show marked improvement.</p>
+                        <div class="row">
+                           
+                            <div class="col-md-12 col-xs-12">
+                                <ul>
+                                    <li>Should provide a cost-effective, user-friendly solution for marketing, research, sales, human resources and IT departments</li>
+                                    <li>Enables companies to create and email online surveys, reports and newsletters.</li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
             </div><!-- End Container -->
         </section><!-- End Section -->
-		
-		 <section class="ptb-100 functionalities bg-white">
+        <section class="ptb-100 functionalities bg-white">
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>How to submit ITR returns :</h3>
+                            <h3>GST Billing :</h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
-                    
+                        <p>As per GST invoicing rules and formats have been notified covering details such as supplier’s name, shipping and billing address, GSTIN number, HSN Codes, place of supply, tax rates(CGST, SGST,IGST), etc. are included in our billing format.</p>
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <ul>
+                                    <li>Monitor existing stock and reduce inventory overstock/stock-out situations and optimize inventory holding cost and wastage.</li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <img src="images/GST_Invoice_Header.png" class="img-responsive" alt="image">
+                    </div>
+                </div>
+            </div><!-- End Container -->
+        </section><!-- End Section -->
+		<section class="ptb-100 functionalities bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <img src="images/Financial Reports1.jpg" class="img-responsive" alt="image">
+                    </div>
+                    <div class="col-md-7 col-sm-6 col-xs-12">
+                        <div class="main-title">
+                            <h3>Financial Reports:</h3>
+                            <div class="seperator"></div>
+                        </div>
+                        <p>Financial report is a formal record of the financial activities and position of a business, person, or other entity.
+Relevant financial information is presented in a structured manner and in a form easy to understand. They typically include basic financial statements, accompanied by a management discussion and analysis.</p>
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                                <ul>
+                                    <li>By the help of this, you have to purchase the software once and use it for the whole year since it is a cloud based software.</li>
+                                </ul>
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- End Container -->
+        </section><!-- End Section -->
+        <section class="ptb-100 functionalities bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-sm-6 col-xs-12">
+                        <div class="main-title">
+                            <h3>Easy to submit in GST government portal:</h3>
+                            <div class="seperator"></div>
+                        </div>
+                        <p>By using this software you can upload all your tax return information in the government site that is www.gst.gov.in just by one click.</p>
+                       
+						<ul>
+							<li>A business manager needs to see his progress & failure both to take necessary steps to take the business to next level.</li>
+						</ul>
                     </div>
                     <div class="col-md-5 col-sm-6 col-xs-12">
                         <img src="images/features3.png" class="img-responsive" alt="image">
                     </div>
                 </div>
             </div><!-- End Container -->
-        </section>
+        </section><!-- End Section -->
         <!-- ==============================================
-                     **MAIN FEATURES**
-        =============================================== -->
-<!--         <section class="main-features ptb-100">
-            <div class="image-holder">
-                <img src="images/features-alt.png" alt="image">
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="content-holder">
-                        <h2>Awesome Design & Great Functionalities</h2>
-                        <p class="features-note">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus.</p>
-                        <div class="features">
-                            <aside class="icon-holder">
-                                <span class="icon ti-desktop" style="font-family:'themify';"></span>
-                            </aside>
-                            <aside class="features-content">
-                                <h6>Responsive Design</h6>
-                                <p>Ea mei nostrum imperdiet deterruisset, mei ludus efficiendi ei. Sea summo mazim ex, ea errem eleifend.</p>
-                            </aside>
-                        </div>
-                        <div class="features">
-                            <aside class="icon-holder">
-                                <span class="icon ti-comments"></span>
-                            </aside>
-                            <aside class="features-content">
-                                <h6>Item Support</h6>
-                                <p>Ea mei nostrum imperdiet deterruisset, mei ludus efficiendi ei. Sea summo mazim ex, ea errem eleifend.</p>
-                            </aside>
-                        </div>
-                        <div class="features">
-                            <aside class="icon-holder">
-                                <span class="icon ti-book"></span>
-                            </aside>
-                            <aside class="features-content">
-                                <h6>Well Documented</h6>
-                                <p>Ea mei nostrum imperdiet deterruisset, mei ludus efficiendi ei. Sea summo mazim ex, ea errem eleifend.</p>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> --><!-- End Section -->
-      
+                     **FOOTER STARTS**
+=============================================== -->        
 				<?php
-					include("footer.php");
+					include('footer.php');
 				?>
 <!-- End Footer -->
-        <!-- jQuery -->
-        <script src="js/jquery.min.js"></script>
-        <!-- Bootstrap JS -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- Modenizer JS -->
-        <script src="js/modernizr-custom.js"></script>
-        <!-- Bootsvav Menu -->
-        <script src="js/bootsnav.js" type="text/javascript"></script>
-        <!-- Parallax -->
-        <script src="js/paraxify.min.js" type="text/javascript"></script>
-        <!-- Magnific Popup -->
-        <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
-        <!-- Custom JS -->
-        <script src="js/custom.js"></script>
-
-
-		<script src="js/tether.min.js"
-        integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
-        crossorigin="anonymous"></script>
-		 <script src="js/jquery.matchHeight-min.js"></script>
-
-    <script src="js/hditui.js?v=20170703121509"></script>
-
-	<script type="text/javascript">
-    function switchClass(i) {
-	   var lis = $('#home-news > div');
-	   lis.eq(i).removeClass('home_header_on');
-	   lis.eq(i).removeClass('home_header_out');
-		lis.eq(i = ++i % lis.length).addClass('home_header_on');
-		lis.eq(i = ++i % lis.length).addClass('home_header_out');
-		setTimeout(function() {
-			switchClass(i);
-		}, 3500);
-	}
-
-	$(window).load(function() {
-	   switchClass(-1);
-	});
-    
-    
-  </script>
-  <script>
-		if ($(window).width() > 767) {
-				var winH = $(window).height(); $('.section_top').css('height',winH);
-			  }else {
-				$('.section_top').css('height','auto');
-			  }
-			  $(window).resize(function() {
-				if ($(window).width() > 767) {
-				var winH = $(window).height(); $('.section_top').css('height',winH);
-				}else {
-				  $('.section_top').css('height','auto');
-				}
-			  });
-			
-			  // Header top scrolled down
-			  $('.bounce').on('click',function() {
-				$('html,body').animate({
-				  scrollTop: $("#whtscoch").offset().top},
-				  1200);
-			  });
-		</script>
-	
-
-    
-    
-
-    
-    
-
-     
-        <!--End Style Switcher-->
+   
     </body>
 </html>

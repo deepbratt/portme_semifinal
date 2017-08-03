@@ -55,16 +55,13 @@
                 <div class="row">
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>Connecting the Things As a Most Advanced Solution </h3>
+                            <h3>Connecting the Things As a Most Advanced Solution</h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
+                        <p>We believe that partnerships can build a strong IoT ecosystem; we believe that a strong ecosystem turns the key to innovation.Connecting everything drives positive business results.</p>
                         <div class="row">
                             <div class="col-md-12 col-xs-12">
-                                <ul>
-                                    <li>Ut lacinia ligula tristique tempus.</li>
-                                    <li>In ornare nisl vitae pulvinar posuere.</li>
-                                </ul>
+                               
                             </div>
                         </div>
                     </div>
@@ -78,7 +75,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/features2.png" class="img-responsive" alt="image">
+                        <img src="images/Cloud based software.jpg" class="img-responsive" alt="image">
                     </div>
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
@@ -89,11 +86,7 @@
                         <div class="row">
                            
                             <div class="col-md-12 col-xs-12">
-                                <ul>
-                                    <li>In et orci sit amet leo consequat.</li>
-                                    <li>Nullam pellentesque arcu vitae congue.</li>
-                                    <li>Donec nec odio a tellus eleifend.</li>
-                                </ul>
+                                
                             </div>
                         </div>
                     </div>
@@ -109,20 +102,20 @@
                             <h3>Best Customer Support and Always Best Solutions in Hand</h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
+                        <p>Where do you go when you need help from a company? For instance a widget is broken or a site isn’t doing what you want it to, or you just need help with any number of things.  More often than not, your desire for information leads you to Google where you type in your query and you get a support center. A great support center is where your customers can go to find answers to commonly asked questions and if it’s done well it should be packed with useful information. If you set it up right and take the time to customize it, your support center can also be a seamless extension of your brand..</p>
                         <div class="row">
                             <div class="col-md-12 col-xs-12">
                                 <ul>
-                                    <li>Ut lacinia ligula tristique tempus.</li>
-                                    <li>In ornare nisl vitae pulvinar posuere.</li>
-                                    <li>Cras dapibus felis vel euismod gravida.</li>
+                                    <li>User-focused.</li>
+                                    <li>Create help content that actually helps.</li>
+                                    <li>Emphasis on information.</li>
                                 </ul>
                             </div>
                             
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/features3.png" class="img-responsive" alt="image">
+                        <img src="images/inventory.jpg" class="img-responsive" alt="image">
                     </div>
                 </div>
             </div><!-- End Container -->
@@ -131,7 +124,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/features2.png" class="img-responsive" alt="image">
+                        <img src="images/download.jpg" class="img-responsive" alt="image">
                     </div>
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
@@ -145,7 +138,7 @@
                                 <ul>
                                     <li>Should provide a cost-effective, user-friendly solution for marketing, research, sales, human resources and IT departments</li>
                                     <li>Enables companies to create and email online surveys, reports and newsletters.</li>
-                                    <li>Encompasses and simplifies customer relationship management (CRM) and customer feedback management(CFM).</li>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -166,16 +159,14 @@
                         <div class="row">
                             <div class="col-md-12 col-xs-12">
                                 <ul>
-                                    <li>Ut lacinia ligula tristique tempus.</li>
-                                    <li>In ornare nisl vitae pulvinar posuere.</li>
-                                    <li>Cras dapibus felis vel euismod gravida.</li>
+                                    <li>Monitor existing stock and reduce inventory overstock/stock-out situations and optimize inventory holding cost and wastage.</li>
                                 </ul>
                             </div>
                             
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/features3.png" class="img-responsive" alt="image">
+                        <img src="images/GST_Invoice_Header.png" class="img-responsive" alt="image">
                     </div>
                 </div>
             </div><!-- End Container -->
@@ -184,7 +175,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/features2.png" class="img-responsive" alt="image">
+                        <img src="images/Financial Reports1.jpg" class="img-responsive" alt="image">
                     </div>
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
@@ -194,18 +185,12 @@
                         <p>Financial report is a formal record of the financial activities and position of a business, person, or other entity.
 Relevant financial information is presented in a structured manner and in a form easy to understand. They typically include basic financial statements, accompanied by a management discussion and analysis.</p>
                         <div class="row">
-                            <div class="col-md-6 col-xs-12">
+                            <div class="col-md-12 col-xs-12">
                                 <ul>
                                     <li>By the help of this, you have to purchase the software once and use it for the whole year since it is a cloud based software.</li>
                                 </ul>
                             </div>
-                            <div class="col-md-6 col-xs-12">
-                                <ul>
-                                    <li>In et orci sit amet leo consequat.</li>
-                                    <li>Nullam pellentesque arcu vitae congue.</li>
-                                    <li>Donec nec odio a tellus eleifend.</li>
-                                </ul>
-                            </div>
+                           
                         </div>
                     </div>
 
@@ -217,26 +202,14 @@ Relevant financial information is presented in a structured manner and in a form
                 <div class="row">
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>Best Customer Support and Always Best Solutions in Hand</h3>
+                            <h3>Easy to submit in GST government portal:</h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
-                        <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <ul>
-                                    <li>Ut lacinia ligula tristique tempus.</li>
-                                    <li>In ornare nisl vitae pulvinar posuere.</li>
-                                    <li>Cras dapibus felis vel euismod gravida.</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-xs-12">
-                                <ul>
-                                    <li>In et orci sit amet leo consequat.</li>
-                                    <li>Nullam pellentesque arcu vitae congue.</li>
-                                    <li>Donec nec odio a tellus eleifend.</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <p>By using this software you can upload all your tax return information in the government site that is www.gst.gov.in just by one click.</p>
+                       
+						<ul>
+							<li>A business manager needs to see his progress & failure both to take necessary steps to take the business to next level.</li>
+						</ul>
                     </div>
                     <div class="col-md-5 col-sm-6 col-xs-12">
                         <img src="images/features3.png" class="img-responsive" alt="image">
@@ -395,24 +368,6 @@ Relevant financial information is presented in a structured manner and in a form
 				<?php
 					include('footer.php');
 				?><!-- End Footer -->
-        <!-- jQuery -->
-        <script src="js/jquery.min.js"></script>
-        <!-- Bootstrap JS -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- Modenizer JS -->
-        <script src="js/modernizr-custom.js"></script>
-        <!-- Bootsvav Menu -->
-        <script src="js/bootsnav.js" type="text/javascript"></script>
-        <!-- Parallax -->
-        <script src="js/paraxify.min.js" type="text/javascript"></script>
-        <!-- Custom JS -->
-        <script src="js/custom.js"></script>
-        <!-- ==============================================
-                ** STYLE SWITCHER-ONLY FOR DEMO PURPOSE**
-        =============================================== -->
        
-        <!--Style Switcher Script-->
-        <script src="js/style-switcher.js"></script>
-        <!--End Style Switcher-->
     </body>
 </html>

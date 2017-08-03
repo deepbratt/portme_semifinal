@@ -81,174 +81,10 @@
                         </ul>
                     </div> 
 
-                    <!-- First List -->
-                    <div class="col-md-2 col-sm-6 text-center pricing-col">
-                        <div class="head bg-theme-primary">
-                            <h4 class="pricing-title">Basic</h4>
-                            <span class="pricing-subtitle">Nunc parturient ante</span>
-                        </div>
-
-                        <!-- Pricing label -->
-                        <div class="price">
-                            <span class="pricing-currency">$</span>
-                            <span class="pricing-price">9</span>
-                            <span>/mo</span>
-                        </div>
-                        <ul>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-database"></i>
-                                    Monthly bandwith: 
-                                </span>
-                                250 GB
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-user"></i>
-                                    Web storage: 
-                                </span>
-                                100 GB
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-tachometer"></i>
-                                    Free domain names: 
-                                </span>
-                                1 Free
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-archive"></i>
-                                    E-commerce enabled: 
-                                </span>
-                                <i class="fa fa-close"></i>
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-database"></i>
-                                    Customer support: 
-                                </span>
-                                24/7
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-location-arrow"></i>
-                                    PhpMyAdmin: 
-                                </span>
-                                <i class="fa fa-check"></i>
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-calendar-o"></i>
-                                    Google AdWords: 
-                                </span>
-                                $20
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-folder-o"></i>
-                                    Forums: 
-                                </span>
-                                <i class="fa fa-check"></i>
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-bar-chart-o"></i>
-                                    Site statistics: 
-                                </span>
-                                <i class="fa fa-check"></i>
-                            </li>
-                            <li class="footer">
-                                <button class="btn btn-rounded-white-fill">Sing Up</button>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Second List -->
-                    <div class="col-md-2 col-sm-6 text-center pricing-col">
-                        <div class="head bg-theme-primary">
-                            <h4 class="pricing-title">Professional</h4>
-                            <span class="pricing-subtitle">Nunc parturient ante</span>
-                        </div>
-
-                        <!-- Pricing label -->
-                        <div class="price">
-                            <span class="pricing-currency">$</span>
-                            <span class="pricing-price">19</span>
-                            <span>/mo</span>
-                        </div>
-                        <ul>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-database"></i>
-                                    Monthly bandwith: 
-                                </span>
-                                450 GB
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-user"></i>
-                                    Web storage: 
-                                </span>
-                                200 GB
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-tachometer"></i>
-                                    Free domain names: 
-                                </span>
-                                2 Free
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-archive"></i>
-                                    E-commerce enabled: 
-                                </span>
-                                <i class="fa fa-close"></i>
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-database"></i>
-                                    Customer support: 
-                                </span>
-                                24/7
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-location-arrow"></i>
-                                    PhpMyAdmin: 
-                                </span>
-                                <i class="fa fa-check"></i>
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-calendar-o"></i>
-                                    Google AdWords: 
-                                </span>
-                                $20
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-folder-o"></i>
-                                    Forums: 
-                                </span>
-                                <i class="fa fa-check"></i>
-                            </li>
-                            <li>
-                                <span class="hidden-md hidden-lg">
-                                    <i class="fa fa-bar-chart-o"></i>
-                                    Site statistics: 
-                                </span>
-                                <i class="fa fa-check"></i>
-                            </li>
-                            <li class="footer">
-                                <button class="btn btn-rounded-white-fill">Sing Up</button>
-                            </li>
-                        </ul>
-                    </div>
+                   
 
                     <!-- Third List -->
-                    <div class="col-md-2 col-sm-6 text-center pricing-col">
+                    <div class="col-md-4 col-sm-12 text-center pricing-col">
                         <div class="head bg-theme-primary">
                             <h4 class="pricing-title">Business</h4>
                             <span class="pricing-subtitle">Nunc parturient ante</span>
@@ -331,7 +167,7 @@
                         </ul>
                     </div>
                     <!-- Other List -->
-                    <div class="col-md-2 col-sm-6 text-center pricing-col">
+                    <div class="col-md-4 col-sm-12 text-center pricing-col">
                         <div class="head bg-theme-primary">
                             <h4 class="pricing-title">Ultimate</h4>
                             <span class="pricing-subtitle">Nunc parturient ante</span>

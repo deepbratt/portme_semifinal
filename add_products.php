@@ -9,9 +9,9 @@ if(isset($_POST['submit']))
 	$desc	   = mysqli_real_escape_string($mysqli,$_POST['desc']);	
 	$cost_price = mysqli_real_escape_string($mysqli,$_POST['cost_price']);
 	$selling_price = mysqli_real_escape_string($mysqli,$_POST['selling_price']);
-	$attribute = mysqli_real_escape_string($mysqli,$_POST['attri']);
+	$attribute = $_POST['attri'];
 	$add_attribute = implode(",",$attribute);
-	$options = mysqli_real_escape_string($mysqli,$_POST['optn']);
+	$options = $_POST['optn'];
 	$add_options   = implode(",",$options);
 	$date = time();
 	

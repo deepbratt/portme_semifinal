@@ -65,7 +65,7 @@
 
 
 
-	$response = array("pid"=> $product_id ,"hsn"=> $hsn , "qty" => $qty , "unit_price" => round($unit_price,2) ,"tax_rate" => $actual_tax_rate , "cgst" => round($cgst,2) , "sgst" => round($sgst,2) , "igst" => round($igst,2), "cess" => round($cess,2), "tax_val" => round($tax_val,2), "disount" => round($discount,2), "total" => round($total_price,2) );
+	$response = array("pid"=> $product_id ,"hsn"=> $hsn , "qty" => $qty , "unit_price" => $unit_price.toFixed(2) ,"tax_rate" => $actual_tax_rate , "cgst" => $cgst.toFixed(2) , "sgst" => $sgst.toFixed(2) , "igst" => $igst.toFixed(2), "cess" => $cess.toFixed(2), "tax_val" => $tax_val.toFixed(2), "disount" => $discount.toFixed(2), "total" => $total_price.toFixed(2));
 	header("Content-Type: application/json");
 	echo json_encode($response);
 ?>

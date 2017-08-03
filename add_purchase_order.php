@@ -611,7 +611,11 @@ include("sidebar.php");
 				  }
 				});
 				
-
+				var total_last_final = 0;
+				  $('input[name^="total"]').each(function() {
+				  var indivi_totl = Math.round($(this).val());
+				  total_last_final = Math.round(total_last_final+indivi_totl);
+				 });
 				
 			}
 			function tax_change_same(t)

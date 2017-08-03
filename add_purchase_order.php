@@ -606,16 +606,18 @@ include("sidebar.php");
 					$(e).closest('tr').find('.subtotal').val("00.00");
 					$(e).closest('tr').find('.total_discount').val("00.00");
 					$(e).closest('tr').find('.total_tax').val("00.00");
-					$(e).closest('tr').find('.complete_total').val("00.00");
-					/*bottom main calculation ends */
+
+					var total_last_final = 0;
+					$('input[name^="total"]').each(function() {
+						var indivi_totl = Math.round($(this).val());
+						total_last_final = Math.round(total_last_final+indivi_totl);
+					});
+
+					$('.complete_total').text(total_last_final.toFixed(2));
+					/*bottom main calculation ends */				
 				  }
 				});
 				
-				var total_last_final = 0;
-				  $('input[name^="total"]').each(function() {
-				  var indivi_totl = Math.round($(this).val());
-				  total_last_final = Math.round(total_last_final+indivi_totl);
-				 });
 				
 			}
 			function tax_change_same(t)

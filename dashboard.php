@@ -1,3 +1,7 @@
+<?php
+include("config.php");
+$business_id = $_SESSION['business_id'];
+?>
 <!DOCTYPE html>
 <html lang=en>
 
@@ -36,30 +40,33 @@
 			<div class="rs-content">
 				<div class="rs-inner">
 
+					<?php
+					$select_user = mysqli_query($mysqli,"select * from tbl_business where business_id='$business_id'");
+					$fetch_user = mysqli_fetch_array($select_user);
+					?>
 					<!-- Begin Dashhead -->
 					<div class="rs-dashhead m-b-lg">
 						<div class="rs-dashhead-content">
 							<div class="rs-dashhead-titles">
 								<h6 class="rs-dashhead-subtitle text-uppercase">Dashboard</h6>
-								<h3 class="rs-dashhead-title m-t">Good Day, Mister!</h3>
+								<h3 class="rs-dashhead-title m-t">Good Day, <?php echo ucfirst($fetch_user['owners_firstname']);?> <?php echo ucfirst($fetch_user['owners_lastname']);?> !</h3>
 								<!-- Begin Toolbar toggle button on mobile -->
 								<div class="toggle-toolbar-btn">
 									<span class="fa fa-sort"></span>
 								</div><!-- /.toggle-toolbar-btn -->
 								<!-- End Toolbar toggle button on mobile -->
 							</div><!-- /.rs-dashhead-titles -->
-							<div class="rs-dashhead-toolbar">
+							<!--<div class="rs-dashhead-toolbar">
 								<button type="button" class="btn btn-success btn-wide rs-btn-icon block-on-mobile">
 									<span class="gcon gcon-upload-to-cloud icon-btn"></span>
 									Upload Item
 								</button>
-							</div><!-- /.rs-dashhead-toolbar -->
+							</div>--><!-- /.rs-dashhead-toolbar -->
 						</div><!-- /.rs-dashhead-content -->
 						<!-- Begin Breadcrumb -->
 						<ol class="breadcrumb">
 							<li><a href="javascript:void(0);"><i class="fa fa-home m-r"></i> Home</a></li>
-							<li><a href="javascript:void(0);">Library</a></li>
-							<li class="active">Data</li>
+							<li class="active">Dashboard</li>
 						</ol>
 						<!-- End Breadcrumb -->
 					</div><!-- /.rs-dashhead -->
@@ -68,88 +75,72 @@
 					<!-- Begin default content width -->
 					<div class="container-fluid">
 
-						<div class="alert alert-success alert-simple alert-dismissible fade in iconic-alert m-b-lg" role="alert">
+						<!--<div class="alert alert-success alert-simple alert-dismissible fade in iconic-alert m-b-lg" role="alert">
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><span class="mcon mcon-close"></span></span></button>
 							<div class="alert-icon">
 								<span class="gcon gcon-emoji-happy centered-xy"></span>
 							</div>
 							<p><strong>You have received a payment</strong>. Click <a href="javascript:void(0);" class="alert-link">here</a> to review your payment page.</p>
-						</div>
+						</div>-->
 
+						
 						<div class="row">
 							<div class="col-lg-12">
 
 								<div class="row">
-									<div class="col-sm-3">
-										<!-- Begin Panel -->
+
+									<?php
+										$select_vendor = mysqli_query($mysqli,"select * from tbl_contacts where business_id='$business_id' and customer_type='vendor'");
+										$count_vendor = mysqli_num_rows($select_vendor);
+									?>
+									<div class="col-sm-3" align="center">
 										<div class="quick-stat panel panel-rounded bg-grad bg-grad-05 borderless">
 											<div class="panel-heading borderless">
-												<p class="subtitle text-lighten text-uppercase m-b-xs">Page Views</p>
-												<h3 class="m-a-0 p-a-0">254K</h3>
-												<div class="panel-toolbar">
-													<span class="badge bg-lightest text-white p-x"><i class="gcon gcon-chevron-up m-r-xs"></i>2.5%</span>
-												</div><!-- /.panel-toolbar -->
-												<!-- End Panel Toolbar -->
-											</div><!-- /.panel-heading -->
-											<div class="panel-body p-a">
-												<span class="spark-dash-01"></span>
-											</div><!-- .panel-body -->
-										</div><!-- /.panel -->
-										<!-- End Panel -->
-									</div><!-- /.col-sm-4 -->
-									<div class="col-sm-3">
-										<!-- Begin Panel -->
+												<p class="subtitle text-lighten text-uppercase m-b-xs">Vendors</p>
+												<h3 class="m-a-0 p-a-0"><?php echo $count_vendor;?></h3>
+											</div>
+										</div>
+									</div>
+
+									<?php
+										$select_customer = mysqli_query($mysqli,"select * from tbl_contacts where business_id='$business_id' and customer_type='customer'");
+										$count_customer = mysqli_num_rows($select_customer);
+									?>
+									<div class="col-sm-3" align="center">
 										<div class="quick-stat panel panel-rounded bg-grad bg-grad-03 borderless">
 											<div class="panel-heading borderless">
-												<p class="subtitle text-lighten text-uppercase m-b-xs">Demo Views</p>
-												<h3 class="m-a-0 p-a-0">50,254</h3>
-												<div class="panel-toolbar">
-													<span class="badge bg-lightest text-white p-x"><i class="gcon gcon-chevron-down m-r-xs"></i>0.5%</span>
-												</div><!-- /.panel-toolbar -->
-												<!-- End Panel Toolbar -->
-											</div><!-- /.panel-heading -->
-											<div class="panel-body p-a">
-												<span class="spark-dash-02"></span>
-											</div><!-- .panel-body -->
-										</div><!-- /.panel -->
-										<!-- End Panel -->
-									</div><!-- /.col-sm-4 -->
-									<div class="col-sm-3">
-										<!-- Begin Panel -->
+												<p class="subtitle text-lighten text-uppercase m-b-xs">Customers</p>
+												<h3 class="m-a-0 p-a-0"><?php echo $count_customer;?></h3>
+											</div>
+										</div>
+									</div>
+
+									<?php
+										$select_product = mysqli_query($mysqli,"select * from tbl_products where business_id ='$business_id' and status ='active'");
+										$count_product = mysqli_num_rows($select_product);
+									?>
+									<div class="col-sm-3" align="center">
 										<div class="quick-stat panel panel-rounded bg-grad bg-grad-15 borderless">
 											<div class="panel-heading borderless">
-												<p class="subtitle text-lighten text-uppercase m-b-xs">Referral</p>
-												<h3 class="m-a-0 p-a-0">$1,548</h3>
-												<div class="panel-toolbar">
-													<span class="badge bg-lightest text-white p-x"><i class="gcon gcon-chevron-up m-r-xs"></i>3.68%</span>
-												</div><!-- /.panel-toolbar -->
-												<!-- End Panel Toolbar -->
-											</div><!-- /.panel-heading -->
-											<div class="panel-body p-a">
-												<span class="spark-dash-03"></span>
-											</div><!-- .panel-body -->
-										</div><!-- /.panel -->
-										
-										<!-- End Panel -->
-									</div><!-- /.col-sm-4 -->
-									<div class="col-sm-3">
-										<!-- Begin Panel -->
+												<p class="subtitle text-lighten text-uppercase m-b-xs">Products</p>
+												<h3 class="m-a-0 p-a-0"><?php echo $count_product;?></h3>
+											</div>
+										</div>
+									</div>
+
+									<?php
+										$select_cat = mysqli_query($mysqli,"select * from tbl_productcat where business_id ='$business_id' and status ='active'");
+										$count_cat = mysqli_num_rows($select_cat);
+									?>
+									<div class="col-sm-3" align="center">
 										<div class="quick-stat panel panel-rounded bg-grad bg-grad-15 borderless">
 											<div class="panel-heading borderless">
-												<p class="subtitle text-lighten text-uppercase m-b-xs">Referral</p>
-												<h3 class="m-a-0 p-a-0">$1,548</h3>
-												<div class="panel-toolbar">
-													<span class="badge bg-lightest text-white p-x"><i class="gcon gcon-chevron-up m-r-xs"></i>3.68%</span>
-												</div><!-- /.panel-toolbar -->
-												<!-- End Panel Toolbar -->
-											</div><!-- /.panel-heading -->
-											<div class="panel-body p-a">
-												<span class="spark-dash-03"></span>
-											</div><!-- .panel-body -->
-										</div><!-- /.panel -->
-										
-										<!-- End Panel -->
-									</div><!-- /.col-sm-4 -->
+												<p class="subtitle text-lighten text-uppercase m-b-xs">Product Categories</p>
+												<h3 class="m-a-0 p-a-0"><?php echo $count_cat;?></h3>
+											</div>
+										</div>
+									</div>
+
 								</div><!-- /.row -->
 
 								<!-- Begin Panel -->
@@ -158,13 +149,13 @@
 										<h3 class="panel-title">Top Item Sales</h3>
 										<p class="subtitle text-uppercase m-t">Last 10 Months</p>
 										<!-- Begin Panel Toolbar -->
-										<div class="panel-toolbar mobile-block">
+										<!--<div class="panel-toolbar mobile-block">
 											<button class="btn btn-default btn-sm block-on-mobile"><i class="gcon gcon-print m-r"></i> Print</button>
 											<button class="btn btn-default btn-sm block-on-mobile"><i class="fa fa-file-pdf-o"></i>  PDF</button>
 											<button class="btn btn-default btn-sm block-on-mobile"><i class="fa fa-file-excel-o"></i> Excel</button>
 											<button class="btn btn-default btn-sm block-on-mobile"><i class="fa fa-table"></i>  CSV</button>
 											<button class="btn btn-default btn-sm block-on-mobile"><i class="fa fa-files-o"></i>  Copy</button>
-										</div><!-- /.panel-toolbar -->
+										</div>--><!-- /.panel-toolbar -->
 										<!-- End Panel Toolbar -->
 									</div><!-- /.panel-heading -->
 									<div class="panel-body">
@@ -204,61 +195,23 @@
 
 						</div><!-- /.row -->
 
-						<!-- Begin Stacked Informations -->
-						<div class="rs-col-stacked full-width-on-tablet border-items bg-white b-r-a">
-							<div class="stacked-item panel panel-plain">
-								<div class="panel-heading borderless">
-									<h3 class="panel-title">Sales by Type</h3>
-									<div class="panel-toolbar v-centered">
-										<p class="subtitle text-uppercase m-a-0">Themeforest</p>
-									</div><!-- /.panel-toolbar -->
-								</div><!-- /.panel-heading -->
-								<div class="panel-body">
-									<canvas id="chart-donut" style="width: 70%"></canvas>
-								</div><!-- /.panel-body -->
-							</div><!-- /.stacked-item -->
-							<div class="stacked-item panel panel-primary bg-primary">
-								<div class="panel-heading borderless">
-									<h3 class="panel-title">Conversion Rate</h3>
-									<p class="subtitle text-uppercase m-t-xs">USD<i class="fa fa-long-arrow-right m-x"></i>IDR</p>
-									<div class="panel-toolbar">
-										<ul class="list-inline m-a-0">
-										<li><i class="rs-refresh-panel icon-toolbar gcon gcon-cycle"></i></li>
-										<li><i class="icon-toolbar gcon gcon-cog"></i></li>
-										</ul>
-									</div><!-- /.panel-toolbar s -->
-								</div><!-- /.panel-heading -->
-								<div class="panel-body p-t-0">
-									<h3 class="m-t-0 f-w-300">1.00 USD</h3>
-									<h1 class="text-warning f-w-300 m-t-0 m-b-md">13,254.21 IDR</h1>
-									<div class="alert alert-success alert-block iconic-alert bg-lightest borderless text-lighten" role="alert">
-										<div class="alert-icon bg-lightest">
-											<span class="gcon gcon-credit centered-xy"></span>
-										</div>
-										Your converted earnings <strong class="text-white">29,914,751 IDR</strong>
-									</div>
-									<small class="text-lighten"><em>* Conversion rate based on <a href="javascript:void(0);"><strong class="text-white">Paypal</strong></a> today at 05:45pm</em></small>
-								</div><!-- /.panel-body -->
-							</div><!-- /.stacked-item -->
-							
-						</div><!-- /.rs-col-stacked -->
-						<!-- End Stacked Informations -->
+						
 							
 						<!-- Begin Panel -->
 						<div class="panel panel-plain panel-rounded">
 							<div class="panel-heading">
-								<h3 class="panel-title">Statement Summary</h3>
-								<p class="subtitle text-uppercase m-t-xs">Top Markets</p>
-								<div class="panel-toolbar v-centered mobile-block">
+								<h3 class="panel-title">Products Summary</h3>
+								<p class="subtitle text-uppercase m-t-xs">Stock Quantity</p>
+								<!--<div class="panel-toolbar v-centered mobile-block">
 									<button class="btn btn-success block-on-mobile"><i class="gcon gcon-archive icon-btn m-r"></i>View Statement</button>
-								</div><!-- /.panel-toolbar -->
+								</div>--><!-- /.panel-toolbar -->
 							</div><!-- /.panel-heading -->
 							<div class="panel-body p-a-0">
 								<div class="rs-col-stacked full-width-on-mobile border-items borderless m-a-0">
 									<div class="text-center stacked-item p-a-md p-b-lg">
 										<p>ThemeForest</p>
-										<div class="easypiechart easypie-info text-muted" data-percent="55">
-											<span class="text-info">35</span>
+										<div class="easypiechart easypie-info text-muted" data-percent="100">
+											<span class="text-info">200</span>
 											<small>Items</small>
 										</div><!-- /.easypiechart -->
 									</div><!-- /.stacked-item -->
@@ -302,63 +255,49 @@
 									<table class="table rs-table table-striped table-hover table-b-t">
 										<thead>
 											<tr>
-												<th style="width: 120px;">Date</th>
-												<th style="width: 120px;">Order ID</th>
-												<th style="width: 150px;">Market</th>
-												<th style="width: 120px;">Type</th>
-												<th>Detail</th>
-												<th style="width: 120px;">Amount</th>
+												<th>Date</th>
+												<th>Invoice ID</th>
+												<th>Vender/Customer</th>
+												<th>Type</th>
+												<th>Products</th>
+												<th>Amount</th>
 											</tr>
 										</thead>
 										<tbody>
+										<?php
+											$select_tarns = mysqli_query($mysqli,"select * from tbl_transactions where business_id='$business_id' and status='active' order by tbl_transaction_id desc limit 6");
+											while($fetch_trans = mysqli_fetch_array($select_tarns)){
+										?>
 											<tr>
-												<td><samp class="text-muted">24 Dec 2016</samp></td>
-												<td>00001234</td>
-												<td><strong>ThemeForest</strong></td>
-												<td><span class="label label-danger">Author Fee</span></td>
-												<td><a href="javascript:void(0);">Author Fee for included support sale IVIP00001234</a></td>
-												<td><strong class="text-danger">-$1.75</strong></td>
+												<td><samp class="text-muted"><a href="print_invoice.php?order_id=<?php echo $fetch_trans['tbl_transaction_id'];?>" style="text-decoration:none;color:#888;"><?php echo date("M-d-Y",$fetch_trans['date'])?></a></samp></td>
+												<td><a href="print_invoice.php?order_id=<?php echo $fetch_trans['tbl_transaction_id'];?>" style="text-decoration:none;color: #333;"><?php echo $fetch_trans['invoice_no'];?></a></td>
+												<td>
+												<?php
+													$select_cus_type = mysqli_query($mysqli,"select * from tbl_contacts where customer_id='".$fetch_trans['customer_id']."'");
+													$fetch_cus_type = mysqli_fetch_array($select_cus_type);
+												?>
+													<strong><a href="print_invoice.php?order_id=<?php echo $fetch_trans['tbl_transaction_id'];?>" style="text-decoration:none;color:#333;"><?php echo ucfirst($fetch_cus_type['first_name']);?>&nbsp;<?php echo ucfirst($fetch_cus_type['last_name']);?></a></strong>
+												</td>
+												<td><span class="label label-danger"><a href="print_invoice.php?order_id=<?php echo $fetch_trans['tbl_transaction_id'];?>" style="text-decoration:none;color:#fff;"><?php echo ucfirst($fetch_cus_type['customer_type']);?></span></td>
+												<td>
+												<?php
+												$p_id = explode(',',$fetch_trans['product_id_array']);
+												foreach($p_id as $key)
+												{
+													$select_product = mysqli_query($mysqli,"select * from tbl_products where product_id='$key'");
+													$fetch_product = mysqli_fetch_array($select_product);
+												?>
+													<a href="print_invoice.php?order_id=<?php echo $fetch_trans['tbl_transaction_id'];?>"><?php echo ucfirst($fetch_product['name']);?></a>
+													<br />
+												<?php
+												}
+												?>
+												</td>
+												<td><strong class="text-danger"><a href="print_invoice.php?order_id=<?php echo $fetch_trans['tbl_transaction_id'];?>" style="text-decoration:none;color:#ef5350;"><?php echo(($fetch_trans['tbl_transaction_type']=='purchase')?'-':'');?>&nbsp; &#8377; &nbsp;<?php echo $fetch_trans['total'];?></a></strong></td>
 											</tr>
-											<tr>
-												<td><samp class="text-muted">24 Dec 2016</samp></td>
-												<td>00001234</td>
-												<td><strong>ThemeForest</strong></td>
-												<td><span class="label label-danger">Author Fee</span></td>
-												<td><a href="javascript:void(0);">Author Fee for sale IVIP00001234</a></td>
-												<td><strong class="text-danger">-$2.75</strong></td>
-											</tr>
-											<tr>
-												<td><samp class="text-muted">24 Dec 2016</samp></td>
-												<td>00001234</td>
-												<td><strong>ThemeForest</strong></td>
-												<td><span class="label label-success">Sale</span></td>
-												<td><a href="javascript:void(0);">Roosa - Just Another Dashboard Template</a></td>
-												<td><strong class="text-success">$12.75</strong></td>
-											</tr>
-											<tr>
-												<td><samp class="text-muted">24 Dec 2016</samp></td>
-												<td>00001234</td>
-												<td><strong>ThemeForest</strong></td>
-												<td><span class="label label-danger">Author Fee</span></td>
-												<td><a href="javascript:void(0);">Author Fee for included support sale IVIP00001234</a></td>
-												<td><strong class="text-danger">-$1.75</strong></td>
-											</tr>
-											<tr>
-												<td><samp class="text-muted">24 Dec 2016</samp></td>
-												<td>00001234</td>
-												<td><strong>ThemeForest</strong></td>
-												<td><span class="label label-danger">Author Fee</span></td>
-												<td><a href="javascript:void(0);">Author Fee for sale IVIP00001234</a></td>
-												<td><strong class="text-danger">-$2.75</strong></td>
-											</tr>
-											<tr>
-												<td><samp class="text-muted">24 Dec 2016</samp></td>
-												<td>00001234</td>
-												<td><strong>ThemeForest</strong></td>
-												<td><span class="label label-success">Sale</span></td>
-												<td><a href="javascript:void(0);">Roosa - Just Another Dashboard Template</a></td>
-												<td><strong class="text-success">$12.75</strong></td>
-											</tr>
+										<?php
+											}
+										?>
 										</tbody>
 									</table>
 								</div><!-- /.table-responsive -->

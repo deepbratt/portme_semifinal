@@ -223,7 +223,7 @@
 			<div class="arrow bounce"></div>
 			<div class="clear" ></div>
 		
-			<div class="cont_top" style="margin-top:200px; position:absolute;float:left;margin-left:400px;">
+			<div class="cont_top" style="margin-top:200px; position:absolute;float:left;margin-left:390px;">
                 <div class="row">
                     <div class="col-md-2 col-sm-2 col-xs-12">
                        

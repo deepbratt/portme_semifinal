@@ -1,5 +1,4 @@
 <?php
-
 	include ('config.php');
 	$business_id = $_SESSION['business_id'];
 	$select_me = mysqli_query($mysqli,"select * from tbl_business where business_id='$business_id'");
@@ -8,59 +7,56 @@
 	$fetch_last_sales = mysqli_fetch_array($get_last_sales_id);
 	$invoice_no = $fetch_last_sales['tbl_transaction_id']+1;
 	$invoice_num_gene = "INV-".date('dmy')."000".$invoice_no."";
-	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type='vendor'");
+	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type='customer'");
 	$fetch_gst_pan_number = mysqli_fetch_array($get_fetch_details);
 	$gst_pan_number = $fetch_gst_pan_number['GST_PAN'];
-
 	if(isset($_POST['submit'])){
 
 	$invoice_number		= $invoice_num_gene;	
-	$customer_id		= $_POST['cu_id'];
+	$customer_id		=  mysqli_real_escape_string($mysqli,$_POST['cu_id']);
+	$state_code			=  mysqli_real_escape_string($mysqli,$_POST['cust_states']);
 	$gst_pan			= $gst_pan_number;
-	$product_id			= $_POST['product_id'];
+	$product_id			=  mysqli_real_escape_string($mysqli,$_POST['product_id']);
 	$product_array		= implode(",",$product_id);
-	$hsn				= $_POST['hsn'];
+	$hsn				=  mysqli_real_escape_string($mysqli,$_POST['hsn']);
 	$hsn_array			= implode(",",$hsn);
-	$quantity			= $_POST['qty'];
+	$quantity			=  mysqli_real_escape_string($mysqli,$_POST['qty']);
 	$quantity_array		= implode(",",$quantity);
-	$unit_price			= $_POST['unit_price'];
+	$unit_price			=  mysqli_real_escape_string($mysqli,$_POST['unit_price']);
 	$unit_price_array	= implode(",",$unit_price);
-	$tax_rate			= $_POST['tax_rate'];
+	$tax_rate			=  mysqli_real_escape_string($mysqli,$_POST['tax_rate']);
 	$tax_rate_array		= implode(",",$tax_rate);
-	$tax_cgst			= $_POST['cgst'];
+	$tax_cgst			=  mysqli_real_escape_string($mysqli,$_POST['cgst']);
 	$tax_cgst_array		= implode(",",$tax_cgst);
-	$tax_sgst			= $_POST['sgst'];
+	$tax_sgst			=  mysqli_real_escape_string($mysqli,$_POST['sgst']);
 	$tax_sgst_array		= implode(",",$tax_sgst);
-	$tax_igst			= $_POST['igst'];
+	$tax_igst			=  mysqli_real_escape_string($mysqli,$_POST['igst']);
 	$tax_igst_array		= implode(",",$tax_igst);
-	$tax_cess			= $_POST['cess'];
+	$tax_cess			=  mysqli_real_escape_string($mysqli,$_POST['cess']);
 	$tax_cess_array		= implode(",",$tax_cess);
-	$tax_value			= $_POST['tax_val'];
+	$tax_value			=  mysqli_real_escape_string($mysqli,$_POST['tax_val']);
 	$tax_value_array	= implode(",",$tax_value);
-	$discount			= $_POST['discount'];
+	$discount			=  mysqli_real_escape_string($mysqli,$_POST['discount']);
 	$discount_array		= implode(",",$discount);
-	$total				= $_POST['total'];
+	$total				=  mysqli_real_escape_string($mysqli,$_POST['total']);
 	$total_array		= implode(",",$total);
-	$subtotal			= $_POST['sub_total'];
-	$totaldiscount		= $_POST['total_discount'];
-	$total_tax			= $_POST['total_tax'];
-	$total_price		= $_POST['total_price'];
-	$date				= $_POST['invoicedate'];
+	$subtotal			=  mysqli_real_escape_string($mysqli,$_POST['tt_subtotal']);
+	$totaldiscount		=  mysqli_real_escape_string($mysqli,$_POST['tt_discount']);
+	$total_tax			=  mysqli_real_escape_string($mysqli,$_POST['tt_tax']);
+	$total_price		=  mysqli_real_escape_string($mysqli,$_POST['tt_comtotal']);
+	$date				=  mysqli_real_escape_string($mysqli,strtotime($_POST['invoicedate']));
 	
 
- $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'purchase', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
+ $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'purchase', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$state_code."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
 
 	if($insert_sales_order)
 		{		
-			$data = "success";
-
+			$data = "success";		
 		}
 		else
 		{
 			$data = "error";
 		}
-		$update_quantity = mysqli_query($mysqli,"update tbl_products set qty= qty + $quantity_array where product_id='".$product_array."'");
-
 	}
 ?>
 
@@ -72,7 +68,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Port-ME | Purchase Order
+    <title>Port-ME | Sales Order
     </title>
     <?php include("metalinks.php");?>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVEqoCsKgUMmAcDVX9OAwVMDewLI6yOAQ&sensor=false&libraries=places&language=en"></script>
@@ -104,9 +100,9 @@ include("sidebar.php");
               <div class="rs-dashhead-content">
                 <div class="rs-dashhead-titles">
                   <h3 class="rs-dashhead-title m-t">
-                    New Purchase Order :
+                    New Sales Order :
                     <div style="float:right;">
-                      <span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='view_sales_order.php'"> 
+                      <span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='sales_order.php'"> 
                         <i class="fa fa-remove">
                         </i> 
                       </span>
@@ -119,8 +115,8 @@ include("sidebar.php");
 
             <div class="container-fluid" style="padding:0px;margin:0px;">
               <div class="col-md-12 col-sm-12" style="padding:0px;margin:0px;">	
-			    <form name="vendor_form" method="POST" enctype="multipart/form-data" id="rs-validation-login-page">
-					<div class="col-md-12 col-sm-12">
+			    <form name="sales_form" method="POST" enctype="multipart/form-data" id="rs-validation-login-page">
+				<div class="col-md-12 col-sm-12">
 						<?php
 								if(isset($data) && $data == "success")
 						{
@@ -139,21 +135,13 @@ include("sidebar.php");
                 <div class="panel panel-plain panel-rounded">
                   <div class="panel-body">
                     <div class="col-md-7 col-sm-12" style="padding:0px;margin:0px;">
-						<?php
-							$get_last_sales_id = mysqli_query($mysqli,"SELECT * FROM tbl_transactions WHERE business_id='$business_id' ORDER BY tbl_transaction_id DESC");
-							$fetch_last_sales = mysqli_fetch_array($get_last_sales_id);
-
-							$invoice_no = $fetch_last_sales['tbl_transaction_id']+1;
-						?>
 						<div class="row">
                           <div class="col-sm-3">
                            <b> INVOICE No</b>
                           </div>
                           <div class="col-sm-6">
-                            <div class="form-group" style="font-size:20px;font-weight:bold;">
-							  <?php 
-								$invoice_num_gene = "INV-".date('dmy')."000".$invoice_no."";
-							  ?>
+                            <div class="form-group" name="invoice_number" style="font-size:20px;font-weight:bold;">
+							 
                               #<?php echo $invoice_num_gene;?>
                             </div>
                           </div>
@@ -161,31 +149,31 @@ include("sidebar.php");
 
                         <div class="row">
                           <div class="col-sm-3">
-                            <b>Vendor Name</b>
+                            <b>Customer Name</b>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <select class="form-control selectpicker" name="cu_id" onchange="show_customer_data(this);">
-								 <option selected disabled>Choose Vendor</option>
-                                 <?php
-									
-									$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type='vendor'");
-
-									while($fetch_cust_details = mysqli_fetch_array($get_fetch_details)){
-								?>
+                              <select class="rs-selectize-single " name="cu_id" onchange="show_customer_data(this);">
+								 <option selected disabled value="">Choose Customer</option>
+								   <?php		
+									 while($fetch_cust_details = mysqli_fetch_array($get_fetch_details))
+									 {
+									?>
 									<option value="<?php echo $fetch_cust_details['customer_id'];?>" <?php echo((isset($_GET['custid']) && $fetch_cust_details['customer_id']==$_GET['custid'])?'selected':'');?>><?php echo ucfirst($fetch_cust_details['first_name']);?>&nbsp;<?php echo ucfirst($fetch_cust_details['last_name']);?> - <?php echo $fetch_cust_details['mobile'];?></option>
 								<?php
 									}
 								?>
-                              </select>
+                              </select>							 
                             </div>
                           </div>
+							<p class="help-block with-errors"></p>
                           <div class="col-sm-3">
                             <button style="text-align:center;font-size:16px;" class="btn btn-success btn-wide" data-toggle="modal" data-target="#myModal" type="button">
 									<i class="fa fa-plus" style=""></i> Add
                             </button>
                           </div>
                         </div>
+						 
 						
 						<div class="row">
                           <div class="col-sm-3">
@@ -193,7 +181,8 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate">
+                              <input  type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate">
+							  <p class="help-block with-errors"></p>
                             </div>
                           </div>
                         </div>
@@ -205,6 +194,7 @@ include("sidebar.php");
                           <div class="col-sm-6">
                             <div class="form-group">
 							  <select class="form-control cus_states" name="cust_states">
+									 <option selected disabled value="">Choose State</option>
 								  <?php
 									$get_all_states = mysqli_query($mysqli,"SELECT * FROM states");
 									while($fetch_all_states = mysqli_fetch_array($get_all_states)){
@@ -214,6 +204,7 @@ include("sidebar.php");
 									}
 								  ?>
 							  </select>
+							  <p class="help-block with-errors"></p>
                             </div>
                           </div>
                         </div>
@@ -275,8 +266,8 @@ include("sidebar.php");
 
 							<tr class="rocks">
 								<th class="a" style="width:150px;">
-									  <select class="form-control selectpicker pid" name="product_id[]" style="width:90px;margin:0px;padding:0px;" onchange="complete_value(this)">
-										 <option selected disabled>Choose</option>
+									  <select class="rs-selectize-single pid" name="product_id[]" style="width:150px;margin:0px;padding:0px;" onchange="complete_value(this)">
+										 <option selected disabled value="">Choose Product</option>
 										 <?php
 											$business_id = $_SESSION['business_id'];
 											
@@ -289,32 +280,33 @@ include("sidebar.php");
 										 ?>
 									  </select>
 								</th>
-								<th class="b"><input type="text" class="form-control hsn" value="" name="hsn[]" style="width:80px;text-align:center"></th>
-								<th class="c"><input type="text" class="form-control qty" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
-								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:120px;" onchange="complete_value(this)"></th>		
+								<th class="b"><input type="text" class="form-control hsn" value="" name="hsn[]" style="width:90px;"></th>
+								<th class="c"><input type="number" class="form-control qty" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
+								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:80px;" onchange="complete_value(this)"></th>		
 
-								<th class="e" >
-									<select class="form-control selectpicker tax_rate" name="tax_rate[]" onchange="complete_value(this)" style="width:70px;margin:0px;padding:5px;">
-											<option value="">Choose</option>
+								<th class="e">
+									<select class="form-control selectpicker tax_rate" name="tax_rate[]" style="width:70px;margin:0px;padding:0px;" onchange="complete_value(this)">
+										 <option value="">Choose</option>
 										 <?php
 											$get_tax = mysqli_query($mysqli,"SELECT * FROM tax_rates");
 											while($fetch_tax = mysqli_fetch_array($get_tax)){
 										 ?>
-											<option value="<?php echo $fetch_tax['tax_rate'];?>"  ><?php echo $fetch_tax['tax_rate'];?></option>
+											<option value="<?php echo $fetch_tax['tax_rate'];?>" ><?php echo $fetch_tax['tax_rate'];?></option>
 										 <?php
 											}
 										 ?>
 									  </select>
 								</th>
-								<th class="f"><input type="text" class="form-control cgst" id="cgst"  value="00.00" style="width:50px;margin:0px;padding:5px;" name="cgst[]" onchange="complete_value(this)"></th>
-								<th class="g"><input type="text" class="form-control sgst" id="sgst" value="00.00" style="width:50px;margin:0px;padding:5px;" name="sgst[]" onchange="complete_value(this)"></th>
-								<th class="h"><input type="text" class="form-control igst" id="igst" value="00.00" style="width:50px;margin:0px;padding:5px;" name="igst[]" onchange="complete_value(this)"></th>
-								<th class="i"><input type="text" class="form-control cess" id="cess" value="00.00" style="width:50px;margin:0px;padding:5px;" name="cess[]" onchange="complete_value(this)"></th>
-								<th class="j"><input type="text" class="form-control tax_val"  value="00.00" style="width:50px;margin:0px;padding:5px;" name="tax_val[]" onchange="complete_value(this)"></th>
-								<th class="k" ><input type="text" class="form-control disount" value="00.00" name="discount[]" style="text-align:center;width:50px" onchange="complete_value(this)"></th>
+								<th class="f"><input type="text" class="form-control cgst" id="cgst"  value="00.00" style="width:80px;margin:0px;padding:5px;" name="cgst[]" onchange="complete_value(this)"></th>
+								<th class="g"><input type="text" class="form-control sgst" id="sgst" value="00.00" style="width:80px;margin:0px;padding:5px;" name="sgst[]" onchange="complete_value(this)"></th>
+								<th class="h"><input type="text" class="form-control igst" id="igst" value="00.00" style="width:80px;margin:0px;padding:5px;" name="igst[]" onchange="complete_value(this)"></th>
+								<th class="i"><input type="text" class="form-control cess" id="cess" value="00.00" style="width:80px;margin:0px;padding:5px;" name="cess[]" onchange="complete_value(this)"></th>
+								<th class="j"><input type="text" class="form-control tax_val"  value="00.00" style="width:80px;margin:0px;padding:5px;" name="tax_val[]" onchange="complete_value(this)"></th>
+								<th class="k" ><input type="text" class="form-control disount" value="00.00" name="discount[]" style="text-align:center;width:80px" onchange="complete_value(this)"></th>
 								<th class="l" ><input type="text" class="form-control total" value="00.00" readonly style="text-align:center;width:100px" name="total[]"  onchange="complete_value(this)"></th>
+								<th style="display:none;"><input type="hidden" class="sub_totaz" value="00.00" name="sub_totaz[]"></th>
 								<th><a href="javascript:void(0);" class="add-more" onclick="add_more_fun();"><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>
-								<th style="display:none"><input type="hidden" class="sub_totaz" name="sub_totaz[]"></th>
+								
 							</tr>
 
 							<tr>
@@ -347,7 +339,7 @@ include("sidebar.php");
 										<div class="col-sm-5">
 											<div class="form-group">
 												<label style="font-size:17px;" name="total_discount">
-													<b class="total_discount">00.00</b>
+													<input type="text" readonly class="total_discount form-control" style="width:150px;margin:0px;padding:0px;" name="tt_discount" value="00.00">
 												</label>	
 												<p class="help-block with-errors"></p>
 											</div>
@@ -363,7 +355,7 @@ include("sidebar.php");
 										<div class="col-sm-5">
 											<div class="form-group">
 												<label style="font-size:17px;" name="total_tax">
-													<b class="total_tax">00.00</b>
+													<input type="text" readonly class="total_tax form-control" style="width:150px;margin:0px;padding:0px;" name="tt_tax" value="00.00">
 												</label>	
 												<p class="help-block with-errors"></p>
 											</div>
@@ -379,7 +371,7 @@ include("sidebar.php");
 										<div class="col-sm-5">
 											<div class="form-group">
 												<label style="font-size:20px;" name="total_price">
-													<b style="color:#5dc26a;" class="complete_total">00.00</b>
+													<input type="text" readonly class="complete_total form-control" style="width:150px;margin:0px;padding:0px;font-weight:bold;font-size:18px;" name="tt_comtotal" value="00.00">
 												</label>															
 												<p class="help-block with-errors"></p>
 											</div>
@@ -415,7 +407,7 @@ include("sidebar.php");
 -
       </article>
       <?php include("footer.php");?>
-	  <?php include("purchase_order_add_vendor.php");?>
+	  <?php include("sales_order_add_customer.php");?>
 
       <script src="js/bootstrap-switch.min.js"></script>
       <script src="js/bootstrap-switch-example.js"></script>
@@ -431,6 +423,57 @@ include("sidebar.php");
 	  <script src="js/datepicker-example.js"></script>
       <script src="js/selectize-example.js"></script>
       <script src="js/validator.min.js"></script>
+	
+
+	  <script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
+			// Footer Absolute
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'login-wrap'
+			});
+			// Example login validation
+			$('#rs-validation-login-page').validate({
+				ignore: 'input[type=hidden]', // ignore hidden fields
+				rules: {
+					cu_id: "required",
+					invoicedate:"required",
+					cust_states:"required",
+					product_id: "required",					
+					qty:		"required number",
+					tax_rate:	"required",
+					
+				},
+				messages: {
+					cu_id: "Choose Customer Name",
+					invoicedate: "Choose Invoice Date",
+					cust_states: "Choose Place of Supply",
+					product_id: "Choose Product",					
+					qty:		"Select Quantity",
+					tax_rate: "Choose Tax Rate",
+					
+				},
+				errorElement: "p",
+				errorPlacement: function ( error, element ) {
+					error.addClass( "help-block" );
+					// Has feedback
+					if (element.parents('div').hasClass('has-feedback')) {
+						error.appendTo( element.parent() );
+					}
+					else{
+						error.insertAfter(element);
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group" ).removeClass( "has-error" );
+				}
+			});
+		});
+	</script>
 
 	  <script>
 	  $( function() {
@@ -452,7 +495,7 @@ include("sidebar.php");
 			  var k = $(".k").html();
 			  var l = $(".l").html();
 
-			  var htmlz = "<th>"+a+"</th><th>"+b+"</th><th>"+c+"</th><th>"+d+"</th><th>"+e+"</th><th>"+f+"</th><th>"+g+"</th><th>"+h+"</th><th>"+i+"</th><th>"+j+"</th><th>"+k+"</th><th>"+l+"</th><th><a href='javascript:void(0);' class='add-more' onclick='remove_class(this);'><i class='fa fa-trash' style='font-size:20px;margin-top:10px;color:red;'></i></a></th>";
+			  var htmlz = "<th>"+a+"</th><th>"+b+"</th><th>"+c+"</th><th>"+d+"</th><th>"+e+"</th><th>"+f+"</th><th>"+g+"</th><th>"+h+"</th><th>"+i+"</th><th>"+j+"</th><th>"+k+"</th><th>"+l+"</th><th style='display:none;'><input type='hidden' class='sub_totaz' value='00.00' name='sub_totaz[]'></th><th><a href='javascript:void(0);' class='add-more' onclick='remove_class(this);'><i class='fa fa-trash' style='font-size:20px;margin-top:10px;color:red;'></i></a></th>";
 			  
 			  //alert(newhtml);
 			  
@@ -484,7 +527,7 @@ include("sidebar.php");
 			
 				$.ajax({
 				  type: 'post',
-				  url: 'ajax/add_vendor_ajax.php',
+				  url: 'ajax/add_customer_ajax.php',
 				  data:{
 					sal:salutation,
 					fname:fname,
@@ -513,7 +556,7 @@ include("sidebar.php");
 				var salutation = $(e).val();
 				$.ajax({
 				  type: 'post',
-				  url: 'ajax/get_vendor_details.php',
+				  url: 'ajax/get_customer_details.php',
 				  data:{
 					suggest:salutation,
 				  },
@@ -535,7 +578,7 @@ include("sidebar.php");
 				//alert(product_id);
 				$.ajax({
 				  type: 'post',
-				  url: 'ajax/get_purchase_order_ajax.php',
+				  url: 'ajax/get_sales_order_ajax.php',
 				  data:{
 					suggest:product_id,
 				  },
@@ -553,8 +596,10 @@ include("sidebar.php");
 			}
 			
 			function complete_value(e){
+				
 				/*get the prev values */
 				var p_id = $(e).closest('tr').find('.pid').val();
+				
 				var hsn  = $(e).closest('tr').find('.hsn').val();
 				var qty  = $(e).closest('tr').find('.qty').val();
 				var unit_price = $(e).closest('tr').find('.unit_price').val();
@@ -567,11 +612,14 @@ include("sidebar.php");
 				var discount = $(e).closest('tr').find('.disount').val();
 				var total =	$(e).closest('tr').find('.total').val();
 				var cus_state = $('.cus_states').val();
+				
+				
+				
 				/* get the prev values ends */
 
 				$.ajax({
 				  type: 'post',
-				  url: 'ajax/get_purchase_order_ajax.php',
+				  url: 'ajax/get_sales_order_ajax.php',
 				  data:{
 					p_id:p_id,
 					hsn:hsn,
@@ -585,10 +633,10 @@ include("sidebar.php");
 					tax_val:tax_val,
 					discount:discount,
 					total:total,
-					cus_state:cus_state
+					cus_state:cus_state,
 				  },
 				  success: function (response){
-					//alert(response.hsn);
+					//alert(response.sub_total);
 					$(e).closest('tr').find('.hsn').val(response.hsn);
 					$(e).closest('tr').find('.qty').val(response.qty);
 					$(e).closest('tr').find('.unit_price').val(response.unit_price);
@@ -601,49 +649,51 @@ include("sidebar.php");
 					$(e).closest('tr').find('.disount').val(response.disount);
 					$(e).closest('tr').find('.total').val(response.total);
 					$(e).closest('tr').find('.unit_price').val(response.unit_price);
-					$(e).closest('tr').find('.sub_totaz').val(response.product_price);
+					$(e).closest('tr').find('.sub_totaz').val(response.sub_total);
+					
 				
 					/*bottom main calculation*/
-					/* Sub Total */
-					var sub_total_last_final = 0;
+					
+					/* total discount*/
+					var total_sub_totaz = 0;
 					$('input[name^="sub_totaz"]').each(function() {
-						var indivi_sub_totl = Math.round($(this).val());
-						sub_total_last_final = Math.round(sub_total_last_final+indivi_sub_totl);
+						var indivi_sub_toz = Math.round($(this).val());
+						total_sub_totaz = Math.round(total_sub_totaz+indivi_sub_toz);
 					});
-
-					$('.subtotal').text(sub_total_last_final.toFixed(2));
-
-
-					/* Discount */
-					var discount_last_final = 0;
+					$('.subtotal').val(total_sub_totaz.toFixed(2));
+					
+					/* total discount*/
+					var total_dis = 0;
 					$('input[name^="discount"]').each(function() {
 						var indivi_dis = Math.round($(this).val());
-						discount_last_final = Math.round(discount_last_final+indivi_dis);
+						total_dis = Math.round(total_dis+indivi_dis);
 					});
-
-					$('.total_discount').text(discount_last_final.toFixed(2));
+					$('.total_discount').val(total_dis.toFixed(2));
+					/* total discount ends*/
 					
-					/* Total Tax */					
-					var tax_last_final = 0;
+					/*total tax*/
+					var total_tax = 0;
 					$('input[name^="tax_val"]').each(function() {
 						var indivi_tax = Math.round($(this).val());
-						tax_last_final = Math.round(tax_last_final+indivi_tax);
+						total_tax = Math.round(total_tax+indivi_tax);
 					});
+					$('.total_tax').val(total_tax.toFixed(2));
+					/*total tax amount*/
 
-					$('.total_tax').text(tax_last_final.toFixed(2));
-					
-					/* Total Price */
+					/*total price*/
 					var total_last_final = 0;
 					$('input[name^="total"]').each(function() {
 						var indivi_totl = Math.round($(this).val());
 						total_last_final = Math.round(total_last_final+indivi_totl);
 					});
+					$('.complete_total').val(total_last_final.toFixed(2));
+					/*total price ends*/
 
-					$('.complete_total').text(total_last_final.toFixed(2));
-					/*bottom main calculation ends */				
+					/*bottom main calculation ends */
 				  }
 				});
 				
+
 				
 			}
 			function tax_change_same(t)
@@ -680,6 +730,8 @@ include("sidebar.php");
 
 
 		 </script>
+
+
 		 
 		 
       </body>

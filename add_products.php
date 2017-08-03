@@ -9,9 +9,9 @@ if(isset($_POST['submit']))
 	$desc	   = mysqli_real_escape_string($mysqli,$_POST['desc']);	
 	$cost_price = mysqli_real_escape_string($mysqli,$_POST['cost_price']);
 	$selling_price = mysqli_real_escape_string($mysqli,$_POST['selling_price']);
-	$attribute = mysqli_real_escape_string($mysqli,$_POST['attri']);
+	$attribute = $_POST['attri'];
 	$add_attribute = implode(",",$attribute);
-	$options = mysqli_real_escape_string($mysqli,$_POST['optn']);
+	$options = $_POST['optn'];
 	$add_options   = implode(",",$options);
 	$date = time();
 	
@@ -113,10 +113,8 @@ if(isset($_POST['submit']))
 						<div class="col-md-7 col-sm-12">
 						<!-- Begin Panel -->
 							<div class="panel panel-plain panel-rounded">
-
 								<div class="panel-body">
-									<form method="POST" enctype="multipart/form-data">
-											
+									<form method="POST" id="rs-validation-login-page">										
 							
 								<div class="row" style="margin-bottom:5px;">
 									<div class="col-sm-3" style="margin-top:10px;">         
@@ -125,12 +123,12 @@ if(isset($_POST['submit']))
 											 <div class="col-sm-9">
 											   <div class="form-group">                
 											 <select name="product_category_id" class="form-control">
+													<option value="">Choose Category Name</option>
 												<?php
 												$all_category = mysqli_query($mysqli, "select * from tbl_productcat where business_id = '".$business_id."'");
 												while ($fetch_category = mysqli_fetch_array($all_category))
 												{
-												?>
-																				   
+												?>																				   
 											   <option value="<?php echo $fetch_category['productcat_id']?>"><?php echo $fetch_category['category_name']?></option>
 												<?php
 												}
@@ -146,7 +144,7 @@ if(isset($_POST['submit']))
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="product_name" type="text" class="form-control" id="rs-form-example-email" placeholder="Product Name" required>
+														<input name="product_name" type="text" class="form-control" placeholder="Product Name">
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -172,7 +170,7 @@ if(isset($_POST['submit']))
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="cost_price" type="integer" class="form-control" id="rs-form-example-email" placeholder="Enter Cost Price" required>
+														<input name="cost_price" type="integer" class="form-control" placeholder="Enter Cost Price">
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -184,7 +182,7 @@ if(isset($_POST['submit']))
 												</div>
 												<div class="col-sm-9">
 													<div class="form-group">
-														<input name="selling_price" type="integer" class="form-control" id="rs-form-example-email" placeholder="Enter Selling Price" required>
+														<input name="selling_price" type="integer" class="form-control" placeholder="Enter Selling Price">
 														<p class="help-block with-errors"></p>
 													</div>
 												</div>
@@ -219,7 +217,7 @@ if(isset($_POST['submit']))
 																<label style="font-size:13px;">
 																	Attribute
 																</label>
-																<input type="text" name="attri[]" class="form-control" placeholder="Eg: color" required>
+																<input type="text" name="attri[]" class="form-control" placeholder="Eg: color">
 																<p class="help-block with-errors"></p>
 															</div>
 														</div>
@@ -230,7 +228,7 @@ if(isset($_POST['submit']))
 																	<label style="font-size:13px;">
 																		Options
 																	</label>
-																	<input type="text" name="optn[]" class="form-control" placeholder="Red" required>
+																	<input type="text" name="optn[]" class="form-control" placeholder="Red">
 																	<p class="help-block with-errors"></p>
 																</div>
 																<div class="col-sm-2" style="margin-top:30px;">
@@ -358,6 +356,52 @@ $("body").on("click",".remove",function(){
 				}
 			});
 		}());
+	</script>
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
+			// Footer Absolute
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'login-wrap'
+			});
+			// Example login validation
+			$('#rs-validation-login-page').validate({
+				ignore: 'input[type=hidden]', // ignore hidden fields
+				rules: {
+					product_category_id: "required"
+					product_name: "required",				
+					cost_price:	"required number",
+					selling_price: "required number",
+					
+				},
+				messages: {
+					product_category_id:"Choose Product Category",
+					product_name: "Enter Product Name",				
+					cost_price: "Enter Cost Price",
+					selling_price: "Enter Selling Price",
+					
+				},
+				errorElement: "p",
+				errorPlacement: function ( error, element ) {
+					error.addClass( "help-block" );
+					// Has feedback
+					if (element.parents('div').hasClass('has-feedback')) {
+						error.appendTo( element.parent() );
+					}
+					else{
+						error.insertAfter(element);
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group" ).removeClass( "has-error" );
+				}
+			});
+		});
 	</script>
 	
 </body>

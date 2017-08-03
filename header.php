@@ -1,7 +1,9 @@
 <?php
 	include("config.php");
 	include("user_related/functions.php");
-	$user_id = $_SESSION['user_id'];
+	$user_id = $_SESSION['business_id'];
+	$get_user_information = mysqli_query($mysqli, "select * from tbl_business where business_id = '".$user_id."'");
+	$fetch_user_data = mysqli_fetch_array($get_user_information);
 
 ?>
 	<nav class="navbar navbar-default rs-navbar navbar-static-top">
@@ -100,7 +102,7 @@
 						<!-- Begin nav search form -->
 						<form class="navbar-form navbar-left" style="margin-top:16px;margin-left:-13px;">
 							<div class="form-group has-feedback">
-								Trial expires in 8 days <a href="" class="fpass">Upgrade</a>
+								Trial expires in 1 day <a href="" class="fpass">Upgrade</a>
 							</div>
 						</form>
 						<!-- End nav search form -->
@@ -190,20 +192,19 @@
 							<li class="rs-user-nav dropdown">
 								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<span class="circle-notification badge-notification bg-success"></span>
-									<img src="images/01.png" class="rs-nav-avatar img-circle" alt="Avatar">
-									<span class="visible-xs-inline-block m-l">Welcome, <strong>Mister Bin</strong></span>
+									<img src="uploads/<?php echo $fetch_user_data['logo'];?>" class="rs-nav-avatar img-circle" alt="Avatar" style="height:50px;width:50px;">
+									<span class="visible-xs-inline-block m-l">Welcome, <strong><?php echo $fetch_user_data['username'];?></strong></span>
 								</a>
 								<!-- Dropdown -->
 								<ul class="dropdown-menu lg-dropdown">
 									<li class="inherit-bg">
 										<a href="javascript:void(0);">
-											<span class="f-s-xs f-w-500">Mister Bin, Jr</span>
+											<span class="f-s-xs f-w-500"><?php echo ucfirst($fetch_user_data['enterprise_name']);?></span>
 										</a>
 									</li>
 									<li role="separator" class="divider"></li>
-									<li class="menu-icon"><a href="my_account.php"><span class="mcon mcon-face rs-dropdown-icon"></span>Login security</a></li>
-									<li class="menu-icon"><a href="javascript:void(0);"><span class="gcon gcon-cog rs-dropdown-icon"></span>Tax details</a></li>
-									<li class="menu-icon"><a href="javascript:void(0);"><span class="fa fa-industry rs-dropdown-icon"></span>General information</a></li>
+									<li class="menu-icon"><a href="login_security.php"><span class="mcon mcon-face rs-dropdown-icon"></span>Login security</a></li>
+									<li class="menu-icon"><a href="edit_general_information.php"><span class="fa fa-industry rs-dropdown-icon"></span>General information</a></li>
 									<li class="menu-icon"><a href="logout.php"><span class="gcon gcon-log-out rs-dropdown-icon"></span>Log Out</a></li>
 								</ul>
 								<!-- End dropdown -->

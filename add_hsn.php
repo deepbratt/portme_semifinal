@@ -115,7 +115,7 @@ if(isset($_POST['submit_hsn']))
 							<div class="panel panel-plain panel-rounded">
 
 								<div class="panel-body">
-									<form method="POST">
+									<form method="POST" id="rs-validation-login-page">
 										<div class="row">
 											<div class="col-sm-3">
 													<div class="form-group">
@@ -124,7 +124,7 @@ if(isset($_POST['submit_hsn']))
 												</div><!-- /.col-sm-4 -->
 											<div class="col-sm-9">
 											<div class="form-group">
-												<input name="chapter_number" type="text" class="form-control"placeholder="Enter Chapter Number" required>
+												<input name="chapter_number" type="text" class="form-control"placeholder="Enter Chapter Number">
 												<p class="help-block with-errors"></p>
 											</div>
 											</div><!-- /.form-group -->
@@ -138,7 +138,7 @@ if(isset($_POST['submit_hsn']))
 												</div><!-- /.col-sm-4 -->
 											<div class="col-sm-9">
 											<div class="form-group">
-												<input name="hsn" type="integer" class="form-control"placeholder="Enter HSN Code" required>
+												<input name="hsn" type="integer" class="form-control"placeholder="Enter HSN Code">
 												<p class="help-block with-errors"></p>
 											</div>
 											</div><!-- /.form-group -->
@@ -152,7 +152,7 @@ if(isset($_POST['submit_hsn']))
 												</div>
 												<div class="col-sm-8">
 													<div class="form-group">
-														<textarea name="description" class="form-control" placeholder="Enter Description Here" required></textarea>
+														<textarea name="description" class="form-control" placeholder="Enter Description Here"></textarea>
 														<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div>
@@ -196,7 +196,50 @@ if(isset($_POST['submit_hsn']))
 	<script src="js/selectize-example.js"></script><!-- Example -->
 
 	<!-- Page Plugins -->
-	
+	<script src="js/validator.min.js"></script>
+		
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
+			// Footer Absolute
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'login-wrap'
+			});
+			// Example login validation
+			$('#rs-validation-login-page').validate({
+				ignore: 'input[type=hidden]', // ignore hidden fields
+				rules: {
+					hsn:	"required",
+					description: "required",					
+					
+				},
+				messages: {
+					hsn: "Enter HSN Code",
+					description: "Enter Description of Product",					
+					
+				},
+				errorElement: "p",
+				errorPlacement: function ( error, element ) {
+					error.addClass( "help-block" );
+					// Has feedback
+					if (element.parents('div').hasClass('has-feedback')) {
+						error.appendTo( element.parent() );
+					}
+					else{
+						error.insertAfter(element);
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group" ).removeClass( "has-error" );
+				}
+			});
+		});
+	</script>
 
 </body>
 </html>

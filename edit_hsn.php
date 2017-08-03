@@ -118,7 +118,7 @@ $fetch_query = mysqli_fetch_array($select_query);
 							<div class="panel panel-plain panel-rounded">
 
 								<div class="panel-body">
-									<form method="POST">
+									<form method="POST" id="rs-validation-login-page">
 											
 
 											<div class="row">
@@ -129,7 +129,7 @@ $fetch_query = mysqli_fetch_array($select_query);
 												</div><!-- /.col-sm-4 -->
 											<div class="col-sm-9">
 											<div class="form-group">
-												<input name="chapter_number" type="text" class="form-control" value="<?php echo $fetch_query['chapter_no'];?>" required>
+												<input name="chapter_number" type="text" class="form-control" value="<?php echo $fetch_query['chapter_no'];?>" >
 												<p class="help-block with-errors"></p>
 											</div>
 											</div><!-- /.form-group -->
@@ -143,7 +143,7 @@ $fetch_query = mysqli_fetch_array($select_query);
 												</div><!-- /.col-sm-4 -->
 											<div class="col-sm-9">
 											<div class="form-group">
-												<input name="hsn_code" type="text" class="form-control" value="<?php echo $fetch_query['hsn_code'];?>" required>
+												<input name="hsn_code" type="text" class="form-control" value="<?php echo $fetch_query['hsn_code'];?>">
 												<p class="help-block with-errors"></p>
 											</div>
 											</div><!-- /.form-group -->
@@ -157,7 +157,7 @@ $fetch_query = mysqli_fetch_array($select_query);
 												</div><!-- /.col-sm-4 -->
 											<div class="col-sm-9">
 											<div class="form-group">
-												<textarea name="description" class="form-control" required><?php echo $fetch_query['description'];?></textarea>
+												<textarea name="description" class="form-control"><?php echo $fetch_query['description'];?></textarea>
 												<p class="help-block with-errors"></p>
 											</div>
 											</div><!-- /.form-group -->
@@ -216,5 +216,49 @@ $fetch_query = mysqli_fetch_array($select_query);
 
 	<!-- Page Plugins -->
 	<script src="js/validator.min.js"></script>
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
+			// Footer Absolute
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'login-wrap'
+			});
+			// Example login validation
+			$('#rs-validation-login-page').validate({
+				ignore: 'input[type=hidden]', // ignore hidden fields
+				rules: {
+					hsn_code:"required number",
+					description: "required",					
+					
+					
+				},
+				messages: {
+					hsn_code: "Enter HSN Code",
+					description: "Enter Description of Product",					
+					
+					
+				},
+				errorElement: "p",
+				errorPlacement: function ( error, element ) {
+					error.addClass( "help-block" );
+					// Has feedback
+					if (element.parents('div').hasClass('has-feedback')) {
+						error.appendTo( element.parent() );
+					}
+					else{
+						error.insertAfter(element);
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group" ).removeClass( "has-error" );
+				}
+			});
+		});
+	</script>
 </body>
 </html>

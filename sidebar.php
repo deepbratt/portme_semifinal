@@ -1,7 +1,7 @@
 <?php
 $page_name = BASENAME($_SERVER['PHP_SELF']);
-$user_id = $_SESSION['user_id'];
-$cu_info = mysqli_query($mysqli, "select * from users where user_id = '".$user_id."'");
+$user_id = $_SESSION['business_id'];
+$cu_info = mysqli_query($mysqli, "select * from tbl_business where business_id = '".$user_id."'");
 $fetch_details = mysqli_fetch_array($cu_info);
 ?>
 <aside class="rs-sidebar">
@@ -10,7 +10,7 @@ $fetch_details = mysqli_fetch_array($cu_info);
 			<ul class="rs-sidebar-nav default-sidebar-nav">
 				<li class="rs-user-sidebar">
 					<a href="my_account.php" style="margin:0px;padding:10px 15px;font-size:20px;">
-							<div  style="margin-top:20px;margin-bottom:20px;text-align:center;font-weight:bold;"> DEEP KUMAR IMPEX </div>
+							<div  style="margin-top:20px;margin-bottom:20px;text-align:center;font-weight:bold;"><?php echo ucfirst($fetch_details['enterprise_name']);?></div>
 						
 							<!--<div style="margin-top:20px;"> 19AJRPM1168P1ZA </div>-->
 
@@ -80,6 +80,7 @@ $fetch_details = mysqli_fetch_array($cu_info);
 					</a>
 					<ul>
 						<li><a href="javascript:void(0);">Transaction History</a></li>
+						<li><a href="sales_transaction.php">Sales Order Transaction</a></li>
 						<li><a href="B2B_invoice.php">B2B Invoices</a></li>
 						<li><a href="B2CL_invoice.php">B2C(Large) Invoices</a></li>
 						<li><a href="B2CS_invoice.php">B2C(Small) Invoices</a></li>
@@ -90,14 +91,13 @@ $fetch_details = mysqli_fetch_array($cu_info);
 				</li>
 				
 			
-				<li class="nav-item start <?php if($page_name == 'javascript:void(0);' ||  $page_name == 'javascript:void(0);'  ||  $page_name == 'javascript:void(0);') { ?>active open<?php } ?>">
+				<li class="nav-item start <?php if($page_name == 'login_security.php' ||  $page_name == 'edit_general_information.php') { ?>active open<?php } ?>">
 					<a href="javascript:void(0);">
 						<span class="fa fa-cog rs-icon-menu"></span>Accounts Settings
 					</a>
 					<ul>
-						<li><a href="login_security.php">Login Security</a></li>
-						<li><a href="javascript:void(0);">Tax Details</a></li>
-						<li><a href="general_information.php">General Information</a></li>
+						<li><a href="login_security.php">Login Security</a></li>						
+						<li><a href="edit_general_information.php">General Information</a></li>
 					</ul>
 				</li>
 				

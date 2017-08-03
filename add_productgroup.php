@@ -111,7 +111,7 @@ if(isset($_POST['submit_details']))
 							<div class="panel panel-plain panel-rounded">
 
 								<div class="panel-body">
-									<form method="POST" enctype="multipart/form-data" name="myfosda">								
+									<form method="POST" enctype="multipart/form-data" name="myfosda" id="rs-validation-login-page">								
 
 											<div class="row" style="margin-bottom:10px;">
 												<div class="col-sm-3" style="margin-top:10px;">
@@ -122,7 +122,7 @@ if(isset($_POST['submit_details']))
 
 												<div class="col-sm-6">
 													<div class="radio radio-custom">
-													<label class="radio-inline">
+													<label class="radio-inline ">
 														 <input type="radio" name="type"  id="cs-radio-04" value="product" >Product
 														<span class="checker"></span>
 													
@@ -374,6 +374,48 @@ $("body").on("click",".remove",function(){
 				}
 			});
 		}());
+	</script>
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
+			// Footer Absolute
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'login-wrap'
+			});
+			// Example login validation
+			$('#rs-validation-login-page').validate({
+				ignore: 'input[type=hidden]', // ignore hidden fields
+				rules: {
+					cat_name: "required",				
+					hsn_codes:	"required",
+					
+				},
+				messages: {
+					cat_name: "Enter Category Name",				
+					hsn_codes: "Choose HSN Code",
+					
+				},
+				errorElement: "p",
+				errorPlacement: function ( error, element ) {
+					error.addClass( "help-block" );
+					// Has feedback
+					if (element.parents('div').hasClass('has-feedback')) {
+						error.appendTo( element.parent() );
+					}
+					else{
+						error.insertAfter(element);
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group" ).removeClass( "has-error" );
+				}
+			});
+		});
 	</script>
 	
 </body>

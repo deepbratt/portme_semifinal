@@ -1,8 +1,8 @@
 <?php
 include ("config.php");
 $business_id = $_SESSION['business_id'];
-$saler_id = $_GET['sales_order_id'];
-$bill_info = mysqli_query($mysqli, "select * from tbl_transactions where business_id='".$business_id."' and tbl_transaction_id ='".$saler_id."'");
+$order_id = $_GET['order_id'];
+$bill_info = mysqli_query($mysqli, "select * from tbl_transactions where business_id='".$business_id."' and tbl_transaction_id ='".$order_id."'");
 $fetch_bill_info = mysqli_fetch_array($bill_info);
 ?>
 
@@ -172,7 +172,7 @@ include("sidebar.php");
 							</tr>
 							<?php
 								$product_id = explode(",",$fetch_bill_info['product_id_array']);
-								echo $count = sizeof($product_id);
+								 $count = sizeof($product_id);
 								for($i=0;$i<$count; $i++){
 									
 								?>

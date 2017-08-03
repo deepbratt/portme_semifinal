@@ -14,6 +14,7 @@
 
 	$invoice_number		= $invoice_num_gene;	
 	$customer_id		=  mysqli_real_escape_string($mysqli,$_POST['cu_id']);
+	$state_code			=  mysqli_real_escape_string($mysqli,$_POST['cust_states']);
 	$gst_pan			= $gst_pan_number;
 	$product_id			=  mysqli_real_escape_string($mysqli,$_POST['product_id']);
 	$product_array		= implode(",",$product_id);
@@ -43,10 +44,10 @@
 	$totaldiscount		=  mysqli_real_escape_string($mysqli,$_POST['tt_discount']);
 	$total_tax			=  mysqli_real_escape_string($mysqli,$_POST['tt_tax']);
 	$total_price		=  mysqli_real_escape_string($mysqli,$_POST['tt_comtotal']);
-	$date				=  mysqli_real_escape_string($mysqli,$_POST['invoicedate']);
+	$date				=  mysqli_real_escape_string($mysqli,strtotime($_POST['invoicedate']));
 	
 
- $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'sales', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
+ $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'sales', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$state_code."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
 
 	if($insert_sales_order)
 		{		
@@ -152,7 +153,7 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <select class="rs-selectize-single " name="cu_id"  onchange="show_customer_data(this);" required>
+                              <select class="rs-selectize-single " name="cu_id" onchange="show_customer_data(this);">
 								 <option selected disabled value="">Choose Customer</option>
 								   <?php		
 									 while($fetch_cust_details = mysqli_fetch_array($get_fetch_details))
@@ -162,15 +163,17 @@ include("sidebar.php");
 								<?php
 									}
 								?>
-                              </select>
+                              </select>							 
                             </div>
                           </div>
+							<p class="help-block with-errors"></p>
                           <div class="col-sm-3">
                             <button style="text-align:center;font-size:16px;" class="btn btn-success btn-wide" data-toggle="modal" data-target="#myModal" type="button">
 									<i class="fa fa-plus" style=""></i> Add
                             </button>
                           </div>
                         </div>
+						 
 						
 						<div class="row">
                           <div class="col-sm-3">
@@ -178,7 +181,8 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input  type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate" required>
+                              <input  type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate">
+							  <p class="help-block with-errors"></p>
                             </div>
                           </div>
                         </div>
@@ -189,7 +193,7 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-							  <select class="rs-selectize-single cus_states" name="cust_states" required>
+							  <select class="form-control cus_states" name="cust_states">
 									 <option selected disabled value="">Choose State</option>
 								  <?php
 									$get_all_states = mysqli_query($mysqli,"SELECT * FROM states");
@@ -200,6 +204,7 @@ include("sidebar.php");
 									}
 								  ?>
 							  </select>
+							  <p class="help-block with-errors"></p>
                             </div>
                           </div>
                         </div>
@@ -418,6 +423,57 @@ include("sidebar.php");
 	  <script src="js/datepicker-example.js"></script>
       <script src="js/selectize-example.js"></script>
       <script src="js/validator.min.js"></script>
+	
+
+	  <script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
+			// Footer Absolute
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'login-wrap'
+			});
+			// Example login validation
+			$('#rs-validation-login-page').validate({
+				ignore: 'input[type=hidden]', // ignore hidden fields
+				rules: {
+					cu_id: "required",
+					invoicedate:"required",
+					cust_states:"required",
+					product_id: "required",					
+					qty:		"required",
+					tax_rate:	"required",
+					
+				},
+				messages: {
+					cu_id: "Choose Customer Name",
+					invoicedate: "Choose Invoice Date",
+					cust_states: "Choose Place of Supply",
+					product_id: "Choose Product",					
+					qty:		"Select Quantity",
+					tax_rate: "Choose Tax Rate",
+					
+				},
+				errorElement: "p",
+				errorPlacement: function ( error, element ) {
+					error.addClass( "help-block" );
+					// Has feedback
+					if (element.parents('div').hasClass('has-feedback')) {
+						error.appendTo( element.parent() );
+					}
+					else{
+						error.insertAfter(element);
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group" ).removeClass( "has-error" );
+				}
+			});
+		});
+	</script>
 
 	  <script>
 	  $( function() {
@@ -674,6 +730,8 @@ include("sidebar.php");
 
 
 		 </script>
+
+
 		 
 		 
       </body>

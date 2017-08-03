@@ -7,7 +7,6 @@ if(isset($_POST['submit']))
 	$category_id   = mysqli_real_escape_string($mysqli,$_POST['product_category_id']);
 	$product_name = mysqli_real_escape_string($mysqli,$_POST['product_name']);
 	$desc	   = mysqli_real_escape_string($mysqli,$_POST['desc']);	
-	$quantity  = mysqli_real_escape_string($mysqli,$_POST['quantity']);
 	$cost_price = mysqli_real_escape_string($mysqli,$_POST['cost_price']);
 	$selling_price = mysqli_real_escape_string($mysqli,$_POST['selling_price']);
 	$attribute = mysqli_real_escape_string($mysqli,$_POST['attri']);
@@ -18,7 +17,7 @@ if(isset($_POST['submit']))
 	
 	
 
-	$insert_product = mysqli_query($mysqli,"insert into tbl_products values ('','".$category_id."','".$business_id."','".$product_name."','".$desc."','".$quantity."','".$cost_price."','".$selling_price."','".$add_attribute."','".$add_options."','active','".$date."') ");
+	$insert_product = mysqli_query($mysqli,"insert into tbl_products values ('','".$category_id."','".$business_id."','".$product_name."','".$desc."','0','".$cost_price."','".$selling_price."','".$add_attribute."','".$add_options."','active','".$date."') ");
 	if($insert_product)
 	{
 		$data = "success";
@@ -165,17 +164,7 @@ if(isset($_POST['submit']))
 												</div>
 											</div>	
 											
-											<div class="row">
-												<div class="col-sm-3">
-													Quantity
-												</div>
-												<div class="col-sm-9">
-													<div class="form-group">
-														<input name="quantity" type="number" class="form-control" id="rs-form-example-email" placeholder="Select Quantity" required>
-														<p class="help-block with-errors"></p>
-													</div>
-												</div>
-											</div>
+											
 
 											<div class="row">
 												<div class="col-sm-3">

@@ -17,7 +17,8 @@
 	</script> -->
 	<script src="js/vendor.js"></script>
 	<script src="js/plugins.js"></script>
-	
+	<script src="js/jquery.validate.min.js"></script>
+
 
 	<!-- Page Plugins -->
 	<script src="js/Chart.bundle.min.js"></script>

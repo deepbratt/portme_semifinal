@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <head>
         <meta charset="utf-8">
@@ -60,7 +59,7 @@
 			<?php
 			if(isset($data) && $data == "error"){
 			?>
-				<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;"> Username and password didnot match! </p>
+				<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;"> Username and password did not match! </p>
 			<?php
 			}
 			?>

@@ -7,8 +7,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Port Me</title>
         <!-- Favicon -->
-		<link rel="stylesheet" href="css/hdit.css?v=20170715120728" /> 
-		<link href="css/styleH.css" rel="stylesheet">
+		
 
 		<?php
 			include("meta_links.php");
@@ -42,6 +41,98 @@
 .mob_manu {
     display: none;
 }
+
+/* Style the Image Used to Trigger the Modal */
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+	color: #e52d2d;
+}
+
+#myImg:hover 
+{
+	opacity: 0.5;
+
+
+}
+
+
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #e52d2d;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #e52d2d;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.hvr-underline-from-center {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow: hidden;
+}
+.hvr-underline-from-center:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    background: #e52d2d;
+    height: 4px;
+    -webkit-transition-property: left, right;
+    transition-property: left, right;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+.hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
+    left: 0;
+    right: 0;
+}
+
+.headShake:hover {
+  animation: pulse 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+.headShake:hover:before {
+  animation: pulse 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 	</style>
     </head>
     <body>
@@ -59,10 +150,47 @@
         <!-- ==============================================
                      **MAIN HEADER**
         =============================================== -->
-				<?php
-					include("header.php");
-				?>
+		 <header class="header-wrapper solid-bg">
+            <nav class="navbar navbar-default navbar-fixed white bootsnav">
+               
+                <div class="container-fluid"> 
+                    <!-- Start Atribute Navigation -->
+                         
+                    <!-- End Atribute Navigation -->
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href="#brand">
 
+                            <img src="images/logo_dark.png" class="logo logo-display" alt="">
+                            <img src="images/logo_dark.png" class="logo logo-scrolled" alt="">
+
+                        </a>
+                    </div>
+                    <!-- End Header Navigation -->
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+
+                        <ul class="nav navbar-nav navbar-right" data-in="fadeOutUp" data-out="fadeInDown">
+
+                            <li><a href="index.php" class="btn btn-outline-primary hvr-underline-from-center">Home</a></li>
+                            <li><a href="features.php" class="btn btn-outline-primary hvr-underline-from-center">Features</a></li>
+                            <li><a href="pricing.php" class="btn btn-outline-primary hvr-underline-from-center">Pricing</a></li>
+                            <li><a href="contact.php" class="btn btn-outline-primary hvr-underline-from-center">Contact</a></li>
+							<li><a href="login.php" class="btn btn-outline-primary hvr-underline-from-center">Log In</a></li>
+                           
+							<button type="button" style="border: 0px none;color:#fff; margin-top:15px !important;" class="btn btn-danger btn-lg hvr-underline-from-center"><a href="signup.php" style="color:#fff !important;">Get Started</a></button>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- End Container-->
+              
+            </nav>
+            <!-- End Navigation -->
+
+        </header>
         <!-- ==============================================
                      **PARTNERS**
         =============================================== -->
@@ -71,11 +199,11 @@
 
 		<!-- gst -->			
 	<!-- End Container -->
-		<div class="section_top " style="position:relative; background: url('images/newdd3.png') no-repeat bottom center;
+		<div class="section_top " style="position:relative; background: url('images/newdd2.png') no-repeat bottom center;
 				background-size: contain;">
 				<div class="cont_top">				
 					<div class="top_cont_heading  cont_wrap">
-						  <div id="home-news" style="margin-top:-200px !important">
+						  <div id="home-news" style="margin-top:-140px !important">
 							<div class="home_header">
 							  <span>The <br><strong style="color:#ff3333">operating system</strong> for business.</span>
 							</div>
@@ -88,62 +216,58 @@
 						  </div>
 					</div>
 				</div>	
-		
-		
+				
+				
+			<!-- Trigger the Modal -->
+
 			<div class="arrow bounce"></div>
 			<div class="clear" ></div>
 		
-			<div class="cont_top" style="margin-top:100px;">
+			<div class="cont_top" style="margin-top:200px; position:absolute;float:left;margin-left:400px;">
                 <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="col-md-2 col-sm-2 col-xs-12">
                        
-                            
-							<img src="images/account.png" class="img-responsive"  alt="image">
-							
-						 <div class="iconbox-center">
-                            <h4>ACCOUNTS</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<div class="iconbox-center hvr-underline-from-center headShake">
+						 <img  id="myImg" src="images/account.png" class="rounded mx-auto d-block"  style="position:relative;" alt="image">
+                            <h5 style="margin-top:10px; color:#232321;">ACCOUNTS</h5>
+                            <p></p>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="col-md-2 col-sm-2 col-xs-12">
                         
-                            
-							<img src="images/reports.png" class="img-responsive" alt="image">
-							
-						<div class="iconbox-center">
-                            <h4>REPORTS</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<div class="iconbox-center hvr-underline-from-center headShake">
+						<img  id="myImg" src="images/reports.png" class="rounded mx-auto d-block" style="position:relative;" alt="image">
+                            <h5 style="margin-top:10px; color:#232321;">REPORTS</h5>
+                            <p></p>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="col-md-2 col-sm-2 col-xs-12">
                        
-							
-						
-						<div class="iconbox-center">
-						<img src="images/sales.png" class="img-responsive" alt="image">
-                            <h4>SALES</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<div class="iconbox-center hvr-underline-from-center headShake">
+						<img  id="myImg" src="images/sales.png" class="rounded mx-auto d-block" style="position:relative;" alt="image">
+                            <h5 style="margin-top:10px; color:#232321;">SALES</h5>
+                            <p></p>
                         </div>
                     </div>
-					<div class="col-md-3 col-sm-3 col-xs-12">
+					<div class="col-md-2 col-sm-2 col-xs-12">
 						
-							
-						
-                        <div class="iconbox-center">
-						<img src="images/inventory.png" class="img-responsive" alt="image">
-                            <h4>INVENTORY</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="iconbox-center hvr-underline-from-center headShake">
+						<img  id="myImg" src="images/inventory.png" class="rounded mx-auto d-block" style="position:relative;" alt="image">
+                            <h5 style="margin-top:10px; color:#232321;">INVENTORY</h5>
+                            <p></p>
                         </div>
                     </div>
                 </div>
+				<button type="button" style="border:2px solid #f7941b; color:#fff; margin-top:80px; margin-left:185px !important;" class="btn btn-danger btn-lg"><a href="signup.php" style="color:#fff !important;">Get Started</a></button>
 			</div>
-					
-			
-	 </div>
-
-
-  <div class="clear" ></div>
-
+				
+		</div>
+		
+		
+		<div class="clear" ></div>
+		
+		
+		
 		<section class="demo-request ptb-100">
 			
 			<div class="container text-center">
@@ -179,7 +303,7 @@
 						</section>
 						 <!-- Store Types Start -->
                     <li style="width: 100%">
-                        <div class="row make-row-scroll" style="margin-left:50px; margin-right:50px;">
+                        <div class="row make-row-scroll" style="margin-left:50px; margin-right:50px; margin-top:20px;">
                             <div class="col-xs-6 col-sm-3 col-md-2 col-xl-2" >
                                 <div class="hd-shop-type-card" >
                                     <a href="javascript:void(0);">
@@ -392,7 +516,7 @@
 
 						
 					<!-- gst end -->
-					<section class="process bg-gray ptb-100">
+		<section class="process bg-gray ptb-100">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -408,27 +532,27 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3 col-sm-6 col-xs-12">
-					 <img src="images/icons/how.png" class="img-responsive" alt="image"  style="margin-left:-30px;">
-                        <h4><span>01</span> Sign Up</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et aliquet neque, id pretium risus. </p>
+					 <img src="images/icons/how.png" class="img-responsive" alt="image"  style="margin-left:40px;height:100px;width:100px;">
+                        <h4 style="margin-left:40px;"><span>01</span> Sign Up</h4>
+                        <p></p>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-				 <img src="images/icons/payment-gateway.png" class="img-responsive" alt="image"  style="margin-left:-50px;">
+				 <img src="images/icons/payment-gateway.png" class="img-responsive" alt="image"  style="margin-left:30px;height:100px;width:120px;">
 
                         <h4><span>02</span> Payment Gateway</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et aliquet neque, id pretium risus. </p>
+                        <p></p>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-				<img src="images/icons/data.ico" class="img-responsive" alt="image"  style="margin-left:-10px;height:200px;">
+				<img src="images/icons/data.ico" class="img-responsive" alt="image"  style="margin-left:50px;height:100px;width:90px;">
 
-                        <h4><span>03</span> Configuration</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et aliquet neque, id pretium risus. </p>
+                        <h4 style="margin-left:20px;"><span>03</span> Configuration</h4>
+                        <p></p>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
-			 <img src="images/icons/icon-get-started.png" class="img-responsive" alt="image"  style="margin-left:0px;height:200px;">
+			 <img src="images/icons/icon-get-started.png" class="img-responsive" alt="image"  style="margin-left:55px;height:100px;width:80px;">
 
-                        <h4><span>04</span> Get Started</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et aliquet neque, id pretium risus. </p>
+                        <h4 style="margin-left:30px;"><span>04</span> Get Started</h4>
+                        <p></p>
                     </div>
                 </div>
             </div><!-- End Container -->
@@ -439,42 +563,63 @@
         <section class="ptb-100 functionalities bg-white">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-7 col-sm-6 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>Connecting the Things As a Most Advanced Solution</h3>
+                            <h3 style="margin-top:px;">How GST Work</h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>We believe that partnerships can build a strong IoT ecosystem; we believe that a strong ecosystem turns the key to innovation.Connecting everything drives positive business results.</p>
-                        <div class="row">
-                            <div class="col-md-12 col-xs-12">
-                               
+                        <p style="font-family:'Montserrat', sans-serif;font-weight:bold;">The new tax regime follows a multi-stage collection mechanism wherein tax is collected at every stage and the credit of tax paid (input tax credit) at the previous stage is available as a set-off at the next stage of transaction. This helps to eliminate "tax on tax" or the cascading impact of tax.</p>
+                         <!-- <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <ul>
+                                    <li>Ut lacinia ligula tristique tempus.</li>
+                                    <li>In ornare nisl vitae pulvinar posuere.</li>
+                                </ul>
                             </div>
-                        </div>
+                            <div class="col-md-6 col-xs-12">
+                                <ul>
+                                    <li>In et orci sit amet leo consequat.</li>
+                                    <li>Nullam pellentesque arcu vitae congue.</li>
+                                </ul>
+                            </div>
+                        </div>  -->
                     </div>
-                    <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/features1.png" class="img-responsive" alt="image">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <img src="images/Zero-rated-supplies-2.png" class="img-responsive" alt="image">
                     </div>
                 </div>
             </div><!-- End Container -->
         </section><!-- End Section -->
-        <section class="ptb-100 functionalities bg-gray">
+        <section class="ptb-100 functionalities bg-gray" style="">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/Cloud based software.jpg" class="img-responsive" alt="image">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <img src="images/itb.png" class="img-responsive" alt="image" style="margin-top:;">
                     </div>
-                    <div class="col-md-7 col-sm-6 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>Cloud based software: </h3>
+                            <h3>Advantages of E-Filling </h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>It will help you to store all your data online. Even if any issue happens in your computer, all the data will be secured in the server. You can collect your data from your phone as well, with the help of active internet connection.</p>
-                        <div class="row">
-                           
-                            <div class="col-md-12 col-xs-12">
-                                
+                        <p style="font-family:'Montserrat', sans-serif;font-weight:bold;"><b>1. Error free submission </b>- Real time error check is possible through income tax authorities. Validations are helpful to ensure the return perfect<br/><b>2. Quick refund </b>- Online filing enables the department to process the return with minimum time and therefore refund become very easy.<br/><b>3. Avoid delays </b>- Paper filing of return always depends the time of office, queues, spot self-correction, holidays, presence of officer, etc. Regardless of these matters any person can file their income at anytime from anywhere.<br/><b>4. Effortless and efficient </b>- Controlled and guided entry set by the utility or software pave the way to proper and fast completion of IT return. Filling in paper return always brings confusion and error, but a neat and clean return can be given through online filing.</p>
+                         <!-- <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <ul>
+                                    <li> Prompt processing.</li>
+                                    <li>Better accuracy.</li>
+                                    <li>Convenience.</li>
+									<li>Confidentiality.</li>
+									<li>Accessibility to past data.</li>
+                                </ul>
                             </div>
-                        </div>
+                            <div class="col-md-6 col-xs-12">
+                                <ul>
+                                    <li>Proof of receipt.</li>
+                                    <li>Ease of use.</li>
+                                    <li>Donec nec odio a tellus eleifend.</li>
+                                </ul>
+                            </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -485,23 +630,32 @@
                 <div class="row">
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>Best Customer Support and Always Best Solutions in Hand</h3>
+                            <h3>Criteria for Billing and Invoices</h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>Where do you go when you need help from a company? For instance a widget is broken or a site isn’t doing what you want it to, or you just need help with any number of things.  More often than not, your desire for information leads you to Google where you type in your query and you get a support center. A great support center is where your customers can go to find answers to commonly asked questions and if it’s done well it should be packed with useful information. If you set it up right and take the time to customize it, your support center can also be a seamless extension of your brand..</p>
+                        <p style="font-family:'Montserrat', sans-serif;font-weight:bold;">Under GST invoicing rules and formats have been notified covering details such as supplier's name, shipping and billing address, HSN Code, place of supply, rate. In this article we will be covering all aspects of invoicing under GST.</p>
                         <div class="row">
-                            <div class="col-md-12 col-xs-12">
+                            <div class="col-md-6 col-xs-12">
                                 <ul>
-                                    <li>User-focused.</li>
-                                    <li>Create help content that actually helps.</li>
-                                    <li>Emphasis on information.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Invoice number and date.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Customer name.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Shipping and billing address.</li>
+									<li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Customer and taxpayer's GSTIN.</li>
+									<li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Place of supply.</li>
+									<li style="font-family:'Montserrat', sans-serif;font-weight:bold;">HSN code.</li>
                                 </ul>
                             </div>
-                            
+                            <div class="col-md-6 col-xs-12">
+                                <ul>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Taxable value and discounts.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Rate and amount of taxes i.e. CGST/ SGST/ IGST.</li>
+									<li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Item details i.e. description, unit price, quantity.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/inventory.jpg" class="img-responsive" alt="image">
+                        <img src="images/Blog-post-07-1024x512.png" class="img-responsive" alt="image">
                     </div>
                 </div>
             </div><!-- End Container -->
@@ -510,95 +664,62 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/download.jpg" class="img-responsive" alt="image">
+                        <img src="images/WellSpent10TaxPuzzle-620x300.jpg" alt="image">
                     </div>
                     <div class="col-md-7 col-sm-6 col-xs-12">
-                        <div class="main-title">
-                            <h3>Customer Data Management (CDM): </h3>
+						<div class="main-title">
+                            <h3>How to submit ITR returns</h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>With the help of this feature you can keep track of your customer information and survey your customer base in order to obtain feedback.  Efficient CDM solutions provide companies with the ability to deal instantly with customer issues and obtain immediate feedback. As a result, customer retention and customer satisfaction can show marked improvement.</p>
+                        <p style="font-family:'Montserrat', sans-serif;font-weight:bold;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
                         <div class="row">
-                           
-                            <div class="col-md-12 col-xs-12">
+                            <div class="col-md-6 col-xs-12">
                                 <ul>
-                                    <li>Should provide a cost-effective, user-friendly solution for marketing, research, sales, human resources and IT departments</li>
-                                    <li>Enables companies to create and email online surveys, reports and newsletters.</li>
-                                    
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Ut lacinia ligula tristique tempus.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">In ornare nisl vitae pulvinar posuere.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Cras dapibus felis vel euismod gravida.</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <ul>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">In et orci sit amet leo consequat.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Nullam pellentesque arcu vitae congue.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Donec nec odio a tellus eleifend.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div><!-- End Container -->
         </section><!-- End Section -->
-        <section class="ptb-100 functionalities bg-white">
+		<section class="ptb-100 functionalities bg-white">
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 col-sm-6 col-xs-12">
                         <div class="main-title">
-                            <h3>GST Billing :</h3>
+                            <h3>E-Filling Dates</h3>
                             <div class="seperator"></div>
                         </div>
-                        <p>As per GST invoicing rules and formats have been notified covering details such as supplier’s name, shipping and billing address, GSTIN number, HSN Codes, place of supply, tax rates(CGST, SGST,IGST), etc. are included in our billing format.</p>
+                        <p style="font-family:'Montserrat', sans-serif;font-weight:bold;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.</p>
                         <div class="row">
-                            <div class="col-md-12 col-xs-12">
+                            <div class="col-md-6 col-xs-12">
                                 <ul>
-                                    <li>Monitor existing stock and reduce inventory overstock/stock-out situations and optimize inventory holding cost and wastage.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Ut lacinia ligula tristique tempus.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">In ornare nisl vitae pulvinar posuere.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Cras dapibus felis vel euismod gravida.</li>
                                 </ul>
                             </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/GST_Invoice_Header.png" class="img-responsive" alt="image">
-                    </div>
-                </div>
-            </div><!-- End Container -->
-        </section><!-- End Section -->
-		<section class="ptb-100 functionalities bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/Financial Reports1.jpg" class="img-responsive" alt="image">
-                    </div>
-                    <div class="col-md-7 col-sm-6 col-xs-12">
-                        <div class="main-title">
-                            <h3>Financial Reports:</h3>
-                            <div class="seperator"></div>
-                        </div>
-                        <p>Financial report is a formal record of the financial activities and position of a business, person, or other entity.
-Relevant financial information is presented in a structured manner and in a form easy to understand. They typically include basic financial statements, accompanied by a management discussion and analysis.</p>
-                        <div class="row">
-                            <div class="col-md-12 col-xs-12">
+                            <div class="col-md-6 col-xs-12">
                                 <ul>
-                                    <li>By the help of this, you have to purchase the software once and use it for the whole year since it is a cloud based software.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">In et orci sit amet leo consequat.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Nullam pellentesque arcu vitae congue.</li>
+                                    <li style="font-family:'Montserrat', sans-serif;font-weight:bold;">Donec nec odio a tellus eleifend.</li>
                                 </ul>
                             </div>
-                           
                         </div>
-                    </div>
-
-                </div>
-            </div><!-- End Container -->
-        </section><!-- End Section -->
-        <section class="ptb-100 functionalities bg-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 col-sm-6 col-xs-12">
-                        <div class="main-title">
-                            <h3>Easy to submit in GST government portal:</h3>
-                            <div class="seperator"></div>
-                        </div>
-                        <p>By using this software you can upload all your tax return information in the government site that is www.gst.gov.in just by one click.</p>
-                       
-						<ul>
-							<li>A business manager needs to see his progress & failure both to take necessary steps to take the business to next level.</li>
-						</ul>
                     </div>
                     <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/features3.png" class="img-responsive" alt="image">
+                        <img src="images/GST-Returns-explained-1-.png" class="img-responsive" alt="image">
                     </div>
                 </div>
             </div><!-- End Container -->

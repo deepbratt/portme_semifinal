@@ -72,9 +72,9 @@
 			}
 			?>
 
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
                         <form autocomplete="off" novalidate="novalidate" id="ContactForm" name="contact-form">
-                            <h5>Sign Up</h5>
+                            <h3>Sign Up</h3>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group ptb-10">
@@ -121,6 +121,26 @@
                         </form>
                     </div>
                     
+					 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="contact-address">
+                            <div class="single-content">
+                                <i class="ti-map-alt" aria-hidden="true"></i>
+                                <h5>OFFICE ADDRESS</h5>
+                                <p>Head office 12 sector 7, Ada Rood-15 H#12 Texas, USA</p>
+                            </div>
+                            <div class="single-content">
+                                <i class="ti-mobile" aria-hidden="true"></i>
+                                <h5>Phone</h5>
+                                <p>+01 87676646</p>
+                            </div>
+                            <div class="single-content">
+                                <i class="ti-email" aria-hidden="true"></i>
+                                <h5>Email</h5>
+                                <p>info@fedrex.com</p>
+                            </div>
+                        </div>
+                    </div>
+					
                 </div>
             </div><!-- End Container -->
         </section><!-- End Section -->

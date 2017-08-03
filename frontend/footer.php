@@ -13,13 +13,15 @@
 
                             </form>
                         </div>
+				
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                            <ul class="footer-social">
-                                <li><a href="#"><span class="ti-facebook"></span></a></li>
-                                <li><a href="#"><span class="ti-twitter"></span></a></li>
-                                <li><a href="#"><span class="ti-linkedin"></span></a></li>
-                                <li><a href="#"><span class="ti-google"></span></a></li>
+                            <ul class="footer-social hi-icon-effect-8">
+                                <li><a href="#" class="hi-icon glyphicon-facebook"></a></li>
+                                <li><a href="#" class="hi-icon glyphicon-twitter"></a></li>
+                                <li><a href="#" class="hi-icon glyphicon-linkedin"></a></li>
+                                <li><a href="#" class="hi-icon glyphicon-google"></a></li>
                             </ul>
+							
                         </div>
                     </div><!-- End Container -->
                 </div><!-- End Sub Footer -->
@@ -115,8 +117,6 @@
 				  1200);
 			  });
 		</script>
-	
-
-    
+		
     
         <!--End Style Switcher-->

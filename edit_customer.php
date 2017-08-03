@@ -111,7 +111,7 @@ $fetch_query = mysqli_fetch_array($select_query);
 									<div style="float:right;">
 										<!--<span style="padding:10px 10px;font-size:15px;font-weight:normal;color:#4a89dc;cursor:pointer;border-right:1px solid #CCC;"> <i class="fa fa-lightbulb-o"></i> &nbsp;&nbsp;Page Tutorial</span>-->
 
-										<span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='vendor.php'"> <i class="fa fa-remove"></i> </span>
+										<span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='customer.php'"> <i class="fa fa-remove"></i> </span>
 									</div>
 								</h3>
 								
@@ -150,7 +150,7 @@ $fetch_query = mysqli_fetch_array($select_query);
 							<div class="panel panel-plain panel-rounded">
 
 								<div class="panel-body">
-									<form method="POST">
+									<form method="POST" id="rs-validation-login-page">
 											<div class="row">
 												<div class="col-sm-4">
 													<div class="form-group">
@@ -351,6 +351,58 @@ $fetch_query = mysqli_fetch_array($select_query);
 			$('.billstate2 option[value='+billstate+']').prop('selected',true);
 			//$(".billcountry2 select").val(billcountry)
 		}
+	</script>
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
+			// Footer Absolute
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'login-wrap'
+			});
+			// Example login validation
+			$('#rs-validation-login-page').validate({
+				ignore: 'input[type=hidden]', // ignore hidden fields
+				rules: {
+					fname:"required",
+					cname: "required",					
+					email:	"required email",
+					mobile:	"required number",
+					gst:	"required",
+					address: "required",
+					bstate: "required",
+					
+				},
+				messages: {
+					fname: "Enter Supplier Name",
+					cname: "Enter Company Name",					
+					email:	"Enter Email Id",
+					mobile: "Enter Phone number",
+					gst: "Enter GST or PAN number",
+					address: "Enter Address of Supplier",
+					bstate: "Choose State",
+					
+				},
+				errorElement: "p",
+				errorPlacement: function ( error, element ) {
+					error.addClass( "help-block" );
+					// Has feedback
+					if (element.parents('div').hasClass('has-feedback')) {
+						error.appendTo( element.parent() );
+					}
+					else{
+						error.insertAfter(element);
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group" ).removeClass( "has-error" );
+				}
+			});
+		});
 	</script>
 	
 </body>

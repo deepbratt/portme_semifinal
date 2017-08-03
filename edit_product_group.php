@@ -111,7 +111,7 @@ if(isset($_POST['update_details']))
 							?>
 
 								<div class="panel-body">
-									<form method="post" enctype="multipart/form-data">
+									<form method="post" enctype="multipart/form-data" id="rs-validation-login-page">
 											<div class="row" style="margin-bottom:10px;">
 												<div class="col-sm-3" style="margin-top:10px;">
 													<span >
@@ -421,6 +421,48 @@ $("body").on("click",".remove",function(){
 				}
 			});
 		}());
+	</script>
+
+		<script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
+			// Footer Absolute
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'login-wrap'
+			});
+			// Example login validation
+			$('#rs-validation-login-page').validate({
+				ignore: 'input[type=hidden]', // ignore hidden fields
+				rules: {
+					cat_name: "required",				
+					hsn_codes:	"required",
+					
+				},
+				messages: {
+					cat_name: "Enter Category Name",				
+					hsn_codes: "Choose HSN Code",
+					
+				},
+				errorElement: "p",
+				errorPlacement: function ( error, element ) {
+					error.addClass( "help-block" );
+					// Has feedback
+					if (element.parents('div').hasClass('has-feedback')) {
+						error.appendTo( element.parent() );
+					}
+					else{
+						error.insertAfter(element);
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group" ).removeClass( "has-error" );
+				}
+			});
+		});
 	</script>
 	
 </body>

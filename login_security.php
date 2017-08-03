@@ -139,13 +139,13 @@
 							<div class="panel panel-plain panel-rounded">
 
 								<div class="panel-body">
-									<form method="post">	
+									<form method="post" id="rs-validation-login-page">	
 																			
 										<div class="row">
 											<div class="col-sm-2">Old Password:</div>
 												<div class="form-group">
 													<div class="col-sm-4">
-														<input name="old" type="password" class="form-control" id="rs-form-example-email" placeholder="Old Password"  required>
+														<input name="old_password" type="password" class="form-control" id="rs-form-example-email" placeholder="Old Password"  required>
 															<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div>
@@ -155,7 +155,7 @@
 											<div class="col-sm-2">New Password:</div>
 												<div class="form-group">
 													<div class="col-sm-4">
-														<input name="new" type="password" class="form-control" id="rs-form-example-email" placeholder="New Password"  required>
+														<input name="new_password" type="password" class="form-control" id="rs-form-example-email" placeholder="New Password"  required>
 															<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div>
@@ -165,7 +165,7 @@
 											<div class="col-sm-2">Confirm Password:</div>
 												<div class="form-group">
 													<div class="col-sm-4">
-														<input name="confirm_new" type="password" class="form-control" id="rs-form-example-email" placeholder="Confirm Password"  required>
+														<input name="confirm_new_password" type="password" class="form-control" id="rs-form-example-email" placeholder="Confirm Password"  required>
 															<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div>
@@ -215,7 +215,51 @@
 
 	<!-- Page Plugins -->
 	<script src="js/validator.min.js"></script>
-	
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
+			// Footer Absolute
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'login-wrap'
+			});
+			// Example login validation
+			$('#rs-validation-login-page').validate({
+				ignore: 'input[type=hidden]', // ignore hidden fields
+				rules: {
+					old_password:"required",
+					new_password : "required",					
+					confirm_new_password:"required",
+					
+					
+				},
+				messages: {
+					old_password: "Enter Old Password",
+					new_password: "Enter New Password",					
+					confirm_new_password:"Confirm Password",
+					
+					
+				},
+				errorElement: "p",
+				errorPlacement: function ( error, element ) {
+					error.addClass( "help-block" );
+					// Has feedback
+					if (element.parents('div').hasClass('has-feedback')) {
+						error.appendTo( element.parent() );
+					}
+					else{
+						error.insertAfter(element);
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group" ).removeClass( "has-error" );
+				}
+			});
+		});
+	</script>
 	
 </body>
 </html>

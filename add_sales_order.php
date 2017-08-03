@@ -441,7 +441,7 @@ include("sidebar.php");
 					invoicedate:"required",
 					cust_states:"required",
 					product_id: "required",					
-					qty:		"required",
+					qty:		"required number",
 					tax_rate:	"required",
 					
 				},

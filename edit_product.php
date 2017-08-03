@@ -18,7 +18,7 @@ if(isset($_POST['update']))
 	$date = time();
 
 
-	$update_product = mysqli_query($mysqli,"update tbl_products set productcat_id='".$category_id."',name='".$product_name."',description='".$description."', qty='".$quantity."',cost_price='".$cost_price."', selling_price='".$selling_price."', attr_name='".$add_attribute."', attr_value='".$add_options."', status='active', date='".$date."' where product_id = '".$pro_id."' ");
+	$update_product = mysqli_query($mysqli,"update tbl_products set productcat_id='".$category_id."',name='".$product_name."',description='".$description."', qty='0',cost_price='".$cost_price."', selling_price='".$selling_price."', attr_name='".$add_attribute."', attr_value='".$add_options."', status='active', date='".$date."' where product_id = '".$pro_id."' ");
 	if($update_product)
 	{
 		$data = "success";
@@ -111,7 +111,7 @@ if(isset($_POST['update']))
 							<div class="panel panel-plain panel-rounded">
 
 								<div class="panel-body">
-									<form  method = "POST">
+									<form  method = "POST" id="rs-validation-login-page">
 									
 									<?php
 									$get_product_details = mysqli_query($mysqli, "select * from tbl_products where product_id='".$pro_id."'");
@@ -165,18 +165,7 @@ if(isset($_POST['update']))
 												</div>
 											</div>				
 											
-											<div class="row">
-												<div class="col-sm-3">
-													Quantity
-												</div>
-												<div class="col-sm-9">
-													<div class="form-group">
-														<input name="quantity" type="number" class="form-control" id="rs-form-example-email" value="<?php echo $fetch_product_details['qty'];?>" >
-														<p class="help-block with-errors"></p>
-													</div>
-												</div>
-											</div>
-
+											
 											<div class="row">
 												<div class="col-sm-3">
 													Cost Price
@@ -419,6 +408,54 @@ if(isset($_POST['update']))
 				}
 			});
 		}());
+	</script>
+
+
+	
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
+			// Footer Absolute
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'login-wrap'
+			});
+			// Example login validation
+			$('#rs-validation-login-page').validate({
+				ignore: 'input[type=hidden]', // ignore hidden fields
+				rules: {
+					product_category_id: "required"
+					product_name: "required",				
+					cost_price:	"required number",
+					selling_price: "required number",
+					
+				},
+				messages: {
+					product_category_id:"Choose Product Category",
+					product_name: "Enter Product Name",				
+					cost_price: "Enter Cost Price",
+					selling_price: "Enter Selling Price",
+					
+				},
+				errorElement: "p",
+				errorPlacement: function ( error, element ) {
+					error.addClass( "help-block" );
+					// Has feedback
+					if (element.parents('div').hasClass('has-feedback')) {
+						error.appendTo( element.parent() );
+					}
+					else{
+						error.insertAfter(element);
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group" ).removeClass( "has-error" );
+				}
+			});
+		});
 	</script>
 	
 </body>

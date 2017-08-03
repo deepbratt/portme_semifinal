@@ -119,7 +119,7 @@ if(isset($_POST['submit_details']))
 							<div class="panel panel-plain panel-rounded">
 
 								<div class="panel-body">
-									<form method="POST">
+									<form method="POST" id="rs-validation-login-page">
 										<div class="row">
 											<div class="col-sm-3">
 													<div class="form-group">
@@ -129,7 +129,7 @@ if(isset($_POST['submit_details']))
 
 												<div class="col-sm-3">
 													<div class="form-group">
-														<select name="sal" class="rs-selectize-single" required>
+														<select name="sal" class="rs-selectize-single">
 															<option value="">Salutation</option>
 															<option value="Mr.">Mr.</option>
 															<option value="Mrs.">Mrs.</option>
@@ -141,13 +141,13 @@ if(isset($_POST['submit_details']))
 												</div><!-- /.col-sm-4 -->
 												<div class="col-sm-3">
 													<div class="form-group">
-														<input name="fname" type="text" class="form-control" id="rs-form-example-fname" placeholder="First Name" required>
+														<input name="fname" type="text" class="form-control" id="rs-form-example-fname" placeholder="First Name" >
 														<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->
 												<div class="col-sm-3">
 													<div class="form-group">
-														<input name="lname" type="text" class="form-control" id="rs-form-example-lname" placeholder="Last Name" required>
+														<input name="lname" type="text" class="form-control" id="rs-form-example-lname" placeholder="Last Name" >
 														<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->
@@ -161,7 +161,7 @@ if(isset($_POST['submit_details']))
 												</div><!-- /.col-sm-4 -->
 											<div class="col-sm-9">
 											<div class="form-group">
-												<input name="cname" type="text" class="form-control"placeholder="Company Name" required>
+												<input name="cname" type="text" class="form-control"placeholder="Company Name" >
 												<p class="help-block with-errors"></p>
 											</div>
 											</div><!-- /.form-group -->
@@ -175,7 +175,7 @@ if(isset($_POST['submit_details']))
 												</div><!-- /.col-sm-4 -->
 											<div class="col-sm-9">
 											<div class="form-group">
-												<input name="email" type="email" class="form-control"placeholder="Enter Email Address" required>
+												<input name="email" type="email" class="form-control"placeholder="Enter Email Address" >
 												<p class="help-block with-errors"></p>
 											</div>
 											</div><!-- /.form-group -->
@@ -190,7 +190,7 @@ if(isset($_POST['submit_details']))
 											<div class="col-sm-9">
 											<div class="form-group">
 												<input name="wphone" type="integer" class="form-control"placeholder="Enter Work Phone Number">
-												<p class="help-block with-errors" required></p>
+												<p class="help-block with-errors" ></p>
 											</div>
 											</div><!-- /.form-group -->
 											</div>
@@ -260,7 +260,7 @@ if(isset($_POST['submit_details']))
 															</div>
 															<div class="col-sm-8">
 																<div class="form-group">
-																	<input name="address" type="text" id="cityz" class="form-control billaddress1" placeholder="Enter Address" required>
+																	<input name="address" type="text" id="cityz" class="form-control billaddress1" placeholder="Enter Address" >
 																	<p class="help-block with-errors"></p>
 																</div><!-- /.form-group -->
 															</div>
@@ -274,7 +274,7 @@ if(isset($_POST['submit_details']))
 															</div>
 															<div class="col-sm-8">
 																<div class="form-group">
-																	<select name="bstate" class="form-control billstate1" required>
+																	<select name="bstate" class="form-control billstate1" >
 																	
 																		<option value="">Select State</option>
 																		<?php
@@ -413,6 +413,58 @@ if(isset($_POST['submit_details']))
 			$('.billstate2 option[value='+billstate+']').prop('selected',true);
 			//$(".billcountry2 select").val(billcountry)
 		}
+	</script>
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
+			// Footer Absolute
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'login-wrap'
+			});
+			// Example login validation
+			$('#rs-validation-login-page').validate({
+				ignore: 'input[type=hidden]', // ignore hidden fields
+				rules: {
+					fname:"required",
+					cname: "required",					
+					email:	"required email",
+					mobile:	"required number",
+					gst:	"required",
+					address: "required",
+					bstate: "required",
+					
+				},
+				messages: {
+					fname: "Enter Supplier Name",
+					cname: "Enter Company Name",					
+					email:	"Enter Email Id",
+					mobile: "Enter Phone number",
+					gst: "Enter GST or PAN number",
+					address: "Enter Address of Supplier",
+					bstate: "Choose State",
+					
+				},
+				errorElement: "p",
+				errorPlacement: function ( error, element ) {
+					error.addClass( "help-block" );
+					// Has feedback
+					if (element.parents('div').hasClass('has-feedback')) {
+						error.appendTo( element.parent() );
+					}
+					else{
+						error.insertAfter(element);
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group" ).removeClass( "has-error" );
+				}
+			});
+		});
 	</script>
 
 </body>

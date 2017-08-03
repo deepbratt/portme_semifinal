@@ -1,7 +1,7 @@
 <?php
 include("config.php");
 
-$business_id = $_GET['business_id'];
+$business_id = $_SESSION['business_id'];
 
 if(isset($_POST['update_details']))
 {
@@ -51,7 +51,7 @@ if(isset($_POST['update_details']))
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>View User Details | Port-ME</title>
+	<title>Edit User Details | Port-ME</title>
 	<?php include("metalinks.php");?>
 
 </head>
@@ -79,11 +79,11 @@ if(isset($_POST['update_details']))
 						<div class="rs-dashhead-content">
 							<div class="rs-dashhead-titles">
 								<h3 class="rs-dashhead-title m-t">
-									View User Details
+									Edit User Details
 									<div style="float:right;">
 										<!--<span style="padding:10px 10px;font-size:15px;font-weight:normal;color:#4a89dc;cursor:pointer;border-right:1px solid #CCC;"> <i class="fa fa-lightbulb-o"></i> &nbsp;&nbsp;Page Tutorial</span>-->
 
-										<span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='general_information.php'"> <i class="fa fa-remove"></i> </span>
+										<span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='dashboard.php'"> <i class="fa fa-remove"></i> </span>
 									</div>
 								</h3>
 								
@@ -124,7 +124,7 @@ if(isset($_POST['update_details']))
 							<div class="panel panel-plain panel-rounded">
 
 								<div class="panel-body">
-									<form  method="post" enctype="multipart/form-data">
+									<form  method="post" enctype="multipart/form-data" id="rs-validation-login-page">
 										<div class="row">
 											<div class="col-sm-3">
 													<div class="form-group">
@@ -140,7 +140,7 @@ if(isset($_POST['update_details']))
 												</div><!-- /.col-sm-4 -->
 												<div class="col-sm-4">
 													<div class="form-group">
-														<input name="lname" type="text" class="form-control" id="rs-form-example-fname" value=<?php echo $fetch_query['owners_lastname']; ?>>
+														<input name="lname" type="text" class="form-control" id="rs-form-example-lname" value=<?php echo $fetch_query['owners_lastname']; ?>>
 														<p class="help-block with-errors"></p>
 													</div><!-- /.form-group -->
 												</div><!-- /.col-sm-4 -->
@@ -390,6 +390,60 @@ if(isset($_POST['update_details']))
 
 	<!-- Page Plugins -->
 	<script src="js/validator.min.js"></script>
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			"use strict";
+			// Footer Absolute
+			$('.rs-footer').footerAbsolute({
+			    absoluteClass		: 'login-footer',
+			    mainContent			: 'login-wrap'
+			});
+			// Example login validation
+			$('#rs-validation-login-page').validate({
+				ignore: 'input[type=hidden]', // ignore hidden fields
+				rules: {
+					fname:"required",
+					cname: "required",					
+					email:	"required email",
+					mobile:	"required number",
+					gstin:	"required",
+					business_type: "required",
+					address: "required",
+					state: "required",
+					
+				},
+				messages: {
+					fname: "Enter Supplier Name",
+					cname: "Enter Company Name",					
+					email:	"Enter Email Id",
+					mobile: "Enter Phone number",
+					gstin: "Enter GST or PAN number",
+					business_type: "Select Business Type",
+					address: "Enter Address of Supplier",
+					state: "Choose State",
+					
+				},
+				errorElement: "p",
+				errorPlacement: function ( error, element ) {
+					error.addClass( "help-block" );
+					// Has feedback
+					if (element.parents('div').hasClass('has-feedback')) {
+						error.appendTo( element.parent() );
+					}
+					else{
+						error.insertAfter(element);
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".form-group" ).addClass( "has-error" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".form-group" ).removeClass( "has-error" );
+				}
+			});
+		});
+	</script>
 	
 </body>
 </html>

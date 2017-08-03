@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+<?php
+include ("config.php");
+$business_id = $_SESSION['business_id'];
+$order_id = $_GET['order_id'];
+$bill_info = mysqli_query($mysqli, "select * from tbl_transactions where business_id='".$business_id."' and tbl_transaction_id ='".$order_id."'");
+$fetch_bill_info = mysqli_fetch_array($bill_info);
+?>
+
+>>>>>>> cb6c1fb3a5437069e5dfdf550c437f962fb1c662
 <!DOCTYPE html>
 <html lang=en>
   <head>
@@ -49,7 +60,26 @@ include("sidebar.php");
             </div>
 
 	<div id="printablediv" >
+<<<<<<< HEAD
 
+=======
+		<form id="" runat="server">
+					<?php
+						$owner_id = $fetch_bill_info['business_id'];
+						$get_owner_info = mysqli_query($mysqli, "select * from tbl_business where business_id = '".$owner_id."'");
+						$fetch_owner_info = mysqli_fetch_array($get_owner_info);
+
+						$owner_state_id = $fetch_owner_info['state'];
+						$get_owner_state_info = mysqli_query($mysqli, "select * from states where states_id = '".$owner_state_id."'");
+						$fetch_owner_state_info = mysqli_fetch_array($get_owner_state_info);
+
+						
+								
+					?> 
+                
+                
+				
+>>>>>>> cb6c1fb3a5437069e5dfdf550c437f962fb1c662
 				<!-- table starts -->
 				<div class="panel panel-plain panel-rounded " style="padding:15px;">
 					<table class="table table-b-t table-b-b datatable-default rs-table table-striped table-bordered" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">
@@ -58,6 +88,7 @@ include("sidebar.php");
 						   <tr style="font-size:15px;">
 								<th colspan="4" style="text-align:left;">
 									<div class="col-sm-12">
+<<<<<<< HEAD
 									  <label style="font-size:30px;">Company Name</label>
 									</div>
 									<div class="col-sm-12">
@@ -80,6 +111,41 @@ include("sidebar.php");
 									</div> 
 									<div class="col-sm-12">
 									  <label style="font-size:17px;">Address,State,Zip.
+=======
+									  <label style="font-size:30px;"><?php echo $fetch_owner_info['enterprise_name'];?></label>
+									</div>
+									<div class="col-sm-12">
+									  <label style="font-size:17px;"><?php echo $fetch_owner_info['owners_firstname'];?>&nbsp;&nbsp;<?php echo $fetch_owner_info['owners_lastname'];?></label>
+									</div> 
+									<div class="col-sm-12">
+									  <label style="font-size:17px;"><?php echo $fetch_owner_info['address'];?>&nbsp;&nbsp;<?php echo $fetch_owner_state_info['states_name'];?>-<?php echo $fetch_owner_state_info['states_code'];?>&nbsp;&nbsp;<?php echo $fetch_owner_info['country'];?>
+									  </label>
+									</div>
+								</th>
+								
+
+								<?php
+								$customer_id = $fetch_bill_info['customer_id'];
+								$get_customer_info = mysqli_query($mysqli, "select * from tbl_contacts where customer_id = '".$customer_id."'");
+								$fetch_customer_info = mysqli_fetch_array($get_customer_info);
+								
+								$customer_state_id = $fetch_customer_info['state'];
+								$get_customer_state_info = mysqli_query($mysqli, "select * from states where states_id = '".$customer_state_id."'");
+								$fetch_customer_state_info = mysqli_fetch_array($get_customer_state_info);
+
+								?> 
+
+								<th colspan="5" style="text-align:center;">
+									<div class="col-sm-12">
+									  <label style="font-size:30px;"><?php echo $fetch_customer_info['salutation'];?>&nbsp;&nbsp;<?php echo $fetch_customer_info['first_name'];?>&nbsp;&nbsp;<?php echo $fetch_customer_info['last_name'];?></label>
+									</div>
+									<div class="col-sm-12">
+									  <label style="font-size:17px;"><?php echo $fetch_customer_info['mobile'];?>,<?php echo $fetch_customer_info['work_phone'];?>
+									  </label>
+									</div> 
+									<div class="col-sm-12">
+									  <label style="font-size:17px;"><?php echo $fetch_customer_info['address'];?>&nbsp;&nbsp;<?php echo $fetch_customer_state_info['states_name'];?>-<?php echo $fetch_customer_state_info['states_code'];?>&nbsp;&nbsp;<?php echo $fetch_customer_info['country'];?>
+>>>>>>> cb6c1fb3a5437069e5dfdf550c437f962fb1c662
 									  </label>
 									</div> 
 								</th>
@@ -89,7 +155,11 @@ include("sidebar.php");
 									  <label style="font-size:30px;">Invoice</label>
 									</div>
 									<div class="col-sm-12">
+<<<<<<< HEAD
 									  <label style="font-size:19px;">Invoice No. :0201202
+=======
+									  <label style="font-size:19px;"><?php echo $fetch_bill_info['invoice_no'];?>
+>>>>>>> cb6c1fb3a5437069e5dfdf550c437f962fb1c662
 									  </label>
 									</div>
 									<div class="col-sm-12">
@@ -136,6 +206,7 @@ include("sidebar.php");
 
 							
 							</tr>
+<<<<<<< HEAD
 
 							<tr>
 								<th style="text-align:center;">Product</th>
@@ -154,6 +225,96 @@ include("sidebar.php");
 							</tr>
 
 					
+=======
+							<?php
+								$product_id = explode(",",$fetch_bill_info['product_id_array']);
+								 $count = sizeof($product_id);
+								for($i=0;$i<$count; $i++){
+									
+								?>
+							<tr>
+								<th style="text-align:center;">								
+									<?php 
+									$pid = $product_id[$i];
+									$fetch_pro_name = mysqli_query($mysqli,"SELECT * FROM tbl_products WHERE product_id='$pid'");
+									$fetch_p_details = mysqli_fetch_array($fetch_pro_name);
+									echo $fetch_p_details['name'];
+									?>
+								</th>
+								
+								<th style="text-align:center;">
+									<?php
+										$hsn_array = explode(",",$fetch_bill_info['hsn_array']);
+										echo $hsn_array[$i];
+									?>
+								</th>
+								<th style="text-align:center;">
+								<?php
+										$qty = explode(",",$fetch_bill_info['qty_array']);
+										echo $qty[$i];
+								?>
+								</th>
+								<th style="text-align:center;">
+								<?php
+										$unit_price = explode(",",$fetch_bill_info['unit_price_array']);
+										echo $unit_price[$i];
+								?>
+								</th>										
+								<th style="text-align:center;">
+								<?php
+										$tax_rate = explode(",",$fetch_bill_info['tax_rate_array']);
+										echo $tax_rate[$i];
+								?>
+								</th>
+								<th style="text-align:center;">
+								<?php
+										$cgst = explode(",",$fetch_bill_info['tax_cgst_array']);
+										echo $cgst[$i];
+								?>
+								</th>
+								<th style="text-align:center;">
+								<?php
+										$sgst = explode(",",$fetch_bill_info['tax_sgst_array']);
+										echo $sgst[$i];
+								?>.
+								</th>
+								<th style="text-align:center;">
+								<?php
+										$igst = explode(",",$fetch_bill_info['tax_igst_array']);
+										echo $igst[$i];
+								?>
+								</th>
+								<th style="text-align:center;">
+								<?php
+										$cess = explode(",",$fetch_bill_info['tax_cess_array']);
+										echo $cess[$i];
+								?>
+								</th>
+								<th style="text-align:center;">
+								<?php
+										$tax_val = explode(",",$fetch_bill_info['tax_value_array']);
+										echo $tax_val[$i];
+								?>
+								</th>
+								<th style="text-align:center;">
+								<?php
+										$discount = explode(",",$fetch_bill_info['discount_array']);
+										echo $discount[$i];
+								?>
+								</th>
+								<th style="text-align:center;">
+								<?php
+										$total = explode(",",$fetch_bill_info['total_array']);
+										echo $total[$i];
+								?>
+								</th>
+						
+							</tr>
+							<?php
+							}
+							?>
+				
+>>>>>>> cb6c1fb3a5437069e5dfdf550c437f962fb1c662
 							
 
 							<tr>
@@ -185,16 +346,55 @@ include("sidebar.php");
 
 					</table>
 				</div>
+<<<<<<< HEAD
 				<!-- table starts -->                	
             </div>
+=======
+				<!-- table starts -->                
+
+
+
+			  		
+            </div>
+
+          </div>
+
+		</form>
+		<?php include("footer.php");?>
+>>>>>>> cb6c1fb3a5437069e5dfdf550c437f962fb1c662
         </div>
 		
 	</div>
 
       </article>
+<<<<<<< HEAD
       <?php include("footer.php");?>
 
 	 <script language="javascript" type="text/javascript">
+=======
+   
+	  <?php include("sales_order_add_customer.php");?>
+	  
+
+      <script src="js/bootstrap-switch.min.js"></script>
+      <script src="js/bootstrap-switch-example.js"></script>
+      <script src="js/cleave.min.js"></script>
+      <script src="js/cleave-phone.au.js"></script>
+      <script src="js/cleave-example.js"></script>
+      <script src="js/bootstrap-datepicker.min.js"></script>
+      <script src="js/jquery.maskedinput.min.js"></script>
+      <script src="js/maskedinput-example.js"></script>
+      <script src="js/bootstrap-maxlength.min.js"></script>
+      <script src="js/maxlength-example.js"></script>
+      <script src="js/selectize.min.js"></script>
+	  <script src="js/datepicker-example.js"></script>
+      <script src="js/selectize-example.js"></script>
+      <script src="js/validator.min.js"></script>
+
+	
+
+		 <script language="javascript" type="text/javascript">
+>>>>>>> cb6c1fb3a5437069e5dfdf550c437f962fb1c662
         function printDiv(divID) {
             //Get the HTML of div
             var divElements = document.getElementById(divID).innerHTML;
@@ -208,13 +408,21 @@ include("sidebar.php");
 
             //Print Page
             window.print();
+<<<<<<< HEAD
+=======
+			
+>>>>>>> cb6c1fb3a5437069e5dfdf550c437f962fb1c662
 
             //Restore orignal HTML
             document.body.innerHTML = oldPage;
 
           
         }
+<<<<<<< HEAD
      </script>
+=======
+    </script>
+>>>>>>> cb6c1fb3a5437069e5dfdf550c437f962fb1c662
 
       </body>
     </html>

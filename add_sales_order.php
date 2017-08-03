@@ -19,7 +19,7 @@
 	$product_array		= implode(",",$product_id);
 	$hsn				=  mysqli_real_escape_string($mysqli,$_POST['hsn']);
 	$hsn_array			= implode(",",$hsn);
-	$quantity			=  mysqli_real_escape_string($mysqli,$_POST['qty'];
+	$quantity			=  mysqli_real_escape_string($mysqli,$_POST['qty']);
 	$quantity_array		= implode(",",$quantity);
 	$unit_price			=  mysqli_real_escape_string($mysqli,$_POST['unit_price']);
 	$unit_price_array	= implode(",",$unit_price);

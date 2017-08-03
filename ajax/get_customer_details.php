@@ -14,7 +14,7 @@
 </div>
 <div class="col-sm-12">
 	<label style="font-size:20px;" class="fname_lname">
-		<?php echo $fetch_cust_query['first_name'];?>&nbsp;<?php echo $fetch_cust_query['last_name'];?>
+		<?php echo ucfirst($fetch_cust_query['first_name']);?>&nbsp;<?php echo ucfirst($fetch_cust_query['last_name']);?>
 	</label>
 </div>
 <div class="col-sm-12" class="street_city">
@@ -24,7 +24,7 @@
 </div>
 <div class="col-sm-12" class="state_zip">
 	<label style="font-size:15px;">
-		<?php echo $fetch_cust_query['address'];?><br /> 
+		<?php echo ucfirst($fetch_cust_query['address']);?><br /> 
 		<?php 
 			$state = $fetch_cust_query['state'];
 			$get_state_details = mysqli_query($mysqli,"SELECT * FROM states WHERE states_code='$state'");

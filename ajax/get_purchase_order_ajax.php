@@ -64,8 +64,7 @@
 	
 
 
-
-	$response = array("pid"=> $product_id ,"hsn"=> $hsn , "qty" => $qty , "unit_price" => number_format($unit_price, 2, '.', ''),"tax_rate" => $actual_tax_rate , "cgst" => number_format($cgst, 2, '.', '') , "sgst" => number_format($sgst, 2, '.', '') , "igst" => number_format($igst, 2, '.', ''), "cess" =>number_format($cess, 2, '.', ''), "tax_val" => number_format($tax_val, 2, '.', ''), "disount" => number_format($discount, 2, '.', ''), "total" => number_format($total_price, 2, '.', ''));
+	$response = array("pid"=> $product_id ,"hsn"=> $hsn , "qty" => $qty , "unit_price" => number_format($unit_price, 2, '.', ''),"tax_rate" => $actual_tax_rate , "cgst" => number_format($cgst, 2, '.', '') , "sgst" => number_format($sgst, 2, '.', '') , "igst" => number_format($igst, 2, '.', ''), "cess" =>number_format($cess, 2, '.', ''), "tax_val" => number_format($tax_val, 2, '.', ''), "disount" => number_format($discount, 2, '.', ''), "total" => number_format($total_price, 2, '.', ''), "sub_total" => number_format($product_price, 2, '.', ''));
 	header("Content-Type: application/json");
 	echo json_encode($response);
 ?>

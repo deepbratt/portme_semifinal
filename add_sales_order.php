@@ -13,44 +13,40 @@
 	if(isset($_POST['submit'])){
 
 	$invoice_number		= $invoice_num_gene;	
-	$customer_id		= $_POST['cu_id'];
+	$customer_id		=  mysqli_real_escape_string($mysqli,$_POST['cu_id']);
 	$gst_pan			= $gst_pan_number;
-	$product_id			= $_POST['product_id'];
+	$product_id			=  mysqli_real_escape_string($mysqli,$_POST['product_id']);
 	$product_array		= implode(",",$product_id);
-	$hsn				= $_POST['hsn'];
+	$hsn				=  mysqli_real_escape_string($mysqli,$_POST['hsn']);
 	$hsn_array			= implode(",",$hsn);
-	$quantity			= $_POST['qty'];
+	$quantity			=  mysqli_real_escape_string($mysqli,$_POST['qty'];
 	$quantity_array		= implode(",",$quantity);
-	$unit_price			= $_POST['unit_price'];
+	$unit_price			=  mysqli_real_escape_string($mysqli,$_POST['unit_price']);
 	$unit_price_array	= implode(",",$unit_price);
-	$tax_rate			= $_POST['tax_rate'];
+	$tax_rate			=  mysqli_real_escape_string($mysqli,$_POST['tax_rate']);
 	$tax_rate_array		= implode(",",$tax_rate);
-	$tax_cgst			= $_POST['cgst'];
+	$tax_cgst			=  mysqli_real_escape_string($mysqli,$_POST['cgst']);
 	$tax_cgst_array		= implode(",",$tax_cgst);
-	$tax_sgst			= $_POST['sgst'];
+	$tax_sgst			=  mysqli_real_escape_string($mysqli,$_POST['sgst']);
 	$tax_sgst_array		= implode(",",$tax_sgst);
-	$tax_igst			= $_POST['igst'];
+	$tax_igst			=  mysqli_real_escape_string($mysqli,$_POST['igst']);
 	$tax_igst_array		= implode(",",$tax_igst);
-	$tax_cess			= $_POST['cess'];
+	$tax_cess			=  mysqli_real_escape_string($mysqli,$_POST['cess']);
 	$tax_cess_array		= implode(",",$tax_cess);
-	$tax_value			= $_POST['tax_val'];
+	$tax_value			=  mysqli_real_escape_string($mysqli,$_POST['tax_val']);
 	$tax_value_array	= implode(",",$tax_value);
-	$discount			= $_POST['discount'];
+	$discount			=  mysqli_real_escape_string($mysqli,$_POST['discount']);
 	$discount_array		= implode(",",$discount);
-	$total				= $_POST['total'];
+	$total				=  mysqli_real_escape_string($mysqli,$_POST['total']);
 	$total_array		= implode(",",$total);
-	$subtotal			= $_POST['sub_total'];
-	$subtotal_array		= implode(",",$subtotal);
-	$totaldiscount		= $_POST['total_discount'];
-	$totaldiscount_array= implode(",",$totaldiscount);
-	$total_tax			= $_POST['total_tax'];
-	$total_tax_array	= implode(",",$total_tax);
-	$total_price		= $_POST['total_price'];
-	$total_price_array	= implode(",",$total_price);
-	$date				= $_POST['invoicedate'];
+	$subtotal			=  mysqli_real_escape_string($mysqli,$_POST['tt_subtotal']);
+	$totaldiscount		=  mysqli_real_escape_string($mysqli,$_POST['tt_discount']);
+	$total_tax			=  mysqli_real_escape_string($mysqli,$_POST['tt_tax']);
+	$total_price		=  mysqli_real_escape_string($mysqli,$_POST['tt_comtotal']);
+	$date				=  mysqli_real_escape_string($mysqli,$_POST['invoicedate']);
 	
 
- $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'sales', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal_array."', '".$totaldiscount_array."', '".$total_tax_array."', '".$total_price_array."', '".$date."', 'active')");
+ $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'sales', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
 
 	if($insert_sales_order)
 		{		
@@ -105,7 +101,7 @@ include("sidebar.php");
                   <h3 class="rs-dashhead-title m-t">
                     New Sales Order :
                     <div style="float:right;">
-                      <span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='view_sales_order.php'"> 
+                      <span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='sales_order.php'"> 
                         <i class="fa fa-remove">
                         </i> 
                       </span>
@@ -156,8 +152,8 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <select class="form-control selectpicker" name="cu_id" onchange="show_customer_data(this);">
-								 <option selected disabled>Choose Customer</option>
+                              <select class="rs-selectize-single " name="cu_id"  onchange="show_customer_data(this);" required>
+								 <option selected disabled value="">Choose Customer</option>
 								   <?php		
 									 while($fetch_cust_details = mysqli_fetch_array($get_fetch_details))
 									 {
@@ -182,7 +178,7 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate">
+                              <input  type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate" required>
                             </div>
                           </div>
                         </div>
@@ -193,7 +189,8 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-							  <select class="form-control cus_states" name="cust_states">
+							  <select class="rs-selectize-single cus_states" name="cust_states" required>
+									 <option selected disabled value="">Choose State</option>
 								  <?php
 									$get_all_states = mysqli_query($mysqli,"SELECT * FROM states");
 									while($fetch_all_states = mysqli_fetch_array($get_all_states)){
@@ -264,8 +261,8 @@ include("sidebar.php");
 
 							<tr class="rocks">
 								<th class="a" style="width:150px;">
-									  <select class="form-control selectpicker pid" name="product_id[]" style="width:90px;margin:0px;padding:0px;" onchange="complete_value(this)">
-										 <option selected disabled>Choose</option>
+									  <select class="rs-selectize-single pid" name="product_id[]" style="width:150px;margin:0px;padding:0px;" onchange="complete_value(this)">
+										 <option selected disabled value="">Choose Product</option>
 										 <?php
 											$business_id = $_SESSION['business_id'];
 											
@@ -278,9 +275,9 @@ include("sidebar.php");
 										 ?>
 									  </select>
 								</th>
-								<th class="b"><input type="text" class="form-control hsn" value="" name="hsn[]" style="width:80px;"></th>
-								<th class="c"><input type="text" class="form-control qty" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
-								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:120px;" onchange="complete_value(this)"></th>		
+								<th class="b"><input type="text" class="form-control hsn" value="" name="hsn[]" style="width:90px;"></th>
+								<th class="c"><input type="number" class="form-control qty" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
+								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:80px;" onchange="complete_value(this)"></th>		
 
 								<th class="e">
 									<select class="form-control selectpicker tax_rate" name="tax_rate[]" style="width:70px;margin:0px;padding:0px;" onchange="complete_value(this)">
@@ -295,12 +292,12 @@ include("sidebar.php");
 										 ?>
 									  </select>
 								</th>
-								<th class="f"><input type="text" class="form-control cgst" id="cgst"  value="00.00" style="width:50px;margin:0px;padding:5px;" name="cgst[]" onchange="complete_value(this)"></th>
-								<th class="g"><input type="text" class="form-control sgst" id="sgst" value="00.00" style="width:50px;margin:0px;padding:5px;" name="sgst[]" onchange="complete_value(this)"></th>
-								<th class="h"><input type="text" class="form-control igst" id="igst" value="00.00" style="width:50px;margin:0px;padding:5px;" name="igst[]" onchange="complete_value(this)"></th>
-								<th class="i"><input type="text" class="form-control cess" id="cess" value="00.00" style="width:50px;margin:0px;padding:5px;" name="cess[]" onchange="complete_value(this)"></th>
-								<th class="j"><input type="text" class="form-control tax_val"  value="00.00" style="width:50px;margin:0px;padding:5px;" name="tax_val[]" onchange="complete_value(this)"></th>
-								<th class="k" ><input type="text" class="form-control disount" value="00.00" name="discount[]" style="text-align:center;width:50px" onchange="complete_value(this)"></th>
+								<th class="f"><input type="text" class="form-control cgst" id="cgst"  value="00.00" style="width:80px;margin:0px;padding:5px;" name="cgst[]" onchange="complete_value(this)"></th>
+								<th class="g"><input type="text" class="form-control sgst" id="sgst" value="00.00" style="width:80px;margin:0px;padding:5px;" name="sgst[]" onchange="complete_value(this)"></th>
+								<th class="h"><input type="text" class="form-control igst" id="igst" value="00.00" style="width:80px;margin:0px;padding:5px;" name="igst[]" onchange="complete_value(this)"></th>
+								<th class="i"><input type="text" class="form-control cess" id="cess" value="00.00" style="width:80px;margin:0px;padding:5px;" name="cess[]" onchange="complete_value(this)"></th>
+								<th class="j"><input type="text" class="form-control tax_val"  value="00.00" style="width:80px;margin:0px;padding:5px;" name="tax_val[]" onchange="complete_value(this)"></th>
+								<th class="k" ><input type="text" class="form-control disount" value="00.00" name="discount[]" style="text-align:center;width:80px" onchange="complete_value(this)"></th>
 								<th class="l" ><input type="text" class="form-control total" value="00.00" readonly style="text-align:center;width:100px" name="total[]"  onchange="complete_value(this)"></th>
 								<th style="display:none;"><input type="hidden" class="sub_totaz" value="00.00" name="sub_totaz[]"></th>
 								<th><a href="javascript:void(0);" class="add-more" onclick="add_more_fun();"><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>

@@ -228,7 +228,9 @@ $productcat_id = $_GET['view_id'];
 											<div class="panel-footer" style="background:#fff;">
 							<div class="form-group m-a-0">
 								<a href="edit_product_group.php?edit_id=<?php echo $fetch_query['productcat_id'];?>" class="btn btn-success btn-wide">Edit Details</a>
+								<a class="btn btn-success btn-wide" href="product_group.php" style="color:white;">Back</a>
 							</div>
+							
 						</div><!-- /.row -->
 
 								</div><!-- /.panel-body -->

@@ -42,17 +42,13 @@
 	$total				= $_POST['total'];
 	$total_array		= implode(",",$total);
 	$subtotal			= $_POST['sub_total'];
-	$subtotal_array		= implode(",",$subtotal);
 	$totaldiscount		= $_POST['total_discount'];
-	$totaldiscount_array= implode(",",$totaldiscount);
 	$total_tax			= $_POST['total_tax'];
-	$total_tax_array	= implode(",",$total_tax);
 	$total_price		= $_POST['total_price'];
-	$total_price_array	= implode(",",$total_price);
 	$date				= $_POST['invoicedate'];
 	
 
- $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'purchase', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal_array."', '".$totaldiscount_array."', '".$total_tax_array."', '".$total_price_array."', '".$date."', 'active')");
+ $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'purchase', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
 
 	if($insert_sales_order)
 		{		
@@ -318,6 +314,7 @@ include("sidebar.php");
 								<th class="k" ><input type="text" class="form-control disount" value="00.00" name="discount[]" style="text-align:center;width:50px" onchange="complete_value(this)"></th>
 								<th class="l" ><input type="text" class="form-control total" value="00.00" readonly style="text-align:center;width:100px" name="total[]"  onchange="complete_value(this)"></th>
 								<th><a href="javascript:void(0);" class="add-more" onclick="add_more_fun();"><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>
+								<th style="display:none"><input type="hidden" class="sub_totaz" name="sub_totaz[]"></th>
 							</tr>
 
 							<tr>
@@ -334,7 +331,7 @@ include("sidebar.php");
 										<div class="col-sm-5">
 											<div class="form-group">
 												<label style="font-size:17px;" name="sub_total">
-													<b class="subtotal">00.00</b>
+													<input type="text" readonly class="subtotal form-control" style="width:150px;margin:0px;padding:0px;" name="tt_subtotal" value="00.00">
 												</label>	
 												<p class="help-block with-errors"></p>
 											</div>
@@ -604,12 +601,38 @@ include("sidebar.php");
 					$(e).closest('tr').find('.disount').val(response.disount);
 					$(e).closest('tr').find('.total').val(response.total);
 					$(e).closest('tr').find('.unit_price').val(response.unit_price);
+					$(e).closest('tr').find('.sub_totaz').val(response.product_price);
 				
 					/*bottom main calculation*/
-					$(e).closest('tr').find('.subtotal').val("00.00");
-					$(e).closest('tr').find('.total_discount').val("00.00");
-					$(e).closest('tr').find('.total_tax').val("00.00");
+					/* Sub Total */
+					var sub_total_last_final = 0;
+					$('input[name^="sub_totaz"]').each(function() {
+						var indivi_sub_totl = Math.round($(this).val());
+						sub_total_last_final = Math.round(sub_total_last_final+indivi_sub_totl);
+					});
 
+					$('.subtotal').text(sub_total_last_final.toFixed(2));
+
+
+					/* Discount */
+					var discount_last_final = 0;
+					$('input[name^="discount"]').each(function() {
+						var indivi_dis = Math.round($(this).val());
+						discount_last_final = Math.round(discount_last_final+indivi_dis);
+					});
+
+					$('.total_discount').text(discount_last_final.toFixed(2));
+					
+					/* Total Tax */					
+					var tax_last_final = 0;
+					$('input[name^="tax_val"]').each(function() {
+						var indivi_tax = Math.round($(this).val());
+						tax_last_final = Math.round(tax_last_final+indivi_tax);
+					});
+
+					$('.total_tax').text(tax_last_final.toFixed(2));
+					
+					/* Total Price */
 					var total_last_final = 0;
 					$('input[name^="total"]').each(function() {
 						var indivi_totl = Math.round($(this).val());

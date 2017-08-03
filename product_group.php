@@ -140,7 +140,7 @@ if((isset($_GET['del_id'])) && ($_GET['del_id'] != ""))
 							                <td><?php echo $fetch_query['HSN_code'];?></td>
 							                <td><?php echo $fetch_query['UQC_dmension'];?></td>
 											<td>
-												<a href="view_product_group.php?view_id=<?php echo $fetch_query['productcat_id'];?>" class="btn btn-default" style="height:35px;margin:5px;">View</a><br>
+												<a href="view_product_group.php?view_id=<?php echo $fetch_query['productcat_id'];?>"> <i class="fa fa-eye"></i></a>
 												<a href="edit_product_group.php?edit_id=<?php echo $fetch_query['productcat_id'];?>" class="fa fa-pencil" style="height:10px;margin:5px;"></a>
 												<a href="?del_id=<?php echo $fetch_query['group_id'];?>" class="fa fa-trash" style="height:10px;margin:5px;"></a>
 											</td>

@@ -158,7 +158,7 @@ if(isset($_GET['delete_id']))
 											<td>Rs.&nbsp;<?php echo ucfirst($fetch_product_info['selling_price']);?></td>						               
 										
 											<td>
-												<a href="view_product.php?product_id=<?php echo $fetch_product_info['product_id'];?>" class="btn btn-default" style="height:35px;margin:5px;"> View </a><br>
+												<a href="view_product.php?product_id=<?php echo $fetch_product_info['product_id'];?>"> <i class="fa fa-eye"></i> </a>
 
 												<a href="edit_product.php?product_id=<?php echo $fetch_product_info['product_id'];?>" class="fa fa-pencil" style="height:35px;margin:5px;"></a>
 

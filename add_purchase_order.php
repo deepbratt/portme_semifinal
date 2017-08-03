@@ -56,12 +56,15 @@
 
 	if($insert_sales_order)
 		{		
-			$data = "success";		
+			$data = "success";
+
 		}
 		else
 		{
 			$data = "error";
 		}
+		$update_quantity = mysqli_query($mysqli,"update tbl_products set qty= qty + $quantity_array where product_id='".$product_array."'");
+
 	}
 ?>
 

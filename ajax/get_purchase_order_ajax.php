@@ -52,9 +52,9 @@
 	}
 
 	$discount = $_POST['discount'];
-
+	$tax_val = $cgst + $sgst + $igst + $cess;
 	$total_tax_rate = $product_price * $tax_rate ;
-	$total_price = $product_price + $total_tax_rate + $cess +$tax_val - $discount;
+	$total_price = $product_price + $total_tax_rate +$tax_val - $discount;
 
 	
 

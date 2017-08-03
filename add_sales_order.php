@@ -557,7 +557,9 @@ include("sidebar.php");
 				var discount = $(e).closest('tr').find('.disount').val();
 				var total =	$(e).closest('tr').find('.total').val();
 				var cus_state = $('.cus_states').val();
-			
+				
+				
+				
 				/* get the prev values ends */
 
 				$.ajax({
@@ -576,7 +578,7 @@ include("sidebar.php");
 					tax_val:tax_val,
 					discount:discount,
 					total:total,
-					cus_state:cus_state
+					cus_state:cus_state,
 				  },
 				  success: function (response){
 					//alert(response.hsn);
@@ -595,10 +597,19 @@ include("sidebar.php");
 					
 				
 					/*bottom main calculation*/
-					$(e).closest('tr').find('.get_total').val(response.total);
+					
+
+					$(e).closest('tr').find('.get_total').val();
 					$(e).closest('tr').find('.total_discount').val("00.00");
 					$(e).closest('tr').find('.total_tax').val("00.00");
-					$(e).closest('tr').find('.complete_total').val("00.00");
+
+					var total_last_final = 0;
+					$('input[name^="total"]').each(function() {
+						var indivi_totl = Math.round($(this).val());
+						total_last_final = Math.round(total_last_final+indivi_totl);
+					});
+
+					$('.complete_total').text(total_last_final.toFixed(2));
 					/*bottom main calculation ends */
 				  }
 				});

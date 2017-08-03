@@ -46,8 +46,8 @@
 			$igst = "00.00";
 		}
 	}else{
-		$tax_rate = "0";
-		$tax_val = "0";
+		$tax_rate = "00.00";
+		$tax_val = "00.00";
 		$cgst = "00.00";
 		$sgst = "00.00";
 		$igst = "00.00";
@@ -58,7 +58,7 @@
 	$total_tax_rate = $product_price * $tax_rate ;
 	$total_price = $product_price + $total_tax_rate + $tax_val - $discount;
 
-	
+	$product_price = $qty*$selling_price;
 
 	
 	/*item fields ends */
@@ -67,7 +67,7 @@
 
 
 
-	$response = array("pid"=> $product_id ,"hsn"=> $hsn , "qty" => $qty , "unit_price" => number_format($unit_price, 2, '.', ''),"tax_rate" => $actual_tax_rate , "cgst" => number_format($cgst, 2, '.', '') , "sgst" => number_format($sgst, 2, '.', '') , "igst" => number_format($igst, 2, '.', ''), "cess" =>number_format($cess, 2, '.', ''), "tax_val" => number_format($tax_val, 2, '.', ''), "disount" => number_format($discount, 2, '.', ''), "total" => number_format($total_price, 2, '.', ''));
+	$response = array("pid"=> $product_id ,"hsn"=> $hsn , "qty" => $qty , "unit_price" => number_format($unit_price, 2, '.', ''),"tax_rate" => $actual_tax_rate , "cgst" => number_format($cgst, 2, '.', '') , "sgst" => number_format($sgst, 2, '.', '') , "igst" => number_format($igst, 2, '.', ''), "cess" =>number_format($cess, 2, '.', ''), "tax_val" => number_format($tax_val, 2, '.', ''), "disount" => number_format($discount, 2, '.', ''), "total" => number_format($total_price, 2, '.', '') , "sub_total" => $product_price);
 	header("Content-Type: application/json");
 	echo json_encode($response);
 ?>

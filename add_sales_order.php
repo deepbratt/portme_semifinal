@@ -302,7 +302,9 @@ include("sidebar.php");
 								<th class="j"><input type="text" class="form-control tax_val"  value="00.00" style="width:50px;margin:0px;padding:5px;" name="tax_val[]" onchange="complete_value(this)"></th>
 								<th class="k" ><input type="text" class="form-control disount" value="00.00" name="discount[]" style="text-align:center;width:50px" onchange="complete_value(this)"></th>
 								<th class="l" ><input type="text" class="form-control total" value="00.00" readonly style="text-align:center;width:100px" name="total[]"  onchange="complete_value(this)"></th>
+								<th style="display:none;"><input type="hidden" class="sub_totaz" value="00.00" name="sub_totaz[]"></th>
 								<th><a href="javascript:void(0);" class="add-more" onclick="add_more_fun();"><i class="fa fa-plus" style="font-size:20px;margin-top:10px;"></i></a></th>
+								
 							</tr>
 
 							<tr>
@@ -319,7 +321,7 @@ include("sidebar.php");
 										<div class="col-sm-5">
 											<div class="form-group">
 												<label style="font-size:17px;" name="sub_total">
-													<b class="subtotal" id="#get_total"></b>
+													<b class="subtotal">00.00</b>
 												</label>	
 												<p class="help-block with-errors"></p>
 											</div>
@@ -335,7 +337,7 @@ include("sidebar.php");
 										<div class="col-sm-5">
 											<div class="form-group">
 												<label style="font-size:17px;" name="total_discount">
-													<b class="total_discount">00.00</b>
+													<b class="total_discount" style="color:red;">00.00</b>
 												</label>	
 												<p class="help-block with-errors"></p>
 											</div>
@@ -440,7 +442,7 @@ include("sidebar.php");
 			  var k = $(".k").html();
 			  var l = $(".l").html();
 
-			  var htmlz = "<th>"+a+"</th><th>"+b+"</th><th>"+c+"</th><th>"+d+"</th><th>"+e+"</th><th>"+f+"</th><th>"+g+"</th><th>"+h+"</th><th>"+i+"</th><th>"+j+"</th><th>"+k+"</th><th>"+l+"</th><th><a href='javascript:void(0);' class='add-more' onclick='remove_class(this);'><i class='fa fa-trash' style='font-size:20px;margin-top:10px;color:red;'></i></a></th>";
+			  var htmlz = "<th>"+a+"</th><th>"+b+"</th><th>"+c+"</th><th>"+d+"</th><th>"+e+"</th><th>"+f+"</th><th>"+g+"</th><th>"+h+"</th><th>"+i+"</th><th>"+j+"</th><th>"+k+"</th><th>"+l+"</th><th style='display:none;'><input type='hidden' class='sub_totaz' value='00.00' name='sub_totaz[]'></th><th><a href='javascript:void(0);' class='add-more' onclick='remove_class(this);'><i class='fa fa-trash' style='font-size:20px;margin-top:10px;color:red;'></i></a></th>";
 			  
 			  //alert(newhtml);
 			  
@@ -581,7 +583,7 @@ include("sidebar.php");
 					cus_state:cus_state,
 				  },
 				  success: function (response){
-					//alert(response.hsn);
+					//alert(response.sub_total);
 					$(e).closest('tr').find('.hsn').val(response.hsn);
 					$(e).closest('tr').find('.qty').val(response.qty);
 					$(e).closest('tr').find('.unit_price').val(response.unit_price);
@@ -594,22 +596,46 @@ include("sidebar.php");
 					$(e).closest('tr').find('.disount').val(response.disount);
 					$(e).closest('tr').find('.total').val(response.total);
 					$(e).closest('tr').find('.unit_price').val(response.unit_price);
+					$(e).closest('tr').find('.sub_totaz').val(response.sub_total);
 					
 				
 					/*bottom main calculation*/
 					
+					/* total discount*/
+					var total_sub_totaz = 0;
+					$('input[name^="sub_totaz"]').each(function() {
+						var indivi_sub_toz = Math.round($(this).val());
+						total_sub_totaz = Math.round(total_sub_totaz+indivi_sub_toz);
+					});
+					$('.subtotal').text(total_sub_totaz.toFixed(2));
+					
+					/* total discount*/
+					var total_dis = 0;
+					$('input[name^="discount"]').each(function() {
+						var indivi_dis = Math.round($(this).val());
+						total_dis = Math.round(total_dis+indivi_dis);
+					});
+					$('.total_discount').text(total_dis.toFixed(2));
+					/* total discount ends*/
+					
+					/*total tax*/
+					var total_tax = 0;
+					$('input[name^="tax_val"]').each(function() {
+						var indivi_tax = Math.round($(this).val());
+						total_tax = Math.round(total_tax+indivi_tax);
+					});
+					$('.total_tax').text(total_tax);
+					/*total tax amount*/
 
-					$(e).closest('tr').find('.get_total').val();
-					$(e).closest('tr').find('.total_discount').val("00.00");
-					$(e).closest('tr').find('.total_tax').val("00.00");
-
+					/*total price*/
 					var total_last_final = 0;
 					$('input[name^="total"]').each(function() {
 						var indivi_totl = Math.round($(this).val());
 						total_last_final = Math.round(total_last_final+indivi_totl);
 					});
-
 					$('.complete_total').text(total_last_final.toFixed(2));
+					/*total price ends*/
+
 					/*bottom main calculation ends */
 				  }
 				});

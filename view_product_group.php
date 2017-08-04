@@ -119,8 +119,8 @@ $productcat_id = $_GET['view_id'];
 													<b>Description :</b>
 												</div>
 												<div class="col-sm-9">
-													<div class="form-group"  style="color: #4a89dc;">
-														<?php echo $fetch_query['desc'];?>
+													<div class="form-group" style="color: #4a89dc;">
+														<?php echo $fetch_query['description'];?>
 													</div>
 												</div>
 											</div>
@@ -198,7 +198,7 @@ $productcat_id = $_GET['view_id'];
 												<div class="col-sm-6">
 													<div class="radio radio-custom" style="color: #4a89dc;">
 													<?php 
-													$select_hsn = mysqli_query($mysqli,"select * from hsn where hsn_id = '".$fetch_query['HSN_code']."'");
+													$select_hsn = mysqli_query($mysqli,"select * from hsn where hsn_code = '".$fetch_query['HSN_code']."'");
 													$fetch_hsn = mysqli_fetch_array($select_hsn);
 													echo $fetch_hsn['hsn_code'];
 													?>

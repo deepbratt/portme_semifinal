@@ -19,30 +19,18 @@
 		$check_email = check_duplicate_email($email);
 		echo $check_email;
 		if($check_email < 1){
-			$save_reg = mysqli_query($mysqli,"INSERT into users VALUES ('','','','".$email."', '".$business."','".$type."', '".$password."', '".$phone."', '','','','','','','','','','','','','','')");
+			$save_reg = mysqli_query($mysqli,"INSERT into tbl_business VALUES ('','".$email."','".$password."','', '','', '".$phone."', '".$type."', '".$business."', '', '', '', '', '".$country."', '', 'active', '".$date."', '','','','','','','')");
 			if($save_reg)
 			{	
-				$_SESSION['user_id'] = mysqli_insert_id($mysqli);				
-				echo "<script>window.location.href='my_account.php'</script>";
+				$_SESSION['user_id'] = mysqli_insert_id($mysqli);
+				echo "<script>window.location.href='edit_general_information.php'</script>";
 			}
 			else
 			{
-				echo "<script>alert('error')</script>";	
-			}
-
-			$user_id = mysqli_insert_id($mysqli);
-			$save_biz_data = mysqli_query($mysqli,"INSERT into company_details VALUES('','$business','$email','','$phone','')");
-			$business_id = mysqli_insert_id($mysqli);
-			$access_type = "admin";
-			$access_menu = "all";
-			$save_user_access = mysqli_query($mysqli,"INSERT into user_access_levels VALUES('','$user_id','$access_type','$business_id','$access_menu')");
-			if($save_user_access){
-				$data = "success";
-			}else{
 				$data = "error";
-			}
-			
-		}else{
+			}			
+		}
+		else{
 			$data = "email";
 		}
 	}

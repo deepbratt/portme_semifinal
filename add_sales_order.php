@@ -7,7 +7,7 @@
 	$fetch_last_sales = mysqli_fetch_array($get_last_sales_id);
 	$invoice_no = $fetch_last_sales['tbl_transaction_id']+1;
 	$invoice_num_gene = "INV-".date('dmy')."000".$invoice_no."";
-	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type='customer'");
+	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type ='customer'");
 	$fetch_gst_pan_number = mysqli_fetch_array($get_fetch_details);
 	$gst_pan_number = $fetch_gst_pan_number['GST_PAN'];
 	if(isset($_POST['submit'])){

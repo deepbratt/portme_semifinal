@@ -13,11 +13,12 @@ if(isset($_POST['submit']))
 	$add_attribute = implode(",",$attribute);
 	$options = $_POST['optn'];
 	$add_options   = implode(",",$options);
+	$tax_info = mysqli_real_escape_string($mysqli,$_POST['tax_rate']);
 	$date = time();
 	
 	
 
-	$insert_product = mysqli_query($mysqli,"insert into tbl_products values ('','".$category_id."','".$business_id."','".$product_name."','".$desc."','0','".$cost_price."','".$selling_price."','".$add_attribute."','".$add_options."','active','".$date."') ");
+	$insert_product = mysqli_query($mysqli,"insert into tbl_products values ('','".$category_id."','".$business_id."','".$product_name."','".$desc."','0','".$cost_price."','".$selling_price."','".$add_attribute."','".$add_options."','".$tax_info."','active','".$date."') ");
 	if($insert_product)
 	{
 		$data = "success";
@@ -123,7 +124,7 @@ if(isset($_POST['submit']))
 											 <div class="col-sm-9">
 											   <div class="form-group">                
 											 <select name="product_category_id" class="form-control">
-													<option value="">Choose Category Name</option>
+													<option selected disabled value="">Choose Category Name</option>
 												<?php
 												$all_category = mysqli_query($mysqli, "select * from tbl_productcat where business_id = '".$business_id."'");
 												while ($fetch_category = mysqli_fetch_array($all_category))
@@ -259,8 +260,8 @@ if(isset($_POST['submit']))
 											  </div>
 											 <div class="col-sm-9">
 											   <div class="form-group">                
-											 <select name="product_category_id" class="form-control">
-													<option value="">Choose Tax Rate</option>
+											 <select name="tax_rate" class="form-control">
+													<option selected disabled value="">Choose Tax Rate</option>
 												<?php
 												$tax_rate = mysqli_query($mysqli, "select * from tax_rates");
 												while ($fetch_tax = mysqli_fetch_array($tax_rate))

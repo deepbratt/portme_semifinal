@@ -9,7 +9,7 @@ $fetch_details = mysqli_fetch_array($cu_info);
 			<!-- Sidebar menu -->
 			<ul class="rs-sidebar-nav default-sidebar-nav">
 				<li class="rs-user-sidebar">
-					<a href="my_account.php" style="margin:0px;padding:10px 15px;font-size:20px;">
+					<a href="edit_general_information.php" style="margin:0px;padding:10px 15px;font-size:20px;">
 							<div  style="margin-top:20px;margin-bottom:20px;text-align:center;font-weight:bold;"><?php echo ucfirst($fetch_details['enterprise_name']);?></div>
 						
 							<!--<div style="margin-top:20px;"> 19AJRPM1168P1ZA </div>-->

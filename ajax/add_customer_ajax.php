@@ -17,7 +17,7 @@ include ("../config.php");
 	$notes = $_POST['notes'];
 	$date = time();
 
-	$insert_customer_details = mysqli_query($mysqli, "insert tbl_contacts values ('','CUSTOMER','".$business_id."','".$salutation."','".$firstname."','".$lastname."','".$company_name."','".$email."','".$work_phone."','".$mobile."','".$gst."','".$billing_address."','".$billing_state."','INDIA','".$shipping_address."','".$shipping_state."','INDIA','".$notes."','active')");
+	$insert_customer_details = mysqli_query($mysqli, "insert tbl_contacts values ('','customer','".$business_id."','".$salutation."','".$firstname."','".$lastname."','".$company_name."','".$email."','".$work_phone."','".$mobile."','".$gst."','".$billing_address."','".$billing_state."','INDIA','".$shipping_address."','".$shipping_state."','INDIA','".$notes."','active')");
 	if($insert_customer_details)
 	{
 		$data = "".$firstname." ".$lastname."-".$mobile."";

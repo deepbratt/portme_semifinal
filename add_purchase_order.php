@@ -7,7 +7,7 @@
 	$fetch_last_sales = mysqli_fetch_array($get_last_sales_id);
 	$invoice_no = $fetch_last_sales['tbl_transaction_id']+1;
 	$invoice_num_gene = "INV-".date('dmy')."000".$invoice_no."";
-	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type='vendor'");
+	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id'");
 	$fetch_gst_pan_number = mysqli_fetch_array($get_fetch_details);
 	$gst_pan_number = $fetch_gst_pan_number['GST_PAN'];
 	if(isset($_POST['submit'])){
@@ -154,7 +154,7 @@ include("sidebar.php");
                           <div class="col-sm-6">
                             <div class="form-group">
                               <select class="rs-selectize-single " name="cu_id" onchange="show_customer_data(this);">
-								 <option selected disabled value="">Choose Customer</option>
+								 <option selected disabled value="">Choose Vendor</option>
 								   <?php		
 									 while($fetch_cust_details = mysqli_fetch_array($get_fetch_details))
 									 {
@@ -527,7 +527,7 @@ include("sidebar.php");
 			
 				$.ajax({
 				  type: 'post',
-				  url: 'ajax/add_customer_ajax.php',
+				  url: 'ajax/add_vendor_ajax.php',
 				  data:{
 					sal:salutation,
 					fname:fname,
@@ -556,7 +556,7 @@ include("sidebar.php");
 				var salutation = $(e).val();
 				$.ajax({
 				  type: 'post',
-				  url: 'ajax/get_customer_details.php',
+				  url: 'ajax/get_vendor_details.php',
 				  data:{
 					suggest:salutation,
 				  },
@@ -578,7 +578,7 @@ include("sidebar.php");
 				//alert(product_id);
 				$.ajax({
 				  type: 'post',
-				  url: 'ajax/get_sales_order_ajax.php',
+				  url: 'ajax/get_purchase_order_ajax.php',
 				  data:{
 					suggest:product_id,
 				  },
@@ -619,7 +619,7 @@ include("sidebar.php");
 
 				$.ajax({
 				  type: 'post',
-				  url: 'ajax/get_sales_order_ajax.php',
+				  url: 'ajax/get_purchase_order_ajax.php',
 				  data:{
 					p_id:p_id,
 					hsn:hsn,

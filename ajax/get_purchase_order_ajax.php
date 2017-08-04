@@ -55,8 +55,11 @@
 	$tax_val = $cgst + $sgst + $igst + $cess;
 	$total_tax_rate = $product_price * $tax_rate ;
 	$total_price = $product_price + $total_tax_rate +$tax_val - $discount;
-
-	
+	$query_find_qty = mysqli_query($mysqli,"SELECT * FROM tbl_products WHERE product_id='$product_id'");
+	$fetch_find_qty = mysqli_fetch_array($query_find_qty);
+	$prev_qty = $fetch_find_qty['qty'];
+	$cur_upd_qty = $prev_qty+$qty;
+	$update_quantity = mysqli_query($mysqli,"UPDATE 'portme_semifinal'.'tbl_products' SET  `qty` =  '$cur_upd_qty' WHERE  `tbl_products`.`product_id` =$product_id LIMIT 1");
 
 	
 	/*item fields ends */

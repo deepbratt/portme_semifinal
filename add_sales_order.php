@@ -8,14 +8,12 @@
 	$invoice_no = $fetch_last_sales['tbl_transaction_id']+1;
 	$invoice_num_gene = "INV-".date('dmy')."000".$invoice_no."";
 	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type ='customer'");
-	$fetch_gst_pan_number = mysqli_fetch_array($get_fetch_details);
-	$gst_pan_number = $fetch_gst_pan_number['GST_PAN'];
 	if(isset($_POST['submit'])){
 
 	$invoice_number		= $invoice_num_gene;	
 	$customer_id		=  mysqli_real_escape_string($mysqli,$_POST['cu_id']);
 	$state_code			=  mysqli_real_escape_string($mysqli,$_POST['cust_states']);
-	$gst_pan			= $gst_pan_number;
+	$gst_pan			=  mysqli_real_escape_string($mysqli,$_POST['gstin']);
 	$product_id			= $_POST['product_id'];
 	$product_array		= implode(",",$product_id);
 	$hsn				= $_POST['hsn'];
@@ -174,6 +172,17 @@ include("sidebar.php");
                           </div>
                         </div>
 						 
+						  <div class="row">
+                          <div class="col-sm-3">
+                            <b>Ecommerce- GSTIN</b>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <input  type="text" class="form-control" placeholder="Enter E-Commerce GST Number" name="gstin">
+							  <p class="help-block with-errors"></p>
+                            </div>
+                          </div>
+                        </div>
 						
 						<div class="row">
                           <div class="col-sm-3">

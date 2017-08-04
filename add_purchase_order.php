@@ -7,15 +7,15 @@
 	$fetch_last_sales = mysqli_fetch_array($get_last_sales_id);
 	$invoice_no = $fetch_last_sales['tbl_transaction_id']+1;
 	$invoice_num_gene = "INV-".date('dmy')."000".$invoice_no."";
-	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id'");
-	$fetch_gst_pan_number = mysqli_fetch_array($get_fetch_details);
-	$gst_pan_number = $fetch_gst_pan_number['GST_PAN'];
-	if(isset($_POST['submit'])){
+
+	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type = 'vendor'");
+	
+		if(isset($_POST['submit'])){
 
 	$invoice_number		= $invoice_num_gene;	
 	$customer_id		=  mysqli_real_escape_string($mysqli,$_POST['cu_id']);
 	$state_code			=  mysqli_real_escape_string($mysqli,$_POST['cust_states']);
-	$gst_pan			= $gst_pan_number;
+	$gst_pan			= mysqli_real_escape_string($mysqli,$_POST['gstin']);
 	$product_id			= $_POST['product_id'];
 	$product_array		= implode(",",$product_id);
 	$hsn				=  $_POST['hsn'];
@@ -156,10 +156,10 @@ include("sidebar.php");
                               <select class="rs-selectize-single " name="cu_id" onchange="show_customer_data(this);">
 								 <option selected disabled value="">Choose Vendor</option>
 								   <?php		
-									 while($fetch_cust_details = mysqli_fetch_array($get_fetch_details))
+									 while($fetch_vendor_details = mysqli_fetch_array($get_fetch_details))
 									 {
 									?>
-									<option value="<?php echo $fetch_cust_details['customer_id'];?>" <?php echo((isset($_GET['custid']) && $fetch_cust_details['customer_id']==$_GET['custid'])?'selected':'');?>><?php echo ucfirst($fetch_cust_details['first_name']);?>&nbsp;<?php echo ucfirst($fetch_cust_details['last_name']);?> - <?php echo $fetch_cust_details['mobile'];?></option>
+									<option value="<?php echo $fetch_vendor_details['customer_id'];?>" <?php echo((isset($_GET['custid']) && $fetch_vendor_details['customer_id']==$_GET['custid'])?'selected':'');?>><?php echo ucfirst($fetch_vendor_details['first_name']);?>&nbsp;<?php echo ucfirst($fetch_vendor_details['last_name']);?> - <?php echo $fetch_vendor_details['mobile'];?></option>
 								<?php
 									}
 								?>
@@ -173,7 +173,18 @@ include("sidebar.php");
                             </button>
                           </div>
                         </div>
-						 
+
+						 <div class="row">
+                          <div class="col-sm-3">
+                            <b>Ecommerce- GSTIN</b>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <input  type="text" class="form-control" placeholder="Enter E-Commerce GST Number" name="gstin">
+							  <p class="help-block with-errors"></p>
+                            </div>
+                          </div>
+                        </div>
 						
 						<div class="row">
                           <div class="col-sm-3">

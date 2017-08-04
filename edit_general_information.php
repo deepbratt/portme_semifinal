@@ -2,7 +2,6 @@
 include("config.php");
 
 $business_id = $_SESSION['business_id'];
-$user_id = $_SESSION['user_id'];
 
 
 if(isset($_POST['update_details']))
@@ -19,7 +18,7 @@ if(isset($_POST['update_details']))
 	$state			= mysqli_real_escape_string($mysqli,$_POST['state']);
 	if($_FILES['image']['name'] == '')
 	{
-		$select_prev = mysqli_query($mysqli,"select * from tbl_business where business_id='$business_id' OR business_id = '$user_id'");
+		$select_prev = mysqli_query($mysqli,"select * from tbl_business where business_id='$business_id'");
 		$fetch_prev = mysqli_fetch_array($select_prev);
 		$savdse_image = $fetch_prev['logo'];
 	}
@@ -118,7 +117,7 @@ if(isset($_POST['update_details']))
 
 						
 						<?php
-						$select_query = mysqli_query($mysqli,"select * from tbl_business where business_id='".$business_id."' or business_id = '".$user_id."'");
+						$select_query = mysqli_query($mysqli,"select * from tbl_business where business_id='".$business_id."'");
 						$fetch_query = mysqli_fetch_array($select_query);
 						?>
 						<div class="col-md-8 col-sm-12">

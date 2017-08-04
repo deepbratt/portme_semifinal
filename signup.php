@@ -22,7 +22,7 @@
 			$save_reg = mysqli_query($mysqli,"INSERT into tbl_business VALUES ('','".$email."','".$password."','', '','', '".$phone."', '".$type."', '".$business."', '', '', '', '', '".$country."', '', 'active', '".$date."', '','','','','','','')");
 			if($save_reg)
 			{	
-				$_SESSION['user_id'] = mysqli_insert_id($mysqli);
+				$_SESSION['business_id'] = mysqli_insert_id($mysqli);
 				echo "<script>window.location.href='edit_general_information.php'</script>";
 			}
 			else

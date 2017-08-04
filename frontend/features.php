@@ -57,7 +57,7 @@ typewrite {
                             <p>Explore the Features and Attractions</p>
                         </div>
 						<h1>
-						<a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im VipulM.", "I am Creative.", "I Love Design.", "I Love to Develop." ]'>
+						<a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im PORT-me.", "I am Creative.", "I Love to give You all Features.", "I Love to Develop Your Business." ]'>
 						<span class="wrap"></span>
 						</a>
 						</h1>
@@ -68,7 +68,7 @@ typewrite {
         <!-- ==============================================
                              **FUNCTIONALITIES**
         =============================================== -->
-         <section class="demo-request ">
+<section class="demo-request ">
     <div class="container text-center">
       <div class="request-title" style="padding:25px;">
         <h2>Start 
@@ -130,7 +130,7 @@ typewrite {
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-12">
-          <img src="images/itb.png" class="img-responsive" alt="image" style="margin-top:;">
+          <img src="images/sales_purchase.png" class="img-responsive" alt="image" style="margin-top:;">
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12">
           <div class="main-title">
@@ -215,7 +215,7 @@ typewrite {
           </div>
         </div>
         <div class="col-md-5 col-sm-6 col-xs-12">
-          <img src="images/Blog-post-07-1024x512.png" class="img-responsive" alt="image">
+          <img src="images/print_invoice.png" class="img-responsive" alt="image">
         </div>
       </div>
     </div>
@@ -234,72 +234,19 @@ typewrite {
       </div>
     </div>
   </section>
-  <section class="ptb-100 functionalities bg-gray">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5 col-sm-6 col-xs-12">
-          <img src="images/WellSpent10TaxPuzzle-620x300.jpg" alt="image">
-        </div>
-        <div class="col-md-7 col-sm-6 col-xs-12">
-          <div class="main-title">
-            <h3>Purchase Order And Sales Order
-            </h3>
-            <div class="seperator">
-            </div>
-          </div>
-          <p style="font-family:'Montserrat', sans-serif;">Sales Order is issued when a customer buys something from you company. The company is credited and the customer is debited. Purchase Order is issued when the company buys something from the vendor.
-          </p>
-          <div class="row">
-            <div class="col-md-6 col-xs-12">
-              <ul>
-                <li style="font-family:'Montserrat', sans-serif;">Purposes.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Submission.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Order Processing.
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-xs-12">
-              <ul>
-                <li style="font-family:'Montserrat', sans-serif;">Supplier for the stock item.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Quantity from the Sales Order.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Description of the stock item.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End Container -->
-  </section>
-  <!-- End Section -->
-  <section class="demo-request ">
-    <div class="container text-center">
-      <div class="request-title" style="padding:25px;">
-        <h2>Start 
-          <span>free
-          </span> Fedrex trial!
-        </h2>
-        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
-        </p>
-      </div>
-    </div>
-  </section>
-  <section class="ptb-100 functionalities bg-white">
+  
+  
+ <section class="ptb-100 functionalities bg-white">
     <div class="container">
       <div class="row">
         <div class="col-md-7 col-sm-6 col-xs-12">
           <div class="main-title">
-            <h3>E-filing income tax returns for business.
+            <h3>Criteria for Billing and Invoices
             </h3>
             <div class="seperator">
             </div>
           </div>
-          <p style="font-family:'Montserrat', sans-serif;">Under GST invoicing rules and formats have been notified covering details such as supplier's name, shipping and billing address, HSN Code, place of supply, rate. In this article we will be covering all aspects of invoicing under GST.
+          <p style="font-family:'Montserrat', sans-serif;">Tax invoice is generally issued to charge the tax and pass on the credit. In GST there are some instances where the service provider is not allowed to charge any tax and hence a Tax invoice can’t be issued instead another document called Bill of Supply is issued.
           </p>
           <div class="row">
             <div class="col-md-6 col-xs-12">
@@ -330,8 +277,69 @@ typewrite {
             </div>
           </div>
         </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <img src="images/sales_purchase.png" class="img-responsive" alt="image" style="margin-top:;">
+        </div>
+      </div>
+    </div>
+    <!-- End Container -->
+  </section>
+  <!-- End Section -->
+  <section class="demo-request ">
+    <div class="container text-center">
+      <div class="request-title" style="padding:25px;">
+        <h2>Start 
+          <span>free
+          </span> Fedrex trial!
+        </h2>
+        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="ptb-100 functionalities bg-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-sm-6 col-xs-12">
+          <div class="main-title">
+            <h3>E-filing income tax returns for business.
+            </h3>
+            <div class="seperator">
+            </div>
+          </div>
+          <p style="font-family:'Montserrat', sans-serif;">The full form of e-filing is “Electronic Filing”.  In view of expansion of internet, e-filing has not only been popular but is also mandatory in large number of cases.  E-filing is The process of submitting tax returns over the Internet, using tax preparation software that has been pre-approved by the relevant tax authority.The biggest advantage of  e-filing of tax returns is that you can do this from any place at any time, thereby saving a lot of time and effort. It is simple, easy and faster than filing returns manually.
+          </p>
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <ul>
+                <li style="font-family:'Montserrat', sans-serif;">Your PAN Card, your e-filing password, your bank statements across all the accounts you operate (including loan accounts).
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Your tax returns also ask for your Aadhar and passport numbers — it is an optional detail, but ifyou have both, take those as well.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Principal and interest payment certificate from loan provider.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Customer and taxpayer's GSTIN.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Place of supply.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Details of insurance payments and donations, and if you are a freelancer or an independent professional, your credit card bills.
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <ul>
+                <li style="font-family:'Montserrat', sans-serif;">Taxable value and discounts.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Rate and amount of taxes i.e. CGST/ SGST/ IGST.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Item details i.e. description, unit price, quantity.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <div class="col-md-5 col-sm-6 col-xs-12">
-          <img src="images/Blog-post-07-1024x512.png" class="img-responsive" alt="image">
+          <img src="images/transaction.png" class="img-responsive" alt="image">
         </div>
       </div>
     </div>

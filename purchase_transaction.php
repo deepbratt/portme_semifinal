@@ -2,7 +2,6 @@
 include ("config.php");
 $business_id = $_SESSION['business_id'];
 $bill_info = mysqli_query($mysqli, "select * from tbl_transactions where business_id='".$business_id."' and tbl_transaction_type='purchase'");
-$fetch_sales_order_info = mysqli_fetch_array($bill_info);
 ?>
 
 <!DOCTYPE html>
@@ -113,7 +112,9 @@ include("sidebar.php");
 							</tr>
 					</thead>
 					<tbody>	
-								
+							<?php
+							while($fetch_sales_order_info = mysqli_fetch_array($bill_info)){
+							?>
 							<tr>
 							<td><?php echo $fetch_sales_order_info['invoice_no']?> </td>	
 							<td>
@@ -256,7 +257,9 @@ include("sidebar.php");
 								</td>
 						
 							</tr>
-							
+								<?php
+							}	
+							?>
 							
 							</tbody>						
 

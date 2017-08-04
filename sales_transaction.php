@@ -2,7 +2,6 @@
 include ("config.php");
 $business_id = $_SESSION['business_id'];
 $bill_info = mysqli_query($mysqli, "select * from tbl_transactions where business_id='".$business_id."' and tbl_transaction_type='sales'");
-$fetch_sales_order_info = mysqli_fetch_array($bill_info);
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +12,7 @@ $fetch_sales_order_info = mysqli_fetch_array($bill_info);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Port-ME | Sales Order
+    <title>Port-ME | Purchase Order
     </title>
     <?php include("metalinks.php");?>
    <style>
@@ -44,8 +43,8 @@ $fetch_sales_order_info = mysqli_fetch_array($bill_info);
     <!--[if lt IE 8]>s
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-   	<div id="rs-wrapper">
-  
+ 	<div id="rs-wrapper">
+   
 <?php 
 include("header.php");
 include("sidebar.php");
@@ -59,27 +58,12 @@ include("sidebar.php");
               <div class="rs-dashhead-content">
                 <div class="rs-dashhead-titles">
                   <h3 class="rs-dashhead-title m-t">
-                     Sales Order Transaction :                    
+                     Purchase Order Transaction :                    
                   </h3>
                 </div>
               </div>
 
-            </div>
-
-	
-					<?php
-						$owner_id = $fetch_sales_order_info['business_id'];
-						$get_owner_info = mysqli_query($mysqli, "select * from tbl_business where business_id = '".$owner_id."'");
-						$fetch_owner_info = mysqli_fetch_array($get_owner_info);
-
-						$owner_state_id = $fetch_owner_info['state'];
-						$get_owner_state_info = mysqli_query($mysqli, "select * from states where states_id = '".$owner_state_id."'");
-						$fetch_owner_state_info = mysqli_fetch_array($get_owner_state_info);
-
-						
-								
-					?> 
-                
+            </div>               
                 <div class="container-fluid">
 				
 				<!-- table starts -->
@@ -88,7 +72,7 @@ include("sidebar.php");
 						<thead>
 						   <tr style="font-size:15px;">
 								<th style="text-align:center;">Invoice Number</th>
-								<th style="text-align:center;">Customer Name</th>
+								<th style="text-align:center;">Vendor Name</th>
 								<th style="text-align:center;">Place of Supply</th>
 								<th style="text-align:center;">Product</th>
 								<th style="text-align:center;">HSN</th>
@@ -127,7 +111,10 @@ include("sidebar.php");
 							
 							</tr>
 					</thead>
-					<tbody>		
+					<tbody>	
+							<?php
+							while($fetch_sales_order_info = mysqli_fetch_array($bill_info)){
+							?>
 							<tr>
 							<td><?php echo $fetch_sales_order_info['invoice_no']?> </td>	
 							<td>
@@ -150,7 +137,7 @@ include("sidebar.php");
 							echo ucfirst($fetch_state_info['states_name']);
 							?>
 							</td>
-								<td style="text-align:center;">								
+								<td style="text-align:center;">									
 											<?php 
 											$product_id = explode(",",$fetch_sales_order_info['product_id_array']);
 											//print_r($product_id);
@@ -270,6 +257,9 @@ include("sidebar.php");
 								</td>
 						
 							</tr>
+								<?php
+							}	
+							?>
 							
 							</tbody>						
 
@@ -286,16 +276,16 @@ include("sidebar.php");
             </div>
 
           </div>
-
 		</form>
+		
         </div>
 		
 	</div>
 
       </article>  
-	  		<?php include("footer.php");?>
+	  		
+<?php include("footer.php");?>
 </div>
-
 	  
 	  	<script src="js/datatables.min.js"></script>
 	<!--<script src="js/datatables-example.js"></script>-->

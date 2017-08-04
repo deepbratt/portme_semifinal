@@ -1,84 +1,166 @@
-        <footer id="footer" class="light-footer">
-            <div class="sub-footer ptb-20">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-sm-8 col-xs-12">
-                            <form class="form-inline form-subscribe">
-                                <div class="input-group">
-                                    <input type="email" class="form-control" placeholder="Enter Email">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-suscribe" type="button">SUBSCRIBE</button>
-                                    </span>
-                                </div><!-- /input-group -->
+ <script type="text/javascript">
+    $(document).ready(function() {
+      $('.owl-carousel-blog').owlCarousel({
+          rtl:false,
+          loop:false,
+          margin:10,
+          nav:true,
+          navigationText : ["", ""],
+          responsive:{
+              0:{
+                  items:1
+              },
+              500:{
+                  items:2
+              },
+              992:{
+                  items:3
+              },
+              1200:{
+                  items:4
+              }
+          }
+      })
+    
+      // blog arrow
+      $(".owl-prev").html("<i class='fa fa-chevron-left' aria-hidden='true'></i>");
+      $(".owl-next").html("<i class='fa fa-chevron-right' aria-hidden='true'></i>");
+    });
+  </script>
+  <!-- featured in -->
+  <!-- <div class="full_width fetured_sm_hd">
+    <h1 class="text-center">FEATURED IN</h1>
+    </div> -->
+  <!-- blog update section end -->
+  <span id="totopa"><i class="fa fa-arrow-up"></i></span>
+  <!--Footer start-->
 
-                            </form>
-                        </div>
-				
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <ul class="footer-social hi-icon-effect-8">
-                                <li><a href="#" class="hi-icon glyphicon-facebook"></a></li>
-                                <li><a href="#" class="hi-icon glyphicon-twitter"></a></li>
-                                <li><a href="#" class="hi-icon glyphicon-linkedin"></a></li>
-                                <li><a href="#" class="hi-icon glyphicon-google"></a></li>
-                            </ul>
-							
-                        </div>
-                    </div><!-- End Container -->
-                </div><!-- End Sub Footer -->
-            </div>
-            <div class="footer-bottom ptb-20 paraxify">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-4 col-xs-12 copyright">
-                            &COPY; Port me. All Rights are Reserved.
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 footer-logo text-center">
-                            <img src="images/LOGO/banner_logo.png" alt="logo" style="">
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 back-to-top">
-                            <a href="#top" id="back-top"><span class="ti-arrow-circle-up"></span></a>
-                        </div>
-                    </div>
-                </div><!-- End Container -->
-            </div><!-- End Bottom Footer -->
-        </footer>
-		
-		 <!-- jQuery -->
-        <script src="js/jquery.min.js"></script>
-        <!-- Bootstrap JS -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- Modenizer JS -->
-        <script src="js/modernizr-custom.js"></script>
-        <!-- Bootsvav Menu -->
-        <script src="js/bootsnav.js" type="text/javascript"></script>
-        <!-- Parallax -->
-        <script src="js/paraxify.min.js" type="text/javascript"></script>
-        <!-- Custom JS -->
-        <script src="js/custom.js"></script>
-		 <!-- jQuery -->
-        <script src="js/jquery.min.js"></script>
-        <!-- Bootstrap JS -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- Modenizer JS -->
-        <script src="js/modernizr-custom.js"></script>
-        <!-- Bootsvav Menu -->
-        <script src="js/bootsnav.js" type="text/javascript"></script>
-        <!-- Parallax -->
-        <script src="js/paraxify.min.js" type="text/javascript"></script>
-        <!-- Custom JS -->
-        <script src="js/custom.js"></script>
-        <!-- ==============================================
-                ** STYLE SWITCHER-ONLY FOR DEMO PURPOSE**
-        =============================================== -->
+
+  <footer class="main-footer">
+    <div class="ft-btm-sec">
+      <div class="row">
+        <div class="col-lg-12" style="text-align:center;">
+          <ul class="hmeftr">
+            <li><a href=#coaches/start-coaching>Become a Mentor</a></li>
+            <li><a href=#pages/privacy>Privacy Policy</a></li>
+            <li><a href=#pages/terms>Terms</a></li>
+            <li><a href="http://learn.port-me.com" target="_target">Blog</a></li>
+            <li><a href="javascript:void(0)">FAQ</a></li>
+          </ul>
+          <p>Copyright &copy; 2017 - Port-Me. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </footer>
+  <!--Footer End-->
+  <script src="js/TweenMax.min.js"></script>
+  <script src="js/ScrollToPlugin.min.js"></script>
+  <script type="text/javascript" src="js/slick.min.js"></script>
+  <script type="text/javascript">
+    /*Testimonial Slider*/
+    
+    $('.testi-slider-con').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    dots: true,
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+    
+  var universities = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace,
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  // url points to a json file that contains an array of country names, see
+  // https://github.com/twitter/typeahead.js/blob/gh-pages/data/countries.json
+  prefetch: '#u_name.json'
+});
+
+
+	// options being used
+	$('#prefetch .typeahead').typeahead(null, {
+	  name: 'universities',
+	  source: universities
+	}).on('typeahead:selected', function(event, selection) {
+	  
+	  // the second argument has the info you want
+	  u_url = convertToSlug(selection);
+	  window.location.href = '#university/'+u_url;
+	  //alert(selection);
+	});
+
+function convertToSlug(text){
+		return text.toString().toLowerCase()
+			.replace(/\s+/g, '-')           // Replace spaces with -
+			.replace(/[^\u0100-\uFFFF\w\-]/g,'-') // Remove all non-word chars ( fix for UTF-8 chars )
+			.replace(/\-\-+/g, '-')         // Replace multiple - with single -
+			.replace(/^-+/, '')             // Trim - from start of text
+			.replace(/-+$/, '');            // Trim - from end of text
+		}
+    
+    
+      if ($(window).width() > 767) {
+        var winH = $(window).height(); $('.section_top').css('height',winH);
+      }else {
+        $('.section_top').css('height','auto');
+      }
+      $(window).resize(function() {
+        if ($(window).width() > 767) {
+        var winH = $(window).height(); $('.section_top').css('height',winH);
+        }else {
+          $('.section_top').css('height','auto');
+        }
+      });
+    
+      // Header top scrolled down
+      $('.bounce').on('click',function() {
+        $('html,body').animate({
+          scrollTop: $("#whtscoch").offset().top},
+          1200);
+      });
+    
+      // on scroll number drop one by one
+      $(window).scroll(function() {
+        var winScroll = $(window).scrollTop();
+        var one = $('.one'),
+            two = $('.two'),
+            three = $('.three'),
+            four = $('.four');
+    
+        if (winScroll > $("#how").offset().top - 250) {
+          setTimeout(function() {
+            // $(one).removeClass('hidden').addClass('slideInDown');
+          },500);
+          setTimeout(function() {
+            $(two).removeClass('hidden').addClass('slideInDown');
+          },500);
+          setTimeout(function() {
+            $(three).removeClass('hidden').addClass('slideInDown');
+          },1500);
+          setTimeout(function() {
+            $(four).removeClass('hidden').addClass('slideInDown');
+          },2200);
+        }else {
+          $('.two,.three,.four').addClass('hidden').removeClass('slideInDown');
+        }
+      });
+    
+      //
+      $('#browse_prog').click(function(){
+          $('html, body').animate({scrollTop:0}, 2000);
+          return false;
+      });
       
-       
-        <!--Style Switcher Script-->
-        <script src="js/style-switcher.js"></script>
-		<script src="js/tether.min.js"
-        integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
-        crossorigin="anonymous"></script>
-		 <script src="js/jquery.matchHeight-min.js"></script>
-	<script type="text/javascript">
+    });
+    
+     
+    
+    
+  </script>
+  <script type="text/javascript">
     function switchClass(i) {
 	   var lis = $('#home-news > div');
 	   lis.eq(i).removeClass('home_header_on');
@@ -96,87 +178,5 @@
     
     
   </script>
-  <script>
-		if ($(window).width() > 767) {
-				var winH = $(window).height(); $('.section_top').css('height',winH);
-			  }else {
-				$('.section_top').css('height','auto');
-			  }
-			  $(window).resize(function() {
-				if ($(window).width() > 767) {
-				var winH = $(window).height(); $('.section_top').css('height',winH);
-				}else {
-				  $('.section_top').css('height','auto');
-				}
-			  });
-			
-			  // Header top scrolled down
-			  $('.bounce').on('click',function() {
-				$('html,body').animate({
-				  scrollTop: $("#whtscoch").offset().top},
-				  1200);
-			  });
-			  
-			  
-			  
-			  
-var TxtType = function(el, toRotate, period) {
-        this.toRotate = toRotate;
-        this.el = el;
-        this.loopNum = 0;
-        this.period = parseInt(period, 10) || 2000;
-        this.txt = '';
-        this.tick();
-        this.isDeleting = false;
-    };
+  <script type="text/javascript" src="js/owl.carousel.min.js"></script>
 
-    TxtType.prototype.tick = function() {
-        var i = this.loopNum % this.toRotate.length;
-        var fullTxt = this.toRotate[i];
-
-        if (this.isDeleting) {
-        this.txt = fullTxt.substring(0, this.txt.length - 1);
-        } else {
-        this.txt = fullTxt.substring(0, this.txt.length + 1);
-        }
-
-        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-        var that = this;
-        var delta = 200 - Math.random() * 100;
-
-        if (this.isDeleting) { delta /= 2; }
-
-        if (!this.isDeleting && this.txt === fullTxt) {
-        delta = this.period;
-        this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === '') {
-        this.isDeleting = false;
-        this.loopNum++;
-        delta = 500;
-        }
-
-        setTimeout(function() {
-        that.tick();
-        }, delta);
-    };
-
-    window.onload = function() {
-        var elements = document.getElementsByClassName('typewrite');
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
-            }
-        }
-        // INJECT CSS
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
-        document.body.appendChild(css);
-    };
-		</script>
-		
-    
-        <!--End Style Switcher-->

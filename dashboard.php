@@ -93,95 +93,94 @@ $business_id = $_SESSION['business_id'];
 										$select_vendor = mysqli_query($mysqli,"select * from tbl_contacts where business_id='$business_id' and customer_type='vendor'");
 										$count_vendor = mysqli_num_rows($select_vendor);
 									?>
-									<div class="col-sm-3" align="center">
-										<div class="quick-stat panel panel-rounded bg-grad bg-grad-05 borderless">
-											<div class="panel-heading borderless">
-												<p class="subtitle text-lighten text-uppercase m-b-xs">Vendors</p>
-												<h3 class="m-a-0 p-a-0"><?php echo $count_vendor;?></h3>
+									<a href="vendor.php">
+										<div class="col-sm-3" align="center">
+											<div class="quick-stat panel panel-rounded bg-grad bg-grad-05 borderless">
+												<div class="panel-heading borderless">
+													<p class="subtitle text-lighten text-uppercase m-b-xs">Vendors</p>
+													<h3 class="m-a-0 p-a-0"><?php echo $count_vendor;?></h3>
+												</div>
 											</div>
 										</div>
-									</div>
+									</a>
 
 									<?php
 										$select_customer = mysqli_query($mysqli,"select * from tbl_contacts where business_id='$business_id' and customer_type='customer'");
 										$count_customer = mysqli_num_rows($select_customer);
 									?>
-									<div class="col-sm-3" align="center">
-										<div class="quick-stat panel panel-rounded bg-grad bg-grad-03 borderless">
-											<div class="panel-heading borderless">
-												<p class="subtitle text-lighten text-uppercase m-b-xs">Customers</p>
-												<h3 class="m-a-0 p-a-0"><?php echo $count_customer;?></h3>
+									<a href="customer.php">
+										<div class="col-sm-3" align="center">
+											<div class="quick-stat panel panel-rounded bg-grad bg-grad-03 borderless">
+												<div class="panel-heading borderless">
+													<p class="subtitle text-lighten text-uppercase m-b-xs">Customers</p>
+													<h3 class="m-a-0 p-a-0"><?php echo $count_customer;?></h3>
+												</div>
 											</div>
 										</div>
-									</div>
+									</a>
 
 									<?php
 										$select_product = mysqli_query($mysqli,"select * from tbl_products where business_id ='$business_id' and status ='active'");
 										$count_product = mysqli_num_rows($select_product);
 									?>
-									<div class="col-sm-3" align="center">
-										<div class="quick-stat panel panel-rounded bg-grad bg-grad-15 borderless">
-											<div class="panel-heading borderless">
-												<p class="subtitle text-lighten text-uppercase m-b-xs">Products</p>
-												<h3 class="m-a-0 p-a-0"><?php echo $count_product;?></h3>
+									<a href="product.php">
+										<div class="col-sm-3" align="center">
+											<div class="quick-stat panel panel-rounded bg-grad bg-grad-15 borderless">
+												<div class="panel-heading borderless">
+													<p class="subtitle text-lighten text-uppercase m-b-xs">Products</p>
+													<h3 class="m-a-0 p-a-0"><?php echo $count_product;?></h3>
+												</div>
 											</div>
 										</div>
-									</div>
+									</a>
 
 									<?php
 										$select_cat = mysqli_query($mysqli,"select * from tbl_productcat where business_id ='$business_id' and status ='active'");
 										$count_cat = mysqli_num_rows($select_cat);
 									?>
-									<div class="col-sm-3" align="center">
-										<div class="quick-stat panel panel-rounded bg-grad bg-grad-15 borderless">
-											<div class="panel-heading borderless">
-												<p class="subtitle text-lighten text-uppercase m-b-xs">Product Categories</p>
-												<h3 class="m-a-0 p-a-0"><?php echo $count_cat;?></h3>
+									<a href="product_group.php">
+										<div class="col-sm-3" align="center">
+											<div class="quick-stat panel panel-rounded bg-grad bg-grad-15 borderless">
+												<div class="panel-heading borderless">
+													<p class="subtitle text-lighten text-uppercase m-b-xs">Product Categories</p>
+													<h3 class="m-a-0 p-a-0"><?php echo $count_cat;?></h3>
+												</div>
 											</div>
 										</div>
-									</div>
+									</a>
 
 								</div><!-- /.row -->
 
 								<!-- Begin Panel -->
-								<div class="panel panel-plain panel-rounded">
+								<!--<div class="panel panel-plain panel-rounded">
 									<div class="panel-heading borderless">
 										<h3 class="panel-title">Top Item Sales</h3>
 										<p class="subtitle text-uppercase m-t">Last 10 Months</p>
-										<!-- Begin Panel Toolbar -->
-										<!--<div class="panel-toolbar mobile-block">
-											<button class="btn btn-default btn-sm block-on-mobile"><i class="gcon gcon-print m-r"></i> Print</button>
-											<button class="btn btn-default btn-sm block-on-mobile"><i class="fa fa-file-pdf-o"></i>  PDF</button>
-											<button class="btn btn-default btn-sm block-on-mobile"><i class="fa fa-file-excel-o"></i> Excel</button>
-											<button class="btn btn-default btn-sm block-on-mobile"><i class="fa fa-table"></i>  CSV</button>
-											<button class="btn btn-default btn-sm block-on-mobile"><i class="fa fa-files-o"></i>  Copy</button>
-										</div>--><!-- /.panel-toolbar -->
-										<!-- End Panel Toolbar -->
-									</div><!-- /.panel-heading -->
+									</div>
 									<div class="panel-body">
 										<div id="morris-hero-area" style="width: 105%; height: 300px;"></div>
-									</div><!-- .panel-body -->
+									</div>
 									<div class="panel-body p-t-0">
 										<div class="rs-col-stacked full-width-on-mobile borderless border-items m-a-0">
 											<div class="stacked-item p-a text-center">
 												<p class="text-muted m-a-0">Total Sales</p>
 												<h3 class="m-t-0 f-w-400">213,015</h3>
-											</div><!-- /.stacked-item -->
+											</div>
 											<div class="stacked-item p-a text-center">
 												<p class="text-muted m-a-0">Total Revenue</p>
 												<h3 class="m-t-0 f-w-400 text-success">$2.5M</h3>
-											</div><!-- /.stacked-item -->
+											</div>
 											<div class="stacked-item p-a text-center">
 												<p class="text-muted m-a-0">This Year Sales</p>
 												<h3 class="m-t-0 f-w-400 text-info">57,760</h3>
-											</div><!-- /.stacked-item -->
+											</div>
 											<div class="stacked-item p-a text-center">
 												<p class="text-muted m-a-0">Today Revenue</p>
 												<h3 class="m-t-0 f-w-400 text-warning">$2,257</h3>
-											</div><!-- /.stacked-item -->
-										</div><!-- /.rs-col-stacked -->
-									</div><!-- .panel-body -->
-								</div><!-- /.panel -->
+											</div>
+										</div>
+									</div>
+								</div>-->
 								<!-- End Panel -->
 
 							</div><!-- /.col-md-9 -->
@@ -208,48 +207,21 @@ $business_id = $_SESSION['business_id'];
 							</div><!-- /.panel-heading -->
 							<div class="panel-body p-a-0">
 								<div class="rs-col-stacked full-width-on-mobile border-items borderless m-a-0">
+								<?php
+								$select_pro = mysqli_query($mysqli,"select * from tbl_products where business_id='$business_id' and status='active' order by qty asc limit 6");
+								while($fetch_pro = mysqli_fetch_array($select_pro)){
+								?>
 									<div class="text-center stacked-item p-a-md p-b-lg">
-										<p>ThemeForest</p>
+										<p><b><?php echo ucfirst($fetch_pro['name']);?></b></p>
 										<div class="easypiechart easypie-info text-muted" data-percent="100">
-											<span class="text-info">200</span>
+											<span class="text-info"><?php echo $fetch_pro['qty'];?></span>
 											<small>Items</small>
 										</div><!-- /.easypiechart -->
 									</div><!-- /.stacked-item -->
-									<div class="text-center stacked-item p-a-md p-b-lg">
-										<p>CodeCanyon</p>
-										<div class="easypiechart easypie-warning text-muted" data-percent="35">
-											<span class="text-warning">17</span>
-											<small>Items</small>
-										</div><!-- /.easypiechart -->
-									</div><!-- /.stacked-item -->
-									<div class="text-center stacked-item p-a-md p-b-lg">
-										<p>VideoHive</p>
-										<div class="easypiechart easypie-danger text-muted" data-percent="15">
-											<span class="text-danger">3</span>
-											<small>Items</small>
-										</div><!-- /.easypiechart -->
-									</div><!-- /.stacked-item -->
-									<div class="text-center stacked-item p-a-md p-b-lg">
-										<p>AudioJungle</p>
-										<div class="easypiechart easypie-danger text-muted" data-percent="18">
-											<span class="text-danger">4</span>
-											<small>Items</small>
-										</div><!-- /.easypiechart -->
-									</div><!-- /.stacked-item -->
-									<div class="text-center stacked-item p-a-md p-b-lg">
-										<p>GraphicRiver</p>
-										<div class="easypiechart easypie-success text-muted" data-percent="75">
-											<span class="text-success">125</span>
-											<small>Items</small>
-										</div><!-- /.easypiechart -->
-									</div><!-- /.stacked-item -->
-									<div class="text-center stacked-item p-a-md p-b-lg">
-										<p>PhotoDune</p>
-										<div class="easypiechart easypie-success text-muted" data-percent="98">
-											<span class="text-success">2.3K</span>
-											<small>Items</small>
-										</div><!-- /.easypiechart -->
-									</div><!-- /.stacked-item -->
+								<?php
+								}
+								?>
+									
 								</div><!-- /.rs-col-stacked -->
 								<div class="table-responsive">
 									<table class="table rs-table table-striped table-hover table-b-t">

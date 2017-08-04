@@ -16,29 +16,29 @@
 	$customer_id		=  mysqli_real_escape_string($mysqli,$_POST['cu_id']);
 	$state_code			=  mysqli_real_escape_string($mysqli,$_POST['cust_states']);
 	$gst_pan			= $gst_pan_number;
-	$product_id			=  mysqli_real_escape_string($mysqli,$_POST['product_id']);
+	$product_id			= $_POST['product_id'];
 	$product_array		= implode(",",$product_id);
-	$hsn				=  mysqli_real_escape_string($mysqli,$_POST['hsn']);
+	$hsn				= $_POST['hsn'];
 	$hsn_array			= implode(",",$hsn);
-	$quantity			=  mysqli_real_escape_string($mysqli,$_POST['qty']);
+	$quantity			=  $_POST['qty'];
 	$quantity_array		= implode(",",$quantity);
-	$unit_price			=  mysqli_real_escape_string($mysqli,$_POST['unit_price']);
+	$unit_price			= $_POST['unit_price'];
 	$unit_price_array	= implode(",",$unit_price);
-	$tax_rate			=  mysqli_real_escape_string($mysqli,$_POST['tax_rate']);
+	$tax_rate			= $_POST['tax_rate'];
 	$tax_rate_array		= implode(",",$tax_rate);
-	$tax_cgst			=  mysqli_real_escape_string($mysqli,$_POST['cgst']);
+	$tax_cgst			=  $_POST['cgst'];
 	$tax_cgst_array		= implode(",",$tax_cgst);
-	$tax_sgst			=  mysqli_real_escape_string($mysqli,$_POST['sgst']);
+	$tax_sgst			= $_POST['sgst'];
 	$tax_sgst_array		= implode(",",$tax_sgst);
-	$tax_igst			=  mysqli_real_escape_string($mysqli,$_POST['igst']);
+	$tax_igst			=  $_POST['igst'];
 	$tax_igst_array		= implode(",",$tax_igst);
-	$tax_cess			=  mysqli_real_escape_string($mysqli,$_POST['cess']);
+	$tax_cess			=  $_POST['cess'];
 	$tax_cess_array		= implode(",",$tax_cess);
-	$tax_value			=  mysqli_real_escape_string($mysqli,$_POST['tax_val']);
+	$tax_value			= $_POST['tax_val'];
 	$tax_value_array	= implode(",",$tax_value);
-	$discount			=  mysqli_real_escape_string($mysqli,$_POST['discount']);
+	$discount			=  $_POST['discount'];
 	$discount_array		= implode(",",$discount);
-	$total				=  mysqli_real_escape_string($mysqli,$_POST['total']);
+	$total				= $_POST['total'];
 	$total_array		= implode(",",$total);
 	$subtotal			=  mysqli_real_escape_string($mysqli,$_POST['tt_subtotal']);
 	$totaldiscount		=  mysqli_real_escape_string($mysqli,$_POST['tt_discount']);
@@ -47,8 +47,8 @@
 	$date				=  mysqli_real_escape_string($mysqli,strtotime($_POST['invoicedate']));
 	
 
- $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'sales', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$state_code."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
-
+ 
+  $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'sales', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$state_code."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
 	if($insert_sales_order)
 		{		
 			$data = "success";		

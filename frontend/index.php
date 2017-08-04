@@ -546,20 +546,19 @@ include("meta_links.php");
           </div>
           <p style="font-family:'Montserrat', sans-serif;">The new tax regime follows a multi-stage collection mechanism wherein tax is collected at every stage and the credit of tax paid (input tax credit) at the previous stage is available as a set-off at the next stage of transaction. This helps to eliminate "tax on tax" or the cascading impact of tax.
           </p>
-          <!-- <div class="row">
-<div class="col-md-6 col-xs-12">
+          <div class="row">
+<div class="col-md-12 col-xs-12">
 <ul>
-<li>Ut lacinia ligula tristique tempus.</li>
-<li>In ornare nisl vitae pulvinar posuere.</li>
+<li> Error free submission .</li>
+<li>Quick refund .</li>
+<li>Convenience.</li>
+<li>Avoid delays.</li>
+<li>Effortless and efficient.</li>
 </ul>
 </div>
-<div class="col-md-6 col-xs-12">
-<ul>
-<li>In et orci sit amet leo consequat.</li>
-<li>Nullam pellentesque arcu vitae congue.</li>
-</ul>
+
 </div>
-</div>  -->
+      
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12">
           <img src="images/Zero-rated-supplies-2.png" class="img-responsive" alt="image">
@@ -585,46 +584,31 @@ include("meta_links.php");
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-12">
-          <img src="images/itb.png" class="img-responsive" alt="image" style="margin-top:;">
+          <img src="images/sales_purchase.png" class="img-responsive" alt="image" style="margin-top:;">
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12">
           <div class="main-title">
-            <h3>Advantages of E-Filling 
+            <h3>Inventory Management 
             </h3>
             <div class="seperator">
             </div>
           </div>
           <p style="font-family:'Montserrat', sans-serif;">
-            <b>1. Error free submission 
-            </b>- Real time error check is possible through income tax authorities. Validations are helpful to ensure the return perfect
-            <br/>
-            <b>2. Quick refund 
-            </b>- Online filing enables the department to process the return with minimum time and therefore refund become very easy.
-            <br/>
-            <b>3. Avoid delays 
-            </b>- Paper filing of return always depends the time of office, queues, spot self-correction, holidays, presence of officer, etc. Regardless of these matters any person can file their income at anytime from anywhere.
-            <br/>
-            <b>4. Effortless and efficient 
-            </b>- Controlled and guided entry set by the utility or software pave the way to proper and fast completion of IT return. Filling in paper return always brings confusion and error, but a neat and clean return can be given through online filing.
+			Inventory management is the ongoing process of moving parts and products into and out of a company’s location(s). Companies manage their inventory on a daily basis as they place new orders for products and ship orders out to customers. It’s important that business leaders gain a firm grasp of everything involved in the inventory management process. That way, they can figure out creative ways to solve inventory management challenges by finding the right solutions.
+			
           </p>
-          <!-- <div class="row">
-<div class="col-md-6 col-xs-12">
+<div class="row">
+<div class="col-md-12 col-xs-12">
 <ul>
-<li> Prompt processing.</li>
-<li>Better accuracy.</li>
-<li>Convenience.</li>
-<li>Confidentiality.</li>
-<li>Accessibility to past data.</li>
+<li>Inventory Management Challenges.</li>
+<li>Inventory Management Attempts.</li>
+<li>Inventory Management Solutions.</li>
+<li>Inventory Management Usefulness.</li>
+<li>Effortless and efficient.</li>
 </ul>
 </div>
-<div class="col-md-6 col-xs-12">
-<ul>
-<li>Proof of receipt.</li>
-<li>Ease of use.</li>
-<li>Donec nec odio a tellus eleifend.</li>
-</ul>
+
 </div>
-</div> -->
         </div>
       </div>
     </div>
@@ -653,7 +637,7 @@ include("meta_links.php");
             <div class="seperator">
             </div>
           </div>
-          <p style="font-family:'Montserrat', sans-serif;">Under GST invoicing rules and formats have been notified covering details such as supplier's name, shipping and billing address, HSN Code, place of supply, rate. In this article we will be covering all aspects of invoicing under GST.
+          <p style="font-family:'Montserrat', sans-serif;">Tax invoice is generally issued to charge the tax and pass on the credit. In GST there are some instances where the service provider is not allowed to charge any tax and hence a Tax invoice can’t be issued instead another document called Bill of Supply is issued.
           </p>
           <div class="row">
             <div class="col-md-6 col-xs-12">
@@ -685,7 +669,7 @@ include("meta_links.php");
           </div>
         </div>
         <div class="col-md-5 col-sm-6 col-xs-12">
-          <img src="images/Blog-post-07-1024x512.png" class="img-responsive" alt="image">
+          <img src="images/print_invoice.png" class="img-responsive" alt="image">
         </div>
       </div>
     </div>
@@ -708,39 +692,100 @@ include("meta_links.php");
     <div class="container">
       <div class="row">
         <div class="col-md-5 col-sm-6 col-xs-12">
-          <img src="images/WellSpent10TaxPuzzle-620x300.jpg" alt="image">
+          <img src="images/purchase_order.php" class="img-responsive" alt="image">
         </div>
         <div class="col-md-7 col-sm-6 col-xs-12">
           <div class="main-title">
-            <h3>How to submit ITR returns
+            <h3>Purchase Order And Sales Order
             </h3>
             <div class="seperator">
             </div>
           </div>
-          <p style="font-family:'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque efficitur turpis, vitae dictum dolor tristique in. Mauris tristique id urna at cursus. Aliquam maximus, ligula nec commodo maximus, felis metus sagittis ligula, lobortis consequat ante risus ut elit.
+          <p style="font-family:'Montserrat', sans-serif;">Sales Order is issued when a customer buys something from you company. The company is credited and the customer is debited. Purchase Order is issued when the company buys something from the vendor.
           </p>
           <div class="row">
             <div class="col-md-6 col-xs-12">
               <ul>
-                <li style="font-family:'Montserrat', sans-serif;">Ut lacinia ligula tristique tempus.
+                <li style="font-family:'Montserrat', sans-serif;">Purposes.
                 </li>
-                <li style="font-family:'Montserrat', sans-serif;">In ornare nisl vitae pulvinar posuere.
+                <li style="font-family:'Montserrat', sans-serif;">Submission.
                 </li>
-                <li style="font-family:'Montserrat', sans-serif;">Cras dapibus felis vel euismod gravida.
+                <li style="font-family:'Montserrat', sans-serif;">Order Processing.
                 </li>
               </ul>
             </div>
             <div class="col-md-6 col-xs-12">
               <ul>
-                <li style="font-family:'Montserrat', sans-serif;">In et orci sit amet leo consequat.
+                <li style="font-family:'Montserrat', sans-serif;">Supplier for the stock item.
                 </li>
-                <li style="font-family:'Montserrat', sans-serif;">Nullam pellentesque arcu vitae congue.
+                <li style="font-family:'Montserrat', sans-serif;">Quantity from the Sales Order.
                 </li>
-                <li style="font-family:'Montserrat', sans-serif;">Donec nec odio a tellus eleifend.
+                <li style="font-family:'Montserrat', sans-serif;">Description of the stock item.
                 </li>
               </ul>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Container -->
+  </section>
+  <!-- End Section -->
+  <section class="demo-request ">
+    <div class="container text-center">
+      <div class="request-title" style="padding:25px;">
+        <h2>Start 
+          <span>free
+          </span> Fedrex trial!
+        </h2>
+        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="ptb-100 functionalities bg-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-sm-6 col-xs-12">
+          <div class="main-title">
+            <h3>E-filing income tax returns for business.
+            </h3>
+            <div class="seperator">
+            </div>
+          </div>
+          <p style="font-family:'Montserrat', sans-serif;">The full form of e-filing is “Electronic Filing”.  In view of expansion of internet, e-filing has not only been popular but is also mandatory in large number of cases.  E-filing is The process of submitting tax returns over the Internet, using tax preparation software that has been pre-approved by the relevant tax authority.The biggest advantage of  e-filing of tax returns is that you can do this from any place at any time, thereby saving a lot of time and effort. It is simple, easy and faster than filing returns manually.
+          </p>
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <ul>
+                <li style="font-family:'Montserrat', sans-serif;">Your PAN Card, your e-filing password, your bank statements across all the accounts you operate (including loan accounts).
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Your tax returns also ask for your Aadhar and passport numbers — it is an optional detail, but ifyou have both, take those as well.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Principal and interest payment certificate from loan provider.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Customer and taxpayer's GSTIN.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Place of supply.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Details of insurance payments and donations, and if you are a freelancer or an independent professional, your credit card bills.
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <ul>
+                <li style="font-family:'Montserrat', sans-serif;">Taxable value and discounts.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Rate and amount of taxes i.e. CGST/ SGST/ IGST.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Item details i.e. description, unit price, quantity.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-6 col-xs-12">
+          <img src="images/transaction.png" class="img-responsive" alt="image">
         </div>
       </div>
     </div>

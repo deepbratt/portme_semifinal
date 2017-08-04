@@ -9,6 +9,19 @@
 		<?php
 			include('meta_links.php');
 		?>
+		
+		<style type="text/css">
+typewrite {
+  
+  text-align: center;
+  color:#fff;
+  padding-top:10em;
+}
+
+* { color:#fff; text-decoration: none;}
+		
+		
+		</style>
     </head>
     <body>
         <!-- ==============================================
@@ -36,13 +49,18 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="main-banner-content text-center">
-                            <h2>Features</h2>
-                            <ul class="breadcrumbs">
+                            <h2 class="breadcrumbs hi-icon-effect-7">Features</h2>
+                            <ul class="breadcrumbs hi-icon-effect-7">
                                 <li><a href="#">Home</a></li>
                                 <li><a href="#">Features</a></li>
                             </ul>
                             <p>Explore the Features and Attractions</p>
                         </div>
+						<h1>
+						<a href="" class="typewrite" data-period="2000" data-type='[ "Hi, Im VipulM.", "I am Creative.", "I Love Design.", "I Love to Develop." ]'>
+						<span class="wrap"></span>
+						</a>
+						</h1>
                     </div>
                 </div>
             </div><!-- End Container -->
@@ -50,173 +68,276 @@
         <!-- ==============================================
                              **FUNCTIONALITIES**
         =============================================== -->
-        <section class="ptb-100 functionalities bg-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 col-sm-6 col-xs-12">
-                        <div class="main-title">
-                            <h3>Connecting the Things As a Most Advanced Solution</h3>
-                            <div class="seperator"></div>
-                        </div>
-                        <p>We believe that partnerships can build a strong IoT ecosystem; we believe that a strong ecosystem turns the key to innovation.Connecting everything drives positive business results.</p>
-                        <div class="row">
-                            <div class="col-md-12 col-xs-12">
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/features1.png" class="img-responsive" alt="image">
-                    </div>
-                </div>
-            </div><!-- End Container -->
-        </section><!-- End Section -->
-        <section class="ptb-100 functionalities bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/Cloud based software.jpg" class="img-responsive" alt="image">
-                    </div>
-                    <div class="col-md-7 col-sm-6 col-xs-12">
-                        <div class="main-title">
-                            <h3>Cloud based software: </h3>
-                            <div class="seperator"></div>
-                        </div>
-                        <p>It will help you to store all your data online. Even if any issue happens in your computer, all the data will be secured in the server. You can collect your data from your phone as well, with the help of active internet connection.</p>
-                        <div class="row">
-                           
-                            <div class="col-md-12 col-xs-12">
-                                
-                            </div>
-                        </div>
-                    </div>
+         <section class="demo-request ">
+    <div class="container text-center">
+      <div class="request-title" style="padding:25px;">
+        <h2>Start 
+          <span>free
+          </span> Fedrex trial!
+        </h2>
+        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="ptb-100 functionalities bg-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="main-title">
+            <h3 style="margin-top:px;">How GST Work
+            </h3>
+            <div class="seperator">
+            </div>
+          </div>
+          <p style="font-family:'Montserrat', sans-serif;">The new tax regime follows a multi-stage collection mechanism wherein tax is collected at every stage and the credit of tax paid (input tax credit) at the previous stage is available as a set-off at the next stage of transaction. This helps to eliminate "tax on tax" or the cascading impact of tax.
+          </p>
+          <div class="row">
+<div class="col-md-12 col-xs-12">
+<ul>
+<li> Error free submission .</li>
+<li>Quick refund .</li>
+<li>Convenience.</li>
+<li>Avoid delays.</li>
+<li>Effortless and efficient.</li>
+</ul>
+</div>
 
-                </div>
-            </div><!-- End Container -->
-        </section><!-- End Section -->
-        <section class="ptb-100 functionalities bg-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 col-sm-6 col-xs-12">
-                        <div class="main-title">
-                            <h3>Best Customer Support and Always Best Solutions in Hand</h3>
-                            <div class="seperator"></div>
-                        </div>
-                        <p>Where do you go when you need help from a company? For instance a widget is broken or a site isn’t doing what you want it to, or you just need help with any number of things.  More often than not, your desire for information leads you to Google where you type in your query and you get a support center. A great support center is where your customers can go to find answers to commonly asked questions and if it’s done well it should be packed with useful information. If you set it up right and take the time to customize it, your support center can also be a seamless extension of your brand..</p>
-                        <div class="row">
-                            <div class="col-md-12 col-xs-12">
-                                <ul>
-                                    <li>User-focused.</li>
-                                    <li>Create help content that actually helps.</li>
-                                    <li>Emphasis on information.</li>
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/inventory.jpg" class="img-responsive" alt="image">
-                    </div>
-                </div>
-            </div><!-- End Container -->
-        </section><!-- End Section -->
-		<section class="ptb-100 functionalities bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/download.jpg" class="img-responsive" alt="image">
-                    </div>
-                    <div class="col-md-7 col-sm-6 col-xs-12">
-                        <div class="main-title">
-                            <h3>Customer Data Management (CDM): </h3>
-                            <div class="seperator"></div>
-                        </div>
-                        <p>With the help of this feature you can keep track of your customer information and survey your customer base in order to obtain feedback.  Efficient CDM solutions provide companies with the ability to deal instantly with customer issues and obtain immediate feedback. As a result, customer retention and customer satisfaction can show marked improvement.</p>
-                        <div class="row">
-                           
-                            <div class="col-md-12 col-xs-12">
-                                <ul>
-                                    <li>Should provide a cost-effective, user-friendly solution for marketing, research, sales, human resources and IT departments</li>
-                                    <li>Enables companies to create and email online surveys, reports and newsletters.</li>
-                                    
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+</div>
+      
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <img src="images/Zero-rated-supplies-2.png" class="img-responsive" alt="image">
+        </div>
+      </div>
+    </div>
+    <!-- End Container -->
+  </section>
+  <!-- End Section -->
+  <section class="demo-request ">
+    <div class="container text-center">
+      <div class="request-title" style="padding:25px;">
+        <h2>Start 
+          <span>free
+          </span> Fedrex trial!
+        </h2>
+        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="ptb-100 functionalities bg-gray" style="">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <img src="images/itb.png" class="img-responsive" alt="image" style="margin-top:;">
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="main-title">
+            <h3>Inventory Management 
+            </h3>
+            <div class="seperator">
+            </div>
+          </div>
+          <p style="font-family:'Montserrat', sans-serif;">
+			Inventory management is the ongoing process of moving parts and products into and out of a company’s location(s). Companies manage their inventory on a daily basis as they place new orders for products and ship orders out to customers. It’s important that business leaders gain a firm grasp of everything involved in the inventory management process. That way, they can figure out creative ways to solve inventory management challenges by finding the right solutions.
+			
+          </p>
+<div class="row">
+<div class="col-md-12 col-xs-12">
+<ul>
+<li>Inventory Management Challenges.</li>
+<li>Inventory Management Attempts.</li>
+<li>Inventory Management Solutions.</li>
+<li>Inventory Management Usefulness.</li>
+<li>Effortless and efficient.</li>
+</ul>
+</div>
 
-                </div>
-            </div><!-- End Container -->
-        </section><!-- End Section -->
-        <section class="ptb-100 functionalities bg-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 col-sm-6 col-xs-12">
-                        <div class="main-title">
-                            <h3>GST Billing :</h3>
-                            <div class="seperator"></div>
-                        </div>
-                        <p>As per GST invoicing rules and formats have been notified covering details such as supplier’s name, shipping and billing address, GSTIN number, HSN Codes, place of supply, tax rates(CGST, SGST,IGST), etc. are included in our billing format.</p>
-                        <div class="row">
-                            <div class="col-md-12 col-xs-12">
-                                <ul>
-                                    <li>Monitor existing stock and reduce inventory overstock/stock-out situations and optimize inventory holding cost and wastage.</li>
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/GST_Invoice_Header.png" class="img-responsive" alt="image">
-                    </div>
-                </div>
-            </div><!-- End Container -->
-        </section><!-- End Section -->
-		<section class="ptb-100 functionalities bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/Financial Reports1.jpg" class="img-responsive" alt="image">
-                    </div>
-                    <div class="col-md-7 col-sm-6 col-xs-12">
-                        <div class="main-title">
-                            <h3>Financial Reports:</h3>
-                            <div class="seperator"></div>
-                        </div>
-                        <p>Financial report is a formal record of the financial activities and position of a business, person, or other entity.
-Relevant financial information is presented in a structured manner and in a form easy to understand. They typically include basic financial statements, accompanied by a management discussion and analysis.</p>
-                        <div class="row">
-                            <div class="col-md-12 col-xs-12">
-                                <ul>
-                                    <li>By the help of this, you have to purchase the software once and use it for the whole year since it is a cloud based software.</li>
-                                </ul>
-                            </div>
-                           
-                        </div>
-                    </div>
-
-                </div>
-            </div><!-- End Container -->
-        </section><!-- End Section -->
-        <section class="ptb-100 functionalities bg-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 col-sm-6 col-xs-12">
-                        <div class="main-title">
-                            <h3>Easy to submit in GST government portal:</h3>
-                            <div class="seperator"></div>
-                        </div>
-                        <p>By using this software you can upload all your tax return information in the government site that is www.gst.gov.in just by one click.</p>
-                       
-						<ul>
-							<li>A business manager needs to see his progress & failure both to take necessary steps to take the business to next level.</li>
-						</ul>
-                    </div>
-                    <div class="col-md-5 col-sm-6 col-xs-12">
-                        <img src="images/features3.png" class="img-responsive" alt="image">
-                    </div>
-                </div>
-            </div><!-- End Container -->
-        </section><!-- End Section -->
+</div>
+        </div>
+      </div>
+    </div>
+    <!-- End Container -->
+  </section>
+  <!-- End Section -->
+  <section class="demo-request ">
+    <div class="container text-center">
+      <div class="request-title" style="padding:25px;">
+        <h2>Start 
+          <span>free
+          </span> Fedrex trial!
+        </h2>
+        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="ptb-100 functionalities bg-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-sm-6 col-xs-12">
+          <div class="main-title">
+            <h3>Criteria for Billing and Invoices
+            </h3>
+            <div class="seperator">
+            </div>
+          </div>
+          <p style="font-family:'Montserrat', sans-serif;">Tax invoice is generally issued to charge the tax and pass on the credit. In GST there are some instances where the service provider is not allowed to charge any tax and hence a Tax invoice can’t be issued instead another document called Bill of Supply is issued.
+          </p>
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <ul>
+                <li style="font-family:'Montserrat', sans-serif;">Invoice number and date.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Customer name.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Shipping and billing address.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Customer and taxpayer's GSTIN.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Place of supply.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">HSN code.
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <ul>
+                <li style="font-family:'Montserrat', sans-serif;">Taxable value and discounts.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Rate and amount of taxes i.e. CGST/ SGST/ IGST.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Item details i.e. description, unit price, quantity.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-6 col-xs-12">
+          <img src="images/Blog-post-07-1024x512.png" class="img-responsive" alt="image">
+        </div>
+      </div>
+    </div>
+    <!-- End Container -->
+  </section>
+  <!-- End Section -->
+  <section class="demo-request ">
+    <div class="container text-center">
+      <div class="request-title" style="padding:25px;">
+        <h2>Start 
+          <span>free
+          </span> Fedrex trial!
+        </h2>
+        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="ptb-100 functionalities bg-gray">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 col-sm-6 col-xs-12">
+          <img src="images/WellSpent10TaxPuzzle-620x300.jpg" alt="image">
+        </div>
+        <div class="col-md-7 col-sm-6 col-xs-12">
+          <div class="main-title">
+            <h3>Purchase Order And Sales Order
+            </h3>
+            <div class="seperator">
+            </div>
+          </div>
+          <p style="font-family:'Montserrat', sans-serif;">Sales Order is issued when a customer buys something from you company. The company is credited and the customer is debited. Purchase Order is issued when the company buys something from the vendor.
+          </p>
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <ul>
+                <li style="font-family:'Montserrat', sans-serif;">Purposes.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Submission.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Order Processing.
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <ul>
+                <li style="font-family:'Montserrat', sans-serif;">Supplier for the stock item.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Quantity from the Sales Order.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Description of the stock item.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Container -->
+  </section>
+  <!-- End Section -->
+  <section class="demo-request ">
+    <div class="container text-center">
+      <div class="request-title" style="padding:25px;">
+        <h2>Start 
+          <span>free
+          </span> Fedrex trial!
+        </h2>
+        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="ptb-100 functionalities bg-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-sm-6 col-xs-12">
+          <div class="main-title">
+            <h3>E-filing income tax returns for business.
+            </h3>
+            <div class="seperator">
+            </div>
+          </div>
+          <p style="font-family:'Montserrat', sans-serif;">Under GST invoicing rules and formats have been notified covering details such as supplier's name, shipping and billing address, HSN Code, place of supply, rate. In this article we will be covering all aspects of invoicing under GST.
+          </p>
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <ul>
+                <li style="font-family:'Montserrat', sans-serif;">Invoice number and date.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Customer name.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Shipping and billing address.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Customer and taxpayer's GSTIN.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Place of supply.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">HSN code.
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <ul>
+                <li style="font-family:'Montserrat', sans-serif;">Taxable value and discounts.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Rate and amount of taxes i.e. CGST/ SGST/ IGST.
+                </li>
+                <li style="font-family:'Montserrat', sans-serif;">Item details i.e. description, unit price, quantity.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-6 col-xs-12">
+          <img src="images/Blog-post-07-1024x512.png" class="img-responsive" alt="image">
+        </div>
+      </div>
+    </div>
+    <!-- End Container -->
+  </section>
+  <!-- End Section -->
         <!-- ==============================================
                              **ABOUT FEATURES**
         =============================================== -->

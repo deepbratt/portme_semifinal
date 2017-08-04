@@ -1,4 +1,31 @@
         <footer id="footer" class="light-footer">
+            <div class="sub-footer ptb-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <form class="form-inline form-subscribe">
+                                <div class="input-group">
+                                    <input type="email" class="form-control" placeholder="Enter Email">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-suscribe" type="button">SUBSCRIBE</button>
+                                    </span>
+                                </div><!-- /input-group -->
+
+                            </form>
+                        </div>
+				
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <ul class="footer-social hi-icon-effect-8">
+                                <li><a href="#" class="hi-icon glyphicon-facebook"></a></li>
+                                <li><a href="#" class="hi-icon glyphicon-twitter"></a></li>
+                                <li><a href="#" class="hi-icon glyphicon-linkedin"></a></li>
+                                <li><a href="#" class="hi-icon glyphicon-google"></a></li>
+                            </ul>
+							
+                        </div>
+                    </div><!-- End Container -->
+                </div><!-- End Sub Footer -->
+            </div>
             <div class="footer-bottom ptb-20 paraxify">
                 <div class="container">
                     <div class="row">
@@ -6,7 +33,7 @@
                             &COPY; Port me. All Rights are Reserved.
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 footer-logo text-center">
-                           &nbsp;
+                            <img src="images/LOGO/banner_logo.png" alt="logo" style="">
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 back-to-top">
                             <a href="#top" id="back-top"><span class="ti-arrow-circle-up"></span></a>
@@ -89,6 +116,66 @@
 				  scrollTop: $("#whtscoch").offset().top},
 				  1200);
 			  });
+			  
+			  
+			  
+			  
+var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
 		</script>
 		
     

@@ -1,800 +1,466 @@
 <!DOCTYPE html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Port Me</title>
-  <!-- Favicon -->
-<?php
-include("meta_links.php");
-?>
-  <style type="text/css">
-    .arrow {
-      position: absolute;
-      bottom: 2%;
-      left: 50%;
-      margin-left: -20px;
-      width: 40px;
-      height: 40px;
-      background-image: url(images/down-arrow.svg);
-      background-size: contain;
-      z-index: 9;
-    }
-    .bounce {
-      -webkit-animation-name: bounce;
-      animation-name: bounce;
-      -webkit-transform-origin: center bottom;
-      transform-origin: center bottom;
-    }
-    .bounce {
-      -webkit-animation: bounce 2s infinite;
-      animation: bounce 2s infinite;
-    }
-    .mob_manu {
-      display: none;
-    }
-    /* Style the Image Used to Trigger the Modal */
-    #myImg {
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-      color: #e52d2d;
-    }
-    #myImg:hover 
-    {
-      opacity: 0.5;
-    }
-    @-webkit-keyframes zoom {
-      from {
-        -webkit-transform:scale(0)}
-      to {
-        -webkit-transform:scale(1)}
-    }
-    @keyframes zoom {
-      from {
-        transform:scale(0)}
-      to {
-        transform:scale(1)}
-    }
-    /* The Close Button */
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #e52d2d;
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .close:hover,
-    .close:focus {
-      color: #e52d2d;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .hvr-underline-from-center {
-      display: inline-block;
-      vertical-align: middle;
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
-      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      -moz-osx-font-smoothing: grayscale;
-      position: relative;
-      overflow: hidden;
-    }
-    .hvr-underline-from-center:before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      left: 50%;
-      right: 50%;
-      bottom: 0;
-      background: #e52d2d;
-      height: 4px;
-      -webkit-transition-property: left, right;
-      transition-property: left, right;
-      -webkit-transition-duration: 0.3s;
-      transition-duration: 0.3s;
-      -webkit-transition-timing-function: ease-out;
-      transition-timing-function: ease-out;
-    }
-    .hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
-      left: 0;
-      right: 0;
-    }
-    .headShake:hover {
-      animation: pulse 0.82s cubic-bezier(.36,.07,.19,.97) both;
-      transform: translate3d(0, 0, 0);
-      backface-visibility: hidden;
-      perspective: 1000px;
-    }
-    .headShake:hover:before {
-      animation: pulse 0.82s cubic-bezier(.36,.07,.19,.97) both;
-      transform: translate3d(0, 0, 0);
-      backface-visibility: hidden;
-      perspective: 1000px;
-    }
-  </style>
-</head>
+	<html lang="en-US">
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Port-ME | Business Operating Software</title>
+	  <?php include ('metalinks.php')?>
+	  <style>
+		mark {
+			background: #fedc45;
+			background: rgba(254,220,69,.7);
+			color: #000;
+			display: inline-block;
+			padding: 5px 7px;
+			margin: -.08em 0;
+			position: relative;
+			line-height: 1.52857143;
+		}
+		.price_tit{margin-top:-20px !important;font-weight:bold;color:#000;text-align:center;}
+		.price_subtitl{text-align:left;text-transform:none ;text-align:center;}
+		.price_txt{text-transform:none;font-size: 20px;font-family: 'Arial',sans-serif;color:#ef6c0f;}
+		.price_amt{color:#ef6c0f;font-weight: 400;font-family: Boing-Bold,'Arial Black',sans-serif;font-size:30px;}
+		.getstarted_btn{background:#ef6c0f;color:#fff;font-weight: 400;font-family: 'Arial Black',sans-serif; height: 50px;margin-left: 0;margin-top:30px;border:0px;cursor:pointer;font-size:18px;}
+		.getstarted_btn:hover{background:#f2812d;color:#fff;}
+		.invent_item{margin-top:-10px;margin-bottom:5px;text-align:left;color:#333;}
+	  </style>
+	</head>
 <body>
 
-  <header class="header-wrapper solid-bg" style="">
-    <nav class="navbar navbar-default navbar-fixed white bootsnav">
-      <div class="container-fluid"> 
+<div class="section_top " style="position:relative;">
+    <div class="cont_top">
+		  <div class="logo flt-left " style="margin-top:-20px;">
+			<a href=""> <img src="images/logo.png" alt="Logob" style="height:90px;" /></a>
+			<div class="mob_manu"><b></b><b></b><b></b></div>
+		  </div>
+		 
+		  <div class="top_link flt-right ">
+				<ul class="nav home-menu">
+				  <li style="border: 0px none;"> <a href=>login</a></li>
+				  <li style="border: 0px none;"> <a href="#" target="_target">Blog</a></li>
+				  <li style="border: 0px none;"> <a href="">Support</a></li> 
+				  <li style="border: 0px none;color:#fff !important;padding:3px 10px !important;" class="btn btn-danger"> <a href="" style="color:#fff !important;">Get Started</a></li>
+				</ul>
+		  </div>
+		  <div class="clear" ></div>
+    </div>
 
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-            <i class="fa fa-bars">
-            </i>
-          </button>
-          <a class="navbar-brand" href="#brand">
-            <img src="images/logo_dark.png" class="logo logo-display" alt="">
-            <img src="images/logo_dark.png" class="logo logo-scrolled" alt="">
-          </a>
-        </div>
+    <div class="top_cont_heading  cont_wrap">
+		  <div id="home-news" style="margin-top:-200px !important">
+			<div class="home_header">
+			  <span>The <br><strong style="color:#ff3333">operating system</strong> for business.</span>
+			</div>
+			<div class="home_header">
+			  <span>Simple <br><strong style="color:#ff3333"> accounting/Bookkeeping </strong> software</span>
+			</div>
+			<div class="home_header">
+			  <span>Shockingly <strong style="color:#ff3333"> easy.</strong> to use</span>
+			</div>
+		  </div>
+    </div>
 
-        <div class="collapse navbar-collapse" id="navbar-menu">
-          <ul class="nav navbar-nav navbar-right" data-in="fadeOutUp" data-out="fadeInDown">
-            <li>
-              <a href="index.php" class="btn btn-outline-primary hvr-underline-from-center">Home
-              </a>
-            </li>
-            <li>
-              <a href="features.php" class="btn btn-outline-primary hvr-underline-from-center">Features
-              </a>
-            </li>
-            <li>
-              <a href="pricing.php" class="btn btn-outline-primary hvr-underline-from-center">Pricing
-              </a>
-            </li>
-            <li>
-              <a href="contact.php" class="btn btn-outline-primary hvr-underline-from-center">Contact
-              </a>
-            </li>
-            <li>
-              <a href="login.php" class="btn btn-outline-primary hvr-underline-from-center">Log In
-              </a>
-            </li>
-            <button type="button" style="border: 0px none;color:#fff; margin-top:15px !important;" class="btn btn-danger btn-lg hvr-underline-from-center">
-              <a href="signup.php" style="color:#fff !important;">Get Started
-              </a>
-            </button>
-          </ul>
-        </div>
-
-      </div>
-
-    </nav>
-
-  </header>
-
-  <!-- End Section -->
-  <!-- gst -->			
-  <!-- End Container -->
-  <div class="section_top " style="background: url('images/newdd2.png') no-repeat bottom center;background-size: contain;height:70% !important;">
-    <div class="cont_top">				
-      <div class="top_cont_heading  cont_wrap">
-        <div id="home-news" style="margin-top:-13% !important">
-          <div class="home_header">
-            <span>The 
-              <br>
-              <strong style="color:#ff3333">operating system
-              </strong> for business.
-            </span>
-          </div>
-          <div class="home_header">
-            <span>Simple 
-              <br>
-              <strong style="color:#ff3333"> accounting/Bookkeeping 
-              </strong> software
-            </span>
-          </div>
-          <div class="home_header">
-            <span>Shockingly 
-              <strong style="color:#ff3333"> easy.
-              </strong> to use
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>	
-    <!-- Trigger the Modal -->
     <div class="arrow bounce"></div>
-    <div class="clear" ></div>
-
-    <div class="cont_top ">
-      <div class="row" >
-		<div class="col-md-8 col-md-offset-2"  style="margin-top:10%;">
-
-			<div class="col-md-3 col-sm-3 col-xs-3">
-			  <div class="iconbox-center  headShake">
-				<img  id="myImg" src="images/account.png" class="rounded mx-auto d-block img-responsive" alt="image">
-				<h5 style="margin-top:10px; color:#232321;">ACCOUNTS
-				</h5>
-				<p>
-				</p>
-				<div class="clear" ></div>
-			  </div>
-			  <div class="clear" ></div>
-			</div>
-
-			<div class="col-md-3 col-sm-3 col-xs-3">
-			  <div class="iconbox-center  headShake">
-				<img  id="myImg" src="images/reports.png" class="rounded mx-auto d-block img-responsive" style="position:relative;" alt="image">
-				<h5 style="margin-top:10px; color:#232321;">REPORTS
-				</h5>
-				<p>
-				</p>
-				<div class="clear" ></div>
-			  </div>
-			  <div class="clear" ></div>
-			</div>
-
-			<div class="col-md-3 col-sm-3 col-xs-3">
-			  <div class="iconbox-center  headShake">
-				<img  id="myImg" src="images/sales.png" class="rounded mx-auto d-block img-responsive" style="position:relative;" alt="image">
-				<h5 style="margin-top:10px; color:#232321;">SALES
-				</h5>
-				<p>
-				</p>
-				<div class="clear" ></div>
-			  </div>
-			  <div class="clear" ></div>
-			</div>
-
-			<div class="col-md-3 col-sm-3 col-xs-3">
-			  <div class="iconbox-center  headShake">
-				<img  id="myImg" src="images/inventory.png" class="rounded mx-auto d-block img-responsive" style="position:relative;" alt="image">
-				<h5 style="margin-top:10px; color:#232321;">INVENTORY
-				</h5>
-				<p>
-				</p>
-				<div class="clear" ></div>
-			  </div>
-			  <div class="clear" ></div>
-			</div>
-
-			<div class="clear" ></div>
-		 </div>
-      </div>
-
-    </div>
+	<div class="clear" ></div>
   </div>
-  <div class="clear" >
-  </div>
-  <section class="demo-request ">
-    <div class="container text-center">
-      <div class="request-title" style="padding:25px;">
-        <h2>Start 
-          <span>free
-          </span> Fedrex trial!
-        </h2>
-        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
-        </p>
-      </div>
-    </div>
-  </section>
-  <section id="features" class="fw-section layout-boxed without-overlay without-parallax" data-offset-top="10" style="margin-top:40px;">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <h2 class="block-title text-dark text-center">GST Compliance Made Easy
-            <small class="h4">
-              <br>A powerful solution designed to automate your GST Compliance. 
-            </small>
-          </h2>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Store Types Start -->
-  <li style="width: 100%">
-    <div class="row" style="margin-left:50px; margin-right:50px; margin-top:20px;">
-      <div class="col-xs-12 col-sm-3 col-md-2 col-xl-2" >
-        <div class="hd-shop-type-card" >
-          <a href="javascript:void(0);">
-            <div class="shop-type" style="background-image: url(images/pos-grocery-shop.jpg); ">
-              <div class="shop-type-curtain">
-              </div>
-              <div class="store-title">
-                <div class="hd-card-title">
-                  <h5 style="color:white;"> 
-                    Retails &nbsp;&nbsp; 
-                    <i class="fa fa-play-circle">
-                    </i>
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3 col-md-2 col-xl-2">
-        <div class="hd-shop-type-card">
-          <a href="javascript:void(0);">
-            <div class="shop-type" style="background-image: url(images/pos-garment-store.jpg);">
-              <div class="shop-type-curtain">
-              </div>
-              <div class="store-title">
-                <div class="hd-card-title">
-                  <h5 style="color:white;">
-                    Garments &nbsp;&nbsp; 
-                    <i class="fa fa-play-circle">
-                    </i>
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3 col-md-2 col-xl-2">
-        <div class="hd-shop-type-card">
-          <a href="javascript:void(0);">
-            <div class="shop-type" style="background-image: url(images/pos-appliance-store.jpg);">
-              <div class="shop-type-curtain">
-              </div>
-              <div class="store-title">
-                <div class="hd-card-title">
-                  <h5 style="color:white;">
-                    Electronics &nbsp;&nbsp; 
-                    <i class="fa fa-play-circle">
-                    </i>
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3 col-md-2 col-xl-2">
-        <div class="hd-shop-type-card">
-          <a href="javascript:void(0);">
-            <div class="shop-type" style="background-image: url(images/pos-Computer-Shop.jpg);">
-              <div class="shop-type-curtain">
-              </div>
-              <div class="store-title">
-                <div class="hd-card-title">
-                  <h5 style="color:white;">
-                    Computers &nbsp;&nbsp; 
-                    <i class="fa fa-play-circle">
-                    </i>
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3 col-md-2 col-xl-2">
-        <div class="hd-shop-type-card">
-          <a href="javascript:void(0);">
-            <div class="shop-type" style="background-image: url(images/pos-restaurent.jpg);">
-              <div class="shop-type-curtain">
-              </div>
-              <div class="store-title">
-                <div class="hd-card-title">
-                  <h5 style="color:white;">
-                    Restaurant &nbsp;&nbsp; 
-                    <i class="fa fa-play-circle">
-                    </i>
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3 col-md-2 col-xl-2">
-        <div class="hd-shop-type-card">
-          <a href="javascript:void(0);">
-            <div class="shop-type" style="background-image: url(images/pos-shoe-shop.jpg);">
-              <div class="shop-type-curtain">
-              </div>
-              <div class="store-title">
-                <div class="hd-card-title">
-                  <h5 style="color:white;">
-                    Shoes &nbsp;&nbsp; 
-                    <i class="fa fa-play-circle">
-                    </i>
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3 col-md-2 col-xl-2">
-        <div class="hd-shop-type-card">
-          <a href="javascript:void(0);">
-            <div class="shop-type" style="background-image: url(images/pos-book-store.jpg);">
-              <div class="shop-type-curtain">
-              </div>
-              <div class="store-title">
-                <div class="hd-card-title">
-                  <h5 style="color:white;">
-                    Books &nbsp;&nbsp; 
-                    <i class="fa fa-play-circle">
-                    </i>
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3 col-md-2 col-xl-2">
-        <div class="hd-shop-type-card">
-          <a href="javascript:void(0);">
-            <div class="shop-type" style="background-image: url(images/pos-sports-shop.jpg);">
-              <div class="shop-type-curtain">
-              </div>
-              <div class="store-title">
-                <div class="hd-card-title">
-                  <h5 style="color:white;">
-                    Sports &nbsp;&nbsp; 
-                    <i class="fa fa-play-circle">
-                    </i>
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3 col-md-2 col-xl-2">
-        <div class="hd-shop-type-card">
-          <a href="javascript:void(0);">
-            <div class="shop-type" style="background-image: url(images/pos-jewelry-shop.jpg);">
-              <div class="shop-type-curtain">
-              </div>
-              <div class="store-title">
-                <div class="hd-card-title">
-                  <h5 style="color:white;">
-                    Jewellery &nbsp;&nbsp; 
-                    <i class="fa fa-play-circle">
-                    </i>
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3 col-md-2 col-xl-2">
-        <div class="hd-shop-type-card">
-          <a href="javascript:void(0);">
-            <div class="shop-type" style="background-image: url(images/pos-sweets-shop.jpg);">
-              <div class="shop-type-curtain">
-              </div>
-              <div class="store-title">
-                <div class="hd-card-title">
-                  <h5 style="color:white;">
-                    Sweets &nbsp;&nbsp; 
-                    <i class="fa fa-play-circle">
-                    </i>
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3 col-md-2 col-xl-2">
-        <div class="hd-shop-type-card">
-          <a href="javascript:void(0);">
-            <div class="shop-type" style="background-image: url(images/pos-Pizza-store.jpg);">
-              <div class="shop-type-curtain">
-              </div>
-              <div class="store-title">
-                <div class="hd-card-title">
-                  <h5 style="color:white;">
-                    Pizza &nbsp;&nbsp; 
-                    <i class="fa fa-play-circle">
-                    </i>
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3 col-md-2 col-xl-2">
-        <div class="hd-shop-type-card">
-          <a href="javascript:void(0);">
-            <div class="shop-type" style="background-image: url(images/Pos-Cake-store.jpg);">
-              <div class="shop-type-curtain">
-              </div>
-              <div class="store-title">
-                <div class="hd-card-title">
-                  <h5 style="color:white;">
-                    Bakery &nbsp;&nbsp; 
-                    <i class="fa fa-play-circle">
-                    </i>
-                  </h5>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </li>
-  <section class="demo-request ">
-    <div class="container text-center">
-      <div class="request-title" style="padding:25px;">
-        <h2>Start 
-          <span>free
-          </span> Fedrex trial!
-        </h2>
-        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
-        </p>
-      </div>
-    </div>
-  </section>
-  <section class="ptb-100 functionalities bg-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="main-title">
-            <h3 style="margin-top:px;">How GST Work
-            </h3>
-            <div class="seperator">
-            </div>
-          </div>
-          <p style="font-family:'Montserrat', sans-serif;">The new tax regime follows a multi-stage collection mechanism wherein tax is collected at every stage and the credit of tax paid (input tax credit) at the previous stage is available as a set-off at the next stage of transaction. This helps to eliminate "tax on tax" or the cascading impact of tax.
-          </p>
-          <div class="row">
-<div class="col-md-12 col-xs-12">
-<ul>
-<li> Error free submission .</li>
-<li>Quick refund .</li>
-<li>Convenience.</li>
-<li>Avoid delays.</li>
-<li>Effortless and efficient.</li>
-</ul>
-</div>
+  <div class="clear" ></div>
+  
 
-</div>
+	
+	
+	<div class="whtscoch" id="whtscoch">
+		<div class="container">
+		  <h1>What is <span style="color:#c0392b;">PORT-ME</span></h1>
+		  <p>Solve business accounting challenges using our perfect set of finance apps on the cloud.Be right where your customers are with apps to help your business engage with them.Focus on your people while our apps automate your human resources processes.</p>
+		</div>
+	</div>
+
+	  <section class="sr-dv-sec" id="srdvsec">
+          <div class="sr-hdng">
+                <h2>Port-ME HELPS YOU</h2>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="sr-dv-sec-div">
+                      <div class="col-md-6 col-sm-6 text-right text-xs-right sr-dv-sec-lft">
+                            <article>
+                                <h3>Automated Bookkeeping</h3>
+                                <p>Accounts is the key role of any business success. let technology be a part of your journey and manage accounts with ease.</p>
+                                <ul>
+                                    <li><i class="fa fa-circle"></i>Track expenses , payable's etc.</li>
+
+                                    <li><i class="fa fa-circle"></i>Track revenue , pending invoices , payments etc.</li>
+                                    
+                                    <li><i class="fa fa-circle"></i>Track profit & loss with advanced filter.</li>
+                                    
+                                    <li><i class="fa fa-circle"></i>Merge with your accountant for tax fillings.</li>
+                                    
+                                    <li><i class="fa fa-circle"></i>Multi user level access.</li>
+
+									<li><i class="fa fa-circle"></i>High level security and ease of access for your data.</li>
+                                </ul>
+                            </article>
+                        </div>
+                        <div class="col-md-6 col-sm-6 text-left sr-dv-sec-rht">
+                            <figure>
+                                <img src="images/skins/Advisory-Services.jpg" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="sr-dv-sec-div srdv-lftpls">
+                      <div class="col-md-6 col-sm-6 text-right text-xs-right sr-dv-sec-rht">
+                             <figure>
+                                 <img src="images/skins/Data-Validation-Services.jpg" alt="">
+                             </figure>
+                        </div>
+                      <div class="col-md-6 col-sm-6 text-left sr-dv-sec-lft">
+                            <article>
+                                <h3>Easy Manageable Inventory</h3>
+                                <p>Speed is the key to any business . Speedup your process of handling your clients and backoffice task with technology.</p>
+                                <ul>
+                                    <li><i class="fa fa-circle"></i>Manage inventory.</li>
+                                    <li><i class="fa fa-circle"></i>Easy product shelf finder.</li>
+                                    <li><i class="fa fa-circle"></i>Low inventory indicator.</li>
+                                    <li><i class="fa fa-circle"></i>Most sold products/services data.</li>
+                                    <li><i class="fa fa-circle"></i>Merge your inventory with ecommerce stores etc.</li>
+                                </ul>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="sr-dv-sec-div">
+                      <div class="col-md-6 col-sm-6 text-right text-xs-right sr-dv-sec-lft">
+                            <article>
+                                <h3>Invoicing and Point of sale</h3>
+                                <p>Selling in multiple platform and ease of executing is really important which scales your business and standards both.</p>
+                                <ul>
+                                    <li><i class="fa fa-circle"></i>Remove hazzle of paperworks.</li>
+
+                                    <li><i class="fa fa-circle"></i>Use automated invoicing and billing.</li>
+                                    
+                                    <li><i class="fa fa-circle"></i>Manage sales and paperwork with few clicks.</li>
+                                    
+                                    <li><i class="fa fa-circle"></i>Manage automated point of sale.</li>
+                                    
+                                    <li><i class="fa fa-circle"></i>Track sales record,invoices etc.</li>
+                                </ul>
+                            </article>
+                        </div>
+                        <div class="col-md-6 col-sm-6 text-left sr-dv-sec-rht">
+                            <figure>
+                                <img src="images/skins/Enterprise-Data-Warehousing-services.jpg" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="sr-dv-sec-div srdv-lftpls">
+                      <div class="col-md-6 col-sm-6 text-right text-xs-right sr-dv-sec-rht">
+                             <figure>
+                                 <img src="images/skins/Data-Visualization-and-Reporting-services.jpg" alt="">
+                             </figure>
+                        </div>
+                      <div class="col-md-6 col-sm-6 text-left sr-dv-sec-lft">
+                            <article>
+                                <h3>Business Growth Reports</h3>
+                                <p>A business manager needs to see his progress & failure both to take necessary steps to take the business to next level.</p>
+                                <ul>
+                                    <li><i class="fa fa-circle"></i>Profit , loss , revenue etc reports</li>
+
+                                    <li><i class="fa fa-circle"></i>Inventory , sales , team stats etc</li>
+                                    
+                                    <li><i class="fa fa-circle"></i>Weekly , monthly , yearly , quaterly view.</li>
+                                    
+                                    <li><i class="fa fa-circle"></i>Download reports in pdf , docx , print etc.</li>
+                                    
+                                    <li><i class="fa fa-circle"></i>Whether its 5yrs or 50yrs your data is always available.</li>
+                                </ul>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="sr-dv-sec-div">
+                      <div class="col-md-6 col-sm-6 text-right text-xs-right sr-dv-sec-lft">
+                            <article>
+                                <h3>Future Business Projection</h3>
+                                <p>Get 360 view of your business . Past , present , future status of your business.</p>
+                                <ul>
+                                    <li><i class="fa fa-circle"></i>Accurate future prediction of you business.</li>
+
+                                    <li><i class="fa fa-circle"></i>From sales to potential customers every data is available to you.</li>
+                                    
+                                    <li><i class="fa fa-circle"></i>It also allows you to estimate marketing cost to get the result.</li>
+                                    
+                                    <li><i class="fa fa-circle"></i>Understand Customer aquisition cost.</li>
+                                    
+                                    <li><i class="fa fa-circle"></i>Every data have advance filters to get exact results.</li>
+                                </ul>
+                            </article>
+                        </div>
+                        <div class="col-md-6 col-sm-6 text-left sr-dv-sec-rht">
+                            <figure>
+                                <img src="images/skins/Tool-based-Implementation-services.jpg" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+		<div class="top-colges-sec block-pading1">
+           <div class="container">
+               <div class="hme-pge-hdng text-xs-center">
+                   <h1>Our Pricing</h1>
+               </div>
+
+               <div class="col-lg-3 col-md-3 col-sm-12">
+                   <article style="border-top:10px solid #008a32;margin:0px;">
+                       <div>
+                           <h1 class="price_tit">Starter</h1>
+                           <h5 class="price_subtitl">Perfect for Retailer's, Enterprise's etc.</h5>
+						   <h1 class="price_txt"><span class="price_amt">Free</span></h1>
+						   <p style="margin-top:-5px;">&nbsp;</p>
+                           <input type="submit" name="commit" value="Getting Started" class="btn btn-default btn btn-default form-control loginbtnz getstarted_btn">
+						   <h5 class="invent_item" style="margin-top:30px;"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">1</span> warehouse</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">100</span> inventory</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">10</span> email invoicing</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">1</span> user access</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Automated Accounting</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Point of Sale</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Bookkeeping</h5>
+						   <h5 class="invent_item"><i class="fa fa-times" style="color:red;"></i> &nbsp;Reports</h5>
+						   <h5 class="invent_item"><i class="fa fa-times" style="color:red;"></i> &nbsp;Business <span style="color:#000;font-weight:bold;">Analytics</span></h5>
+						   <h5 class="invent_item"><i class="fa fa-times" style="color:red;"></i> &nbsp;Future Business <span style="color:#000;font-weight:bold;">Analysis</span></h5>
+                       </div>
+                   </article>
+               </div>
+
+               <div class="col-lg-3 col-md-3 col-sm-12">
+                   <article style="border-top:10px solid #008a32;margin:0px;">
+                       <div>
+                           <h1 class="price_tit">Economy</h1>
+                           <h5 class="price_subtitl">Perfect for Retailer's, Enterprise's etc.</h5>
+						   <h1 class="price_txt">Rs <span class="price_amt">199.00</span>/mo</h1>
+						   <p style="margin-top:-13px;"><strong style="color:#000;">On Sale - <mark>Save 55%</mark></strong></p>
+                           <input type="submit" name="commit" value="Getting Started" class="btn btn-default btn btn-default form-control loginbtnz getstarted_btn">
+						   <h5 class="invent_item" style="margin-top:30px;"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">5</span> warehouse</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">1000</span> inventory</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">100</span> email invoicing</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">5</span> user access</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Automated Accounting</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Point of Sale</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Bookkeeping</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">Basic</span> Reports</h5>
+						   <h5 class="invent_item"><i class="fa fa-times" style="color:red;"></i> &nbsp;Business <span style="color:#000;font-weight:bold;">Analytics</span></h5>
+						   <h5 class="invent_item"><i class="fa fa-times" style="color:red;"></i> &nbsp;Future Business <span style="color:#000;font-weight:bold;">Analysis</span></h5>
+                       </div>
+                   </article>
+               </div>
+
+               <div class="col-lg-3 col-md-3 col-sm-12">
+                   <article style="border-top:10px solid #008a32;margin:0px;">
+                       <div>
+                           <h1 class="price_tit">Deluxe</h1>
+                           <h5 class="price_subtitl">Perfect for Retailer's, Enterprise's etc.</h5>
+						   <h1 class="price_txt">Rs <span class="price_amt">399.00</span>/mo</h1>
+						   <p style="margin-top:-13px;"><strong style="color:#000;">On Sale - <mark>Save 55%</mark></strong></p>
+                           <input type="submit" name="commit" value="Getting Started" class="btn btn-default btn btn-default form-control loginbtnz getstarted_btn">
+						   <h5 class="invent_item" style="margin-top:30px;"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">10</span> warehouse</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">5000</span> inventory</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">1000</span> email invoicing</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">10</span> user access</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Automated Accounting</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Point of Sale</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Bookkeeping</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">Advanced</span> Reports</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Business <span style="color:#000;font-weight:bold;">Analytics</span></h5>
+						   <h5 class="invent_item"><i class="fa fa-times" style="color:red;"></i> &nbsp;Future Business <span style="color:#000;font-weight:bold;">Analysis</span></h5>
+                       </div>
+                   </article>
+               </div>
+			   
+			   <div class="col-lg-3 col-md-3 col-sm-12">
+                   <article style="border-top:10px solid #008a32;margin:0px;">
+                       <div>
+                           <h1 class="price_tit">Ultimate</h1>
+                           <h5 class="price_subtitl">Perfect for Retailer's, Enterprise's etc.</h5>
+						   <h1 class="price_txt">Rs <span class="price_amt">669.00</span>/mo</h1>
+						   <p style="margin-top:-13px;"><strong style="color:#000;">On Sale - <mark>Save 55%</mark></strong></p>
+                           <input type="submit" name="commit" value="Getting Started" class="btn btn-default btn btn-default form-control loginbtnz getstarted_btn">
+						   <h5 class="invent_item" style="margin-top:30px;"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">Unlimited</span> warehouse</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">Unlimited</span> inventory</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">Unlimited</span> email invoicing</h5> 
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">Unlimited</span> user access</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Automated Accounting</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Point of Sale</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Bookkeeping</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;<span style="color:#000;font-weight:bold;">Advanced</span> Reports</h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Business <span style="color:#000;font-weight:bold;">Analytics</span></h5>
+						   <h5 class="invent_item"><i class="fa fa-check" style="color:#66cc33;"></i> &nbsp;Future Business <span style="color:#000;font-weight:bold;">Analysis</span></h5>
+                       </div>
+                   </article>
+               </div>
+
+           </div>
+       </div>
+
+  <!-- blog header -->
+  <div class="full_width blog_sm_hd">
+    <div style="position:relative; z-index:1;">
+      <h1 class="text-center">Why your business should use port-me?</h1>
+      <div class="container hpspepad">
+        <p class="text-center top-blog" >
+         Port-me Online customers save an average 11 hours a month.
+        </p>
+        <div class="owl-carousel-blog">
+				
+				  <div class="item shadowDepth" style=" background-color: #fff; margin-bottom: 1.6rem; margin-top: 1.6em;">
+					<div class="total-carous">
+					 <img class="img-respomsive" src="images/slides/b.png" alt="2016 05 rsz bigstock cambridge april great dom 32139101 300x201" />
+					  <div class="card-content">
+						<div class="clr"></div>
+						<article class="card-article" style="height:45px !important;">
+						  <h4 class="title"><a href="#" target="_blank" >Lot of paperwork & confusion?</a></h4>
+						</article>
+							<div style="width:100%;background:white;height:55px;">
+							<div class="col-md-12 col-md-offset-2" >  
+								<a class="share-icon s-icon facebook" href="#" target="_blank"><span class="fa fa-facebook"></span></a>
+								<a class="share-icon s-icon twitter" href="#" target="_blank"><span class="fa fa-twitter"></span></a>
+								<a class="share-icon s-icon googleplus" href="#" target="_blank"><span class="fa fa-google-plus"></span></a>
+							 </div>
+						</div>
+					  </div>
+					 </div>
+				  </div>
+
+				  <div class="item shadowDepth" style=" background-color: #fff; margin-bottom: 1.6rem; margin-top: 1.6em;">
+					<div class="total-carous">
+					 <img class="img-respomsive" src="images/slides/a.png" alt="2016 05 rsz bigstock cambridge april great dom 32139101 300x201" />
+					  <div class="card-content">
+						<div class="clr"></div>
+						<article class="card-article" style="height:45px !important;">
+						  <h4 class="title"><a href="#" target="_blank" >Basic things for businesses</a></h4>
+						</article>
+							<div style="width:100%;background:white;height:55px;">
+							<div class="col-md-12 col-md-offset-2" >  
+								<a class="share-icon s-icon facebook" href="#" target="_blank"><span class="fa fa-facebook"></span></a>
+								<a class="share-icon s-icon twitter" href="#" target="_blank"><span class="fa fa-twitter"></span></a>
+								<a class="share-icon s-icon googleplus" href="#" target="_blank"><span class="fa fa-google-plus"></span></a>
+							 </div>
+						</div>
+					  </div>
+					 </div>
+				  </div>
+
+				   <div class="item shadowDepth" style=" background-color: #fff; margin-bottom: 1.6rem; margin-top: 1.6em;">
+					<div class="total-carous">
+					 <img class="img-respomsive" src="images/slides/c.png" alt="2016 05 rsz bigstock cambridge april great dom 32139101 300x201" />
+					  <div class="card-content">
+						<div class="clr"></div>
+						<article class="card-article" style="height:45px !important;">
+						  <h4 class="title"><a href="#" target="_blank" >Operating System for Businesses</a></h4>
+						</article>
+							<div style="width:100%;background:white;height:55px;">
+							<div class="col-md-12 col-md-offset-2" >  
+								<a class="share-icon s-icon facebook" href="#" target="_blank"><span class="fa fa-facebook"></span></a>
+								<a class="share-icon s-icon twitter" href="#" target="_blank"><span class="fa fa-twitter"></span></a>
+								<a class="share-icon s-icon googleplus" href="#" target="_blank"><span class="fa fa-google-plus"></span></a>
+							 </div>
+						</div>
+					  </div>
+					 </div>
+				  </div>
+				
+				   <div class="item shadowDepth" style=" background-color: #fff; margin-bottom: 1.6rem; margin-top: 1.6em;">
+					<div class="total-carous">
+					 <img class="img-respomsive" src="images/slides/d.png" alt="2016 05 rsz bigstock cambridge april great dom 32139101 300x201" />
+					  <div class="card-content">
+						<div class="clr"></div>
+						<article class="card-article" style="height:45px !important;">
+						  <h4 class="title"><a href="#" target="_blank" >Business Management</a></h4>
+						</article>
+							<div style="width:100%;background:white;height:55px;">
+							<div class="col-md-12 col-md-offset-2" >  
+								<a class="share-icon s-icon facebook" href="#" target="_blank"><span class="fa fa-facebook"></span></a>
+								<a class="share-icon s-icon twitter" href="#" target="_blank"><span class="fa fa-twitter"></span></a>
+								<a class="share-icon s-icon googleplus" href="#" target="_blank"><span class="fa fa-google-plus"></span></a>
+							 </div>
+						</div>
+					  </div>
+					 </div>
+				  </div>
+
+				  <div class="item shadowDepth" style=" background-color: #fff; margin-bottom: 1.6rem; margin-top: 1.6em;">
+					<div class="total-carous">
+					 <img class="img-respomsive" src="images/slides/e.png" alt="2016 05 rsz bigstock cambridge april great dom 32139101 300x201" />
+					  <div class="card-content">
+						<div class="clr"></div>
+						<article class="card-article" style="height:45px !important;">
+						  <h4 class="title"><a href="#" target="_blank" >Other Businesses</a></h4>
+						</article>
+							<div style="width:100%;background:white;height:55px;">
+							<div class="col-md-12 col-md-offset-2" >  
+								<a class="share-icon s-icon facebook" href="#" target="_blank"><span class="fa fa-facebook"></span></a>
+								<a class="share-icon s-icon twitter" href="#" target="_blank"><span class="fa fa-twitter"></span></a>
+								<a class="share-icon s-icon googleplus" href="#" target="_blank"><span class="fa fa-google-plus"></span></a>
+							 </div>
+						</div>
+					  </div>
+					 </div>
+				  </div>
+
+				  <div class="item shadowDepth" style=" background-color: #fff; margin-bottom: 1.6rem; margin-top: 1.6em;">
+					<div class="total-carous">
+					 <img class="img-respomsive" src="images/slides/f.png" alt="2016 05 rsz bigstock cambridge april great dom 32139101 300x201" />
+					  <div class="card-content">
+						<div class="clr"></div>
+						<article class="card-article" style="height:45px !important;">
+						  <h4 class="title"><a href="#" target="_blank" >Other Businesses</a></h4>
+						</article>
+							<div style="width:100%;background:white;height:55px;">
+							<div class="col-md-12 col-md-offset-2" >  
+								<a class="share-icon s-icon facebook" href="#" target="_blank"><span class="fa fa-facebook"></span></a>
+								<a class="share-icon s-icon twitter" href="#" target="_blank"><span class="fa fa-twitter"></span></a>
+								<a class="share-icon s-icon googleplus" href="#" target="_blank"><span class="fa fa-google-plus"></span></a>
+							 </div>
+						</div>
+					  </div>
+					 </div>
+				  </div>
+
+				  <div class="item shadowDepth" style=" background-color: #fff; margin-bottom: 1.6rem; margin-top: 1.6em;">
+					<div class="total-carous">
+					 <img class="img-respomsive" src="images/slides/g.png" alt="2016 05 rsz bigstock cambridge april great dom 32139101 300x201" />
+					  <div class="card-content">
+						<div class="clr"></div>
+						<article class="card-article" style="height:45px !important;">
+						  <h4 class="title"><a href="#" target="_blank" >Other Businesses</a></h4>
+						</article>
+							<div style="width:100%;background:white;height:55px;">
+							<div class="col-md-12 col-md-offset-2" >  
+								<a class="share-icon s-icon facebook" href="#" target="_blank"><span class="fa fa-facebook"></span></a>
+								<a class="share-icon s-icon twitter" href="#" target="_blank"><span class="fa fa-twitter"></span></a>
+								<a class="share-icon s-icon googleplus" href="#" target="_blank"><span class="fa fa-google-plus"></span></a>
+							 </div>
+						</div>
+					  </div>
+					 </div>
+				  </div>
+        </div>
+      </div>
       
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <img src="images/Zero-rated-supplies-2.png" class="img-responsive" alt="image">
-        </div>
-      </div>
-    </div>
-    <!-- End Container -->
-  </section>
-  <!-- End Section -->
-  <section class="demo-request ">
-    <div class="container text-center">
-      <div class="request-title" style="padding:25px;">
-        <h2>Start 
-          <span>free
-          </span> Fedrex trial!
-        </h2>
-        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
-        </p>
-      </div>
-    </div>
-  </section>
-  <section class="ptb-100 functionalities bg-gray" style="">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <img src="images/sales_purchase.png" class="img-responsive" alt="image" style="margin-top:;">
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="main-title">
-            <h3>Inventory Management 
-            </h3>
-            <div class="seperator">
-            </div>
-          </div>
-          <p style="font-family:'Montserrat', sans-serif;">
-			Inventory management is the ongoing process of moving parts and products into and out of a company’s location(s). Companies manage their inventory on a daily basis as they place new orders for products and ship orders out to customers. It’s important that business leaders gain a firm grasp of everything involved in the inventory management process. That way, they can figure out creative ways to solve inventory management challenges by finding the right solutions.
-			
-          </p>
-<div class="row">
-<div class="col-md-12 col-xs-12">
-<ul>
-<li>Inventory Management Challenges.</li>
-<li>Inventory Management Attempts.</li>
-<li>Inventory Management Solutions.</li>
-<li>Inventory Management Usefulness.</li>
-<li>Effortless and efficient.</li>
-</ul>
-</div>
 
-</div>
-        </div>
-      </div>
+
     </div>
-    <!-- End Container -->
-  </section>
-  <!-- End Section -->
-  <section class="demo-request ">
-    <div class="container text-center">
-      <div class="request-title" style="padding:25px;">
-        <h2>Start 
-          <span>free
-          </span> Fedrex trial!
-        </h2>
-        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
-        </p>
-      </div>
-    </div>
-  </section>
-  <section class="ptb-100 functionalities bg-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7 col-sm-6 col-xs-12">
-          <div class="main-title">
-            <h3>Criteria for Billing and Invoices
-            </h3>
-            <div class="seperator">
-            </div>
-          </div>
-          <p style="font-family:'Montserrat', sans-serif;">Tax invoice is generally issued to charge the tax and pass on the credit. In GST there are some instances where the service provider is not allowed to charge any tax and hence a Tax invoice can’t be issued instead another document called Bill of Supply is issued.
-          </p>
-          <div class="row">
-            <div class="col-md-6 col-xs-12">
-              <ul>
-                <li style="font-family:'Montserrat', sans-serif;">Invoice number and date.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Customer name.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Shipping and billing address.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Customer and taxpayer's GSTIN.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Place of supply.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">HSN code.
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-xs-12">
-              <ul>
-                <li style="font-family:'Montserrat', sans-serif;">Taxable value and discounts.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Rate and amount of taxes i.e. CGST/ SGST/ IGST.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Item details i.e. description, unit price, quantity.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5 col-sm-6 col-xs-12">
-          <img src="images/print_invoice.png" class="img-responsive" alt="image">
-        </div>
-      </div>
-    </div>
-    <!-- End Container -->
-  </section>
-  <!-- End Section -->
-  <section class="demo-request ">
-    <div class="container text-center">
-      <div class="request-title" style="padding:25px;">
-        <h2>Start 
-          <span>free
-          </span> Fedrex trial!
-        </h2>
-        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
-        </p>
-      </div>
-    </div>
-  </section>
-  <section class="ptb-100 functionalities bg-gray">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5 col-sm-6 col-xs-12">
-          <img src="images/purchase_order.php" class="img-responsive" alt="image">
-        </div>
-        <div class="col-md-7 col-sm-6 col-xs-12">
-          <div class="main-title">
-            <h3>Purchase Order And Sales Order
-            </h3>
-            <div class="seperator">
-            </div>
-          </div>
-          <p style="font-family:'Montserrat', sans-serif;">Sales Order is issued when a customer buys something from you company. The company is credited and the customer is debited. Purchase Order is issued when the company buys something from the vendor.
-          </p>
-          <div class="row">
-            <div class="col-md-6 col-xs-12">
-              <ul>
-                <li style="font-family:'Montserrat', sans-serif;">Purposes.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Submission.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Order Processing.
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-xs-12">
-              <ul>
-                <li style="font-family:'Montserrat', sans-serif;">Supplier for the stock item.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Quantity from the Sales Order.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Description of the stock item.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End Container -->
-  </section>
-  <!-- End Section -->
-  <section class="demo-request ">
-    <div class="container text-center">
-      <div class="request-title" style="padding:25px;">
-        <h2>Start 
-          <span>free
-          </span> Fedrex trial!
-        </h2>
-        <p>5-minute setup, test out the Fedrex features for 30 days, no credit card required.
-        </p>
-      </div>
-    </div>
-  </section>
-  <section class="ptb-100 functionalities bg-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7 col-sm-6 col-xs-12">
-          <div class="main-title">
-            <h3>E-filing income tax returns for business.
-            </h3>
-            <div class="seperator">
-            </div>
-          </div>
-          <p style="font-family:'Montserrat', sans-serif;">The full form of e-filing is “Electronic Filing”.  In view of expansion of internet, e-filing has not only been popular but is also mandatory in large number of cases.  E-filing is The process of submitting tax returns over the Internet, using tax preparation software that has been pre-approved by the relevant tax authority.The biggest advantage of  e-filing of tax returns is that you can do this from any place at any time, thereby saving a lot of time and effort. It is simple, easy and faster than filing returns manually.
-          </p>
-          <div class="row">
-            <div class="col-md-6 col-xs-12">
-              <ul>
-                <li style="font-family:'Montserrat', sans-serif;">Your PAN Card, your e-filing password, your bank statements across all the accounts you operate (including loan accounts).
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Your tax returns also ask for your Aadhar and passport numbers — it is an optional detail, but ifyou have both, take those as well.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Principal and interest payment certificate from loan provider.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Customer and taxpayer's GSTIN.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Place of supply.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Details of insurance payments and donations, and if you are a freelancer or an independent professional, your credit card bills.
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-xs-12">
-              <ul>
-                <li style="font-family:'Montserrat', sans-serif;">Taxable value and discounts.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Rate and amount of taxes i.e. CGST/ SGST/ IGST.
-                </li>
-                <li style="font-family:'Montserrat', sans-serif;">Item details i.e. description, unit price, quantity.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5 col-sm-6 col-xs-12">
-          <img src="images/transaction.png" class="img-responsive" alt="image">
-        </div>
-      </div>
-    </div>
-    <!-- End Container -->
-  </section>
-  <!-- End Section -->
-  <?php
-include('footer.php');
-?>
-  <!-- End Footer -->
+  </div>
+ <?php
+	include ("footer.php");
+ ?>
 </body>
+
 </html>
+

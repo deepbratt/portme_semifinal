@@ -98,8 +98,8 @@ $fetch_details = mysqli_fetch_array($cu_info);
 					</ul>
 				</li>
 				
-				<li class="nav-item start <?php if($page_name == 'tax.php') { ?>active open<?php } ?>">
-					<a href="tax.php">
+				<li class="nav-item start <?php if($page_name == 'logout.php') { ?>active open<?php } ?>">
+					<a href="logout.php">
 						<span class="gcon gcon-log-out rs-icon-menu"></span>Logout
 					</a>
 				</li>

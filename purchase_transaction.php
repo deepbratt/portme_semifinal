@@ -44,7 +44,8 @@ $fetch_sales_order_info = mysqli_fetch_array($bill_info);
     <!--[if lt IE 8]>s
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-    
+ 	<div id="rs-wrapper">
+   
 <?php 
 include("header.php");
 include("sidebar.php");
@@ -63,22 +64,7 @@ include("sidebar.php");
                 </div>
               </div>
 
-            </div>
-
-	
-					<?php
-						$owner_id = $fetch_sales_order_info['business_id'];
-						$get_owner_info = mysqli_query($mysqli, "select * from tbl_business where business_id = '".$owner_id."'");
-						$fetch_owner_info = mysqli_fetch_array($get_owner_info);
-
-						$owner_state_id = $fetch_owner_info['state'];
-						$get_owner_state_info = mysqli_query($mysqli, "select * from states where states_id = '".$owner_state_id."'");
-						$fetch_owner_state_info = mysqli_fetch_array($get_owner_state_info);
-
-						
-								
-					?> 
-                
+            </div>               
                 <div class="container-fluid">
 				
 				<!-- table starts -->
@@ -87,7 +73,7 @@ include("sidebar.php");
 						<thead>
 						   <tr style="font-size:15px;">
 								<th style="text-align:center;">Invoice Number</th>
-								<th style="text-align:center;">Customer Name</th>
+								<th style="text-align:center;">Vendor Name</th>
 								<th style="text-align:center;">Place of Supply</th>
 								<th style="text-align:center;">Product</th>
 								<th style="text-align:center;">HSN</th>
@@ -103,7 +89,7 @@ include("sidebar.php");
 								
 							</tr>
 						</thead>
-						<tbody>
+						<thead>
 
 							<tr>
 								<th style="text-align:center;"></th>
@@ -125,11 +111,12 @@ include("sidebar.php");
 
 							
 							</tr>
-
-							
+					</thead>
+					<tbody>	
+								
 							<tr>
-							<th><?php echo $fetch_sales_order_info['invoice_no']?> </th>	
-							<th>
+							<td><?php echo $fetch_sales_order_info['invoice_no']?> </td>	
+							<td>
 							<?php
 								$customer_id = $fetch_sales_order_info['customer_id'];
 								$get_customer_query = mysqli_query($mysqli,"select * from tbl_contacts where customer_id='".$customer_id."'");
@@ -140,16 +127,16 @@ include("sidebar.php");
 								echo "&nbsp;&nbsp;";
 								echo ucfirst($get_fetch_customer_name['last_name']);
 							?>
-							</th>
-							<th> 
+							</td>
+							<td> 
 							<?php
 							$get_state_id = $fetch_sales_order_info['Place_of_supply'];
 							$state_info = mysqli_query($mysqli, "select * from states where states_code = '".$get_state_id."'");
 							$fetch_state_info = mysqli_fetch_array($state_info);
 							echo ucfirst($fetch_state_info['states_name']);
 							?>
-							</th>
-								<th style="text-align:center;">								
+							</td>
+								<td style="text-align:center;">									
 											<?php 
 											$product_id = explode(",",$fetch_sales_order_info['product_id_array']);
 											//print_r($product_id);
@@ -166,9 +153,9 @@ include("sidebar.php");
 											<?php
 											}
 											?>
-										</th>
+										</td>
 								
-										<th style="text-align:center;">
+										<td style="text-align:center;">
 											<?php
 											$hsn_array = explode(",",$fetch_sales_order_info['hsn_array']);
 											foreach($hsn_array as $hsn_name){
@@ -176,8 +163,8 @@ include("sidebar.php");
 											echo "<br />";
 											}
 											?>
-										</th>
-								<th style="text-align:center;">
+										</td>
+								<td style="text-align:center;">
 											<?php
 											$quantity_array = explode(",",$fetch_sales_order_info['qty_array']);
 											foreach($quantity_array as $quantity_details){
@@ -185,8 +172,8 @@ include("sidebar.php");
 											echo "<br />";
 											}
 											?>
-								</th>
-								<th style="text-align:center;">
+								</td>
+								<td style="text-align:center;">
 											<?php
 											$unit_price_array = explode(",",$fetch_sales_order_info['unit_price_array']);
 											foreach($unit_price_array as $unit_price_details){
@@ -194,8 +181,8 @@ include("sidebar.php");
 											echo "<br />";
 											}
 											?>
-								</th>										
-								<th style="text-align:center;">
+								</td>										
+								<td style="text-align:center;">
 											<?php
 											$tax_rate_array = explode(",",$fetch_sales_order_info['tax_rate_array']);
 											foreach($tax_rate_array as $tax_rate_details){
@@ -203,8 +190,8 @@ include("sidebar.php");
 											echo "<br />";
 											}
 											?>
-								</th>
-								<th style="text-align:center;">
+								</td>
+								<td style="text-align:center;">
 											<?php
 											$cgst_array = explode(",",$fetch_sales_order_info['tax_cgst_array']);
 											foreach($cgst_array as $cgst_details){
@@ -212,8 +199,8 @@ include("sidebar.php");
 											echo "<br />";
 											}
 											?>
-								</th>
-								<th style="text-align:center;">
+								</td>
+								<td style="text-align:center;">
 										<?php
 											$sgst_array = explode(",",$fetch_sales_order_info['tax_sgst_array']);
 											foreach($sgst_array as $sgst_details){
@@ -221,8 +208,8 @@ include("sidebar.php");
 											echo "<br />";
 											}
 											?>
-								</th>
-								<th style="text-align:center;">
+								</td>
+								<td style="text-align:center;">
 								<?php
 											$igst_array = explode(",",$fetch_sales_order_info['tax_igst_array']);
 											foreach($igst_array as $igst_details){
@@ -230,8 +217,8 @@ include("sidebar.php");
 											echo "<br />";
 											}
 											?>
-								</th>
-								<th style="text-align:center;">
+								</td>
+								<td style="text-align:center;">
 								<?php
 											$cess_array = explode(",",$fetch_sales_order_info['tax_cess_array']);
 											foreach($cess_array as $cess_details){
@@ -239,8 +226,8 @@ include("sidebar.php");
 											echo "<br />";
 											}
 											?>
-								</th>
-								<th style="text-align:center;">
+								</td>
+								<td style="text-align:center;">
 								<?php
 											$tax_value= explode(",",$fetch_sales_order_info['tax_value_array']);
 											foreach($tax_value as $tax_value_details){
@@ -248,8 +235,8 @@ include("sidebar.php");
 											echo "<br />";
 											}
 											?>
-								</th>
-								<th style="text-align:center;">
+								</td>
+								<td style="text-align:center;">
 								<?php
 											$discount_info = explode(",",$fetch_sales_order_info['discount_array']);
 											foreach($discount_info as $discount_details){
@@ -257,8 +244,8 @@ include("sidebar.php");
 											echo "<br />";
 											}
 											?>
-								</th>
-								<th style="text-align:center;">
+								</td>
+								<td style="text-align:center;">
 								<?php
 											$total_array = explode(",",$fetch_sales_order_info['total_array']);
 											foreach($total_array as $total_details){
@@ -266,9 +253,10 @@ include("sidebar.php");
 											echo "<br />";
 											}
 											?>
-								</th>
+								</td>
 						
 							</tr>
+							
 							
 							</tbody>						
 
@@ -285,15 +273,16 @@ include("sidebar.php");
             </div>
 
           </div>
-
 		</form>
+		
         </div>
 		
 	</div>
 
       </article>  
-	  		<?php include("footer.php");?>
-
+	  		
+<?php include("footer.php");?>
+</div>
 	  
 	  	<script src="js/datatables.min.js"></script>
 	<!--<script src="js/datatables-example.js"></script>-->

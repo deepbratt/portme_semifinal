@@ -68,7 +68,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Port-ME | Sales Order
+    <title>Port-ME | Purchase Order
     </title>
     <?php include("metalinks.php");?>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVEqoCsKgUMmAcDVX9OAwVMDewLI6yOAQ&sensor=false&libraries=places&language=en"></script>
@@ -100,7 +100,7 @@ include("sidebar.php");
               <div class="rs-dashhead-content">
                 <div class="rs-dashhead-titles">
                   <h3 class="rs-dashhead-title m-t">
-                    New Sales Order :
+                    New Purchase Order :
                     <div style="float:right;">
                       <span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='sales_order.php'"> 
                         <i class="fa fa-remove">

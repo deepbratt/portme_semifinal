@@ -138,6 +138,7 @@ if(isset($_POST['submit']))
 											   </div><!-- /.form-group -->
 											  </div>
 										</div>
+
 											<div class="row">
 												<div class="col-sm-3">
 													Product Name
@@ -252,12 +253,32 @@ if(isset($_POST['submit']))
 												</div><!-- /.col-sm-4 -->
 											</div><!-- /.row -->
 
-								</div><!-- /.panel-body -->
+									<div class="row" style="margin-bottom:5px;">
+										<div class="col-sm-3" style="margin-top:10px;">         
+											Tax Rate              
+											  </div>
+											 <div class="col-sm-9">
+											   <div class="form-group">                
+											 <select name="product_category_id" class="form-control">
+													<option value="">Choose Tax Rate</option>
+												<?php
+												$tax_rate = mysqli_query($mysqli, "select * from tax_rates");
+												while ($fetch_tax = mysqli_fetch_array($tax_rate))
+												{
+												?>																				   
+											   <option value="<?php echo $fetch_tax['tax_rate']?>"><?php echo $fetch_tax['tax_rate']?></option>
+												<?php
+												}
+											   ?>
+											  
+											 </select>
+										</div><!-- /.form-group -->
+									 </div>
+								</div>
 
-								
-
-							</div><!-- /.panel -->
-						</div>
+										</div><!-- /.panel-body -->
+									</div><!-- /.panel -->
+								</div>
 						
 						<!-- right side
 						<div class="col-md-5 col-sm-12">

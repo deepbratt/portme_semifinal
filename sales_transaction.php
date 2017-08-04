@@ -1,7 +1,7 @@
 <?php
 include ("config.php");
 $business_id = $_SESSION['business_id'];
-$bill_info = mysqli_query($mysqli, "select * from tbl_transactions where business_id='".$business_id."' and tbl_transaction_type='sales'");
+$bill_info = mysqli_query($mysqli, "select * from tbl_transactions where business_id='".$business_id."' and tbl_transaction_type='sales' and status = 'active'");
 ?>
 
 <!DOCTYPE html>

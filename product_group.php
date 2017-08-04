@@ -3,7 +3,8 @@ include("config.php");
 $business_id = $_SESSION['business_id'];
 if((isset($_GET['del_id'])) && ($_GET['del_id'] != ""))
 {
-	$delete_query = mysqli_query($mysqli,"DELETE FROM portme_product_group WHERE group_id='".$_GET['del_id']."'");
+	$delete_id = $_GET['del_id'];
+	$delete_query = mysqli_query($mysqli,"update tbl_productcat set status = 'inactive' WHERE productcat_id='".$delete_id."'");
 	if($delete_query)
 	{
 		$data = "success";
@@ -128,7 +129,7 @@ if((isset($_GET['del_id'])) && ($_GET['del_id'] != ""))
 							        </thead>
 							        <tbody>
 									<?php
-									$select_query = mysqli_query($mysqli,"select * from tbl_productcat where business_id = '$business_id'");
+									$select_query = mysqli_query($mysqli,"select * from tbl_productcat where business_id = '$business_id' and status = 'active'");
 									while($fetch_query = mysqli_fetch_array($select_query))
 									{
 										$description = substr($fetch_query['description'],0,70);
@@ -142,7 +143,7 @@ if((isset($_GET['del_id'])) && ($_GET['del_id'] != ""))
 											<td>
 												<a href="view_product_group.php?view_id=<?php echo $fetch_query['productcat_id'];?>"> <i class="fa fa-eye"></i></a>
 												<a href="edit_product_group.php?edit_id=<?php echo $fetch_query['productcat_id'];?>" class="fa fa-pencil" style="height:10px;margin:5px;"></a>
-												<a href="?del_id=<?php echo $fetch_query['group_id'];?>" class="fa fa-trash" style="height:10px;margin:5px;"></a>
+												<a href="?del_id=<?php echo $fetch_query['productcat_id'];?>" class="fa fa-trash" style="height:10px;margin:5px;"></a>
 											</td>
 							            </tr>
 									<?php

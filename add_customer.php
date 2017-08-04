@@ -276,7 +276,7 @@ if(isset($_POST['submit_details']))
 																<div class="form-group">
 																	<select name="bstate" class="form-control billstate1" >
 																	
-																		<option value="">Select State</option>
+																		<option selected disabled value="">Select State</option>
 																		<?php
 																	$state_info = mysqli_query($mysqli, "select * from states");
 																	while ($fetch_state = mysqli_fetch_array($state_info))
@@ -431,7 +431,6 @@ if(isset($_POST['submit_details']))
 					cname: "required",					
 					email:	"required email",
 					mobile:	"required number",
-					gst:	"required",
 					address: "required",
 					bstate: "required",
 					
@@ -441,7 +440,6 @@ if(isset($_POST['submit_details']))
 					cname: "Enter Company Name",					
 					email:	"Enter Email Id",
 					mobile: "Enter Phone number",
-					gst: "Enter GST or PAN number",
 					address: "Enter Address of Supplier",
 					bstate: "Choose State",
 					

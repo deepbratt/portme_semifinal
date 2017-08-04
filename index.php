@@ -83,7 +83,7 @@
 				</form>
 				<p class="text-center text-muted small m-a-0">
 					<a href="forget_pass.php" class="fpass">Forgot Password?</a><br>
-					Don't have an account? <a href="signup.php">Sign up here</a>
+					<!--Don't have an account? <a href="signup.php">Sign up here</a>-->
 				</p>
 			</div><!-- /.bg-white -->
 		</div><!-- /.login-wrap -->

@@ -20,7 +20,7 @@
 					-->
 					<div class="rs-logo fixed-width">
 						<!-- Main Image logo -->
-						<a class="navbar-brand" href="" >
+						<a class="navbar-brand" href="dashboard.php" >
 							<img alt="Brand" src="images/logo.png"  style="height:60px;margin-left:50px;margin-top:5px;">
 						</a>
 						<!-- Main small logo -->

@@ -6,16 +6,16 @@ $bill_info = mysqli_query($mysqli, "select * from tbl_transactions where busines
 
 <!DOCTYPE html>
 <html lang=en>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Port-ME | Purchase Order
-    </title>
-    <?php include("metalinks.php");?>
-   <style>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+<title>Port-ME | Sales Transaction </title>
+<?php include("metalinks.php");?>
+	<style>
 		.dt-buttons a{
 			border:1px solid #CCC;
 			padding:3px 8px;
@@ -38,41 +38,58 @@ $bill_info = mysqli_query($mysqli, "select * from tbl_transactions where busines
 			width:300px !important;
 		}
 	</style>
-  </head>
-  <body>
-    <!--[if lt IE 8]>s
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
- 	<div id="rs-wrapper">
-   
-<?php 
-include("header.php");
-include("sidebar.php");
-?>
-      <!-- BEGIN MAIN CONTENT -->
-      <article class="rs-content-wrapper">
-	  <div id="rs-wrapper">
-        <div class="rs-content">
-          <div class="rs-inner">
-            <div class="rs-dashhead m-b-lg" style="background:#f5f5f5">
-              <div class="rs-dashhead-content">
-                <div class="rs-dashhead-titles">
-                  <h3 class="rs-dashhead-title m-t">
-                     Purchase Order Transaction :                    
-                  </h3>
-                </div>
-              </div>
+</head>
 
-            </div>               
-                <div class="container-fluid">
-				
-				<!-- table starts -->
-				<div class="panel panel-plain panel-rounded table-responsive">
-					<table class="table table-b-t table-b-b datatable-default rs-table table-default" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">				
+
+<body>
+
+	<!--[if lt IE 8]>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<div id="rs-wrapper">
+		<?php 
+			include("header.php");
+			include("sidebar.php");
+		?>
+
+
+		<!-- BEGIN MAIN CONTENT -->
+		<article class="rs-content-wrapper">
+			<div class="rs-content">
+				<div class="rs-inner">
+					<form method="POST">
+					<!-- Begin Dashhead -->
+					<div class="rs-dashhead m-b-lg" style="background:#f5f5f5">
+						<div class="rs-dashhead-content">
+							<div class="rs-dashhead-titles">
+								<h3 class="rs-dashhead-title m-t">
+									Sales Transaction
+									<!--<div style="float:right;">
+										<span style="padding:10px 10px;font-size:15px;font-weight:normal;color:#4a89dc;cursor:pointer;border-right:1px solid #CCC;"> <i class="fa fa-lightbulb-o"></i> &nbsp;&nbsp;Page Tutorial</span>
+
+										<span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;"> <i class="fa fa-remove"></i> </span>
+									</div>-->
+								</h3>
+								
+							</div>
+							
+							
+						</div><!-- /.rs-dashhead-content -->
+						
+					</div><!-- /.rs-dashhead -->
+					<!-- End Dashhead -->
+
+					<!-- Begin default content width -->
+					<div class="container-fluid">
+
+						<!-- Begin Panel -->
+						<div class="panel panel-plain panel-rounded table-responsive">
+								<table class="table table-b-t table-b-b datatable-default rs-table table-default" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">				
 						<thead>
 						   <tr style="font-size:15px;">
 								<th style="text-align:center;">Invoice Number</th>
-								<th style="text-align:center;">Vendor Name</th>
+								<th style="text-align:center;">Customer Name</th>
 								<th style="text-align:center;">Place of Supply</th>
 								<th style="text-align:center;">Product</th>
 								<th style="text-align:center;">HSN</th>
@@ -267,27 +284,19 @@ include("sidebar.php");
 							
 
 					</table>
-				</div>
-				<!-- table starts -->                
+						</div><!-- /.panel -->
+						<!-- End Panel -->
 
+					</div><!-- /.container-fluid -->
+					</form>
+				</div><!-- /.rs-inner -->
+			</div><!-- /.rs-content -->
+		</article><!-- /.rs-content-wrapper -->
+		<!-- END MAIN CONTENT -->
 
-
-			  		
-            </div>
-
-          </div>
-		</form>
-		
-        </div>
-		
-	</div>
-
-      </article>  
-	  		
-<?php include("footer.php");?>
-</div>
-	  
-	  	<script src="js/datatables.min.js"></script>
+	<?php include("footer.php");?>
+	<!-- Page Plugins -->
+	<script src="js/datatables.min.js"></script>
 	<!--<script src="js/datatables-example.js"></script>-->
 	
 	<script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
@@ -296,8 +305,8 @@ include("sidebar.php");
 	<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
 	<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>	
-	
+	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+
 	<script>
 		$(document).ready(function() {
 			$('.datatable-default').DataTable( {
@@ -312,5 +321,5 @@ include("sidebar.php");
 		} );
 	</script>
 
-      </body>
-    </html>
+</body>
+</html>

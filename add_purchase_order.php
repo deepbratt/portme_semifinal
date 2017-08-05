@@ -50,7 +50,17 @@
  $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'purchase', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$state_code."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
 
 	if($insert_sales_order)
-		{		
+		{	
+
+			$product_id = explode(",",$fetch_last_sales['product_id_array']);								
+			foreach($product_id As $key => $fetch_product){		
+			$get_quantity = mysqli_query($mysqli, "select * from tbl_products where product_id = '".$fetch_product."'");
+			$fetch_quantity = mysqli_fetch_array($get_quantity);
+			
+			$update_quantity = mysqli_query($mysqli, "update tbl_products set qty = '".$fetch_quantity['qty']."' + '".$quantity_array."' where product_id = '".$fetch_product."'");
+			}
+				
+
 			$data = "success";		
 		}
 		else
@@ -192,7 +202,7 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input  type="text" class="form-control rs-datepicker" placeholder="Sales Date" name="invoicedate">
+                              <input  type="text" class="form-control rs-datepicker" data-date-format="dd-mm-yyyy" readonly placeholder="DD-MM-YYYY" name="invoicedate">
 							  <p class="help-block with-errors"></p>
                             </div>
                           </div>
@@ -434,6 +444,7 @@ include("sidebar.php");
 	  <script src="js/datepicker-example.js"></script>
       <script src="js/selectize-example.js"></script>
       <script src="js/validator.min.js"></script>
+
 	
 
 	  <script type="text/javascript">

@@ -7,68 +7,67 @@
 	$fetch_last_sales = mysqli_fetch_array($get_last_sales_id);
 	$invoice_no = $fetch_last_sales['tbl_transaction_id']+1;
 	$invoice_num_gene = "INV-".date('dmy')."000".$invoice_no."";
-	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type ='customer'");
 
-	if(isset($_POST['submit'])){
+	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type = 'vendor'");
+	
+		if(isset($_POST['submit'])){
 
-		$invoice_number		= $invoice_num_gene;	
-		$customer_id		=  mysqli_real_escape_string($mysqli,$_POST['cu_id']);
-		$state_code			=  mysqli_real_escape_string($mysqli,$_POST['cust_states']);
-		$gst_pan			=  mysqli_real_escape_string($mysqli,$_POST['gstin']);
-		$product_id			= $_POST['product_id'];
-		$product_array		= implode(",",$product_id);
-		$hsn				= $_POST['hsn'];
-		$hsn_array			= implode(",",$hsn);
-		$quantity			=  $_POST['qty'];
-		$quantity_array		= implode(",",$quantity);
-		$unit_price			= $_POST['unit_price'];
-		$unit_price_array	= implode(",",$unit_price);
-		$tax_rate			= $_POST['tax_rate'];
-		$tax_rate_array		= implode(",",$tax_rate);
-		$tax_cgst			=  $_POST['cgst'];
-		$tax_cgst_array		= implode(",",$tax_cgst);
-		$tax_sgst			= $_POST['sgst'];
-		$tax_sgst_array		= implode(",",$tax_sgst);
-		$tax_igst			=  $_POST['igst'];
-		$tax_igst_array		= implode(",",$tax_igst);
-		$tax_cess			=  $_POST['cess'];
-		$tax_cess_array		= implode(",",$tax_cess);
-		$tax_value			= $_POST['tax_val'];
-		$tax_value_array	= implode(",",$tax_value);
-		$discount			=  $_POST['discount'];
-		$discount_array		= implode(",",$discount);
-		$total				= $_POST['total'];
-		$total_array		= implode(",",$total);
-		$subtotal			=  mysqli_real_escape_string($mysqli,$_POST['tt_subtotal']);
-		$totaldiscount		=  mysqli_real_escape_string($mysqli,$_POST['tt_discount']);
-		$total_tax			=  mysqli_real_escape_string($mysqli,$_POST['tt_tax']);
-		$total_price		=  mysqli_real_escape_string($mysqli,$_POST['tt_comtotal']);
-		$date				=  mysqli_real_escape_string($mysqli,strtotime($_POST['invoicedate']));
-		
+	$invoice_number		= $invoice_num_gene;	
+	$customer_id		=  mysqli_real_escape_string($mysqli,$_POST['cu_id']);
+	$state_code			=  mysqli_real_escape_string($mysqli,$_POST['cust_states']);
+	$gst_pan			= mysqli_real_escape_string($mysqli,$_POST['gstin']);
+	$product_id			= $_POST['product_id'];
+	$product_array		= implode(",",$product_id);
+	$hsn				=  $_POST['hsn'];
+	$hsn_array			= implode(",",$hsn);
+	$quantity			= $_POST['qty'];
+	$quantity_array		= implode(",",$quantity);
+	$unit_price			=  $_POST['unit_price'];
+	$unit_price_array	= implode(",",$unit_price);
+	$tax_rate			= $_POST['tax_rate'];
+	$tax_rate_array		= implode(",",$tax_rate);
+	$tax_cgst			= $_POST['cgst'];
+	$tax_cgst_array		= implode(",",$tax_cgst);
+	$tax_sgst			= $_POST['sgst'];
+	$tax_sgst_array		= implode(",",$tax_sgst);
+	$tax_igst			=  $_POST['igst'];
+	$tax_igst_array		= implode(",",$tax_igst);
+	$tax_cess			= $_POST['cess'];
+	$tax_cess_array		= implode(",",$tax_cess);
+	$tax_value			= $_POST['tax_val'];
+	$tax_value_array	= implode(",",$tax_value);
+	$discount			= $_POST['discount'];
+	$discount_array		= implode(",",$discount);
+	$total				= $_POST['total'];
+	$total_array		= implode(",",$total);
+	$subtotal			=  mysqli_real_escape_string($mysqli,$_POST['tt_subtotal']);
+	$totaldiscount		=  mysqli_real_escape_string($mysqli,$_POST['tt_discount']);
+	$total_tax			=  mysqli_real_escape_string($mysqli,$_POST['tt_tax']);
+	$total_price		=  mysqli_real_escape_string($mysqli,$_POST['tt_comtotal']);
+	$date				=  mysqli_real_escape_string($mysqli,strtotime($_POST['invoicedate']));
+	
 
-	  $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'sales', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$state_code."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
+ $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'purchase', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$state_code."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
 
-<<<<<<< HEAD
- 
-  $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'sales', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$state_code."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
 	if($insert_sales_order)
 		{	
-		
+
 			$product_id = explode(",",$fetch_last_sales['product_id_array']);								
 			foreach($product_id As $key => $fetch_product){		
 			$get_quantity = mysqli_query($mysqli, "select * from tbl_products where product_id = '".$fetch_product."'");
 			$fetch_quantity = mysqli_fetch_array($get_quantity);
 			
-			$update_quantity = mysqli_query($mysqli, "update tbl_products set qty = '".$fetch_quantity['qty']."' - '".$quantity_array."' where product_id = '".$fetch_product."'");
+			$update_quantity = mysqli_query($mysqli, "update tbl_products set qty = '".$fetch_quantity['qty']."' + '".$quantity_array."' where product_id = '".$fetch_product."'");
 			}
-=======
-	if($insert_sales_order){		
->>>>>>> 7435af8639ffe58534c6b5a94e4be291f8de4320
+				
+
 			$data = "success";		
-	}else{
+		}
+		else
+		{
 			$data = "error";
+		}
 	}
-}
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +78,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Port-ME | Sales Order
+    <title>Port-ME | Purchase Order
     </title>
     <?php include("metalinks.php");?>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVEqoCsKgUMmAcDVX9OAwVMDewLI6yOAQ&sensor=false&libraries=places&language=en"></script>
@@ -111,7 +110,7 @@ include("sidebar.php");
               <div class="rs-dashhead-content">
                 <div class="rs-dashhead-titles">
                   <h3 class="rs-dashhead-title m-t">
-                    New Sales Order :
+                    New Purchase Order :
                     <div style="float:right;">
                       <span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='sales_order.php'"> 
                         <i class="fa fa-remove">
@@ -160,17 +159,17 @@ include("sidebar.php");
 
                         <div class="row">
                           <div class="col-sm-3">
-                            <b>Customer Name</b>
+                            <b>Vendor Name</b>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
                               <select class="rs-selectize-single " name="cu_id" onchange="show_customer_data(this);">
-								 <option selected disabled value="">Choose Customer</option>
+								 <option selected disabled value="">Choose Vendor</option>
 								   <?php		
-									 while($fetch_cust_details = mysqli_fetch_array($get_fetch_details))
+									 while($fetch_vendor_details = mysqli_fetch_array($get_fetch_details))
 									 {
 									?>
-									<option value="<?php echo $fetch_cust_details['customer_id'];?>" <?php echo((isset($_GET['custid']) && $fetch_cust_details['customer_id']==$_GET['custid'])?'selected':'');?>><?php echo ucfirst($fetch_cust_details['first_name']);?>&nbsp;<?php echo ucfirst($fetch_cust_details['last_name']);?> - <?php echo $fetch_cust_details['mobile'];?></option>
+									<option value="<?php echo $fetch_vendor_details['customer_id'];?>" <?php echo((isset($_GET['custid']) && $fetch_vendor_details['customer_id']==$_GET['custid'])?'selected':'');?>><?php echo ucfirst($fetch_vendor_details['first_name']);?>&nbsp;<?php echo ucfirst($fetch_vendor_details['last_name']);?> - <?php echo $fetch_vendor_details['mobile'];?></option>
 								<?php
 									}
 								?>
@@ -184,8 +183,8 @@ include("sidebar.php");
                             </button>
                           </div>
                         </div>
-						 
-						  <div class="row">
+
+						 <div class="row">
                           <div class="col-sm-3">
                             <b>Ecommerce- GSTIN</b>
                           </div>
@@ -445,6 +444,7 @@ include("sidebar.php");
 	  <script src="js/datepicker-example.js"></script>
       <script src="js/selectize-example.js"></script>
       <script src="js/validator.min.js"></script>
+
 	
 
 	  <script type="text/javascript">
@@ -549,7 +549,7 @@ include("sidebar.php");
 			
 				$.ajax({
 				  type: 'post',
-				  url: 'ajax/add_customer_ajax.php',
+				  url: 'ajax/add_vendor_ajax.php',
 				  data:{
 					sal:salutation,
 					fname:fname,
@@ -578,7 +578,7 @@ include("sidebar.php");
 				var salutation = $(e).val();
 				$.ajax({
 				  type: 'post',
-				  url: 'ajax/get_customer_details.php',
+				  url: 'ajax/get_vendor_details.php',
 				  data:{
 					suggest:salutation,
 				  },
@@ -600,7 +600,7 @@ include("sidebar.php");
 				//alert(product_id);
 				$.ajax({
 				  type: 'post',
-				  url: 'ajax/get_sales_order_ajax.php',
+				  url: 'ajax/get_purchase_order_ajax.php',
 				  data:{
 					suggest:product_id,
 				  },
@@ -641,7 +641,7 @@ include("sidebar.php");
 
 				$.ajax({
 				  type: 'post',
-				  url: 'ajax/get_sales_order_ajax.php',
+				  url: 'ajax/get_purchase_order_ajax.php',
 				  data:{
 					p_id:p_id,
 					hsn:hsn,

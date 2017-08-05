@@ -197,7 +197,7 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input  type="text" class="form-control rs-datepicker" data-date-format="dd-mm-yyyy" readonly placeholder="DD-MM-YYYY" name="invoicedate">
+                              <input  type="text" class="form-control rs-datepicker" readonly placeholder="DD-MM-YYYY" name="invoicedate">
 							  <p class="help-block with-errors"></p>
                             </div>
                           </div>
@@ -492,9 +492,14 @@ include("sidebar.php");
 	</script>
 
 	  <script>
-	  $( function() {
-		$( ".rs-datepicker" ).datepicker();
-	  });
+	 
+
+	  $('.rs-datepicker').datepicker({
+     format: "dd/mm/yyyy",
+     autoclose: true,
+}).on('changeDate', function (ev) {
+     $(this).datepicker('hide');
+});
 
 		 function add_more_fun(){
 			  //alert('zz');

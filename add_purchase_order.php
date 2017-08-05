@@ -498,9 +498,13 @@ include("sidebar.php");
 	</script>
 
 	  <script>
-	  $( function() {
-		$( ".rs-datepicker" ).datepicker();
-	  });
+	  $('.rs-datepicker').datepicker({
+     format: "dd/mm/yyyy",
+     autoclose: true,
+}).on('changeDate', function (ev) {
+     $(this).datepicker('hide');
+});
+
 
 		 function add_more_fun(){
 			  //alert('zz');

@@ -48,7 +48,6 @@
 
 	  $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'sales', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$state_code."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
 
-  $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'sales', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$state_code."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
 	if($insert_sales_order)
 		{	
 		

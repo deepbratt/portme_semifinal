@@ -136,7 +136,7 @@ $sale_order_info = mysqli_query ($mysqli,"select * from tbl_transactions where b
 							                <td>Rs.&nbsp;<?php echo ucfirst($fetch_sales_order_info['total']);?></td>
 							                <td><?php echo $fetch_sales_order_info['date']?></td>
 							               	<td>
-												<a href="print_invoice_purchase.php?order_id=<?php echo $fetch_sales_order_info['tbl_transaction_id'];?>" class="fa fa-eye" style="height:35px;margin-top:10px;padding-right:-50px; font-size:25px"></a>												
+												<a href="print_invoice.php?order_id=<?php echo $fetch_sales_order_info['tbl_transaction_id'];?>" class="fa fa-eye" style="height:35px;margin-top:10px;padding-right:-50px; font-size:25px"></a>												
 												<a href="?delete_id=<?php echo $fetch_sales_order_info['tbl_transaction_id'];?>" class="fa fa-trash" style="height:35px;margin-top:10px;padding-right:-50px; font-size:25px"></a>
 											</td>
 							            </tr>

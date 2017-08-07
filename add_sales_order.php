@@ -9,6 +9,8 @@
 	$invoice_num_gene = "INV-".date('dmy')."000".$invoice_no."";
 	$get_fetch_details = mysqli_query($mysqli,"SELECT * FROM tbl_contacts WHERE business_id='$business_id' and customer_type ='customer'");
 
+	$check_quantity = mysqli_query($mysqli, "select * from products where ");
+
 	if(isset($_POST['submit'])){
 
 		$invoice_number		= $invoice_num_gene;	
@@ -45,6 +47,18 @@
 		$total_price		=  mysqli_real_escape_string($mysqli,$_POST['tt_comtotal']);
 		$date				=  mysqli_real_escape_string($mysqli,strtotime($_POST['invoicedate']));
 		
+	$get_product_id = explode(",",$fetch_last_sales['product_id_array']);								
+	foreach($get_product_id As $key => $fetch_product_id){		
+	$check_quantity = mysqli_query($mysqli, "select * from tbl_products where product_id = '".$fetch_product_id."'");
+	$fetch_total_quantity = mysqli_fetch_array($check_quantity);
+	}
+
+	if ($fetch_total_quantity < 1)
+		{
+
+		$fetch_total_quantity = 0;
+			$data = "sold_out";
+	}else{
 
 	  $insert_sales_order = mysqli_query($mysqli,"insert into tbl_transactions values ('', 'sales', '".$business_id."', '".$invoice_number."', '".$customer_id."','".$state_code."','".$gst_pan."', '".$product_array."', '".$hsn_array."', '".$quantity_array."', '".$unit_price_array."', '".$tax_rate_array."', '".$tax_cgst_array."', '".$tax_sgst_array."', '".$tax_igst_array."', '".$tax_cess_array."', '".$tax_value_array."', '".$discount_array."', '".$total_array."', '".$subtotal."', '".$totaldiscount."', '".$total_tax."', '".$total_price."', '".$date."', 'active')");
 
@@ -62,6 +76,9 @@
 	}else{
 			$data = "error";
 	}
+	
+	}
+	
 }
 ?>
 
@@ -132,6 +149,10 @@ include("sidebar.php");
 						?>
 						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in Insertion </p>						
 						<?php
+						}else if(isset($data) && $data == "sold_out"){
+						?>
+						<p style="text-align:center;background:#3b73db;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Out of Stock </p>						
+						<?php
 						}
 						?>
 						</div>
@@ -197,7 +218,7 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input  type="text" class="form-control rs-datepicker" readonly placeholder="DD-MM-YYYY" name="invoicedate">
+                              <input  type="text" class="form-control rs-datepicker" value="<?php echo date('d/m/Y');?>" name="invoicedate">
 							  <p class="help-block with-errors"></p>
                             </div>
                           </div>
@@ -282,7 +303,7 @@ include("sidebar.php");
 
 							<tr class="rocks">
 								<th class="a" style="width:150px;">
-									  <select class="rs-selectize-single pid" name="product_id[]" style="width:150px;margin:0px;padding:0px;" onchange="complete_value(this)">
+									  <select class="form-control pid" name="product_id[]" style="width:150px;margin:0px;padding:0px;" onchange="complete_value(this)">
 										 <option selected disabled value="">Choose Product</option>
 										 <?php
 											$business_id = $_SESSION['business_id'];
@@ -297,7 +318,7 @@ include("sidebar.php");
 									  </select>
 								</th>
 								<th class="b"><input type="text" class="form-control hsn" value="" name="hsn[]" style="width:90px;"></th>
-								<th class="c"><input type="number" class="form-control qty" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
+								<th class="c"><input type="integer" class="form-control qty" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
 								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:80px;" onchange="complete_value(this)"></th>		
 
 								<th class="e">
@@ -493,13 +514,12 @@ include("sidebar.php");
 
 	  <script>
 	 
-
 	  $('.rs-datepicker').datepicker({
-     format: "dd/mm/yyyy",
+     format: "d/m/Y",
      autoclose: true,
-}).on('changeDate', function (ev) {
-     $(this).datepicker('hide');
-});
+	}).on('changeDate', function (ev) {
+		 $(this).datepicker('hide');
+	});
 
 		 function add_more_fun(){
 			  //alert('zz');

@@ -112,7 +112,7 @@ include("sidebar.php");
                   <h3 class="rs-dashhead-title m-t">
                     New Purchase Order :
                     <div style="float:right;">
-                      <span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='sales_order.php'"> 
+                      <span style="padding:10px 5px;font-size:25px;font-weight:normal;color:#000;cursor:pointer;" style="float:-right;" onclick="window.location.href='purchase_order_info.php'"> 
                         <i class="fa fa-remove">
                         </i> 
                       </span>
@@ -202,7 +202,7 @@ include("sidebar.php");
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input  type="text" class="form-control rs-datepicker" data-date-format="dd-mm-yyyy" readonly placeholder="DD-MM-YYYY" name="invoicedate">
+                              <input  type="text" class="form-control rs-datepicker" readonly value="<?php echo date('d/m/Y');?>" name="invoicedate">
 							  <p class="help-block with-errors"></p>
                             </div>
                           </div>
@@ -287,7 +287,7 @@ include("sidebar.php");
 
 							<tr class="rocks">
 								<th class="a" style="width:150px;">
-									  <select class="rs-selectize-single pid" name="product_id[]" style="width:150px;margin:0px;padding:0px;" onchange="complete_value(this)">
+									  <select class="form-control pid" name="product_id[]" style="width:150px;margin:0px;padding:0px;" onchange="complete_value(this)">
 										 <option selected disabled value="">Choose Product</option>
 										 <?php
 											$business_id = $_SESSION['business_id'];
@@ -302,7 +302,7 @@ include("sidebar.php");
 									  </select>
 								</th>
 								<th class="b"><input type="text" class="form-control hsn" value="" name="hsn[]" style="width:90px;"></th>
-								<th class="c"><input type="number" class="form-control qty" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
+								<th class="c"><input type="integer" class="form-control qty" value="1" name="qty[]" style="width:40px;margin:0px;padding:5px;" onchange="complete_value(this)"></th>
 								<th class="d"><input type="text" class="form-control unit_price" value="00.00" name="unit_price[]" style="width:80px;" onchange="complete_value(this)"></th>		
 
 								<th class="e">

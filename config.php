@@ -6,4 +6,5 @@
 		}
 		SESSION_START();
 		ERROR_REPORTING(0);
+		date_default_timezone_set('Asia/Kolkata');
 ?>

@@ -48,7 +48,6 @@ include("sidebar.php");
                     Print Sales Order :
                     <div style="float:right;">
 					  <a  class="fa fa-backward btn btn-success " href="sales_order.php" >Back</a>
-                      <button type="button" class=" fa fa-file-pdf-o btn btn-success " onclick="pdf_document();">  PDF</button>	
 					  <button type="button" class=" fa fa-print btn btn-success " onclick="javascript:printDiv('printablediv')"> PRINT </button>
                     </div>
                   </h3>
@@ -345,6 +344,7 @@ include("sidebar.php");
 
             //Restore orignal HTML
             document.body.innerHTML = oldPage;
+			location.reload()
 
           
         }

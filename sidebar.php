@@ -52,7 +52,7 @@ $fetch_details = mysqli_fetch_array($cu_info);
 				</li>
 
 				<li class="nav-item start <?php if($page_name == 'add_sales_order.php' || $page_name == 'javascript:void(0);'){ ?>active open<?php } ?>">
-					<a href="sales_order.php">
+					<a href="javascript:void(0);">
 						<span class="fa fa-line-chart rs-icon-menu"></span>Sales
 					</a>
 					<ul>
@@ -63,7 +63,7 @@ $fetch_details = mysqli_fetch_array($cu_info);
 
 
 				<li class="nav-item start <?php if($page_name == 'add_purchase_order.php' ||  $page_name == 'purchase_order_info.php'){ ?>active open<?php } ?>">
-					<a href="sales_order.php">
+					<a href="javascript:void(0);">
 						<span class="fa fa-usd rs-icon-menu"></span>Purchase Orders
 					</a>
 					<ul>

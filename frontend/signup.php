@@ -82,7 +82,7 @@
 								
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:5px;">
                                 <div class="input-group">
-									<span class="input-group-addon" style="background:white;"><i class="fa fa-location fa" aria-hidden="true"></i></span>
+									<span class="input-group-addon" style="background:white;"><i class="fa fa-pencil" aria-hidden="true"></i></span>
 									<input type="text" class="form-control" style="background:#EEEEEE;" name="entrprice" id="entrprice"  placeholder="Enter your Enterprice name"/>
 								</div>
                                 </div>
@@ -158,7 +158,7 @@
                             </div>
                             <a href="index.php"><button class="btn btn-theme-primary btn-left" style="padding:5px; background:#f73347;" type="submit" name="submit">Register</button></a>
 							<p class="text-center text-muted small m-a-0" style="align:center;">
-							Already have an account? <a href="index.php">Login here</a>
+							Already have an account? <a href="https://portme.co/app">Login here</a>
 							</p>
                         </form>
 					

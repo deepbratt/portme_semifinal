@@ -46,7 +46,7 @@
         <section class="contact ptb-80">
             <div class="container">
                 <div class="super-title">
-                    <h2>Let's Get Together</h2>
+                    <h2>HAVE ANY QUERY</h2>
                     <div class="seperator"></div>
                     <p>Feel free to contact us with questions, partnership proposals, media inquiries, or just to say “hi.” .</p>
                 </div>
@@ -56,26 +56,34 @@
                         <form autocomplete="off" novalidate="novalidate" id="ContactForm" name="contact-form">
                             <h5>SEND US EMAIL</h5>
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group ptb-10">
-                                        <input placeholder="Enter your full name" class="form-control" name="full_name" type="text">
-                                    </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:5px;">
+                                <div class="input-group">
+									<span class="input-group-addon" style="background:white;"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" style="background:#f0f0f0;" name="name" id="name"  placeholder="Enter your Full Name"/>
+								</div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group ptb-10">
-                                        <input placeholder="Enter your email" name="email" class="form-control" type="email">
-                                    </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:5px;">
+                                <div class="input-group">
+									<span class="input-group-addon" style="background:white;"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" style="background:#EEEEEE;" name="email" id="email"  placeholder="Enter your Email"/>
+								</div>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group ptb-10">
-                                        <input placeholder="Subject" name="subject" class="form-control" type="text">
-                                    </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:5px;">
+                                <div class="input-group">
+									<span class="input-group-addon" style="background:white;"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" style="background:#EEEEEE;" name="subject" id="subject"  placeholder="Enter subject"/>
+								</div>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group ptb-10">
-                                        <textarea placeholder="Write your message" class="form-control" name="message"></textarea>
-                                    </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:5px;">
+                                <div class="input-group">
+									<span class="input-group-addon" style="background:white;"><i class="fa fa-envelope-open" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" style="background:#EEEEEE;" name="message" id="message"  placeholder="Enter your message"/>
+								</div>
                                 </div>
+
                             </div>
                             <button class="btn btn-theme-primary">Send Message</button>
                         </form>

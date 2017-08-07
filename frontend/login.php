@@ -12,10 +12,7 @@
 		?>
     </head>
     <body>
-        <!-- ==============================================
-                     **PRE LOADER**
-        =============================================== -->
-        
+       
         <!-- ==============================================
                      **MAIN HEADER**
         =============================================== -->
@@ -57,19 +54,22 @@
 			}
 			?>
 
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-sm-offset-3">
-                        <form autocomplete="off" novalidate="novalidate" id="ContactForm" name="contact-form" >
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <form autocomplete="off" novalidate="novalidate" id="ContactForm" name="contact-form">
                             <h5>Log In</h5>
-                            <div class="row" >
-                               
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" >
-                                    <div class="form-group ptb-10" >
-                                        <input placeholder="Enter your email" name="email" class="form-control" type="email" >
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group ptb-10">
+                                        <input placeholder="Enter your full name" class="form-control" name="full_name" type="text">
                                     </div>
                                 </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group ptb-10">
+                                        <input placeholder="Enter your email" name="email" class="form-control" type="email">
+                                    </div>
                                 </div>
-								<div class="row">
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group ptb-10">
                                         <input placeholder="Enter your password" name="subject" class="form-control" type="text">
                                     </div>
@@ -77,10 +77,10 @@
                             </div>
                             <button class="btn btn-theme-primary" type="submit" name="submit">Log in</button>
                         </form>
-						<p class="text-center  small m-a-0">
-							<a href="forget_pass.php" class="fpass">Forgot Password?</a><br>
-							Don't have an account? <a href="signup.php">Sign up here</a>
-						</p>
+				<p class="text-center text-muted small m-a-0">
+					<a href="forget_pass.php" class="fpass">Forgot Password?</a><br>
+					Don't have an account? <a href="signup.php">Sign up here</a>
+				</p>
                     </div>
                     
             </div>

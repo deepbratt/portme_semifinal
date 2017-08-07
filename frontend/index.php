@@ -48,7 +48,7 @@ include("meta_links.php");
 
     <div class="cont_top ">
       <div class="row" >
-		<div class="col-md-8 col-md-offset-2"  style="margin-top:10%;">
+		<div class="col-md-8 col-md-offset-2"  style="margin-top:13%;">
 
 			<div class="col-md-3 col-sm-3 col-xs-3">
 			  <div class="iconbox-center  headShake">
@@ -433,20 +433,20 @@ include("meta_links.php");
                     <div class="sr-dv-sec-div">
                       <div class="col-md-6 col-sm-6 text-right text-xs-right sr-dv-sec-lft">
                             <article>
-                                <h3>Automated Bookkeeping</h3>
-                                <p>Accounts is the key role of any business success. let technology be a part of your journey and manage accounts with ease.</p>
+                                <h3>GST ID Rrgistration</h3>
+                                <p>GST ID is the key role of any business success. Now GST ID is mandatory for all business. It's really helpful and a profitable rule for You.</p>
                                 <ul>
-                                    <li><i class="fa fa-circle"></i>Track expenses , payable's etc.</li>
+                                    <li><i class="fa fa-circle"></i>Proof of business.</li>
 
-                                    <li><i class="fa fa-circle"></i>Track revenue , pending invoices , payments etc.</li>
+                                    <li><i class="fa fa-circle"></i>Proof of jurisdiction.</li>
                                     
-                                    <li><i class="fa fa-circle"></i>Track profit & loss with advanced filter.</li>
+                                    <li><i class="fa fa-circle"></i>Bank details and authorized signatories.</li>
                                     
-                                    <li><i class="fa fa-circle"></i>Merge with your accountant for tax fillings.</li>
+                                    <li><i class="fa fa-circle"></i>Voter id card / passport / aadhar card of owner / partner / company.</li>
                                     
-                                    <li><i class="fa fa-circle"></i>Multi user level access.</li>
+                                    <li><i class="fa fa-circle"></i>Pancard of individual owner / partner / company / LLP.</li>
 
-									<li><i class="fa fa-circle"></i>High level security and ease of access for your data.</li>
+									<li><i class="fa fa-circle"></i>1 Passport size photo copy.</li>
                                 </ul>
                             </article>
                         </div>
@@ -590,39 +590,40 @@ include("meta_links.php");
         <div class="col-md-12 col-sm-6 col-xl-12">
             <div class="tab-content service-1" style="margin-top:0px;">
                 <div id="menu1" class="tab-pane fade in active">
-                  <div class="col-md-4">
-                    <div style="border:2px solid #981c34; margin-top:60px; width:100%; float:left; background:#ececec; border-radius:6px;">
+                  <div class="col-md-4" style="">
+                    <div style="border:2px solid #981c34; margin-top:60px; height:250px; width:100%; float:left; background:#ececec; border-radius:20px;">
                     <center><img src="images/Rupee-Symbol-PNG-Transparent-Image.png" width="20%" style="position:absolute; margin-top:-90px; margin-left:-40px; "/></center>
                     <h6 style="font-size:18px; text-align:center; padding-top:50px; font-weight:500;">FOR GST ID REGISTRATION</h6>
                     <hr class="line-tab" />
-                    <h5 style="font-size:30px; text-align:center; margin-bottom:20px;"><b> Rs. 2,999</b><br /><span style="font-size:14px;"> all-inclusive</span></h5>
+                    <h5 style="font-size:30px; text-align:center; margin-bottom:20px;"><b> Rs. 2,999/ ID</b><br/><span style="font-size:14px;"> all-inclusive</span></h5>
+					<a href="#"><button class="waves-effect btn brochure-btn1 mobile-btn" style="top:290px; margin-left:120px; background:#e52d2d; text-align:center; float:left; font-size:16px; font-weight:500; position:absolute;">View More</button></a>
                   </div>
-				   <a href="#"><button class="waves-effect btn brochure-btn1 mobile-btn" style="top:220px; margin-left:45px; text-align:center; float:left; font-size:16px; font-weight:500; position:absolute;">View More</button></a>
+				   
                   </div>
                   				 
 
                   <div class="col-md-4">
-                    <div style="border:2px solid #981c34; margin-top:60px; width:100%; float:left; background:#ececec; border-radius:6px;">
+                    <div style="border:2px solid #981c34; margin-top:60px; height:250px; width:100%; float:left; background:#ececec; border-radius:20px;">
                     <center><img src="images/Rupee-Symbol-PNG-Transparent-Image.png" width="20%" style="position:absolute; margin-top:-90px; margin-left:-40px; "/></center>
                     <h6 style="font-size:18px; text-align:center; padding-top:50px; font-weight:500;">GST TAX FILING AND INVOICING</h6>
                     <hr class="line-tab" />
-                    <h5 style="font-size:30px; text-align:center; margin-bottom:20px;"><b> Rs. 1,499</b><br /><span style="font-size:14px;"> all-inclusive</span></h5>
-                    
+                    <h5 style="font-size:30px; text-align:center; margin-bottom:20px;"><b> Rs. 1,499/ Month</b><br/><span style="font-size:14px;"> all-inclusive</span></h5>
+                    <a href="#"><button class="waves-effect btn brochure-btn1 mobile-btn" style="top:290px; margin-left:120px; background:#e52d2d; text-align:center; float:left; font-size:16px; font-weight:500; position:absolute;">View More</button></a>
                   </div>
-				  <a href="#"><button class="waves-effect btn brochure-btn1 mobile-btn" style="top:220px; margin-left:45px; text-align:center; float:left; font-size:16px; font-weight:500; position:absolute;">View More</button></a>
+				  
                   </div>
 				  				  
 
                   
                   <div class="col-md-4">
-                    <div style="border:2px solid #981c34; margin-top:60px; width:100%; float:left; background:#ececec; border-radius:6px;">
+                    <div style="border:2px solid #981c34; margin-top:60px; height:250px; width:100%; float:left; background:#ececec; border-radius:20px;">
                     <center><img src="images/Rupee-Symbol-PNG-Transparent-Image.png" width="20%" style="position:absolute; margin-top:-90px; margin-left:-40px; "/></center>
                     <h6 style="font-size:18px; text-align:center; padding-top:50px; font-weight:500;">SOFTWARE AND OUR SERVICES</h6>
                     <hr class="line-tab" />
-                    <h5 style="font-size:30px; text-align:center; margin-bottom:20px;"><b> Rs. 11,999</b><br /><span style="font-size:14px;"> all-inclusive</span></h5>
-                    
+                    <h5 style="font-size:30px; text-align:center; margin-bottom:20px;"><b> Rs. 11,999/ Year</b><br/><span style="font-size:14px;"> all-inclusive</span></h5>
+                    <a href="#"><button class="waves-effect btn brochure-btn1 mobile-btn" style="top:290px; margin-left:120px; background:#e52d2d; text-align:center; float:left; font-size:16px; font-weight:500; position:absolute;">View More</button></a>
                   </div>
-				   <a href="#"><button class="waves-effect btn brochure-btn1 mobile-btn" style="top:220px; margin-left:45px; text-align:center; float:left; font-size:16px; font-weight:500; position:absolute;">View More</button></a>
+				   
                   </div>
 				  				 
 

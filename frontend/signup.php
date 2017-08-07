@@ -11,17 +11,7 @@
 		?>
     </head>
     <body>
-        <!-- ==============================================
-                     **PRE LOADER**
-        =============================================== -->
-        <div id="page-loader">
-            <div class="loader-container">
-                <div class="loader-logo">
-                    <span>LOADING</span>
-                </div>
-                <div class="loader"></div>
-            </div>
-        </div>
+        
         <!-- ==============================================
                      **MAIN HEADER**
         =============================================== -->
@@ -31,22 +21,16 @@
         <!-- ==============================================
                              **MAIN BANNER**
         =============================================== -->
-        <section class="main-banner paraxify banner-image-1 ptb-100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="main-banner-content text-center">
-                            <h2>Registration</h2>
-                            <ul class="breadcrumbs">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Registration</a></li>
-                            </ul>
-                            <p>Register for get the Features and Attractions</p>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End Container -->
-        </section><!-- End Section -->
+       
+
+		<section class="demo-request ">
+			<div class="whtscoch" id="whtscoch">
+				<div class="container">
+				  <h1>Port-ME <span style="color:#c0392b;">Registration/span></h1> 
+				  <p>Register for get the Features and Attractions</p>
+				</div>
+			</div>
+		</section>
         <!-- ==============================================
                              **FUNCTIONALITIES**
         =============================================== -->
@@ -72,74 +56,140 @@
 			}
 			?>
 
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                        <form autocomplete="off" novalidate="novalidate" id="ContactForm" name="contact-form">
+        <div class="container">
+			<div class="row main">
+				<div class="col-md-9 main-login main-center">
+				
+					<form autocomplete="off" novalidate="novalidate" id="ContactForm" name="contact-form">
                             <h3>Sign Up</h3>
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group ptb-10">
-                                        <input placeholder="Enter your full name" class="form-control" name="full_name" type="text">
-                                    </div>
+							
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:5px;">
+                                <div class="input-group">
+									<span class="input-group-addon" style="background:white;"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" style="background:#f0f0f0;" name="name" id="name"  placeholder="Enter your Name"/>
+								</div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group ptb-10">
-                                        <input placeholder="Enter your email" name="email" class="form-control" type="email">
-                                    </div>
+								
+								
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:5px;">
+                                <div class="input-group">
+									<span class="input-group-addon" style="background:white;"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" style="background:#EEEEEE;" name="email" id="email"  placeholder="Enter your Email"/>
+								</div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group ptb-10">
-                                        <input placeholder="Enter your Number" name="Phone" class="form-control" type="text">
-                                    </div>
+								
+								
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:5px;">
+                                <div class="input-group">
+									<span class="input-group-addon" style="background:white;"><i class="fa fa-location fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" style="background:#EEEEEE;" name="entrprice" id="entrprice"  placeholder="Enter your Enterprice name"/>
+								</div>
                                 </div>
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group ptb-10">
-                                        <input placeholder="Enter your Business Name" name="business" class="form-control" type="text">
-                                    </div>
+								
+							
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:5px;">
+                                <div class="input-group">
+									<span class="input-group-addon" style="background:white;"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" style="background:#EEEEEE;" name="phone" id="phone"  placeholder="Enter your phone number"/>
+								</div>
                                 </div>
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group ptb-10">
-                                        <input placeholder="Enter your Country" name="country" class="form-control" type="text">
-                                    </div>
+								
+						
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:5px;">
+                            <div class="input-group">
+								<span class="input-group-addon" style="background:white;"><i class="fa fa-building fa" aria-hidden="true"></i></span>
+								<input type="text" class="form-control" name="Business" style="background:#EEEEEE;" id="Business"  placeholder="Enter your Business"/>
+							</div>
+							</div>
+
+
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:5px;">
+					 <div class="input-group">
+					<span class="input-group-addon" style="background:white;"><i class="fa fa-building fa" aria-hidden="true"></i></span>
+					<div class="form-group  feedback-left">
+					
+						<select name="type" class="form-control" style="background:#EEEEEE;">
+							<option value="" selected disabled> Type of your business </option>
+							<option value="Accounting Services"> Accounting Services </option>
+							<option value="Administrative Services "> Administrative Services </option>
+							<option value="Advertising, Creative Design, Media and Marketing Services"> Advertising, Creative Design, Media and Marketing Services </option>
+							<option value="Agriculture, Farming, Fishing and Forestry"> Agriculture, Farming, Fishing and Forestry </option>
+							<option value="Amusement, Gambling, and Recreation"> Amusement, Gambling, and Recreation </option>
+							<option value="Animal Services"> Animal Services </option>
+							<option value="Architectural, Engineering, Design and Related Services"> Architectural, Engineering, Design and Related Services </option>
+							<option value="CA/TAX Consultant"> CA/TAX Consultant </option>
+							<option value="Care Givers"> Care Givers </option>
+							<option value="Charity, Nonprofits and Similar Groups"> Charity, Nonprofits and Similar Groups </option>
+							<option value="Church"> Church </option>
+							<option value="Computer Systems Design and Related Services"> Computer Systems Design and Related Services </option>
+							<option value="Construction"> Construction </option>
+							<option value="Consulting, Professional and Technical Services"> Consulting, Professional and Technical Services </option>
+							<option value="Educational Services"> Educational Services </option>
+							<option value="Finance and Insurance"> Finance and Insurance </option>
+							<option value="Food & Beverage Establishments"> Food & Beverage Establishments </option>
+							<option value="Freelancer"> Freelancer </option>
+							<option value="General Service-Based Business"> General Service-Based Business </option>
+							<option value="Hair Salons, Barbers and Spas"> Hair Salons, Barbers and Spas </option>
+							<option value="Healthcare Services"> Healthcare Services </option>
+							<option value="Human Resources and Placement Consulting"> Human Resources and Placement Consulting </option>
+							<option value="IT & Telecommunications"> IT & Telecommunications </option>
+							<option value="Land and Property including Management"> Land and Property including Management </option>
+							<option value="Landscaping and Gardening Services"> Landscaping and Gardening Services </option>
+							<option value="Learning Institutes"> Learning Institutes </option>
+							<option value="Legal Services"> Legal Services </option>
+							<option value="Manufacturers"> Manufacturers </option>
+							<option value="Manufacturing and Mining"> Manufacturing and Mining </option>
+							<option value="Performing Arts, Spectator Sports, and Related Industries"> Performing Arts, Spectator Sports, and Related Industries </option>
+							<option value="Repair and Maintenance Services"> Repair and Maintenance Services </option>
+							<option value="Retail Shops, Mail Order and Online"> Retail Shops, Mail Order and Online </option>
+							<option value="Transportation and Warehousing"> Transportation and Warehousing </option>
+							<option value="Travel and Tourism Services"> Travel and Tourism Services </option>
+							<option value="Vehicle Sales, Maintenance and Repairs"> Vehicle Sales, Maintenance and Repairs </option>
+							<option value="Whole-sellers"> Whole-sellers </option>
+							<option value="Wholesale Trade and Distributors"> Wholesale Trade and Distributors </option>
+						</select>
+						<span class="gcon gcon-box f-s-xs form-control-feedback" aria-hidden="true"></span>
+					</div><!-- /.form-group -->
+							
+				</div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group ptb-10">
-                                        <input placeholder="Enter your GST Id" name="gstin" class="form-control" type="text">
-                                    </div>
-                                </div>
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group ptb-10">
-                                        <input placeholder="Enter your password" name="password" class="form-control" type="text">
-                                    </div>
-                                </div>
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group ptb-10">
-                                        <input placeholder="Confirm your password" name="confirm_password" class="form-control" type="text">
-                                    </div>
-                                </div>
+
                             </div>
-                            <button class="btn btn-theme-primary btn-left" type="submit" name="submit">Register</button>
+                            <a href="index.php"><button class="btn btn-theme-primary btn-left" style="padding:5px; background:#f73347;" type="submit" name="submit">Register</button></a>
+							<p class="text-center text-muted small m-a-0" style="align:center;">
+							Already have an account? <a href="index.php">Login here</a>
+							</p>
                         </form>
-                    </div>
-                    
-					 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					
+				</div>
+				
+				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="background:#f73347; padding:10px;margin-top:29px;">
                         <div class="contact-address">
                             <div class="single-content">
-                                <i class="ti-map-alt" aria-hidden="true"></i>
+                                <i class="ti-map-alt" ></i>
                                 <h5>OFFICE ADDRESS</h5>
                                 <p>Head office 12 sector 7, Ada Rood-15 H#12 Texas, USA</p>
                             </div>
                             <div class="single-content">
-                                <i class="ti-mobile" aria-hidden="true"></i>
+                                <i class="ti-mobile"></i>
                                 <h5>Phone</h5>
                                 <p>+01 87676646</p>
                             </div>
                             <div class="single-content">
-                                <i class="ti-email" aria-hidden="true"></i>
+                                <i class="ti-email"></i>
                                 <h5>Email</h5>
                                 <p>info@fedrex.com</p>
                             </div>
                         </div>
-                    </div>
+                </div>
+				
+				
+			</div>
+		</div>
+
+                    
+					
 					
                 </div>
             </div><!-- End Container -->
@@ -172,18 +222,7 @@
         <!-- ==============================================
                 ** STYLE SWITCHER-ONLY FOR DEMO PURPOSE**
         =============================================== -->
-        <div id="style-switcher">
-            <div id="toggle-switcher"><i class="fa fa-cog"></i></div>
-            <h1>Change Color</h1>
-            <ul>
-                <li><img src="images/color_01.jpg" alt="" /></li>
-                <li><img src="images/color_02.jpg" alt="" /></li>
-                <li><img src="images/color_03.jpg" alt="" /></li>
-                <li><img src="images/color_04.jpg" alt="" /></li>
-                <li><img src="images/color_05.jpg" alt="" /></li>
-                <li><img src="images/color_06.jpg" alt="" /></li>
-            </ul>
-        </div>
+        
         <!--Style Switcher Script-->
         <script src="js/style-switcher.js"></script>
         <!--End Style Switcher-->

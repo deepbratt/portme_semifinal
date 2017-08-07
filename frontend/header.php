@@ -110,52 +110,49 @@
 </head>
 <body>
 
-  <header class="header-wrapper solid-bg" style="">
-    <nav class="navbar navbar-default navbar-fixed white bootsnav">
-      <div class="container-fluid"> 
 
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-            <i class="fa fa-bars">
-            </i>
-          </button>
-          <a class="navbar-brand" href="#brand">
-            <img src="images/logo.png" class="logo logo-display" alt="">
-            <img src="images/logo.png" class="logo logo-scrolled" alt="">
-          </a>
-        </div>
+  <header class="header-wrapper solid-bg">
+	
+	
+	<nav class="navbar navbar-default navbar-fixed white bootsnav">
+	<div class="header-wrapper navbar-fixed" style="height:30px; background:#f73347;text-align:center;">
+	<span style="color:white;">Currently we are in developement phase, please stay tuned for more information.</span>
+	</div>
+		<div class="container-fluid"> 
 
-        <div class="collapse navbar-collapse" id="navbar-menu">
-          <ul class="nav navbar-nav navbar-right" data-in="fadeOutUp" data-out="fadeInDown">
-            <li>
-              <a href="index.php" class="btn btn-outline-primary hvr-underline-from-center">Home
-              </a>
-            </li>
-            <li>
-              <a href="features.php" class="btn btn-outline-primary hvr-underline-from-center">Features
-              </a>
-            </li>
-            <li>
-              <a href="pricing.php" class="btn btn-outline-primary hvr-underline-from-center">Pricing
-              </a>
-            </li>
-            <li>
-              <a href="contact.php" class="btn btn-outline-primary hvr-underline-from-center">Contact
-              </a>
-            </li>
-            <li>
-              <a href="login.php" class="btn btn-outline-primary hvr-underline-from-center">Log In
-              </a>
-            </li>
-            <button type="button" style="border: 0px none;color:#fff; margin-top:15px !important;" class="btn btn-danger btn-lg hvr-underline-from-center">
-              <a href="signup.php" style="color:#fff !important;">Get Started
-              </a>
-            </button>
-          </ul>
-        </div>
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+				<i class="fa fa-bars">
+				</i>
+			  </button>
+			  <a class="navbar-brand" href="#brand">
+				<img src="images/logo.png" class="logo logo-display" alt="">
+				<img src="images/logo.png" class="logo logo-scrolled" alt="">
+			  </a>
+			</div>
 
-      </div>
+			<div class="collapse navbar-collapse" id="navbar-menu">
+			  <ul class="nav navbar-nav navbar-right" data-in="fadeOutUp" data-out="fadeInDown">
+				<li>
+				  <a href="index.php" class="btn btn-outline-primary hvr-underline-from-center">Home
+				  </a>
+				</li>
+				
+				<li>
+				  <a href="contact.php" class="btn btn-outline-primary hvr-underline-from-center">Contact
+				  </a>
+				</li>
+				<li>
+				  <a href="login.php" class="btn btn-outline-primary hvr-underline-from-center">Log In
+				  </a>
+				</li>
+				<a href="signup.php" style="color:#fff !important;"><button type="button" style="border: 0px none;color:#fff; margin-top:15px !important;" class="btn btn-danger btn-lg hvr-underline-from-center">Get Started</button></a>
+				</button>
+			  </ul>
+			</div>
 
-    </nav>
+		</div>
+
+	</nav>
 
   </header>

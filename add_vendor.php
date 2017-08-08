@@ -19,7 +19,7 @@ if(isset($_POST['submit']))
 	$notes = mysqli_real_escape_string($mysqli,$_POST['notes']);
 	$date = date('m/d/Y h:i:s', time());
 	
-	$old_customer_details = mysqli_query($mysqli,"select * from tbl_contacts WHERE customer_type='customer' AND business_id='$business_id'");
+	$old_customer_details = mysqli_query($mysqli,"select * from tbl_contacts WHERE email='".$email."', mobile='".$mobile."' AND business_id='$business_id'");
 	$fetch_customer_details = mysqli_num_rows($old_customer_details);
 
 	if($fetch_customer_details < 1)

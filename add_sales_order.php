@@ -138,25 +138,7 @@ include("sidebar.php");
             <div class="container-fluid" style="padding:0px;margin:0px;">
               <div class="col-md-12 col-sm-12" style="padding:0px;margin:0px;">	
 			    <form name="sales_form" method="POST" enctype="multipart/form-data" id="rs-validation-login-page">
-				<div class="col-md-12 col-sm-12">
-						<?php
-								if(isset($data) && $data == "success")
-						{
-						?>
-						<p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Added Successfully </p>
-						<?php
-						}else if(isset($data) && $data == "error"){
-						?>
-						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in Insertion </p>						
-						<?php
-						}else if(isset($data) && $data == "sold_out"){
-						?>
-						<p style="text-align:center;background:#3b73db;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Out of Stock </p>						
-						<?php
-						}
-						?>
-						</div>
-
+				
                 <!-- Begin Panel -->
                 <div class="panel panel-plain panel-rounded">
                   <div class="panel-body">
@@ -265,7 +247,23 @@ include("sidebar.php");
 					<!-- customer details fetch ends -->
                   </div>
                 </div>
-				
+				<div class="col-md-12 col-sm-12">
+						<?php
+								if(isset($data) && $data == "success")
+						{
+						?>
+						<p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Added Successfully </p>
+						<?php
+						}else if(isset($data) && $data == "error"){
+						?>
+						<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in Insertion </p>						
+						<?php
+						}
+						?>
+						<p id="sold_out" style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;display:none;"> Out of Stock </p>						
+						
+						</div>
+
 				<!-- table starts -->
 				<div class="panel panel-plain panel-rounded table-responsive sales_chart" style="padding:15px;">
 					<table class="table table-b-t table-b-b datatable-default rs-table table-striped table-bordered" style="border-right:1px solid #f5f5f5;border-left:1px solid #f5f5f5;">
@@ -691,6 +689,16 @@ include("sidebar.php");
 					$(e).closest('tr').find('.total').val(response.total);
 					$(e).closest('tr').find('.unit_price').val(response.unit_price);
 					$(e).closest('tr').find('.sub_totaz').val(response.sub_total);
+					
+					if(response.sold_data == 'sold_out'){
+						$( "#sold_out" ).show();
+					}
+					else {
+						$( "#sold_out" ).hide();
+					}
+					 
+					
+					
 					
 				
 					/*bottom main calculation*/

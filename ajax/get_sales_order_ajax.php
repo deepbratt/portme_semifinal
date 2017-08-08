@@ -15,6 +15,14 @@
 	/*product er details ends */
 
 	$qty = $_POST['qty'];
+	$select_total_qty = mysqli_query($mysqli,"select * from tbl_products where product_id='$product_id'");
+	$fetch_total_qty = mysqli_fetch_array($select_total_qty);
+	if($qty > $fetch_total_qty['qty']){
+		$sold_data = "sold_out";
+	}
+	
+
+
 	$unit_price = $fetch_product_details['selling_price'];
 	$product_price = $qty*$selling_price;
 	$actual_tax_rate = $_POST['tax_rate'];
@@ -67,7 +75,7 @@
 
 
 
-	$response = array("pid"=> $product_id ,"hsn"=> $hsn , "qty" => $qty , "unit_price" => number_format($unit_price, 2, '.', ''),"tax_rate" => $actual_tax_rate , "cgst" => number_format($cgst, 2, '.', '') , "sgst" => number_format($sgst, 2, '.', '') , "igst" => number_format($igst, 2, '.', ''), "cess" =>number_format($cess, 2, '.', ''), "tax_val" => number_format($tax_val, 2, '.', ''), "disount" => number_format($discount, 2, '.', ''), "total" => number_format($total_price, 2, '.', '') , "sub_total" => $product_price);
+	$response = array("pid"=> $product_id ,"hsn"=> $hsn , "qty" => $qty , "unit_price" => number_format($unit_price, 2, '.', ''),"tax_rate" => $actual_tax_rate , "cgst" => number_format($cgst, 2, '.', '') , "sgst" => number_format($sgst, 2, '.', '') , "igst" => number_format($igst, 2, '.', ''), "cess" =>number_format($cess, 2, '.', ''), "tax_val" => number_format($tax_val, 2, '.', ''), "disount" => number_format($discount, 2, '.', ''), "total" => number_format($total_price, 2, '.', '') , "sub_total" => $product_price ,"sold_data" => $sold_data);
 	header("Content-Type: application/json");
 	echo json_encode($response);
 ?>

@@ -19,12 +19,12 @@ if(isset($_POST['submit_details']))
 	$notes = mysqli_real_escape_string($mysqli,$_POST['notes']);
 	$date = time();
 		
-	$old_customer_details = mysqli_query($mysqli,"select * from tbl_contacts WHERE customer_type='customer' AND business_id='$business_id'");
+	$old_customer_details = mysqli_query($mysqli,"select * from tbl_contacts WHERE email='".$email."', mobile='".$mobile."' AND business_id='$business_id'");
 	$fetch_customer_details = mysqli_num_rows($old_customer_details);
 
 	if($fetch_customer_details < 1)
 	{
-		$insert_customer_details = mysqli_query($mysqli, "insert tbl_contacts values ('','CUSTOMER','".$business_id."','".$salutation."','".$firstname."','".$lastname."','".$company_name."','".$email."','".$work_phone."','".$mobile."','".$gst."','".$billing_address."','".$billing_state."','INDIA','".$shipping_address."','".$shipping_state."','INDIA','".$notes."','active')");
+		$insert_customer_details = mysqli_query($mysqli, "insert into tbl_contacts values ('','CUSTOMER','".$business_id."','".$salutation."','".$firstname."','".$lastname."','".$company_name."','".$email."','".$work_phone."','".$mobile."','".$gst."','".$billing_address."','".$billing_state."','INDIA','".$shipping_address."','".$shipping_state."','INDIA','".$notes."','active')");
 		if($insert_customer_details)
 		{
 			$data = "success";

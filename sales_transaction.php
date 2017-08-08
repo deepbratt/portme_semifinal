@@ -62,6 +62,7 @@ $bill_info = mysqli_query($mysqli, "select * from tbl_transactions where busines
 					<!-- Begin Dashhead -->
 					<div class="rs-dashhead m-b-lg" style="background:#f5f5f5">
 						<div class="rs-dashhead-content">
+						<div class="row">
 							<div class="rs-dashhead-titles">
 								<h3 class="rs-dashhead-title m-t">
 									Sales Transaction
@@ -73,7 +74,22 @@ $bill_info = mysqli_query($mysqli, "select * from tbl_transactions where busines
 								</h3>
 								
 							</div>
-							
+							<div class="col-md-3 col-md-offset-5">
+										<div class="form-group has-feedback">
+											<label class="control-label">Check-In Date</label>
+											<input type="text" class="form-control rs-checkin" data-date-format="dd-mm-yyyy" placeholder="DD-MM-YYYY" readonly>
+											<span class="fa fa-calendar form-control-feedback" aria-hidden="true"></span>
+										</div><!-- /.form-group -->
+									</div><!-- /.col-md-3 -->
+									<div class="col-md-3">
+										<div class="form-group has-feedback">
+											<label class="control-label">Check-Out Date</label>
+											<input type="text" class="form-control rs-checkout" data-date-format="dd-mm-yyyy" placeholder="DD-MM-YYYY" readonly>
+											<span class="fa fa-calendar form-control-feedback" aria-hidden="true"></span>
+										</div><!-- /.form-group -->
+									</div><!-- /.col-md-3 -->
+
+							</div>
 							
 						</div><!-- /.rs-dashhead-content -->
 						
@@ -306,6 +322,9 @@ $bill_info = mysqli_query($mysqli, "select * from tbl_transactions where busines
 	<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
 	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+	<script src="js/bootstrap-datepicker.min.js"></script>
+	<script src="js/datepicker-example.js"></script><!-- Example -->
+
 
 	<script>
 		$(document).ready(function() {

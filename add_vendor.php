@@ -276,9 +276,9 @@ if(isset($_POST['submit']))
 															</div>
 															<div class="col-sm-8">
 																<div class="form-group">
-																	<select name="bstate" class="form-control billstate1" >
+																	<select name="bstate" class="form-control billstate1" required>
 																	
-																		<option value="">State</option>
+																		<option value="" selected disabled>State</option>
 																		<?php
 																	$state_info = mysqli_query($mysqli, "select * from states");
 																	while ($fetch_state = mysqli_fetch_array($state_info))
